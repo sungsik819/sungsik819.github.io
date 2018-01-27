@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version='2.0' xmlns:atom='http://www.w3.org/2005/Atom'>
+<channel>
+<atom:link href='http://sungsik819.github.io/' rel='self' type='application/rss+xml'/>
+<title>
+Happy Developer
+</title>
+<link>
+http://sungsik819.github.io/
+</link>
+<description>
+개발 관련 경험 및 성찰들을 기록
+</description>
+<lastBuildDate>
+Sat, 27 Jan 2018 23:26:39 +0900
+</lastBuildDate>
+<generator>
+clj-rss
+</generator>
+<item>
+<guid>
+http://sungsik819.github.io/posts/2018-01-27-test-post.html
+</guid>
+<link>
+http://sungsik819.github.io/posts/2018-01-27-test-post.html
+</link>
+<title>
+테스트 글
+</title>
+<description>
+&lt;h2 id=&quot;테스트&amp;#95;글&amp;#95;입니다.&quot;&gt;테스트 글 입니다.&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;테스트 목록 1&lt;/li&gt;&lt;li&gt;테스트 목록 2&lt;/li&gt;&lt;/ul&gt;
+</description>
+<pubDate>
+Sat, 27 Jan 2018 00:00:00 +0900
+</pubDate>
+</item>
+</channel>
+</rss>

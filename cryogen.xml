@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version='2.0' xmlns:atom='http://www.w3.org/2005/Atom'>
+<channel>
+<atom:link href='http://sungsik819.github.io/' rel='self' type='application/rss+xml'/>
+<title>
+Happy Developer
+</title>
+<link>
+http://sungsik819.github.io/
+</link>
+<description>
+개발 관련 경험 및 성찰들을 기록
+</description>
+<lastBuildDate>
+Sat, 27 Jan 2018 23:26:39 +0900
+</lastBuildDate>
+<generator>
+clj-rss
+</generator>
+</channel>
+</rss>
