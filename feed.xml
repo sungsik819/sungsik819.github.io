@@ -12,11 +12,28 @@ http://sungsik819.github.io/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Sun, 28 Jan 2018 10:04:34 +0900
+Wed, 07 Feb 2018 17:17:25 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://sungsik819.github.io/posts/2018-02-07-why-clojure-blog.html
+</guid>
+<link>
+http://sungsik819.github.io/posts/2018-02-07-why-clojure-blog.html
+</link>
+<title>
+왜 클로저로 블로그를 만들었는가?
+</title>
+<description>
+&lt;h3 id=&quot;들어가며&quot;&gt;들어가며&lt;/h3&gt;&lt;p&gt; 클로저를 선택하게 된 이유와 왜 클로저로 블로그를 만들었는지에 대한 설명을 한다.&lt;/p&gt;&lt;h3 id=&quot;클로저를&amp;#95;선택하게&amp;#95;된&amp;#95;이유&quot;&gt;클로저를 선택하게 된 이유&lt;/h3&gt;&lt;p&gt; 흔하디 흔한 함수형 프로그래밍과 불변 등등의 특징은 인터넷으로 찾아보면 다 나오므로 개인적으로 선택을 하게 된 이유를 작성을 한다.&lt;br /&gt;&lt;/p&gt;&lt;p&gt; 처음 프로그래밍을 시작하게 되었을 때 C, C++로 하였는데 그 때부터 왜 내 생각을 바로 표현을 할 수가 없는지에 대한 의문을 품게 되었다.&lt;/p&gt;&lt;p&gt; 그런 의문은 업무에 시달리고 바쁘다 보니 잊어버리고 살았었는데 scheme을 접하게 되면서 다시 그 의문들을 다시 생각하게 되었다.&lt;br /&gt;&lt;/p&gt;&lt;p&gt; 물론 완벽하게 내 생각을 표현을 그대로 할 수는 없겠지만 추상성이 높다보니 그래도 만족을 하면서 공부를 하게 되었다.&lt;br /&gt;&lt;/p&gt;&lt;p&gt; 하지만 수 없이 많은 라이브러리들을 바로 사용을 할 수가 없었고 그래서 JAVA와 연동이 가능한 clojure를 선택을 하게 되었다.&lt;/p&gt;&lt;p&gt; 이 글을 쓰고 있는 시점의 나는 아직 LISP 풋내기에 불과 하지만 언젠가는 내 것을 만들 것이라는 희망을 품고 있다.&lt;/p&gt;&lt;p&gt; 컴퓨터 내부가 어떻게 돌아가는지에 대한 생각에 빠져서 살다보니 어느순간 내 생각은 컴퓨터화가 되어 가고 있다는 것을 느끼게 되었다.&lt;/p&gt;&lt;p&gt; 그래서 좀 더 고차원적으로 생각을 하고 싶어서 LISP을 공부를 하는 이유도 있다.&lt;/p&gt;&lt;p&gt; 다른 사람들은 어떻게 생각 할 지는 잘 모르겠지만 개인적인 생각으로 그렇게 느끼게 되어 정리를 하고 싶어서 작성을 하였다.&lt;/p&gt;&lt;h3 id=&quot;클로저로&amp;#95;블로그를&amp;#95;만든&amp;#95;이유&quot;&gt;클로저로 블로그를 만든 이유&lt;/h3&gt;&lt;p&gt; 업무 외의 시간에 무언가 스스로 만들고 싶어서라는 이유가 크다.&lt;br /&gt;  물론 framework는 내가 만든건 아니지만 워낙 작다보니 추가적인 기능들을 추가하기가 쉽다는 것도 장점일 수 있을 것 같다.&lt;/p&gt;
+</description>
+<pubDate>
+Wed, 07 Feb 2018 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://sungsik819.github.io/posts/2018-01-27-first-post.html
