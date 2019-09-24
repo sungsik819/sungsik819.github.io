@@ -12,11 +12,48 @@ http://sungsik819.github.io/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Tue, 24 Sep 2019 07:02:57 +0900
+Wed, 25 Sep 2019 07:00:40 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://sungsik819.github.io/posts/2019-09-25-python-reduce.html
+</guid>
+<link>
+http://sungsik819.github.io/posts/2019-09-25-python-reduce.html
+</link>
+<title>
+Python3 reduce 사용
+</title>
+<description>
+&lt;p&gt;Python에서 어떠한 문제를 해결 하기 위해서 reduce를 사용을 하게 되었다.&lt;/p&gt;&lt;p&gt;예제에서는 list안에서 원하는 인덱스 얻기 위한 상황에서 사용을 하게 되었다. 보통은 아래와 같은 코드로 작성을 하게된다.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;python
+select&amp;#95;index = 0
+for index, value in enumerate&amp;#40;&amp;#91;1,2,3,4,5,6,7,8&amp;#93;&amp;#41;:
+	if value == 5:
+		select&amp;#95;index = index
+		break
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;조금 뭔가 작위적인 코드가 된거 같긴 한데 위와 비슷한 알고리즘으로 처음에 생각을 하게 되고, 개발자라면 누구나 쉽게 생각할 수 있는 코드의 구조라고 생각을 한다.&lt;/p&gt;&lt;p&gt;하지만 파이썬을 사용을 하다보니 좀 더 쉬운, 간단한 방법은 없을까?라고 생각을 하게 되었고 2번째는 아래와 같은 코드를 생각을 하게 되었다.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;python
+#python3에서는 아래코드 import
+from functools import reduce
+
+index = reduce&amp;#40;lambda acc, x: x if x&amp;#91;1&amp;#93; == 5 else acc, enumerate&amp;#40;&amp;#91;1,2,3,4,5,6,7,8&amp;#93;&amp;#41;&amp;#41;
+
+index&amp;#91;0&amp;#93; # index 값 추출
+
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;clojure를 하다보니 reduce라는 함수는 알고 있었고 사용법이 무궁무진 하다는 것을 알고 있었기 때문에 혹시나  python에서도 이런 방법으로 할 수 있지 않을까?라는 생각을 하게 되었고 적용을 하였다.&lt;/p&gt;&lt;p&gt;설명을 한다면 lambda안에서 acc에 누적 값을 저장을 하는 방식인데 보통은 reduce를 아래와 같은 방법으로 사용을 한다.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;python
+#python3에서는 아래코드 import
+from functools import reduce
+
+sum = reduce&amp;#40;lambda acc, x: acc+x, &amp;#91;1,2,3,4,5,6,7,8&amp;#93;&amp;#41;
+#sum의 값은 36
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;어차피 acc에는 list가 순회 할때까지 조건에 맞는 값을 유지 할 수 있을 것 같아서 사용을 하게 되었다.&lt;/p&gt;&lt;p&gt;지금은 리팩토링을 하다보니 reduce 코드보다는 dictionary로 변경을 하여 사용하고 있지만 reduce의 기록을 위해서 남겨둔다.&lt;/p&gt;
+</description>
+<pubDate>
+Wed, 25 Sep 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://sungsik819.github.io/posts/2019-09-24-experience-python.html
