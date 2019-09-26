@@ -12,11 +12,28 @@ http://sungsik819.github.io/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Thu, 26 Sep 2019 06:30:38 +0900
+Fri, 27 Sep 2019 06:14:07 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://sungsik819.github.io/posts/2019-09-27-how-db-select.html
+</guid>
+<link>
+http://sungsik819.github.io/posts/2019-09-27-how-db-select.html
+</link>
+<title>
+RDB select에 대한 고찰
+</title>
+<description>
+&lt;p&gt;개발을 하다보면 rdb는 필수로 사용을 하게 된다 &lt;/p&gt;&lt;p&gt;그렇지만 rdb에 있는데이터의 구조를 확장성 있게 사용한다는 것은 또다른 어려움이 있다고 생각한다&lt;/p&gt;&lt;p&gt;rdb 구조를 잘 설계하면 확장성있게 사용 가능한가?라는 질문에는 아니오라고 얘기하고 싶다 그 이유는 2차원으로 사용하는 rdb의 특성상 원하는 구조로 다시 바꾸기란 쉽지만은 않기때문이다&lt;/p&gt;&lt;p&gt;원하는 데이터를 전송할때도 전송할 데이터에 대한 구조만 작성을 하는 것이 확장성이 있을까 하면 아니오이고 필히 수정 또는 확장을 요구하는 현상이 반드시 일어난다고 생각한다&lt;/p&gt;&lt;p&gt;내가 하고 싶은 것은 테이블 전체의 데이터 구조들을 정의 해놓고 select를 하고 원하는 데이터만 선택적으로 전송한다면 변화에는 유용하리라 생각한다&lt;/p&gt;&lt;p&gt;아직 그렇게 작성을 해보진 않아서 얼마나 속도에 영향이 있을지는 모르겠지만 시도해볼만 하다고 생각한다&lt;/p&gt;&lt;p&gt;다시 생각을 해보니 너무 rdb 설계에 의존을 하는 것은 않좋다는 생각이 들었다. db를 먼저 설계 하고 클래스를 설계를 하게 되니 확장성이 안그래도 없는데 더 없어졌다는 생각이 들었고 db를 설계하기 전에 class를 설계하는 습관이 필요하다는 생각이 들었다. 그래야 test 코드도 원하는데로 만들수 있고, 확장 및 변경에 용이하리라 생각한다.&lt;/p&gt;&lt;p&gt;db 보다는 domain이 중요하다.&lt;/p&gt;
+</description>
+<pubDate>
+Fri, 27 Sep 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://sungsik819.github.io/posts/2019-09-26-sql-vs-java.html
