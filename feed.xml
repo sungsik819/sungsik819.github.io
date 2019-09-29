@@ -12,11 +12,28 @@ http://sungsik819.github.io/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Sun, 29 Sep 2019 07:44:36 +0900
+Mon, 30 Sep 2019 06:13:20 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://sungsik819.github.io/posts/2019-09-30-think-extend.html
+</guid>
+<link>
+http://sungsik819.github.io/posts/2019-09-30-think-extend.html
+</link>
+<title>
+확장성이라는 것에 대한 생각
+</title>
+<description>
+&lt;p&gt;과자를 하나 사러 동네 슈퍼를 갔다가 집으로 돌아가는 중이다 집에서 어머니가 오는길에 고기를 사오라고 한다면? 어떠한 반응을 보여야 할까? 왜 지금 얘기하는지 화내야 할까? 아니면 첨부터 동네 슈퍼를 간 내 탓일까?&lt;/p&gt;&lt;p&gt;어떠한 경우라도 상황이라는 것이 내가 원하는데로만 생각한데로만 될순 없다고 생각한다&lt;/p&gt;&lt;p&gt;그렇다고 모든 경우의 수를 고려해서 할 수도 없다 그렇다면 어떻게 해야할까?&lt;/p&gt;&lt;p&gt;마음으로라도 상황이 수시로 변한다는 것을 인정을 하면서 대응을 하는 것이 맞다고 생각한다&lt;/p&gt;&lt;p&gt;단적이었지만 개발하는 상황에서도 일어날 수 있는 일이다 확정적으로 무언가를 항상 할 수는 없다 시시때때로 변화하는 환경에 내가 잘 대응할 수 있도록 만드는 것이 중요한 것 같다&lt;/p&gt;
+</description>
+<pubDate>
+Mon, 30 Sep 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://sungsik819.github.io/posts/2019-09-27-how-db-select.html
