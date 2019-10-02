@@ -12,11 +12,28 @@ http://sungsik819.github.io/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Wed, 02 Oct 2019 06:28:52 +0900
+Thu, 03 Oct 2019 07:48:53 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://sungsik819.github.io/posts/2019-10-03-4clojure-start.html
+</guid>
+<link>
+http://sungsik819.github.io/posts/2019-10-03-4clojure-start.html
+</link>
+<title>
+4clojure 정리
+</title>
+<description>
+&lt;p&gt;clojure 언어를 좋아한다고 해놓고선 아무런 공부의 기록이 없다는 것이 말이 안된다는 생각이 들었다.&lt;/p&gt;&lt;p&gt;그래서 기존에 했던 내용들을 복습을 할 겸 1개씩 정리를 하려고 한다.&lt;/p&gt;&lt;p&gt;쉬운 내용이면 쉽게 가고 좀 생각을 해야할 내용이면 생각 정리와 동시에 시도했던 내용들을 정리를 한다.&lt;/p&gt;
+</description>
+<pubDate>
+Thu, 03 Oct 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://sungsik819.github.io/posts/2019-10-02-stop-retention.html
