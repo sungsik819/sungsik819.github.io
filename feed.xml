@@ -12,11 +12,29 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Thu, 03 Oct 2019 09:01:44 +0900
+Fri, 04 Oct 2019 06:15:40 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-10-04-4clojure-01.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-10-04-4clojure-01.html
+</link>
+<title>
+problem 01
+</title>
+<description>
+&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;&amp;#40;= &amp;#40;&amp;#95;&amp;#95; true&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;__ 안에 어떤 값을 넣어야 =를 만족 할수 있는지 부터가 4clojure의 시작이다 true를 넣으면 값이 성립 한다.&lt;/p&gt;
+</description>
+<pubDate>
+Fri, 04 Oct 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-10-03-4clojure-start.html
