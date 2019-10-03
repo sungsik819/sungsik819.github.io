@@ -1,28 +1,28 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <rss version='2.0' xmlns:atom='http://www.w3.org/2005/Atom'>
 <channel>
-<atom:link href='http://sungsik819.github.io/' rel='self' type='application/rss+xml'/>
+<atom:link href='http://dev-happy.com/' rel='self' type='application/rss+xml'/>
 <title>
-Happy Developer
+Dev Happy
 </title>
 <link>
-http://sungsik819.github.io/
+http://dev-happy.com/
 </link>
 <description>
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Thu, 03 Oct 2019 08:37:22 +0900
+Thu, 03 Oct 2019 09:01:44 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
 <item>
 <guid>
-http://sungsik819.github.io/posts/2019-10-03-4clojure-start.html
+http://dev-happy.com/posts/2019-10-03-4clojure-start.html
 </guid>
 <link>
-http://sungsik819.github.io/posts/2019-10-03-4clojure-start.html
+http://dev-happy.com/posts/2019-10-03-4clojure-start.html
 </link>
 <title>
 4clojure 정리
@@ -36,10 +36,10 @@ Thu, 03 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://sungsik819.github.io/posts/2019-10-02-stop-retention.html
+http://dev-happy.com/posts/2019-10-02-stop-retention.html
 </guid>
 <link>
-http://sungsik819.github.io/posts/2019-10-02-stop-retention.html
+http://dev-happy.com/posts/2019-10-02-stop-retention.html
 </link>
 <title>
 리텐션이 낮고 사용자가 감소 또는 유지된다는 것은?
@@ -53,10 +53,10 @@ Wed, 02 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://sungsik819.github.io/posts/2019-10-01-think-in-box.html
+http://dev-happy.com/posts/2019-10-01-think-in-box.html
 </guid>
 <link>
-http://sungsik819.github.io/posts/2019-10-01-think-in-box.html
+http://dev-happy.com/posts/2019-10-01-think-in-box.html
 </link>
 <title>
 틀안에서 생각한다는 것의 의미
@@ -70,10 +70,10 @@ Tue, 01 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://sungsik819.github.io/posts/2019-09-30-think-extend.html
+http://dev-happy.com/posts/2019-09-30-think-extend.html
 </guid>
 <link>
-http://sungsik819.github.io/posts/2019-09-30-think-extend.html
+http://dev-happy.com/posts/2019-09-30-think-extend.html
 </link>
 <title>
 확장성이라는 것에 대한 생각
@@ -87,10 +87,10 @@ Mon, 30 Sep 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://sungsik819.github.io/posts/2019-09-27-how-db-select.html
+http://dev-happy.com/posts/2019-09-27-how-db-select.html
 </guid>
 <link>
-http://sungsik819.github.io/posts/2019-09-27-how-db-select.html
+http://dev-happy.com/posts/2019-09-27-how-db-select.html
 </link>
 <title>
 RDB select에 대한 고찰
@@ -104,10 +104,10 @@ Fri, 27 Sep 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://sungsik819.github.io/posts/2019-09-26-sql-vs-java.html
+http://dev-happy.com/posts/2019-09-26-sql-vs-java.html
 </guid>
 <link>
-http://sungsik819.github.io/posts/2019-09-26-sql-vs-java.html
+http://dev-happy.com/posts/2019-09-26-sql-vs-java.html
 </link>
 <title>
 SQL query VS java (프로그래밍 언어)
@@ -121,10 +121,10 @@ Thu, 26 Sep 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://sungsik819.github.io/posts/2019-09-25-python-reduce.html
+http://dev-happy.com/posts/2019-09-25-python-reduce.html
 </guid>
 <link>
-http://sungsik819.github.io/posts/2019-09-25-python-reduce.html
+http://dev-happy.com/posts/2019-09-25-python-reduce.html
 </link>
 <title>
 Python3 reduce 사용
@@ -158,10 +158,10 @@ Wed, 25 Sep 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://sungsik819.github.io/posts/2019-09-24-experience-python.html
+http://dev-happy.com/posts/2019-09-24-experience-python.html
 </guid>
 <link>
-http://sungsik819.github.io/posts/2019-09-24-experience-python.html
+http://dev-happy.com/posts/2019-09-24-experience-python.html
 </link>
 <title>
 Python을 2년 사용해 보고
@@ -175,10 +175,10 @@ Tue, 24 Sep 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://sungsik819.github.io/posts/2018-02-07-why-clojure-blog.html
+http://dev-happy.com/posts/2018-02-07-why-clojure-blog.html
 </guid>
 <link>
-http://sungsik819.github.io/posts/2018-02-07-why-clojure-blog.html
+http://dev-happy.com/posts/2018-02-07-why-clojure-blog.html
 </link>
 <title>
 왜 클로저로 블로그를 만들었는가?
@@ -192,10 +192,10 @@ Wed, 07 Feb 2018 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://sungsik819.github.io/posts/2018-01-27-first-post.html
+http://dev-happy.com/posts/2018-01-27-first-post.html
 </guid>
 <link>
-http://sungsik819.github.io/posts/2018-01-27-first-post.html
+http://dev-happy.com/posts/2018-01-27-first-post.html
 </link>
 <title>
 클로저로 된 블로그 생성
