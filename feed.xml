@@ -12,7 +12,7 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Fri, 04 Oct 2019 06:30:55 +0900
+Fri, 04 Oct 2019 06:33:53 +0900
 </lastBuildDate>
 <generator>
 clj-rss
@@ -29,8 +29,7 @@ problem 01
 </title>
 <description>
 &lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;&amp;#40;= &amp;#40;&amp;#95;&amp;#95; true&amp;#41;&amp;#41;
-&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;clojure
-true
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;true
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;__ 안에 어떤 값을 넣어야 =를 만족 할수 있는지 부터가 4clojure의 시작이다 true를 넣으면 값이 성립 한다.&lt;/p&gt;
 </description>
 <pubDate>
