@@ -12,7 +12,7 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Sat, 05 Oct 2019 06:48:46 +0900
+Sat, 05 Oct 2019 06:51:44 +0900
 </lastBuildDate>
 <generator>
 clj-rss
@@ -28,7 +28,7 @@ http://dev-happy.com/posts/2019-10-05-4clojure-02.html
 problem 02
 </title>
 <description>
-&lt;p&gt;}&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;&amp;#40;= &amp;#40;- 10 &amp;#40;&amp;#42; 2 3&amp;#41;&amp;#41; &amp;#95;&amp;#95;&amp;#41;
+&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;&amp;#40;= &amp;#40;- 10 &amp;#40;&amp;#42; 2 3&amp;#41;&amp;#41; &amp;#95;&amp;#95;&amp;#41;
 &lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;4
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;중간의 계산식에 대한 답을 넣으면 된다 기본적으로 lisp은 안에서 부터 밖으로 계산이 되므로 풀어서 쓴다면 10 - (2 * 3)의 계산 결과가 된다. 4로 하면 등호가 성립이 된다.&lt;/p&gt;
 </description>
