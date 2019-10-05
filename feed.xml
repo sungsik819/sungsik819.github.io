@@ -12,11 +12,30 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Sat, 05 Oct 2019 06:51:44 +0900
+Sun, 06 Oct 2019 07:18:31 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-10-06-4clojure-03.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-10-06-4clojure-03.html
+</link>
+<title>
+problem 03
+</title>
+<description>
+&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;&amp;#40;= &amp;#95;&amp;#95; &amp;#40;.toUpperCase &amp;quot;hello world&amp;quot;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;&amp;quot;HELLO WORLD&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;clojure에서는 기본적으로 자바의 라이브러리를 사용할 수 있다. 마찬가지로 string에 대한 함수를 호출 할 수 있는데 자바와는 반대로 위와같은 방법으로 호출을 하여 사용 할 수 있다. “HELLO WORLD”로 하면 성립이 된다.&lt;/p&gt;
+</description>
+<pubDate>
+Sun, 06 Oct 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-10-05-4clojure-02.html
