@@ -73,18 +73,16 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 10월 8일 (화)</div>
+        <div class="col-lg-6">2019년 10월 9일 (수)</div>
         
     </div>
-    <h2>problem 05</h2>
+    <h2>problem 06</h2>
 </div>
 <div>
     
-    <pre><code class="clojure">&#40;= &#95;&#95; &#40;conj '&#40;2 3 4&#41; 1&#41;&#41;
-
-&#40;= &#95;&#95; &#40;conj '&#40;3 4&#41; 2 1&#41;&#41;
-</code></pre><pre><code class="clojure">'&#40;1 2 3 4&#41;
-</code></pre><p>처음으로 테스트를 통과해야하는 문제가 2개가 되었다. conj는 list 자료형인 경우 앞에 값을 추가를 한다, 2개가 있는 경우 앞에 값부터 차례로 값을 앞으로 추가를 한다. stack이라고 생각하면 쉬울 것 같다. 그러므로’(1 2 3 4)이면 등호를 만족 한다.</p>
+    <pre><code class="clojure">&#40;= &#91;&#95;&#95;&#93; &#40;list :a :b :c&#41; &#40;vec '&#40;:a :b :c&#41;&#41; &#40;vector :a :b :c&#41;&#41;
+</code></pre><pre><code class="clojure">:a :b :c
+</code></pre><p> vector 자료형이다. vector를 생성하는 방법에 대해서 보여주고 있다. 중간에 vec은 list 자료형을 받으면 vector로 변환하는 함수이다. 기본적으로 내용이 같으면 vector, list는 서로 같다 그러므로 :a :b :c이면 성립힌다.</p>
 </div>
 
 <div id="post-tags">
@@ -102,7 +100,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2019-10-07-4clojure-04.html">problem 04 &raquo;</a>
+        <a class="right" href="/posts/2019-10-08-4clojure-05.html">problem 05 &raquo;</a>
         
     </div>
 </div>
@@ -121,11 +119,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2019-10-09-4clojure-06.html">problem 06</a></li>
+                        
                         <li><a href="/posts/2019-10-08-4clojure-05.html">problem 05</a></li>
                         
                         <li><a href="/posts/2019-10-07-4clojure-04.html">problem 04</a></li>
-                        
-                        <li><a href="/posts/2019-10-06-4clojure-03.html">problem 03</a></li>
                         
                     </ul>
                 </div>
