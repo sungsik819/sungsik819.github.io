@@ -73,16 +73,18 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 10월 9일 (수)</div>
+        <div class="col-lg-6">2019년 10월 10일 (목)</div>
         
     </div>
-    <h2>problem 06</h2>
+    <h2>problem 07</h2>
 </div>
 <div>
     
-    <pre><code class="clojure">&#40;= &#91;&#95;&#95;&#93; &#40;list :a :b :c&#41; &#40;vec '&#40;:a :b :c&#41;&#41; &#40;vector :a :b :c&#41;&#41;
-</code></pre><pre><code class="clojure">:a :b :c
-</code></pre><p> vector 자료형이다. vector를 생성하는 방법에 대해서 보여주고 있다. 중간에 vec은 list 자료형을 받으면 vector로 변환하는 함수이다. 기본적으로 내용이 같으면 vector, list는 서로 같다 그러므로 :a :b :c이면 성립힌다.</p>
+    <pre><code class="clojure">&#40;= &#95;&#95; &#40;conj &#91;1 2 3&#93; 4&#41;&#41;
+
+&#40;= &#95;&#95; &#40;conj &#91;1 2&#93; 3 4&#41;&#41;
+</code></pre><pre><code class="clojure">&#91;1 2 3 4&#93;
+</code></pre><p>vector의 conj는 list와 다르게 마지막에 값을 추가한다 그러므로 [1 2 3 4] 이다.</p>
 </div>
 
 <div id="post-tags">
@@ -100,7 +102,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2019-10-08-4clojure-05.html">problem 05 &raquo;</a>
+        <a class="right" href="/posts/2019-10-09-4clojure-06.html">problem 06 &raquo;</a>
         
     </div>
 </div>
@@ -119,11 +121,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2019-10-10-4clojure-07.html">problem 07</a></li>
+                        
                         <li><a href="/posts/2019-10-09-4clojure-06.html">problem 06</a></li>
                         
                         <li><a href="/posts/2019-10-08-4clojure-05.html">problem 05</a></li>
-                        
-                        <li><a href="/posts/2019-10-07-4clojure-04.html">problem 04</a></li>
                         
                     </ul>
                 </div>

@@ -5,7 +5,7 @@
 http://dev-happy.com/why.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
 </lastmod>
 </url>
 <url>
@@ -13,7 +13,7 @@ http://dev-happy.com/why.html
 http://dev-happy.com/python.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
 </lastmod>
 </url>
 <url>
@@ -21,7 +21,7 @@ http://dev-happy.com/python.html
 http://dev-happy.com/4clojure.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
 </lastmod>
 </url>
 <url>
@@ -29,7 +29,7 @@ http://dev-happy.com/4clojure.html
 http://dev-happy.com/tags.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
 </lastmod>
 </url>
 <url>
@@ -37,7 +37,7 @@ http://dev-happy.com/tags.html
 http://dev-happy.com/Today I Learn.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
 </lastmod>
 </url>
 <url>
@@ -45,7 +45,7 @@ http://dev-happy.com/Today I Learn.html
 http://dev-happy.com/index.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
 </lastmod>
 </url>
 <url>
@@ -53,7 +53,7 @@ http://dev-happy.com/index.html
 http://dev-happy.com/posts/2019-10-04-4clojure-01.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
 </lastmod>
 </url>
 <url>
@@ -61,7 +61,7 @@ http://dev-happy.com/posts/2019-10-04-4clojure-01.html
 http://dev-happy.com/posts/2019-09-27-how-db-select.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
 </lastmod>
 </url>
 <url>
@@ -69,7 +69,7 @@ http://dev-happy.com/posts/2019-09-27-how-db-select.html
 http://dev-happy.com/posts/2019-09-30-think-extend.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
 </lastmod>
 </url>
 <url>
@@ -77,7 +77,15 @@ http://dev-happy.com/posts/2019-09-30-think-extend.html
 http://dev-happy.com/posts/2019-09-26-sql-vs-java.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
+</lastmod>
+</url>
+<url>
+<loc>
+http://dev-happy.com/posts/2019-10-10-4clojure-07.html
+</loc>
+<lastmod>
+2019-10-10
 </lastmod>
 </url>
 <url>
@@ -85,7 +93,7 @@ http://dev-happy.com/posts/2019-09-26-sql-vs-java.html
 http://dev-happy.com/posts/2018-01-27-first-post.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
 </lastmod>
 </url>
 <url>
@@ -93,7 +101,7 @@ http://dev-happy.com/posts/2018-01-27-first-post.html
 http://dev-happy.com/posts/2019-10-06-4clojure-03.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
 </lastmod>
 </url>
 <url>
@@ -101,7 +109,7 @@ http://dev-happy.com/posts/2019-10-06-4clojure-03.html
 http://dev-happy.com/posts/2019-10-08-4clojure-05.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
 </lastmod>
 </url>
 <url>
@@ -109,7 +117,7 @@ http://dev-happy.com/posts/2019-10-08-4clojure-05.html
 http://dev-happy.com/posts/2019-10-07-4clojure-04.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
 </lastmod>
 </url>
 <url>
@@ -117,7 +125,7 @@ http://dev-happy.com/posts/2019-10-07-4clojure-04.html
 http://dev-happy.com/posts/2019-10-01-think-in-box.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
 </lastmod>
 </url>
 <url>
@@ -125,7 +133,7 @@ http://dev-happy.com/posts/2019-10-01-think-in-box.html
 http://dev-happy.com/posts/2019-09-25-python-reduce.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
 </lastmod>
 </url>
 <url>
@@ -133,7 +141,7 @@ http://dev-happy.com/posts/2019-09-25-python-reduce.html
 http://dev-happy.com/posts/2019-10-05-4clojure-02.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
 </lastmod>
 </url>
 <url>
@@ -141,7 +149,7 @@ http://dev-happy.com/posts/2019-10-05-4clojure-02.html
 http://dev-happy.com/posts/2019-09-24-experience-python.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
 </lastmod>
 </url>
 <url>
@@ -149,7 +157,7 @@ http://dev-happy.com/posts/2019-09-24-experience-python.html
 http://dev-happy.com/posts/2019-10-09-4clojure-06.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
 </lastmod>
 </url>
 <url>
@@ -157,7 +165,7 @@ http://dev-happy.com/posts/2019-10-09-4clojure-06.html
 http://dev-happy.com/posts/2018-02-07-why-clojure-blog.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
 </lastmod>
 </url>
 <url>
@@ -165,7 +173,7 @@ http://dev-happy.com/posts/2018-02-07-why-clojure-blog.html
 http://dev-happy.com/posts/2019-10-02-stop-retention.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
 </lastmod>
 </url>
 <url>
@@ -173,7 +181,7 @@ http://dev-happy.com/posts/2019-10-02-stop-retention.html
 http://dev-happy.com/posts/2019-10-03-4clojure-start.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
 </lastmod>
 </url>
 <url>
@@ -181,7 +189,7 @@ http://dev-happy.com/posts/2019-10-03-4clojure-start.html
 http://dev-happy.com/404.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
 </lastmod>
 </url>
 <url>
@@ -189,7 +197,7 @@ http://dev-happy.com/404.html
 http://dev-happy.com/clojure.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
 </lastmod>
 </url>
 <url>
@@ -197,7 +205,7 @@ http://dev-happy.com/clojure.html
 http://dev-happy.com/write.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
 </lastmod>
 </url>
 <url>
@@ -205,7 +213,7 @@ http://dev-happy.com/write.html
 http://dev-happy.com/essay.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
 </lastmod>
 </url>
 <url>
@@ -213,7 +221,7 @@ http://dev-happy.com/essay.html
 http://dev-happy.com/archives.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
 </lastmod>
 </url>
 <url>
@@ -221,7 +229,7 @@ http://dev-happy.com/archives.html
 http://dev-happy.com/pages/about.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
 </lastmod>
 </url>
 <url>
@@ -229,7 +237,7 @@ http://dev-happy.com/pages/about.html
 http://dev-happy.com/pages/vision.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
 </lastmod>
 </url>
 <url>
@@ -237,7 +245,7 @@ http://dev-happy.com/pages/vision.html
 http://dev-happy.com/pages/features.html
 </loc>
 <lastmod>
-2019-10-09
+2019-10-10
 </lastmod>
 </url>
 </urlset>

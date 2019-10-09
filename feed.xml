@@ -12,11 +12,32 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Wed, 09 Oct 2019 06:22:25 +0900
+Thu, 10 Oct 2019 06:16:44 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-10-10-4clojure-07.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-10-10-4clojure-07.html
+</link>
+<title>
+problem 07
+</title>
+<description>
+&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;&amp;#40;= &amp;#95;&amp;#95; &amp;#40;conj &amp;#91;1 2 3&amp;#93; 4&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#95;&amp;#95; &amp;#40;conj &amp;#91;1 2&amp;#93; 3 4&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;&amp;#91;1 2 3 4&amp;#93;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;vector의 conj는 list와 다르게 마지막에 값을 추가한다 그러므로 [1 2 3 4] 이다.&lt;/p&gt;
+</description>
+<pubDate>
+Thu, 10 Oct 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-10-09-4clojure-06.html
