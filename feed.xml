@@ -12,11 +12,32 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Thu, 10 Oct 2019 06:16:44 +0900
+Fri, 11 Oct 2019 06:17:44 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-10-11-4clojure-08.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-10-11-4clojure-08.html
+</link>
+<title>
+problem 08
+</title>
+<description>
+&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;&amp;#40;= &amp;#95;&amp;#95; &amp;#40;set '&amp;#40;:a :a :b :c :c :c :c :d :d&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#95;&amp;#95; &amp;#40;clojure.set/union #{:a :b :c} #{:b :c :d}&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;#{:a :b :c :d}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;set이라는 자료형은 집합이다. 수학의 집합 관련 연산은 무엇이든 가능하며, 중복된 값을 제거 하는 역할을 가지고 있다. union은 합집합의 기능을 한다. 집합기호는 기본적으로#{} 형태로 나타내며 # {:a :b :c :d} 로 성립한다.&lt;/p&gt;
+</description>
+<pubDate>
+Fri, 11 Oct 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-10-10-4clojure-07.html

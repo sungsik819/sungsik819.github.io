@@ -73,18 +73,18 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 10월 10일 (목)</div>
+        <div class="col-lg-6">2019년 10월 11일 (금)</div>
         
     </div>
-    <h2>problem 07</h2>
+    <h2>problem 08</h2>
 </div>
 <div>
     
-    <pre><code class="clojure">&#40;= &#95;&#95; &#40;conj &#91;1 2 3&#93; 4&#41;&#41;
+    <pre><code class="clojure">&#40;= &#95;&#95; &#40;set '&#40;:a :a :b :c :c :c :c :d :d&#41;&#41;&#41;
 
-&#40;= &#95;&#95; &#40;conj &#91;1 2&#93; 3 4&#41;&#41;
-</code></pre><pre><code class="clojure">&#91;1 2 3 4&#93;
-</code></pre><p>vector의 conj는 list와 다르게 마지막에 값을 추가한다 그러므로 [1 2 3 4] 이다.</p>
+&#40;= &#95;&#95; &#40;clojure.set/union #{:a :b :c} #{:b :c :d}&#41;&#41;
+</code></pre><pre><code class="clojure">#{:a :b :c :d}
+</code></pre><p>set이라는 자료형은 집합이다. 수학의 집합 관련 연산은 무엇이든 가능하며, 중복된 값을 제거 하는 역할을 가지고 있다. union은 합집합의 기능을 한다. 집합기호는 기본적으로#{} 형태로 나타내며 # {:a :b :c :d} 로 성립한다.</p>
 </div>
 
 <div id="post-tags">
@@ -102,7 +102,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2019-10-09-4clojure-06.html">problem 06 &raquo;</a>
+        <a class="right" href="/posts/2019-10-10-4clojure-07.html">problem 07 &raquo;</a>
         
     </div>
 </div>
@@ -121,11 +121,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2019-10-11-4clojure-08.html">problem 08</a></li>
+                        
                         <li><a href="/posts/2019-10-10-4clojure-07.html">problem 07</a></li>
                         
                         <li><a href="/posts/2019-10-09-4clojure-06.html">problem 06</a></li>
-                        
-                        <li><a href="/posts/2019-10-08-4clojure-05.html">problem 05</a></li>
                         
                     </ul>
                 </div>
