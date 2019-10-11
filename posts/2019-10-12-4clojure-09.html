@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: 확장성이라는 것에 대한 생각</title>
-    <link rel="canonical" href="http://dev-happy.com/posts/2019-09-30-think-extend.html">
+    <title>Dev Happy: 4clojure 09</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2019-10-12-4clojure-09.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -73,20 +73,22 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 9월 30일 (월)</div>
+        <div class="col-lg-6">2019년 10월 12일 (토)</div>
         
     </div>
-    <h2>확장성이라는 것에 대한 생각</h2>
+    <h2>4clojure 09</h2>
 </div>
 <div>
     
-    <p>과자를 하나 사러 동네 슈퍼를 갔다가 집으로 돌아가는 중이다 집에서 어머니가 오는길에 고기를 사오라고 한다면? 어떠한 반응을 보여야 할까? 왜 지금 얘기하는지 화내야 할까? 아니면 첨부터 동네 슈퍼를 간 내 탓일까?</p><p>어떠한 경우라도 상황이라는 것이 내가 원하는데로만 생각한데로만 될순 없다고 생각한다</p><p>그렇다고 모든 경우의 수를 고려해서 할 수도 없다 그렇다면 어떻게 해야할까?</p><p>마음으로라도 상황이 수시로 변한다는 것을 인정을 하면서 대응을 하는 것이 맞다고 생각한다</p><p>단적이었지만 개발하는 상황에서도 일어날 수 있는 일이다 확정적으로 무언가를 항상 할 수는 없다 시시때때로 변화하는 환경에 내가 잘 대응할 수 있도록 만드는 것이 중요한 것 같다</p>
+    <pre><code class="clojure">&#40;= #{1 2 3 4} &#40;conj #{1 4 3} &#95;&#95;&#41;&#41;
+</code></pre><pre><code class="clojure">2
+</code></pre><p>집합은 기본적으로 순서를 가지지 않는다. 순서가 달라도 같은 집합으로 인식을 하고, conj 함수의 동작은 마지막에 값을 추가한다. 따라서 2 값으면 성립을 한다.</p>
 </div>
 
 <div id="post-tags">
     <b>Tags: </b>
     
-    <a href="/essay.html">essay</a>
+    <a href="/4clojure.html">4clojure</a>
     
     <a href="/Today I Learn.html">Today I Learn</a>
     
@@ -95,10 +97,8 @@
 
     <div id="prev-next">
         
-        <a href="/posts/2019-10-01-think-in-box.html">&laquo; 틀안에서 생각한다는 것의 의미</a>
         
-        
-        <a class="right" href="/posts/2019-09-27-how-db-select.html">RDB select에 대한 고찰 &raquo;</a>
+        <a class="right" href="/posts/2019-10-11-4clojure-08.html">problem 08 &raquo;</a>
         
     </div>
 
