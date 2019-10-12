@@ -12,11 +12,28 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Sat, 12 Oct 2019 06:20:48 +0900
+Sun, 13 Oct 2019 07:26:10 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-10-13-4clojure-10.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-10-13-4clojure-10.html
+</link>
+<title>
+4clojure 10
+</title>
+<description>
+
+</description>
+<pubDate>
+Sun, 13 Oct 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-10-12-4clojure-09.html
