@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: 틀안에서 생각한다는 것의 의미</title>
-    <link rel="canonical" href="http://dev-happy.com/posts/2019-10-01-think-in-box.html">
+    <title>Dev Happy: 4clojure 11</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2019-10-14-4clojure-11.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -73,20 +73,23 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 10월 1일 (화)</div>
+        <div class="col-lg-6">2019년 10월 14일 (월)</div>
         
     </div>
-    <h2>틀안에서 생각한다는 것의 의미</h2>
+    <h2>4clojure 11</h2>
 </div>
 <div>
     
-    <p>혁신이라고 하는 것은 아무 것도 없는 것에서 생기지 않는다고 생각한다 현재의 환경에서 어떻게 한발 더 나아지는지를 고민하는 것이 혁신이라고 생각하고 현재의 리소스를 어떻게 최대한 활용을 할 것인지가 혁신이라고 생각한다</p><p>보통은 무엇이 더 나아지면 할 수 있는데 무엇이 더 나아지면 좋아지는데 라는 생각들을 많이 하곤한다 근데 그런 생각들이 오히려 더 나아질 수 있는 것을 방해하는 것이라고 생각 한다</p><p>어떠한 단점들만 말하는 것 보다는 그 것들을 해결하기 위해서 지금 내가 할 수 있는 일을 생각하는 것이 더 나아지는 방향이라고 생각한다</p>
+    <pre><code class="clojure">&#40;= {:a 1, :b 2, :c 3} &#40;conj {:a 1} &#95;&#95; &#91;:c 3&#93;&#41;&#41;
+
+</code></pre><pre><code class="clojure">&#91;:b 2&#93;
+</code></pre><p>기본적으로 hash-map에서의 conj 사용은 하나의 hash-map으로 합치는 용도로 사용되는 것 같다. vector로 하는 것 뿐만 아니라 {}로도 가능하다 하지만 ‘()로는 되지 않는 것으로 확인 되었다.</p>
 </div>
 
 <div id="post-tags">
     <b>Tags: </b>
     
-    <a href="/essay.html">essay</a>
+    <a href="/4clojure.html">4clojure</a>
     
     <a href="/Today I Learn.html">Today I Learn</a>
     
@@ -95,10 +98,8 @@
 
     <div id="prev-next">
         
-        <a href="/posts/2019-10-02-stop-retention.html">&laquo; 리텐션이 낮고 사용자가 감소 또는 유지된다는 것은?</a>
         
-        
-        <a class="right" href="/posts/2019-09-30-think-extend.html">확장성이라는 것에 대한 생각 &raquo;</a>
+        <a class="right" href="/posts/2019-10-13-4clojure-10.html">4clojure 10 &raquo;</a>
         
     </div>
 

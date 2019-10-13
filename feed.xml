@@ -12,11 +12,31 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Sun, 13 Oct 2019 07:30:09 +0900
+Mon, 14 Oct 2019 06:08:59 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-10-14-4clojure-11.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-10-14-4clojure-11.html
+</link>
+<title>
+4clojure 11
+</title>
+<description>
+&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;&amp;#40;= {:a 1, :b 2, :c 3} &amp;#40;conj {:a 1} &amp;#95;&amp;#95; &amp;#91;:c 3&amp;#93;&amp;#41;&amp;#41;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;&amp;#91;:b 2&amp;#93;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;기본적으로 hash-map에서의 conj 사용은 하나의 hash-map으로 합치는 용도로 사용되는 것 같다. vector로 하는 것 뿐만 아니라 {}로도 가능하다 하지만 ‘()로는 되지 않는 것으로 확인 되었다.&lt;/p&gt;
+</description>
+<pubDate>
+Mon, 14 Oct 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-10-13-4clojure-10.html

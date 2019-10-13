@@ -73,18 +73,17 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 10월 13일 (일)</div>
+        <div class="col-lg-6">2019년 10월 14일 (월)</div>
         
     </div>
-    <h2>4clojure 10</h2>
+    <h2>4clojure 11</h2>
 </div>
 <div>
     
-    <pre><code class="clojure">&#40;= &#95;&#95; &#40;&#40;hash-map :a 10, :b 20, :c 30&#41; :b&#41;&#41;
+    <pre><code class="clojure">&#40;= {:a 1, :b 2, :c 3} &#40;conj {:a 1} &#95;&#95; &#91;:c 3&#93;&#41;&#41;
 
-&#40;= &#95;&#95; &#40;:b {:a 10, :b 20, :c 30}&#41;&#41;
-</code></pre><pre><code class="clojure">20
-</code></pre><p>python의 dictionary 자료형과 동일한 역할을 한다 clojure에서는 hash-map이라는 용어를 사용하고 만드는 방법은 위와 같이 {}에 :a 형태의 key와 value를 추가하여 생성한다. 위 문제에서는 :b key의 값을 가져오는 방법을 보여주고 있다. ({} :b)의 형태, (:b {})의 형태 모두 :b의 값을 가져오는 역할을 한다. 답은 20이다.</p>
+</code></pre><pre><code class="clojure">&#91;:b 2&#93;
+</code></pre><p>기본적으로 hash-map에서의 conj 사용은 하나의 hash-map으로 합치는 용도로 사용되는 것 같다. vector로 하는 것 뿐만 아니라 {}로도 가능하다 하지만 ‘()로는 되지 않는 것으로 확인 되었다.</p>
 </div>
 
 <div id="post-tags">
@@ -102,7 +101,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2019-10-12-4clojure-09.html">4clojure 09 &raquo;</a>
+        <a class="right" href="/posts/2019-10-13-4clojure-10.html">4clojure 10 &raquo;</a>
         
     </div>
 </div>
@@ -121,11 +120,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2019-10-14-4clojure-11.html">4clojure 11</a></li>
+                        
                         <li><a href="/posts/2019-10-13-4clojure-10.html">4clojure 10</a></li>
                         
                         <li><a href="/posts/2019-10-12-4clojure-09.html">4clojure 09</a></li>
-                        
-                        <li><a href="/posts/2019-10-11-4clojure-08.html">problem 08</a></li>
                         
                     </ul>
                 </div>
