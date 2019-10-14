@@ -12,11 +12,34 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Mon, 14 Oct 2019 06:08:59 +0900
+Tue, 15 Oct 2019 06:05:51 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-10-15-4clojure-12.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-10-15-4clojure-12.html
+</link>
+<title>
+4clojure 12
+</title>
+<description>
+&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;&amp;#40;= &amp;#95;&amp;#95; &amp;#40;first '&amp;#40;3 2 1&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#95;&amp;#95; &amp;#40;second &amp;#91;2 3 4&amp;#93;&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#95;&amp;#95; &amp;#40;last &amp;#40;list 1 2 3&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;3
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;clojure에서는 원소를 접근 할 수 있는 squense 함수들을 제공 한다. first, second, last 단어 그대로 해석을 하면 되고 첫번째, 두번째, 마지막 원소를 가져온다 그러므로 3의 값이 성립한다.&lt;/p&gt;
+</description>
+<pubDate>
+Tue, 15 Oct 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-10-14-4clojure-11.html

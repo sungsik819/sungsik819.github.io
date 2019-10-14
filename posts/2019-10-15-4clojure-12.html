@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: problem 01</title>
-    <link rel="canonical" href="http://dev-happy.com/posts/2019-10-04-4clojure-01.html">
+    <title>Dev Happy: 4clojure 12</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2019-10-15-4clojure-12.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -73,16 +73,20 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 10월 4일 (금)</div>
+        <div class="col-lg-6">2019년 10월 15일 (화)</div>
         
     </div>
-    <h2>problem 01</h2>
+    <h2>4clojure 12</h2>
 </div>
 <div>
     
-    <pre><code class="clojure">&#40;= &#40;&#95;&#95; true&#41;&#41;
-</code></pre><pre><code class="clojure">true
-</code></pre><p>__ 안에 어떤 값을 넣어야 =를 만족 할수 있는지 부터가 4clojure의 시작이다 true를 넣으면 값이 성립 한다.</p>
+    <pre><code class="clojure">&#40;= &#95;&#95; &#40;first '&#40;3 2 1&#41;&#41;&#41;
+
+&#40;= &#95;&#95; &#40;second &#91;2 3 4&#93;&#41;&#41;
+
+&#40;= &#95;&#95; &#40;last &#40;list 1 2 3&#41;&#41;&#41;
+</code></pre><pre><code class="clojure">3
+</code></pre><p>clojure에서는 원소를 접근 할 수 있는 squense 함수들을 제공 한다. first, second, last 단어 그대로 해석을 하면 되고 첫번째, 두번째, 마지막 원소를 가져온다 그러므로 3의 값이 성립한다.</p>
 </div>
 
 <div id="post-tags">
@@ -97,10 +101,8 @@
 
     <div id="prev-next">
         
-        <a href="/posts/2019-10-05-4clojure-02.html">&laquo; problem 02</a>
         
-        
-        <a class="right" href="/posts/2019-10-03-4clojure-start.html">4clojure 정리 &raquo;</a>
+        <a class="right" href="/posts/2019-10-14-4clojure-11.html">4clojure 11 &raquo;</a>
         
     </div>
 

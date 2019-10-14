@@ -73,17 +73,20 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 10월 14일 (월)</div>
+        <div class="col-lg-6">2019년 10월 15일 (화)</div>
         
     </div>
-    <h2>4clojure 11</h2>
+    <h2>4clojure 12</h2>
 </div>
 <div>
     
-    <pre><code class="clojure">&#40;= {:a 1, :b 2, :c 3} &#40;conj {:a 1} &#95;&#95; &#91;:c 3&#93;&#41;&#41;
+    <pre><code class="clojure">&#40;= &#95;&#95; &#40;first '&#40;3 2 1&#41;&#41;&#41;
 
-</code></pre><pre><code class="clojure">&#91;:b 2&#93;
-</code></pre><p>기본적으로 hash-map에서의 conj 사용은 하나의 hash-map으로 합치는 용도로 사용되는 것 같다. vector로 하는 것 뿐만 아니라 {}로도 가능하다 하지만 ‘()로는 되지 않는 것으로 확인 되었다.</p>
+&#40;= &#95;&#95; &#40;second &#91;2 3 4&#93;&#41;&#41;
+
+&#40;= &#95;&#95; &#40;last &#40;list 1 2 3&#41;&#41;&#41;
+</code></pre><pre><code class="clojure">3
+</code></pre><p>clojure에서는 원소를 접근 할 수 있는 squense 함수들을 제공 한다. first, second, last 단어 그대로 해석을 하면 되고 첫번째, 두번째, 마지막 원소를 가져온다 그러므로 3의 값이 성립한다.</p>
 </div>
 
 <div id="post-tags">
@@ -101,7 +104,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2019-10-13-4clojure-10.html">4clojure 10 &raquo;</a>
+        <a class="right" href="/posts/2019-10-14-4clojure-11.html">4clojure 11 &raquo;</a>
         
     </div>
 </div>
@@ -120,11 +123,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2019-10-15-4clojure-12.html">4clojure 12</a></li>
+                        
                         <li><a href="/posts/2019-10-14-4clojure-11.html">4clojure 11</a></li>
                         
                         <li><a href="/posts/2019-10-13-4clojure-10.html">4clojure 10</a></li>
-                        
-                        <li><a href="/posts/2019-10-12-4clojure-09.html">4clojure 09</a></li>
                         
                     </ul>
                 </div>
