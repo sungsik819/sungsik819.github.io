@@ -12,11 +12,30 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Tue, 15 Oct 2019 06:05:51 +0900
+Wed, 16 Oct 2019 06:36:41 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-10-16-4clojure-13.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-10-16-4clojure-13.html
+</link>
+<title>
+4clojure 13
+</title>
+<description>
+&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;&amp;#40;= &amp;#95;&amp;#95; &amp;#40;rest &amp;#91;10 20 30 40&amp;#93;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;&amp;#91;20 30 40&amp;#93;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;clojure에서는 lisp에서 제공 하는 함수들을 기본 제공 한다 rest도 마찬가지로 lisp에서 제공하는 기능 그대로의 역할을 한다. rest는 처음 값을 뺀 나머지 값이므로 [20 30 40] 이다.&lt;/p&gt;
+</description>
+<pubDate>
+Wed, 16 Oct 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-10-15-4clojure-12.html
