@@ -12,11 +12,36 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Thu, 17 Oct 2019 06:33:18 +0900
+Fri, 18 Oct 2019 06:20:49 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-10-18-4clojure-15.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-10-18-4clojure-15.html
+</link>
+<title>
+4clojure 15
+</title>
+<description>
+&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;&amp;#40;= &amp;#40;&amp;#95;&amp;#95; 2&amp;#41; 4&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; 3&amp;#41; 6&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; 11&amp;#41; 22&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; 7&amp;#41; 14&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;#&amp;#40;&amp;#42; % 2&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;문제들의 값은 기본적으로 2 * ? 의 결과를 나타내주고 있다. 그래서 clojure에서는 함수를 만들고 바로 실행을 할 수 있는 방법으로 표현을 했다. &lt;/p&gt;
+</description>
+<pubDate>
+Fri, 18 Oct 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-10-17-4clojure-14.html
