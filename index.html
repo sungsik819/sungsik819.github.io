@@ -73,20 +73,16 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 10월 19일 (토)</div>
+        <div class="col-lg-6">2019년 10월 20일 (일)</div>
         
     </div>
-    <h2>4clojure 16</h2>
+    <h2>4clojure 17</h2>
 </div>
 <div>
     
-    <pre><code class="clojure">&#40;= &#40;&#95;&#95; &quot;Dave&quot;&#41; &quot;Hello, Dave!&quot;&#41;
-
-&#40;= &#40;&#95;&#95; &quot;Jenn&quot;&#41; &quot;Hello, Jenn!&quot;&#41;
-
-&#40;= &#40;&#95;&#95; &quot;Rhea&quot;&#41; &quot;Hello, Rhea!&quot;&#41;
-</code></pre><pre><code class="clojure">#&#40;str &quot;Hello, &quot; % &quot;!&quot;&#41;
-</code></pre><p>15번 문제와 비슷하게 함수의 실행에 대한 문제 및 string 활용 문제 이다. clojure에서는 string의 조합을 할 때 str 함수를 사용하고 어떠한 기호도 붙이지 않고 띄어쓰기로 문장의 결합이 가능하다. </p>
+    <pre><code class="clojure">&#40;= &#95;&#95; &#40;map #&#40;+ % 5&#41; '&#40;1 2 3&#41;&#41;&#41;
+</code></pre><pre><code class="clojure">'&#40;6 7 8&#41;
+</code></pre><p>map은 기본적으로 for구문과 유사하지만 collection으로 반환한다는 특성을 가지고 있다. 내부의 +5를 하는 익명 함수를 거쳐서 나오는 답은 ‘(6 7 8) 이다.</p>
 </div>
 
 <div id="post-tags">
@@ -104,7 +100,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2019-10-18-4clojure-15.html">4clojure 15 &raquo;</a>
+        <a class="right" href="/posts/2019-10-19-4clojure-16.html">4clojure 16 &raquo;</a>
         
     </div>
 </div>
@@ -123,11 +119,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2019-10-20-4clojure-17.html">4clojure 17</a></li>
+                        
                         <li><a href="/posts/2019-10-19-4clojure-16.html">4clojure 16</a></li>
                         
                         <li><a href="/posts/2019-10-18-4clojure-15.html">4clojure 15</a></li>
-                        
-                        <li><a href="/posts/2019-10-17-4clojure-14.html">4clojure 14</a></li>
                         
                     </ul>
                 </div>

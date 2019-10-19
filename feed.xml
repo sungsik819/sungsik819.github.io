@@ -12,11 +12,30 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Sat, 19 Oct 2019 07:02:55 +0900
+Sun, 20 Oct 2019 07:20:27 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-10-20-4clojure-17.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-10-20-4clojure-17.html
+</link>
+<title>
+4clojure 17
+</title>
+<description>
+&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;&amp;#40;= &amp;#95;&amp;#95; &amp;#40;map #&amp;#40;+ % 5&amp;#41; '&amp;#40;1 2 3&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;'&amp;#40;6 7 8&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;map은 기본적으로 for구문과 유사하지만 collection으로 반환한다는 특성을 가지고 있다. 내부의 +5를 하는 익명 함수를 거쳐서 나오는 답은 ‘(6 7 8) 이다.&lt;/p&gt;
+</description>
+<pubDate>
+Sun, 20 Oct 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-10-19-4clojure-16.html

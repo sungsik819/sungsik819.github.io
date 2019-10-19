@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: problem 03</title>
-    <link rel="canonical" href="http://dev-happy.com/posts/2019-10-06-4clojure-03.html">
+    <title>Dev Happy: 4clojure 17</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2019-10-20-4clojure-17.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -73,16 +73,16 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 10월 6일 (일)</div>
+        <div class="col-lg-6">2019년 10월 20일 (일)</div>
         
     </div>
-    <h2>problem 03</h2>
+    <h2>4clojure 17</h2>
 </div>
 <div>
     
-    <pre><code class="clojure">&#40;= &#95;&#95; &#40;.toUpperCase &quot;hello world&quot;&#41;&#41;
-</code></pre><pre><code class="clojure">&quot;HELLO WORLD&quot;
-</code></pre><p>clojure에서는 기본적으로 자바의 라이브러리를 사용할 수 있다. 마찬가지로 string에 대한 함수를 호출 할 수 있는데 자바와는 반대로 위와같은 방법으로 호출을 하여 사용 할 수 있다. “HELLO WORLD”로 하면 성립이 된다.</p>
+    <pre><code class="clojure">&#40;= &#95;&#95; &#40;map #&#40;+ % 5&#41; '&#40;1 2 3&#41;&#41;&#41;
+</code></pre><pre><code class="clojure">'&#40;6 7 8&#41;
+</code></pre><p>map은 기본적으로 for구문과 유사하지만 collection으로 반환한다는 특성을 가지고 있다. 내부의 +5를 하는 익명 함수를 거쳐서 나오는 답은 ‘(6 7 8) 이다.</p>
 </div>
 
 <div id="post-tags">
@@ -97,10 +97,8 @@
 
     <div id="prev-next">
         
-        <a href="/posts/2019-10-07-4clojure-04.html">&laquo; problem 04</a>
         
-        
-        <a class="right" href="/posts/2019-10-05-4clojure-02.html">problem 02 &raquo;</a>
+        <a class="right" href="/posts/2019-10-19-4clojure-16.html">4clojure 16 &raquo;</a>
         
     </div>
 
