@@ -12,11 +12,30 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Sun, 20 Oct 2019 07:20:27 +0900
+Mon, 21 Oct 2019 06:11:22 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-10-21-4clojure-18.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-10-21-4clojure-18.html
+</link>
+<title>
+4clojure 18
+</title>
+<description>
+&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;&amp;#40;= &amp;#95;&amp;#95; &amp;#40;filter #&amp;#40;&amp;gt; % 5&amp;#41; '&amp;#40;3 4 5 6 7&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;'&amp;#40;6 7&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;filter에 동작에 관한 문제 이다. filter는 비교군에 대한 결과 값을 collection으로 주는 함수 이다. 따라서 결과는 ‘(6 7)이 된다.&lt;/p&gt;
+</description>
+<pubDate>
+Mon, 21 Oct 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-10-20-4clojure-17.html

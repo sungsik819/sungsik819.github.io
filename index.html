@@ -73,16 +73,16 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 10월 20일 (일)</div>
+        <div class="col-lg-6">2019년 10월 21일 (월)</div>
         
     </div>
-    <h2>4clojure 17</h2>
+    <h2>4clojure 18</h2>
 </div>
 <div>
     
-    <pre><code class="clojure">&#40;= &#95;&#95; &#40;map #&#40;+ % 5&#41; '&#40;1 2 3&#41;&#41;&#41;
-</code></pre><pre><code class="clojure">'&#40;6 7 8&#41;
-</code></pre><p>map은 기본적으로 for구문과 유사하지만 collection으로 반환한다는 특성을 가지고 있다. 내부의 +5를 하는 익명 함수를 거쳐서 나오는 답은 ‘(6 7 8) 이다.</p>
+    <pre><code class="clojure">&#40;= &#95;&#95; &#40;filter #&#40;&gt; % 5&#41; '&#40;3 4 5 6 7&#41;&#41;&#41;
+</code></pre><pre><code class="clojure">'&#40;6 7&#41;
+</code></pre><p>filter에 동작에 관한 문제 이다. filter는 비교군에 대한 결과 값을 collection으로 주는 함수 이다. 따라서 결과는 ‘(6 7)이 된다.</p>
 </div>
 
 <div id="post-tags">
@@ -100,7 +100,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2019-10-19-4clojure-16.html">4clojure 16 &raquo;</a>
+        <a class="right" href="/posts/2019-10-20-4clojure-17.html">4clojure 17 &raquo;</a>
         
     </div>
 </div>
@@ -119,11 +119,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2019-10-21-4clojure-18.html">4clojure 18</a></li>
+                        
                         <li><a href="/posts/2019-10-20-4clojure-17.html">4clojure 17</a></li>
                         
                         <li><a href="/posts/2019-10-19-4clojure-16.html">4clojure 16</a></li>
-                        
-                        <li><a href="/posts/2019-10-18-4clojure-15.html">4clojure 15</a></li>
                         
                     </ul>
                 </div>
