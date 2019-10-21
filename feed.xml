@@ -12,11 +12,34 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Mon, 21 Oct 2019 06:11:22 +0900
+Tue, 22 Oct 2019 06:03:27 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-10-22-4clojure-19.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-10-22-4clojure-19.html
+</link>
+<title>
+4clojure - Last Element (19)
+</title>
+<description>
+&lt;p&gt;제한 함수 : last 함수&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#91;1 2 3 4 5&amp;#93;&amp;#41; 5&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; '&amp;#40;5 4 3&amp;#41;&amp;#41; 3&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#91;&amp;quot;b&amp;quot; &amp;quot;c&amp;quot; &amp;quot;d&amp;quot;&amp;#93;&amp;#41; &amp;quot;d&amp;quot;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;#&amp;#40;first &amp;#40;reverse %&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;처음으로 제한을 두는 함수가 나왔다 last를 사용하지 않고 끝에 값을 가져오는 문제 이다. 많은 방법들이 있겠지만 collection 을 뒤집어서 첫번째 원소를 가져오는 방법이 가장 간단하고 생각하기 쉬운 방법으로 보인다.&lt;/p&gt;
+</description>
+<pubDate>
+Tue, 22 Oct 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-10-21-4clojure-18.html

@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: problem 05</title>
-    <link rel="canonical" href="http://dev-happy.com/posts/2019-10-08-4clojure-05.html">
+    <title>Dev Happy: 4clojure - Last Element (19)</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2019-10-22-4clojure-19.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -73,18 +73,20 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 10월 8일 (화)</div>
+        <div class="col-lg-6">2019년 10월 22일 (화)</div>
         
     </div>
-    <h2>problem 05</h2>
+    <h2>4clojure - Last Element (19)</h2>
 </div>
 <div>
     
-    <pre><code class="clojure">&#40;= &#95;&#95; &#40;conj '&#40;2 3 4&#41; 1&#41;&#41;
+    <p>제한 함수 : last 함수<pre><code class="clojure">&#40;= &#40;&#95;&#95; &#91;1 2 3 4 5&#93;&#41; 5&#41;
 
-&#40;= &#95;&#95; &#40;conj '&#40;3 4&#41; 2 1&#41;&#41;
-</code></pre><pre><code class="clojure">'&#40;1 2 3 4&#41;
-</code></pre><p>처음으로 테스트를 통과해야하는 문제가 2개가 되었다. conj는 list 자료형인 경우 앞에 값을 추가를 한다, 2개가 있는 경우 앞에 값부터 차례로 값을 앞으로 추가를 한다. stack이라고 생각하면 쉬울 것 같다. 그러므로’(1 2 3 4)이면 등호를 만족 한다.</p>
+&#40;= &#40;&#95;&#95; '&#40;5 4 3&#41;&#41; 3&#41;
+
+&#40;= &#40;&#95;&#95; &#91;&quot;b&quot; &quot;c&quot; &quot;d&quot;&#93;&#41; &quot;d&quot;&#41;
+</code></pre></p><pre><code class="clojure">#&#40;first &#40;reverse %&#41;&#41;
+</code></pre><p>처음으로 제한을 두는 함수가 나왔다 last를 사용하지 않고 끝에 값을 가져오는 문제 이다. 많은 방법들이 있겠지만 collection 을 뒤집어서 첫번째 원소를 가져오는 방법이 가장 간단하고 생각하기 쉬운 방법으로 보인다.</p>
 </div>
 
 <div id="post-tags">
@@ -99,10 +101,8 @@
 
     <div id="prev-next">
         
-        <a href="/posts/2019-10-09-4clojure-06.html">&laquo; problem 06</a>
         
-        
-        <a class="right" href="/posts/2019-10-07-4clojure-04.html">problem 04 &raquo;</a>
+        <a class="right" href="/posts/2019-10-21-4clojure-18.html">4clojure 18 &raquo;</a>
         
     </div>
 
