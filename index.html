@@ -73,20 +73,20 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 10월 22일 (화)</div>
+        <div class="col-lg-6">2019년 10월 23일 (수)</div>
         
     </div>
-    <h2>4clojure - Last Element (19)</h2>
+    <h2>4clojure - Penultimate Element (20)</h2>
 </div>
 <div>
     
-    <p>제한 함수 : last 함수<pre><code class="clojure">&#40;= &#40;&#95;&#95; &#91;1 2 3 4 5&#93;&#41; 5&#41;
+    <pre><code class="clojure">&#40;= &#40;&#95;&#95; &#40;list 1 2 3 4 5&#41;&#41; 4&#41;
 
-&#40;= &#40;&#95;&#95; '&#40;5 4 3&#41;&#41; 3&#41;
+&#40;= &#40;&#95;&#95; &#91;&quot;a&quot; &quot;b&quot; &quot;c&quot;&#93;&#41; &quot;b&quot;&#41;
 
-&#40;= &#40;&#95;&#95; &#91;&quot;b&quot; &quot;c&quot; &quot;d&quot;&#93;&#41; &quot;d&quot;&#41;
-</code></pre></p><pre><code class="clojure">#&#40;first &#40;reverse %&#41;&#41;
-</code></pre><p>처음으로 제한을 두는 함수가 나왔다 last를 사용하지 않고 끝에 값을 가져오는 문제 이다. 많은 방법들이 있겠지만 collection 을 뒤집어서 첫번째 원소를 가져오는 방법이 가장 간단하고 생각하기 쉬운 방법으로 보인다.</p>
+&#40;= &#40;&#95;&#95; &#91;&#91;1 2&#93; &#91;3 4&#93;&#93;&#41; &#91;1 2&#93;&#41;
+</code></pre><pre><code class="clojure">#&#40;second &#40;reverse %&#41;&#41;
+</code></pre><p>19번 문제와 비슷한 문제 이다. 언뜻 보기에는 각각 다른 위치의 원소를 가져오는 문제 처럼 보여서 헷갈렸는데 결국에는 뒤집어서 두번째 원소를 가져오는 문제라는 사실을 깨닫고 풀게 된 문제이다. 앞으로 이런 문제들이 많을 텐데 생각의 확장이 필요 한 것 같다.</p>
 </div>
 
 <div id="post-tags">
@@ -104,7 +104,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2019-10-21-4clojure-18.html">4clojure 18 &raquo;</a>
+        <a class="right" href="/posts/2019-10-22-4clojure-19.html">4clojure - Last Element (19) &raquo;</a>
         
     </div>
 </div>
@@ -123,11 +123,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2019-10-23-4clojure-20.html">4clojure - Penultimate Element (20)</a></li>
+                        
                         <li><a href="/posts/2019-10-22-4clojure-19.html">4clojure - Last Element (19)</a></li>
                         
                         <li><a href="/posts/2019-10-21-4clojure-18.html">4clojure 18</a></li>
-                        
-                        <li><a href="/posts/2019-10-20-4clojure-17.html">4clojure 17</a></li>
                         
                     </ul>
                 </div>

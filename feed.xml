@@ -12,11 +12,34 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Tue, 22 Oct 2019 06:03:27 +0900
+Wed, 23 Oct 2019 06:12:04 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-10-23-4clojure-20.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-10-23-4clojure-20.html
+</link>
+<title>
+4clojure - Penultimate Element (20)
+</title>
+<description>
+&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#40;list 1 2 3 4 5&amp;#41;&amp;#41; 4&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#91;&amp;quot;a&amp;quot; &amp;quot;b&amp;quot; &amp;quot;c&amp;quot;&amp;#93;&amp;#41; &amp;quot;b&amp;quot;&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#91;&amp;#91;1 2&amp;#93; &amp;#91;3 4&amp;#93;&amp;#93;&amp;#41; &amp;#91;1 2&amp;#93;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;#&amp;#40;second &amp;#40;reverse %&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;19번 문제와 비슷한 문제 이다. 언뜻 보기에는 각각 다른 위치의 원소를 가져오는 문제 처럼 보여서 헷갈렸는데 결국에는 뒤집어서 두번째 원소를 가져오는 문제라는 사실을 깨닫고 풀게 된 문제이다. 앞으로 이런 문제들이 많을 텐데 생각의 확장이 필요 한 것 같다.&lt;/p&gt;
+</description>
+<pubDate>
+Wed, 23 Oct 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-10-22-4clojure-19.html
