@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: problem 06</title>
-    <link rel="canonical" href="http://dev-happy.com/posts/2019-10-09-4clojure-06.html">
+    <title>Dev Happy: 4clojure - Count a Sequence (22)</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2019-10-25-4clojure-22.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -73,16 +73,31 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 10월 9일 (수)</div>
+        <div class="col-lg-6">2019년 10월 25일 (금)</div>
         
     </div>
-    <h2>problem 06</h2>
+    <h2>4clojure - Count a Sequence (22)</h2>
 </div>
 <div>
     
-    <pre><code class="clojure">&#40;= &#91;&#95;&#95;&#93; &#40;list :a :b :c&#41; &#40;vec '&#40;:a :b :c&#41;&#41; &#40;vector :a :b :c&#41;&#41;
-</code></pre><pre><code class="clojure">:a :b :c
-</code></pre><p> vector 자료형이다. vector를 생성하는 방법에 대해서 보여주고 있다. 중간에 vec은 list 자료형을 받으면 vector로 변환하는 함수이다. 기본적으로 내용이 같으면 vector, list는 서로 같다 그러므로 :a :b :c이면 성립힌다.</p>
+    <pre><code class="clj">&#40;= &#40;&#95;&#95; '&#40;1 2 3 3 1&#41;&#41; 5&#41;
+
+&#40;= &#40;&#95;&#95; &quot;Hello World&quot;&#41; 11&#41;
+
+&#40;= &#40;&#95;&#95; &#91;&#91;1 2&#93; &#91;3 4&#93; &#91;5 6&#93;&#93;&#41; 3&#41;
+
+&#40;= &#40;&#95;&#95; '&#40;13&#41;&#41; 1&#41;
+
+&#40;= &#40;&#95;&#95; '&#40;:a :b :c&#41;&#41; 3&#41;
+</code></pre><p><strong>제한 : count 함수</strong> </p><pre><code class="clj">&#40;fn &#91;x&#93;
+  &#40;reduce &#40;fn &#91;acc e&#93; &#40;inc acc&#41;&#41; 0 x&#41;&#41;
+</code></pre><p>원소의 갯수를 파악하는 문제이다 나는  reduce를 사용하여 원소를 순회하며 acc를 한개씩 증가시키는 방법으로 문제를 해결 하였다.</p><p>solution을 보니 or 또는 do를 사용하여 문제를 해결한 사람들도 있었다. or은 false인 경우를 제외하고 무조건 첫번째 표현식의 결과 값을 반환 한다.<pre><code class="clj">&#40;or &#40;inc 0&#41; :a&#41;
+;; 1
+</code></pre></p><p>위 표현식을 보면 :a는 출력을 하지 않는다는 것이다.</p><p>do는 표현식을 순서대로 실행하는 함수이다.<pre><code class="clj">&#40;do &#40;print &quot;Somthing&quot;&#41;
+	  &#40;print &quot;this&quot;&#41;&#41;
+;; Somthing
+;; this
+</code></pre></p>
 </div>
 
 <div id="post-tags">
@@ -97,10 +112,8 @@
 
     <div id="prev-next">
         
-        <a href="/posts/2019-10-10-4clojure-07.html">&laquo; problem 07</a>
         
-        
-        <a class="right" href="/posts/2019-10-08-4clojure-05.html">problem 05 &raquo;</a>
+        <a class="right" href="/posts/2019-10-24-4clojure-21.html">4clojure - Nth Element (21) &raquo;</a>
         
     </div>
 

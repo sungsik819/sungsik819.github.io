@@ -12,11 +12,45 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Thu, 24 Oct 2019 06:21:53 +0900
+Fri, 25 Oct 2019 06:22:56 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-10-25-4clojure-22.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-10-25-4clojure-22.html
+</link>
+<title>
+4clojure - Count a Sequence (22)
+</title>
+<description>
+&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#40;&amp;#95;&amp;#95; '&amp;#40;1 2 3 3 1&amp;#41;&amp;#41; 5&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;quot;Hello World&amp;quot;&amp;#41; 11&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#91;&amp;#91;1 2&amp;#93; &amp;#91;3 4&amp;#93; &amp;#91;5 6&amp;#93;&amp;#93;&amp;#41; 3&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; '&amp;#40;13&amp;#41;&amp;#41; 1&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; '&amp;#40;:a :b :c&amp;#41;&amp;#41; 3&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;제한 : count 함수&lt;/strong&gt; &lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;x&amp;#93;
+  &amp;#40;reduce &amp;#40;fn &amp;#91;acc e&amp;#93; &amp;#40;inc acc&amp;#41;&amp;#41; 0 x&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;원소의 갯수를 파악하는 문제이다 나는  reduce를 사용하여 원소를 순회하며 acc를 한개씩 증가시키는 방법으로 문제를 해결 하였다.&lt;/p&gt;&lt;p&gt;solution을 보니 or 또는 do를 사용하여 문제를 해결한 사람들도 있었다. or은 false인 경우를 제외하고 무조건 첫번째 표현식의 결과 값을 반환 한다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;or &amp;#40;inc 0&amp;#41; :a&amp;#41;
+;; 1
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;위 표현식을 보면 :a는 출력을 하지 않는다는 것이다.&lt;/p&gt;&lt;p&gt;do는 표현식을 순서대로 실행하는 함수이다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;do &amp;#40;print &amp;quot;Somthing&amp;quot;&amp;#41;
+	  &amp;#40;print &amp;quot;this&amp;quot;&amp;#41;&amp;#41;
+;; Somthing
+;; this
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+</description>
+<pubDate>
+Fri, 25 Oct 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-10-24-4clojure-21.html
