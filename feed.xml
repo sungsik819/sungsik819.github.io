@@ -12,11 +12,42 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Fri, 25 Oct 2019 06:22:56 +0900
+Sat, 26 Oct 2019 06:52:00 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-10-26-4clojure-23.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-10-26-4clojure-23.html
+</link>
+<title>
+4clojure - Reverse a Sequence (23)
+</title>
+<description>
+&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#91;1 2 3 4 5&amp;#93;&amp;#41; &amp;#91;5 4 3 2 1&amp;#93;&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#40;sorted-set 5 7 2 7&amp;#41;&amp;#41; '&amp;#40;7 5 2&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#91;&amp;#91;1 2&amp;#93;&amp;#91;3 4&amp;#93;&amp;#91;5 6&amp;#93;&amp;#93;&amp;#41; &amp;#91;&amp;#91;5 6&amp;#93;&amp;#91;3 4&amp;#93;&amp;#91;1 2&amp;#93;&amp;#93;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;제한: reverse, rseq&lt;/strong&gt;&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;x&amp;#93;
+  &amp;#40;reduce &amp;#40;fn &amp;#91;acc e&amp;#93; &amp;#40;conj acc e&amp;#41;&amp;#41; '&amp;#40;&amp;#41; x&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;reverse, rseq를 사용하지 않고 순서를 뒤집는 동작을 작성하는 문제 이다. 나는 reduce를 사용하여 list의 conj 동작이 들어오는 순서대로 첫번째로 추가되는 원리를 이용하여 문제를 해결 하였다 into를 이용하여 문제를 푸는 방식도 있다. &lt;/p&gt;&lt;p&gt;into의 실행 방식은 결과 collection의 형태에 따라서 다르다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;into &amp;#91;&amp;#93; &amp;#91;1 2 3 4 5&amp;#93;&amp;#41;
+;; &amp;#91;1 2 3 4 5&amp;#93;
+
+&amp;#40;into &amp;#40;&amp;#41; &amp;#91;1 2 3 4 5&amp;#93;&amp;#41;
+;; &amp;#40;5 4 3 2 1&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;즉, conj + collection 의 조합이다.&lt;/p&gt;&lt;p&gt;hash-map으로는 조금 다르게도 사용  가능하다&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;into {} &amp;#91;{:a 1} {:b 2}&amp;#93;&amp;#41;
+;; {:a 1 :b 2}
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+</description>
+<pubDate>
+Sat, 26 Oct 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-10-25-4clojure-22.html

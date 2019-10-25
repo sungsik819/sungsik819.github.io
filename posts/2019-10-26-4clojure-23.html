@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: Posts Tagged &quot;Today I Learn&quot;</title>
-    <link rel="canonical" href="http://dev-happy.com/Today I Learn.html">
+    <title>Dev Happy: 4clojure - Reverse a Sequence (23)</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2019-10-26-4clojure-23.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -70,137 +70,53 @@
         <div class="col-lg-9">
             <div id="content">
                 
-<div id="posts-by-tag">
-    <div id="page-header">
-        <h2>Posts Tagged &quot;Today I Learn&quot;</h2>
+<div id="post">
+    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">2019년 10월 26일 (토)</div>
+        
     </div>
-    <ul>
+    <h2>4clojure - Reverse a Sequence (23)</h2>
+</div>
+<div>
     
-        <li>
-            <a href="/posts/2019-10-26-4clojure-23.html">4clojure - Reverse a Sequence (23)</a>
-        </li>
+    <pre><code class="clj">&#40;= &#40;&#95;&#95; &#91;1 2 3 4 5&#93;&#41; &#91;5 4 3 2 1&#93;&#41;
+
+&#40;= &#40;&#95;&#95; &#40;sorted-set 5 7 2 7&#41;&#41; '&#40;7 5 2&#41;&#41;
+
+&#40;= &#40;&#95;&#95; &#91;&#91;1 2&#93;&#91;3 4&#93;&#91;5 6&#93;&#93;&#41; &#91;&#91;5 6&#93;&#91;3 4&#93;&#91;1 2&#93;&#93;&#41;
+</code></pre><p><strong>제한: reverse, rseq</strong></p><pre><code class="clj">&#40;fn &#91;x&#93;
+  &#40;reduce &#40;fn &#91;acc e&#93; &#40;conj acc e&#41;&#41; '&#40;&#41; x&#41;&#41;
+</code></pre><p>reverse, rseq를 사용하지 않고 순서를 뒤집는 동작을 작성하는 문제 이다. 나는 reduce를 사용하여 list의 conj 동작이 들어오는 순서대로 첫번째로 추가되는 원리를 이용하여 문제를 해결 하였다 into를 이용하여 문제를 푸는 방식도 있다. </p><p>into의 실행 방식은 결과 collection의 형태에 따라서 다르다.<pre><code class="clj">&#40;into &#91;&#93; &#91;1 2 3 4 5&#93;&#41;
+;; &#91;1 2 3 4 5&#93;
+
+&#40;into &#40;&#41; &#91;1 2 3 4 5&#93;&#41;
+;; &#40;5 4 3 2 1&#41;
+</code></pre></p><p>즉, conj + collection 의 조합이다.</p><p>hash-map으로는 조금 다르게도 사용  가능하다<pre><code class="clj">&#40;into {} &#91;{:a 1} {:b 2}&#93;&#41;
+;; {:a 1 :b 2}
+</code></pre></p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
     
-        <li>
-            <a href="/posts/2019-10-25-4clojure-22.html">4clojure - Count a Sequence (22)</a>
-        </li>
+    <a href="/4clojure.html">4clojure</a>
     
-        <li>
-            <a href="/posts/2019-10-24-4clojure-21.html">4clojure - Nth Element (21)</a>
-        </li>
+    <a href="/Today I Learn.html">Today I Learn</a>
     
-        <li>
-            <a href="/posts/2019-10-23-4clojure-20.html">4clojure - Penultimate Element (20)</a>
-        </li>
+</div>
+
+
+    <div id="prev-next">
+        
+        
+        <a class="right" href="/posts/2019-10-25-4clojure-22.html">4clojure - Count a Sequence (22) &raquo;</a>
+        
+    </div>
+
     
-        <li>
-            <a href="/posts/2019-10-22-4clojure-19.html">4clojure - Last Element (19)</a>
-        </li>
-    
-        <li>
-            <a href="/posts/2019-10-21-4clojure-18.html">4clojure 18</a>
-        </li>
-    
-        <li>
-            <a href="/posts/2019-10-20-4clojure-17.html">4clojure 17</a>
-        </li>
-    
-        <li>
-            <a href="/posts/2019-10-19-4clojure-16.html">4clojure 16</a>
-        </li>
-    
-        <li>
-            <a href="/posts/2019-10-18-4clojure-15.html">4clojure 15</a>
-        </li>
-    
-        <li>
-            <a href="/posts/2019-10-17-4clojure-14.html">4clojure 14</a>
-        </li>
-    
-        <li>
-            <a href="/posts/2019-10-16-4clojure-13.html">4clojure 13</a>
-        </li>
-    
-        <li>
-            <a href="/posts/2019-10-15-4clojure-12.html">4clojure 12</a>
-        </li>
-    
-        <li>
-            <a href="/posts/2019-10-14-4clojure-11.html">4clojure 11</a>
-        </li>
-    
-        <li>
-            <a href="/posts/2019-10-13-4clojure-10.html">4clojure 10</a>
-        </li>
-    
-        <li>
-            <a href="/posts/2019-10-12-4clojure-09.html">4clojure 09</a>
-        </li>
-    
-        <li>
-            <a href="/posts/2019-10-11-4clojure-08.html">problem 08</a>
-        </li>
-    
-        <li>
-            <a href="/posts/2019-10-10-4clojure-07.html">problem 07</a>
-        </li>
-    
-        <li>
-            <a href="/posts/2019-10-09-4clojure-06.html">problem 06</a>
-        </li>
-    
-        <li>
-            <a href="/posts/2019-10-08-4clojure-05.html">problem 05</a>
-        </li>
-    
-        <li>
-            <a href="/posts/2019-10-07-4clojure-04.html">problem 04</a>
-        </li>
-    
-        <li>
-            <a href="/posts/2019-10-06-4clojure-03.html">problem 03</a>
-        </li>
-    
-        <li>
-            <a href="/posts/2019-10-05-4clojure-02.html">problem 02</a>
-        </li>
-    
-        <li>
-            <a href="/posts/2019-10-04-4clojure-01.html">problem 01</a>
-        </li>
-    
-        <li>
-            <a href="/posts/2019-10-03-4clojure-start.html">4clojure 정리</a>
-        </li>
-    
-        <li>
-            <a href="/posts/2019-10-02-stop-retention.html">리텐션이 낮고 사용자가 감소 또는 유지된다는 것은?</a>
-        </li>
-    
-        <li>
-            <a href="/posts/2019-10-01-think-in-box.html">틀안에서 생각한다는 것의 의미</a>
-        </li>
-    
-        <li>
-            <a href="/posts/2019-09-30-think-extend.html">확장성이라는 것에 대한 생각</a>
-        </li>
-    
-        <li>
-            <a href="/posts/2019-09-27-how-db-select.html">RDB select에 대한 고찰</a>
-        </li>
-    
-        <li>
-            <a href="/posts/2019-09-26-sql-vs-java.html">SQL query VS java (프로그래밍 언어)</a>
-        </li>
-    
-        <li>
-            <a href="/posts/2019-09-25-python-reduce.html">Python3 reduce 사용</a>
-        </li>
-    
-        <li>
-            <a href="/posts/2019-09-24-experience-python.html">Python을 2년 사용해 보고</a>
-        </li>
-    
-    </ul>
+
+
 </div>
 
             </div>

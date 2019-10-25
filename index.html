@@ -73,30 +73,27 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 10월 25일 (금)</div>
+        <div class="col-lg-6">2019년 10월 26일 (토)</div>
         
     </div>
-    <h2>4clojure - Count a Sequence (22)</h2>
+    <h2>4clojure - Reverse a Sequence (23)</h2>
 </div>
 <div>
     
-    <pre><code class="clj">&#40;= &#40;&#95;&#95; '&#40;1 2 3 3 1&#41;&#41; 5&#41;
+    <pre><code class="clj">&#40;= &#40;&#95;&#95; &#91;1 2 3 4 5&#93;&#41; &#91;5 4 3 2 1&#93;&#41;
 
-&#40;= &#40;&#95;&#95; &quot;Hello World&quot;&#41; 11&#41;
+&#40;= &#40;&#95;&#95; &#40;sorted-set 5 7 2 7&#41;&#41; '&#40;7 5 2&#41;&#41;
 
-&#40;= &#40;&#95;&#95; &#91;&#91;1 2&#93; &#91;3 4&#93; &#91;5 6&#93;&#93;&#41; 3&#41;
+&#40;= &#40;&#95;&#95; &#91;&#91;1 2&#93;&#91;3 4&#93;&#91;5 6&#93;&#93;&#41; &#91;&#91;5 6&#93;&#91;3 4&#93;&#91;1 2&#93;&#93;&#41;
+</code></pre><p><strong>제한: reverse, rseq</strong></p><pre><code class="clj">&#40;fn &#91;x&#93;
+  &#40;reduce &#40;fn &#91;acc e&#93; &#40;conj acc e&#41;&#41; '&#40;&#41; x&#41;&#41;
+</code></pre><p>reverse, rseq를 사용하지 않고 순서를 뒤집는 동작을 작성하는 문제 이다. 나는 reduce를 사용하여 list의 conj 동작이 들어오는 순서대로 첫번째로 추가되는 원리를 이용하여 문제를 해결 하였다 into를 이용하여 문제를 푸는 방식도 있다. </p><p>into의 실행 방식은 결과 collection의 형태에 따라서 다르다.<pre><code class="clj">&#40;into &#91;&#93; &#91;1 2 3 4 5&#93;&#41;
+;; &#91;1 2 3 4 5&#93;
 
-&#40;= &#40;&#95;&#95; '&#40;13&#41;&#41; 1&#41;
-
-&#40;= &#40;&#95;&#95; '&#40;:a :b :c&#41;&#41; 3&#41;
-</code></pre><p><strong>제한 : count 함수</strong> </p><pre><code class="clj">&#40;fn &#91;x&#93;
-  &#40;reduce &#40;fn &#91;acc e&#93; &#40;inc acc&#41;&#41; 0 x&#41;&#41;
-</code></pre><p>원소의 갯수를 파악하는 문제이다 나는  reduce를 사용하여 원소를 순회하며 acc를 한개씩 증가시키는 방법으로 문제를 해결 하였다.</p><p>solution을 보니 or 또는 do를 사용하여 문제를 해결한 사람들도 있었다. or은 false인 경우를 제외하고 무조건 첫번째 표현식의 결과 값을 반환 한다.<pre><code class="clj">&#40;or &#40;inc 0&#41; :a&#41;
-;; 1
-</code></pre></p><p>위 표현식을 보면 :a는 출력을 하지 않는다는 것이다.</p><p>do는 표현식을 순서대로 실행하는 함수이다.<pre><code class="clj">&#40;do &#40;print &quot;Somthing&quot;&#41;
-	  &#40;print &quot;this&quot;&#41;&#41;
-;; Somthing
-;; this
+&#40;into &#40;&#41; &#91;1 2 3 4 5&#93;&#41;
+;; &#40;5 4 3 2 1&#41;
+</code></pre></p><p>즉, conj + collection 의 조합이다.</p><p>hash-map으로는 조금 다르게도 사용  가능하다<pre><code class="clj">&#40;into {} &#91;{:a 1} {:b 2}&#93;&#41;
+;; {:a 1 :b 2}
 </code></pre></p>
 </div>
 
@@ -115,7 +112,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2019-10-24-4clojure-21.html">4clojure - Nth Element (21) &raquo;</a>
+        <a class="right" href="/posts/2019-10-25-4clojure-22.html">4clojure - Count a Sequence (22) &raquo;</a>
         
     </div>
 </div>
@@ -134,11 +131,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2019-10-26-4clojure-23.html">4clojure - Reverse a Sequence (23)</a></li>
+                        
                         <li><a href="/posts/2019-10-25-4clojure-22.html">4clojure - Count a Sequence (22)</a></li>
                         
                         <li><a href="/posts/2019-10-24-4clojure-21.html">4clojure - Nth Element (21)</a></li>
-                        
-                        <li><a href="/posts/2019-10-23-4clojure-20.html">4clojure - Penultimate Element (20)</a></li>
                         
                     </ul>
                 </div>
