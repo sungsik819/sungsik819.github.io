@@ -73,28 +73,25 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 10월 26일 (토)</div>
+        <div class="col-lg-6">2019년 10월 27일 (일)</div>
         
     </div>
-    <h2>4clojure - Reverse a Sequence (23)</h2>
+    <h2>4clojure - Sum It All Up (24)</h2>
 </div>
 <div>
     
-    <pre><code class="clj">&#40;= &#40;&#95;&#95; &#91;1 2 3 4 5&#93;&#41; &#91;5 4 3 2 1&#93;&#41;
+    <pre><code class="clj">&#40;= &#40;&#95;&#95; &#91;1 2 3&#93;&#41; 6&#41;
 
-&#40;= &#40;&#95;&#95; &#40;sorted-set 5 7 2 7&#41;&#41; '&#40;7 5 2&#41;&#41;
+&#40;= &#40;&#95;&#95; &#40;list 0 -2 5 5&#41;&#41; 8&#41;
 
-&#40;= &#40;&#95;&#95; &#91;&#91;1 2&#93;&#91;3 4&#93;&#91;5 6&#93;&#93;&#41; &#91;&#91;5 6&#93;&#91;3 4&#93;&#91;1 2&#93;&#93;&#41;
-</code></pre><p><strong>제한: reverse, rseq</strong></p><pre><code class="clj">&#40;fn &#91;x&#93;
-  &#40;reduce &#40;fn &#91;acc e&#93; &#40;conj acc e&#41;&#41; '&#40;&#41; x&#41;&#41;
-</code></pre><p>reverse, rseq를 사용하지 않고 순서를 뒤집는 동작을 작성하는 문제 이다. 나는 reduce를 사용하여 list의 conj 동작이 들어오는 순서대로 첫번째로 추가되는 원리를 이용하여 문제를 해결 하였다 into를 이용하여 문제를 푸는 방식도 있다. </p><p>into의 실행 방식은 결과 collection의 형태에 따라서 다르다.<pre><code class="clj">&#40;into &#91;&#93; &#91;1 2 3 4 5&#93;&#41;
-;; &#91;1 2 3 4 5&#93;
+&#40;= &#40;&#95;&#95; #{4 2 1}&#41; 7&#41;
 
-&#40;into &#40;&#41; &#91;1 2 3 4 5&#93;&#41;
-;; &#40;5 4 3 2 1&#41;
-</code></pre></p><p>즉, conj + collection 의 조합이다.</p><p>hash-map으로는 조금 다르게도 사용  가능하다<pre><code class="clj">&#40;into {} &#91;{:a 1} {:b 2}&#93;&#41;
-;; {:a 1 :b 2}
-</code></pre></p>
+&#40;= &#40;&#95;&#95; '&#40;0 0 -1&#41;&#41; -1&#41;
+
+&#40;= &#40;&#95;&#95; '&#40;1 10 3&#41;&#41; 14&#41;
+</code></pre><pre><code class="clj">&#40;fn &#91;x&#93;
+  &#40;apply + x&#41;&#41;
+</code></pre><p>값의 총 합을 계산하는 문제이다. reduce로 풀어도 되지만 apply로 하는 것이 더 간단하게 풀리므로 apply로 계산을 하였다.</p>
 </div>
 
 <div id="post-tags">
@@ -112,7 +109,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2019-10-25-4clojure-22.html">4clojure - Count a Sequence (22) &raquo;</a>
+        <a class="right" href="/posts/2019-10-26-4clojure-23.html">4clojure - Reverse a Sequence (23) &raquo;</a>
         
     </div>
 </div>
@@ -131,11 +128,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2019-10-27-4clojure-24.html">4clojure - Sum It All Up (24)</a></li>
+                        
                         <li><a href="/posts/2019-10-26-4clojure-23.html">4clojure - Reverse a Sequence (23)</a></li>
                         
                         <li><a href="/posts/2019-10-25-4clojure-22.html">4clojure - Count a Sequence (22)</a></li>
-                        
-                        <li><a href="/posts/2019-10-24-4clojure-21.html">4clojure - Nth Element (21)</a></li>
                         
                     </ul>
                 </div>

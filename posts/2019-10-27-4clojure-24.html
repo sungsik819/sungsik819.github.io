@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: Python3 reduce 사용</title>
-    <link rel="canonical" href="http://dev-happy.com/posts/2019-09-25-python-reduce.html">
+    <title>Dev Happy: 4clojure - Sum It All Up (24)</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2019-10-27-4clojure-24.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -73,52 +73,41 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 9월 25일 (수)</div>
+        <div class="col-lg-6">2019년 10월 27일 (일)</div>
         
     </div>
-    <h2>Python3 reduce 사용</h2>
+    <h2>4clojure - Sum It All Up (24)</h2>
 </div>
 <div>
     
-    <p>Python에서 어떠한 문제를 해결 하기 위해서 reduce를 사용을 하게 되었다.</p><p>예제에서는 list안에서 원하는 인덱스 얻기 위한 상황에서 사용을 하게 되었다. 보통은 아래와 같은 코드로 작성을 하게된다.</p><pre><code>python
-select&#95;index = 0
-for index, value in enumerate&#40;&#91;1,2,3,4,5,6,7,8&#93;&#41;:
-	if value == 5:
-		select&#95;index = index
-		break
-</code></pre><p>조금 뭔가 작위적인 코드가 된거 같긴 한데 위와 비슷한 알고리즘으로 처음에 생각을 하게 되고, 개발자라면 누구나 쉽게 생각할 수 있는 코드의 구조라고 생각을 한다.</p><p>하지만 파이썬을 사용을 하다보니 좀 더 쉬운, 간단한 방법은 없을까?라고 생각을 하게 되었고 2번째는 아래와 같은 코드를 생각을 하게 되었다.</p><pre><code>python
-#python3에서는 아래코드 import
-from functools import reduce
+    <pre><code class="clj">&#40;= &#40;&#95;&#95; &#91;1 2 3&#93;&#41; 6&#41;
 
-index = reduce&#40;lambda acc, x: x if x&#91;1&#93; == 5 else acc, enumerate&#40;&#91;1,2,3,4,5,6,7,8&#93;&#41;&#41;
+&#40;= &#40;&#95;&#95; &#40;list 0 -2 5 5&#41;&#41; 8&#41;
 
-index&#91;0&#93; # index 값 추출
+&#40;= &#40;&#95;&#95; #{4 2 1}&#41; 7&#41;
 
-</code></pre><p>clojure를 하다보니 reduce라는 함수는 알고 있었고 사용법이 무궁무진 하다는 것을 알고 있었기 때문에 혹시나  python에서도 이런 방법으로 할 수 있지 않을까?라는 생각을 하게 되었고 적용을 하였다.</p><p>설명을 한다면 lambda안에서 acc에 누적 값을 저장을 하는 방식인데 보통은 reduce를 아래와 같은 방법으로 사용을 한다.</p><pre><code>python
-#python3에서는 아래코드 import
-from functools import reduce
+&#40;= &#40;&#95;&#95; '&#40;0 0 -1&#41;&#41; -1&#41;
 
-sum = reduce&#40;lambda acc, x: acc+x, &#91;1,2,3,4,5,6,7,8&#93;&#41;
-#sum의 값은 36
-</code></pre><p>어차피 acc에는 list가 순회 할때까지 조건에 맞는 값을 유지 할 수 있을 것 같아서 사용을 하게 되었다.</p><p>지금은 리팩토링을 하다보니 reduce 코드보다는 dictionary로 변경을 하여 사용하고 있지만 reduce의 기록을 위해서 남겨둔다.</p>
+&#40;= &#40;&#95;&#95; '&#40;1 10 3&#41;&#41; 14&#41;
+</code></pre><pre><code class="clj">&#40;fn &#91;x&#93;
+  &#40;apply + x&#41;&#41;
+</code></pre><p>값의 총 합을 계산하는 문제이다. reduce로 풀어도 되지만 apply로 하는 것이 더 간단하게 풀리므로 apply로 계산을 하였다.</p>
 </div>
 
 <div id="post-tags">
     <b>Tags: </b>
     
-    <a href="/Today I Learn.html">Today I Learn</a>
+    <a href="/4clojure.html">4clojure</a>
     
-    <a href="/python.html">python</a>
+    <a href="/Today I Learn.html">Today I Learn</a>
     
 </div>
 
 
     <div id="prev-next">
         
-        <a href="/posts/2019-09-26-sql-vs-java.html">&laquo; SQL query VS java (프로그래밍 언어)</a>
         
-        
-        <a class="right" href="/posts/2019-09-24-experience-python.html">Python을 2년 사용해 보고 &raquo;</a>
+        <a class="right" href="/posts/2019-10-26-4clojure-23.html">4clojure - Reverse a Sequence (23) &raquo;</a>
         
     </div>
 
