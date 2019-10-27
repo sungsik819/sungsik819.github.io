@@ -73,25 +73,22 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 10월 27일 (일)</div>
+        <div class="col-lg-6">2019년 10월 28일 (월)</div>
         
     </div>
-    <h2>4clojure - Sum It All Up (24)</h2>
+    <h2>4clojure - Find the odd numbers (25)</h2>
 </div>
 <div>
     
-    <pre><code class="clj">&#40;= &#40;&#95;&#95; &#91;1 2 3&#93;&#41; 6&#41;
+    <pre><code class="clj">&#40;= &#40;&#95;&#95; #{1 2 3 4 5}&#41; '&#40;1 3 5&#41;&#41;
 
-&#40;= &#40;&#95;&#95; &#40;list 0 -2 5 5&#41;&#41; 8&#41;
+&#40;= &#40;&#95;&#95; &#91;4 2 1 6&#93;&#41; '&#40;1&#41;&#41;
 
-&#40;= &#40;&#95;&#95; #{4 2 1}&#41; 7&#41;
+&#40;= &#40;&#95;&#95; &#91;2 2 4 6&#93;&#41; '&#40;&#41;&#41;
 
-&#40;= &#40;&#95;&#95; '&#40;0 0 -1&#41;&#41; -1&#41;
-
-&#40;= &#40;&#95;&#95; '&#40;1 10 3&#41;&#41; 14&#41;
-</code></pre><pre><code class="clj">&#40;fn &#91;x&#93;
-  &#40;apply + x&#41;&#41;
-</code></pre><p>값의 총 합을 계산하는 문제이다. reduce로 풀어도 되지만 apply로 하는 것이 더 간단하게 풀리므로 apply로 계산을 하였다.</p>
+&#40;= &#40;&#95;&#95; &#91;1 1 1 3&#93;&#41; '&#40;1 1 1 3&#41;&#41;
+</code></pre><pre><code class="clj">#&#40;filter odd? %&#41;
+</code></pre><p>홀수 값을 결과로 주는 프로그램을 작성하는 문제이다. filter와 odd? 함수를 사용하여 홀수 값만 필터링이 되도록 문제를 해결 하였다.</p>
 </div>
 
 <div id="post-tags">
@@ -109,7 +106,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2019-10-26-4clojure-23.html">4clojure - Reverse a Sequence (23) &raquo;</a>
+        <a class="right" href="/posts/2019-10-27-4clojure-24.html">4clojure - Sum It All Up (24) &raquo;</a>
         
     </div>
 </div>
@@ -128,11 +125,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2019-10-28-4clojure-25.html">4clojure - Find the odd numbers (25)</a></li>
+                        
                         <li><a href="/posts/2019-10-27-4clojure-24.html">4clojure - Sum It All Up (24)</a></li>
                         
                         <li><a href="/posts/2019-10-26-4clojure-23.html">4clojure - Reverse a Sequence (23)</a></li>
-                        
-                        <li><a href="/posts/2019-10-25-4clojure-22.html">4clojure - Count a Sequence (22)</a></li>
                         
                     </ul>
                 </div>
