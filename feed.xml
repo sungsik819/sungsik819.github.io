@@ -12,11 +12,37 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Wed, 30 Oct 2019 06:31:19 +0900
+Thu, 31 Oct 2019 06:19:41 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-10-31-4clojure-28.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-10-31-4clojure-28.html
+</link>
+<title>
+4clojure - Flatten a Sequence (28)
+</title>
+<description>
+&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;&amp;#40;= &amp;#40;&amp;#95;&amp;#95; '&amp;#40;&amp;#40;1 2&amp;#41; 3 &amp;#91;4 &amp;#91;5 6&amp;#93;&amp;#93;&amp;#41;&amp;#41; '&amp;#40;1 2 3 4 5 6&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#91;&amp;quot;a&amp;quot; &amp;#91;&amp;quot;b&amp;quot;&amp;#93; &amp;quot;c&amp;quot;&amp;#93;&amp;#41; '&amp;#40;&amp;quot;a&amp;quot; &amp;quot;b&amp;quot; &amp;quot;c&amp;quot;&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; '&amp;#40;&amp;#40;&amp;#40;&amp;#40;:a&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41; '&amp;#40;:a&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;제한: flatten&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;&amp;#40;fn myflatten &amp;#91;x&amp;#93;
+  &amp;#40;cond &amp;#40;not &amp;#40;sequential? x&amp;#41;&amp;#41; &amp;#40;list x&amp;#41;
+        &amp;#40;empty? x&amp;#41; nil
+        :else &amp;#40;concat &amp;#40;myflatten &amp;#40;first x&amp;#41;&amp;#41; &amp;#40;myflatten &amp;#40;rest x&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;번호 순서 대로 과거에 풀었던 문제들을 다시 정리를 하면서 분석을 하고 있다. 중첩collection을 없애고 하나의 collection으로 만드는 문제인데 concat과 sequential?로 문제를 풀었다. 기본적으로 concat은 collection에 대해서 합쳐지는 것 같아서 (list)로 만들어 반환을 해주고 있다. 이때 당시에 이 문제를 풀때 위와 같은 형태의 recursive아니면 답이 없다고 생각을 했는데 clojure라면 더 나은 답이 있으리라 판단이 든다.&lt;/p&gt;
+</description>
+<pubDate>
+Thu, 31 Oct 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-10-30-4clojure-27.html
