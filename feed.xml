@@ -12,11 +12,36 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Thu, 31 Oct 2019 06:19:41 +0900
+Fri, 01 Nov 2019 06:33:04 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-11-01-4clojure-29.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-11-01-4clojure-29.html
+</link>
+<title>
+4clojure - Get the Caps (29)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;quot;HeLlO, WoRlD!&amp;quot;&amp;#41; &amp;quot;HLOWRD&amp;quot;&amp;#41;
+
+&amp;#40;empty? &amp;#40;&amp;#95;&amp;#95; &amp;quot;nothing&amp;quot;&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;quot;$#A&amp;#40;&amp;#42;&amp;amp;987Zf&amp;quot;&amp;#41; &amp;quot;AZ&amp;quot;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;&amp;#40;fn &amp;#91;s&amp;#93;
+  &amp;#40;apply str &amp;#40;filter #&amp;#40;Character/isUpperCase %&amp;#41; s&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;문자 중에서 대문자인 문자만 찾아서 문자열로 만드는 문제이다.  java lib를 이용하여 대문자를 필터링 하여 문제를 해결 하였다.&lt;/p&gt;&lt;p&gt;정규식을 이용하여 필터링 하는 방법도 있다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;#&amp;#40;apply str &amp;#40;re-seq #&amp;quot;&amp;#91;A-Z&amp;#93;&amp;quot; %&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+</description>
+<pubDate>
+Fri, 01 Nov 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-10-31-4clojure-28.html

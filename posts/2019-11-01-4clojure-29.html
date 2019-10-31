@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: 4clojure - Reverse a Sequence (23)</title>
-    <link rel="canonical" href="http://dev-happy.com/posts/2019-10-26-4clojure-23.html">
+    <title>Dev Happy: 4clojure - Get the Caps (29)</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2019-11-01-4clojure-29.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -73,27 +73,21 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 10월 26일 (토)</div>
+        <div class="col-lg-6">2019년 11월 1일 (금)</div>
         
     </div>
-    <h2>4clojure - Reverse a Sequence (23)</h2>
+    <h2>4clojure - Get the Caps (29)</h2>
 </div>
 <div>
     
-    <pre><code class="clj">&#40;= &#40;&#95;&#95; &#91;1 2 3 4 5&#93;&#41; &#91;5 4 3 2 1&#93;&#41;
+    <p><strong>Problem</strong><pre><code class="clojure">&#40;= &#40;&#95;&#95; &quot;HeLlO, WoRlD!&quot;&#41; &quot;HLOWRD&quot;&#41;
 
-&#40;= &#40;&#95;&#95; &#40;sorted-set 5 7 2 7&#41;&#41; '&#40;7 5 2&#41;&#41;
+&#40;empty? &#40;&#95;&#95; &quot;nothing&quot;&#41;&#41;
 
-&#40;= &#40;&#95;&#95; &#91;&#91;1 2&#93;&#91;3 4&#93;&#91;5 6&#93;&#93;&#41; &#91;&#91;5 6&#93;&#91;3 4&#93;&#91;1 2&#93;&#93;&#41;
-</code></pre><p><strong>제한: reverse, rseq</strong></p><pre><code class="clj">&#40;fn &#91;x&#93;
-  &#40;reduce &#40;fn &#91;acc e&#93; &#40;conj acc e&#41;&#41; '&#40;&#41; x&#41;&#41;
-</code></pre><p>reverse, rseq를 사용하지 않고 순서를 뒤집는 동작을 작성하는 문제 이다. 나는 reduce를 사용하여 list의 conj 동작이 들어오는 순서대로 첫번째로 추가되는 원리를 이용하여 문제를 해결 하였다 into를 이용하여 문제를 푸는 방식도 있다. </p><p>into의 실행 방식은 결과 collection의 형태에 따라서 다르다.<pre><code class="clj">&#40;into &#91;&#93; &#91;1 2 3 4 5&#93;&#41;
-;; &#91;1 2 3 4 5&#93;
-
-&#40;into &#40;&#41; &#91;1 2 3 4 5&#93;&#41;
-;; &#40;5 4 3 2 1&#41;
-</code></pre></p><p>즉, conj + collection 의 조합이다.</p><p>hash-map으로는 조금 다르게도 사용  가능하다<pre><code class="clj">&#40;into {} &#91;{:a 1} {:b 2}&#93;&#41;
-;; {:a 1 :b 2}
+&#40;= &#40;&#95;&#95; &quot;$#A&#40;&#42;&amp;987Zf&quot;&#41; &quot;AZ&quot;&#41;
+</code></pre></p><p><strong>Solved</strong><pre><code class="clojure">&#40;fn &#91;s&#93;
+  &#40;apply str &#40;filter #&#40;Character/isUpperCase %&#41; s&#41;&#41;&#41;
+</code></pre></p><p>문자 중에서 대문자인 문자만 찾아서 문자열로 만드는 문제이다.  java lib를 이용하여 대문자를 필터링 하여 문제를 해결 하였다.</p><p>정규식을 이용하여 필터링 하는 방법도 있다.<pre><code class="clj">#&#40;apply str &#40;re-seq #&quot;&#91;A-Z&#93;&quot; %&#41;&#41;
 </code></pre></p>
 </div>
 
@@ -109,10 +103,8 @@
 
     <div id="prev-next">
         
-        <a href="/posts/2019-10-27-4clojure-24.html">&laquo; 4clojure - Sum It All Up (24)</a>
         
-        
-        <a class="right" href="/posts/2019-10-25-4clojure-22.html">4clojure - Count a Sequence (22) &raquo;</a>
+        <a class="right" href="/posts/2019-10-31-4clojure-28.html">4clojure - Flatten a Sequence (28) &raquo;</a>
         
     </div>
 
