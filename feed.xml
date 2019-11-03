@@ -12,11 +12,48 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Sun, 03 Nov 2019 05:55:17 +0900
+Mon, 04 Nov 2019 05:53:50 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-11-04-4clojure-32.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-11-04-4clojure-32.html
+</link>
+<title>
+4clojure - Duplicate a Sequence (32)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#91;1 2 3&amp;#93;&amp;#41; '&amp;#40;1 1 2 2 3 3&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#91;:a :a :b :b&amp;#93;&amp;#41; '&amp;#40;:a :a :a :a :b :b :b :b&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#91;&amp;#91;1 2&amp;#93; &amp;#91;3 4&amp;#93;&amp;#93;&amp;#41; '&amp;#40;&amp;#91;1 2&amp;#93; &amp;#91;1 2&amp;#93; &amp;#91;3 4&amp;#93; &amp;#91;3 4&amp;#93;&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#91;&amp;#91;1 2&amp;#93; &amp;#91;3 4&amp;#93;&amp;#93;&amp;#41; '&amp;#40;&amp;#91;1 2&amp;#93; &amp;#91;1 2&amp;#93; &amp;#91;3 4&amp;#93; &amp;#91;3 4&amp;#93;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;mapcat &amp;#40;fn &amp;#91;x&amp;#93; &amp;#40;list x x&amp;#41;&amp;#41;
+
+mapcat #&amp;#40;repeat 2 %&amp;#41;
+
+mapcat #&amp;#40;take 2 &amp;#40;iterate identity %&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;값을 하나씩 추가로 생성을 하고 collection인 경우 collection을 그대로 복사하는 문제이다. mapcat을 사용하였는데 map  + apply + concat으로 풀어서 해도 해결 가능 하다.&lt;/p&gt;&lt;p&gt;interleave를 사용하여 해결한 방식도 있었는데 같은 collection을 2번 합쳐서 해결하는 방식이 있었다.&lt;/p&gt;&lt;p&gt;interleave의 작동 방식을 테스트하는 예제를 만들어 봤다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;interleave &amp;#91;4 5 6&amp;#93; &amp;#91;1 2 3&amp;#93;&amp;#41;
+;; &amp;#40;4 1 5 2 6 3&amp;#41;
+
+&amp;#40;interleave &amp;#91;&amp;#91;4 5 6&amp;#93;&amp;#93; &amp;#91;1 2 3&amp;#93;&amp;#41;
+;; &amp;#40;&amp;#91;4 5 6&amp;#93; 1&amp;#41;
+
+&amp;#40;interleave &amp;#91;4&amp;#93; &amp;#91;1 2 3&amp;#93;&amp;#41;
+;; &amp;#40;4 1&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+</description>
+<pubDate>
+Mon, 04 Nov 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-11-03-4clojure-31.html
