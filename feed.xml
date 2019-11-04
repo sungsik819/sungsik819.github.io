@@ -12,11 +12,40 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Mon, 04 Nov 2019 05:53:50 +0900
+Tue, 05 Nov 2019 06:17:42 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-11-05-4clojure-33.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-11-05-4clojure-33.html
+</link>
+<title>
+4clojure - Replicate a Sequence (33)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#91;1 2 3&amp;#93; 2&amp;#41; '&amp;#40;1 1 2 2 3 3&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#91;:a :b&amp;#93; 4&amp;#41; '&amp;#40;:a :a :a :a :b :b :b :b&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#91;4 5 6&amp;#93; 1&amp;#41; '&amp;#40;4 5 6&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#91;&amp;#91;1 2&amp;#93; &amp;#91;3 4&amp;#93;&amp;#93; 2&amp;#41; '&amp;#40;&amp;#91;1 2&amp;#93; &amp;#91;1 2&amp;#93; &amp;#91;3 4&amp;#93; &amp;#91;3 4&amp;#93;&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#91;44 33&amp;#93; 2&amp;#41; &amp;#91;44 44 33 33&amp;#93;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;&amp;#40;fn &amp;#91;x y&amp;#93; &amp;#40;mapcat #&amp;#40;repeat y %&amp;#41; x&amp;#41;&amp;#41;
+
+&amp;#40;fn &amp;#91;x y&amp;#93; &amp;#40;mapcat #&amp;#40;take y &amp;#40;iterate identity %&amp;#41;&amp;#41; x&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;collection 안의 값을 파라미터 값 만큼 반복해서 출력을 하는 문제이다. 값의 반복을 반복문을 이용해서 할 수도 있겠지만 같은 값을 원하는 갯수 만큼 생성해주는 repeat를 이용해서 하는 방법도 있다 32번 문제와 같은 mapcat을 이용 했는데 map + apply + concat을 이용해서도 역시 해결 가능 하다.&lt;/p&gt;
+</description>
+<pubDate>
+Tue, 05 Nov 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-11-04-4clojure-32.html
