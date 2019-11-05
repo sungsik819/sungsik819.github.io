@@ -73,26 +73,24 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 11월 5일 (화)</div>
+        <div class="col-lg-6">2019년 11월 6일 (수)</div>
         
     </div>
-    <h2>4clojure - Replicate a Sequence (33)</h2>
+    <h2>4clojure - Implement range (34)</h2>
 </div>
 <div>
     
-    <p><strong>Problem</strong><pre><code class="clojure">&#40;= &#40;&#95;&#95; &#91;1 2 3&#93; 2&#41; '&#40;1 1 2 2 3 3&#41;&#41;
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;&#95;&#95; 1 4&#41; '&#40;1 2 3&#41;&#41;
 
-&#40;= &#40;&#95;&#95; &#91;:a :b&#93; 4&#41; '&#40;:a :a :a :a :b :b :b :b&#41;&#41;
+&#40;= &#40;&#95;&#95; -2 2&#41; '&#40;-2 -1 0 1&#41;&#41;
 
-&#40;= &#40;&#95;&#95; &#91;4 5 6&#93; 1&#41; '&#40;4 5 6&#41;&#41;
-
-&#40;= &#40;&#95;&#95; &#91;&#91;1 2&#93; &#91;3 4&#93;&#93; 2&#41; '&#40;&#91;1 2&#93; &#91;1 2&#93; &#91;3 4&#93; &#91;3 4&#93;&#41;&#41;
-
-&#40;= &#40;&#95;&#95; &#91;44 33&#93; 2&#41; &#91;44 44 33 33&#93;&#41;
-</code></pre></p><p><strong>Solved</strong><pre><code class="clojure">&#40;fn &#91;x y&#93; &#40;mapcat #&#40;repeat y %&#41; x&#41;&#41;
-
-&#40;fn &#91;x y&#93; &#40;mapcat #&#40;take y &#40;iterate identity %&#41;&#41; x&#41;&#41;
-</code></pre></p><p>collection 안의 값을 파라미터 값 만큼 반복해서 출력을 하는 문제이다. 값의 반복을 반복문을 이용해서 할 수도 있겠지만 같은 값을 원하는 갯수 만큼 생성해주는 repeat를 이용해서 하는 방법도 있다 32번 문제와 같은 mapcat을 이용 했는데 map + apply + concat을 이용해서도 역시 해결 가능 하다.</p>
+&#40;= &#40;&#95;&#95; 5 8&#41; '&#40;5 6 7&#41;&#41;
+</code></pre></p><p><strong>제한: range</strong></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn &#91;x y&#93;
+  &#40;loop &#91;lis &#91;&#93; cnt x&#93;
+    &#40;if &#40;= cnt y&#41; &#40;seq lis&#41;
+      &#40;recur &#40;conj lis cnt&#41; &#40;+ cnt 1&#41;&#41;&#41;&#41;&#41;
+</code></pre></p><p>recursive를 이용하여 문제를 풀었지만 어딘가 모르게 복잡한 느낌이 많이 들었다. 문제를 풀고 나서 다른 사람이 풀어낸 방식을 보니 take, iterate 함수를 이용하여 문제를 풀이한 것을 봤다. take는 collection의 원소를 원하는 갯수 만큼 가져오는 것이고 iterate는 함수의 계산되는 식을 거쳐서 계속적 인 반복을 하는 함수이다. 두 함수의 조합이 이 문제 풀이에 대한 좋은 조합이라고 생각 한다.</p><pre><code class="clj">#&#40;take &#40;- %2 %1&#41; &#40;iterate inc %1&#41;&#41;
+</code></pre>
 </div>
 
 <div id="post-tags">
@@ -110,7 +108,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2019-11-04-4clojure-32.html">4clojure - Duplicate a Sequence (32) &raquo;</a>
+        <a class="right" href="/posts/2019-11-05-4clojure-33.html">4clojure - Replicate a Sequence (33) &raquo;</a>
         
     </div>
 </div>
@@ -129,11 +127,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2019-11-06-4clojure-34.html">4clojure - Implement range (34)</a></li>
+                        
                         <li><a href="/posts/2019-11-05-4clojure-33.html">4clojure - Replicate a Sequence (33)</a></li>
                         
                         <li><a href="/posts/2019-11-04-4clojure-32.html">4clojure - Duplicate a Sequence (32)</a></li>
-                        
-                        <li><a href="/posts/2019-11-03-4clojure-31.html">4clojure - Pack a Sequence (31)</a></li>
                         
                     </ul>
                 </div>

@@ -12,11 +12,38 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Tue, 05 Nov 2019 06:17:42 +0900
+Wed, 06 Nov 2019 06:23:56 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-11-06-4clojure-34.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-11-06-4clojure-34.html
+</link>
+<title>
+4clojure - Implement range (34)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#40;&amp;#95;&amp;#95; 1 4&amp;#41; '&amp;#40;1 2 3&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; -2 2&amp;#41; '&amp;#40;-2 -1 0 1&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; 5 8&amp;#41; '&amp;#40;5 6 7&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;제한: range&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;x y&amp;#93;
+  &amp;#40;loop &amp;#91;lis &amp;#91;&amp;#93; cnt x&amp;#93;
+    &amp;#40;if &amp;#40;= cnt y&amp;#41; &amp;#40;seq lis&amp;#41;
+      &amp;#40;recur &amp;#40;conj lis cnt&amp;#41; &amp;#40;+ cnt 1&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;recursive를 이용하여 문제를 풀었지만 어딘가 모르게 복잡한 느낌이 많이 들었다. 문제를 풀고 나서 다른 사람이 풀어낸 방식을 보니 take, iterate 함수를 이용하여 문제를 풀이한 것을 봤다. take는 collection의 원소를 원하는 갯수 만큼 가져오는 것이고 iterate는 함수의 계산되는 식을 거쳐서 계속적 인 반복을 하는 함수이다. 두 함수의 조합이 이 문제 풀이에 대한 좋은 조합이라고 생각 한다.&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;#&amp;#40;take &amp;#40;- %2 %1&amp;#41; &amp;#40;iterate inc %1&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+<pubDate>
+Wed, 06 Nov 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-11-05-4clojure-33.html

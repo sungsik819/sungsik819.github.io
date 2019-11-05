@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: Posts Tagged &quot;write&quot;</title>
-    <link rel="canonical" href="http://dev-happy.com/write.html">
+    <title>Dev Happy: 4clojure - Implement range (34)</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2019-11-06-4clojure-34.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -70,17 +70,49 @@
         <div class="col-lg-9">
             <div id="content">
                 
-<div id="posts-by-tag">
-    <div id="page-header">
-        <h2>Posts Tagged &quot;write&quot;</h2>
+<div id="post">
+    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">2019년 11월 6일 (수)</div>
+        
     </div>
-    <ul>
+    <h2>4clojure - Implement range (34)</h2>
+</div>
+<div>
     
-        <li>
-            <a href="/posts/2018-01-27-first-post.html">클로저로 된 블로그 생성</a>
-        </li>
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;&#95;&#95; 1 4&#41; '&#40;1 2 3&#41;&#41;
+
+&#40;= &#40;&#95;&#95; -2 2&#41; '&#40;-2 -1 0 1&#41;&#41;
+
+&#40;= &#40;&#95;&#95; 5 8&#41; '&#40;5 6 7&#41;&#41;
+</code></pre></p><p><strong>제한: range</strong></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn &#91;x y&#93;
+  &#40;loop &#91;lis &#91;&#93; cnt x&#93;
+    &#40;if &#40;= cnt y&#41; &#40;seq lis&#41;
+      &#40;recur &#40;conj lis cnt&#41; &#40;+ cnt 1&#41;&#41;&#41;&#41;&#41;
+</code></pre></p><p>recursive를 이용하여 문제를 풀었지만 어딘가 모르게 복잡한 느낌이 많이 들었다. 문제를 풀고 나서 다른 사람이 풀어낸 방식을 보니 take, iterate 함수를 이용하여 문제를 풀이한 것을 봤다. take는 collection의 원소를 원하는 갯수 만큼 가져오는 것이고 iterate는 함수의 계산되는 식을 거쳐서 계속적 인 반복을 하는 함수이다. 두 함수의 조합이 이 문제 풀이에 대한 좋은 조합이라고 생각 한다.</p><pre><code class="clj">#&#40;take &#40;- %2 %1&#41; &#40;iterate inc %1&#41;&#41;
+</code></pre>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
     
-    </ul>
+    <a href="/4clojure.html">4clojure</a>
+    
+    <a href="/Today I Learn.html">Today I Learn</a>
+    
+</div>
+
+
+    <div id="prev-next">
+        
+        
+        <a class="right" href="/posts/2019-11-05-4clojure-33.html">4clojure - Replicate a Sequence (33) &raquo;</a>
+        
+    </div>
+
+    
+
+
 </div>
 
             </div>
