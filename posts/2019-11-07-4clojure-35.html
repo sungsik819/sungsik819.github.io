@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: problem 03</title>
-    <link rel="canonical" href="http://dev-happy.com/posts/2019-10-06-4clojure-03.html">
+    <title>Dev Happy: 4clojure - Local bindings (35)</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2019-11-07-4clojure-35.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -73,16 +73,20 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 10월 6일 (일)</div>
+        <div class="col-lg-6">2019년 11월 7일 (목)</div>
         
     </div>
-    <h2>problem 03</h2>
+    <h2>4clojure - Local bindings (35)</h2>
 </div>
 <div>
     
-    <pre><code class="clojure">&#40;= &#95;&#95; &#40;.toUpperCase &quot;hello world&quot;&#41;&#41;
-</code></pre><pre><code class="clojure">&quot;HELLO WORLD&quot;
-</code></pre><p>clojure에서는 기본적으로 자바의 라이브러리를 사용할 수 있다. 마찬가지로 string에 대한 함수를 호출 할 수 있는데 자바와는 반대로 위와같은 방법으로 호출을 하여 사용 할 수 있다. “HELLO WORLD”로 하면 성립이 된다.</p>
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#95;&#95; &#40;let &#91;x 5&#93; &#40;+ 2 x&#41;&#41;&#41;
+
+&#40;= &#95;&#95; &#40;let &#91;x 3, y 10&#93; &#40;- y x&#41;&#41;&#41;
+
+&#40;= &#95;&#95; &#40;let &#91;x 21&#93; &#40;let &#91;y 3&#93; &#40;/ x y&#41;&#41;&#41;&#41;
+</code></pre></p><p><strong>Solved</strong><pre><code class="clj">5
+</code></pre></p><p>let이라는 local binding을 연습하는 문제이다. 다른 언어에서 사용하는 형식인 x = 5 와 같은 형태라고 생각하면 될 것 같다. 한번 선언이 되면 변경이 불가능 하다는 다른 점이 있다.</p>
 </div>
 
 <div id="post-tags">
@@ -97,10 +101,8 @@
 
     <div id="prev-next">
         
-        <a href="/posts/2019-10-07-4clojure-04.html">&laquo; problem 04</a>
         
-        
-        <a class="right" href="/posts/2019-10-05-4clojure-02.html">problem 02 &raquo;</a>
+        <a class="right" href="/posts/2019-11-06-4clojure-34.html">4clojure - Implement range (34) &raquo;</a>
         
     </div>
 

@@ -12,11 +12,34 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Wed, 06 Nov 2019 06:23:56 +0900
+Thu, 07 Nov 2019 06:40:35 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-11-07-4clojure-35.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-11-07-4clojure-35.html
+</link>
+<title>
+4clojure - Local bindings (35)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#95;&amp;#95; &amp;#40;let &amp;#91;x 5&amp;#93; &amp;#40;+ 2 x&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#95;&amp;#95; &amp;#40;let &amp;#91;x 3, y 10&amp;#93; &amp;#40;- y x&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#95;&amp;#95; &amp;#40;let &amp;#91;x 21&amp;#93; &amp;#40;let &amp;#91;y 3&amp;#93; &amp;#40;/ x y&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;5
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;let이라는 local binding을 연습하는 문제이다. 다른 언어에서 사용하는 형식인 x = 5 와 같은 형태라고 생각하면 될 것 같다. 한번 선언이 되면 변경이 불가능 하다는 다른 점이 있다.&lt;/p&gt;
+</description>
+<pubDate>
+Thu, 07 Nov 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-11-06-4clojure-34.html
