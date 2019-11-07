@@ -12,11 +12,34 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Thu, 07 Nov 2019 06:40:35 +0900
+Fri, 08 Nov 2019 06:24:58 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-11-08-4clojure-36.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-11-08-4clojure-36.html
+</link>
+<title>
+4clojure - Let it Be (36)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= 10 &amp;#40;let &amp;#95;&amp;#95; &amp;#40;+ x y&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;= 4 &amp;#40;let &amp;#95;&amp;#95; &amp;#40;+ y z&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;= 1 &amp;#40;let &amp;#95;&amp;#95; z&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#91;x 7, y 3, z 1&amp;#93;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;여러개의 값을 local binding을 하여 푸는 문제 이다. 기본적으로  let [] 형태로 여러개의 값을 local binding 가능하고 ,로 binding 별 구분이 가능하다. 변수 선언을 여러개 하는 방법이라고 생각 하면 될 것 같다. 어느 언어에서나 마찬가지 이겠지만 괄호 안에서만 그 값을 사용 가능하다는 것도 동일하다.&lt;/p&gt;
+</description>
+<pubDate>
+Fri, 08 Nov 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-11-07-4clojure-35.html

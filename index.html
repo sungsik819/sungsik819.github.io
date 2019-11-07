@@ -73,20 +73,20 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 11월 7일 (목)</div>
+        <div class="col-lg-6">2019년 11월 8일 (금)</div>
         
     </div>
-    <h2>4clojure - Local bindings (35)</h2>
+    <h2>4clojure - Let it Be (36)</h2>
 </div>
 <div>
     
-    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#95;&#95; &#40;let &#91;x 5&#93; &#40;+ 2 x&#41;&#41;&#41;
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= 10 &#40;let &#95;&#95; &#40;+ x y&#41;&#41;&#41;
 
-&#40;= &#95;&#95; &#40;let &#91;x 3, y 10&#93; &#40;- y x&#41;&#41;&#41;
+&#40;= 4 &#40;let &#95;&#95; &#40;+ y z&#41;&#41;&#41;
 
-&#40;= &#95;&#95; &#40;let &#91;x 21&#93; &#40;let &#91;y 3&#93; &#40;/ x y&#41;&#41;&#41;&#41;
-</code></pre></p><p><strong>Solved</strong><pre><code class="clj">5
-</code></pre></p><p>let이라는 local binding을 연습하는 문제이다. 다른 언어에서 사용하는 형식인 x = 5 와 같은 형태라고 생각하면 될 것 같다. 한번 선언이 되면 변경이 불가능 하다는 다른 점이 있다.</p>
+&#40;= 1 &#40;let &#95;&#95; z&#41;&#41;
+</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&#91;x 7, y 3, z 1&#93;
+</code></pre></p><p>여러개의 값을 local binding을 하여 푸는 문제 이다. 기본적으로  let [] 형태로 여러개의 값을 local binding 가능하고 ,로 binding 별 구분이 가능하다. 변수 선언을 여러개 하는 방법이라고 생각 하면 될 것 같다. 어느 언어에서나 마찬가지 이겠지만 괄호 안에서만 그 값을 사용 가능하다는 것도 동일하다.</p>
 </div>
 
 <div id="post-tags">
@@ -104,7 +104,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2019-11-06-4clojure-34.html">4clojure - Implement range (34) &raquo;</a>
+        <a class="right" href="/posts/2019-11-07-4clojure-35.html">4clojure - Local bindings (35) &raquo;</a>
         
     </div>
 </div>
@@ -123,11 +123,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2019-11-08-4clojure-36.html">4clojure - Let it Be (36)</a></li>
+                        
                         <li><a href="/posts/2019-11-07-4clojure-35.html">4clojure - Local bindings (35)</a></li>
                         
                         <li><a href="/posts/2019-11-06-4clojure-34.html">4clojure - Implement range (34)</a></li>
-                        
-                        <li><a href="/posts/2019-11-05-4clojure-33.html">4clojure - Replicate a Sequence (33)</a></li>
                         
                     </ul>
                 </div>

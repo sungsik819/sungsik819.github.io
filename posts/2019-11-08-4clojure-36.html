@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: 4clojure 13</title>
-    <link rel="canonical" href="http://dev-happy.com/posts/2019-10-16-4clojure-13.html">
+    <title>Dev Happy: 4clojure - Let it Be (36)</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2019-11-08-4clojure-36.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -73,16 +73,20 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 10월 16일 (수)</div>
+        <div class="col-lg-6">2019년 11월 8일 (금)</div>
         
     </div>
-    <h2>4clojure 13</h2>
+    <h2>4clojure - Let it Be (36)</h2>
 </div>
 <div>
     
-    <pre><code class="clojure">&#40;= &#95;&#95; &#40;rest &#91;10 20 30 40&#93;&#41;&#41;
-</code></pre><pre><code class="clojure">&#91;20 30 40&#93;
-</code></pre><p>clojure에서는 lisp에서 제공 하는 함수들을 기본 제공 한다 rest도 마찬가지로 lisp에서 제공하는 기능 그대로의 역할을 한다. rest는 처음 값을 뺀 나머지 값이므로 [20 30 40] 이다.</p>
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= 10 &#40;let &#95;&#95; &#40;+ x y&#41;&#41;&#41;
+
+&#40;= 4 &#40;let &#95;&#95; &#40;+ y z&#41;&#41;&#41;
+
+&#40;= 1 &#40;let &#95;&#95; z&#41;&#41;
+</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&#91;x 7, y 3, z 1&#93;
+</code></pre></p><p>여러개의 값을 local binding을 하여 푸는 문제 이다. 기본적으로  let [] 형태로 여러개의 값을 local binding 가능하고 ,로 binding 별 구분이 가능하다. 변수 선언을 여러개 하는 방법이라고 생각 하면 될 것 같다. 어느 언어에서나 마찬가지 이겠지만 괄호 안에서만 그 값을 사용 가능하다는 것도 동일하다.</p>
 </div>
 
 <div id="post-tags">
@@ -97,10 +101,8 @@
 
     <div id="prev-next">
         
-        <a href="/posts/2019-10-17-4clojure-14.html">&laquo; 4clojure 14</a>
         
-        
-        <a class="right" href="/posts/2019-10-15-4clojure-12.html">4clojure 12 &raquo;</a>
+        <a class="right" href="/posts/2019-11-07-4clojure-35.html">4clojure - Local bindings (35) &raquo;</a>
         
     </div>
 
