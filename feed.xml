@@ -12,11 +12,30 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Fri, 08 Nov 2019 06:24:58 +0900
+Sat, 09 Nov 2019 07:39:26 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-11-09-4clojure-37.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-11-09-4clojure-37.html
+</link>
+<title>
+4clojure - Regular Expressions (37)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#95;&amp;#95; &amp;#40;apply str &amp;#40;re-seq #&amp;quot;&amp;#91;A-Z&amp;#93;+&amp;quot; &amp;quot;bA1B3Ce &amp;quot;&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;quot;ABC&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;re-seq 함수는 정규식을 이용하여 문자열을 필터링 한다. re-seq함수로만 했을 때는 (“A”, “B”, “C”)로 결과값이 나오는데, (apply str)이 추가 되어 sequence로 되어있는 문자들을 문자열로 합쳐주는 역할을 한다.&lt;/p&gt;
+</description>
+<pubDate>
+Sat, 09 Nov 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-11-08-4clojure-36.html
