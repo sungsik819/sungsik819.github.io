@@ -73,16 +73,25 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 11월 9일 (토)</div>
+        <div class="col-lg-6">2019년 11월 10일 (일)</div>
         
     </div>
-    <h2>4clojure - Regular Expressions (37)</h2>
+    <h2>4clojure - Maximum value (38)</h2>
 </div>
 <div>
     
-    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#95;&#95; &#40;apply str &#40;re-seq #&quot;&#91;A-Z&#93;+&quot; &quot;bA1B3Ce &quot;&#41;&#41;&#41;
-</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&quot;ABC&quot;
-</code></pre></p><p>re-seq 함수는 정규식을 이용하여 문자열을 필터링 한다. re-seq함수로만 했을 때는 (“A”, “B”, “C”)로 결과값이 나오는데, (apply str)이 추가 되어 sequence로 되어있는 문자들을 문자열로 합쳐주는 역할을 한다.</p>
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;&#95;&#95; 1 8 3 4&#41; 8&#41;
+
+&#40;= &#40;&#95;&#95; 30 20&#41; 30&#41;
+
+&#40;= &#40;&#95;&#95; 45 67 11&#41; 67&#41;
+</code></pre></p><p><strong>Solved 1</strong><pre><code class="clj">&#40;fn &#91;x &amp; xs&#93;
+  &#40;loop &#91;ls xs big x&#93;
+    &#40;cond &#40;empty? ls&#41; big
+          &#40;&gt; big &#40;first ls&#41;&#41; &#40;recur &#40;rest ls&#41; big&#41;
+          :else &#40;recur &#40;rest ls&#41; &#40;first ls&#41;&#41;&#41;&#41;&#41;
+</code></pre></p><p><strong>Solved 2</strong><pre><code class="clj">&#40;fn &#91;&amp; x&#93; &#40;last &#40;sort x&#41;&#41;&#41;
+</code></pre></p><p>주어지는 값에서 가장 큰 값을 찾는 문제이다. 예전에 풀었을 때는 너무 길게 풀이를 했었는데 간단한 방법이 있다. sort 후 last 값을 가져오면 가장 큰 값을 가져올 수 있다. 그런데 가변인수를 하는 방법을 몰라서 헤메다가 &를 사용하면 가변 인수라는 것을 알게 되어 또다른 해결책을 만들었다.</p>
 </div>
 
 <div id="post-tags">
@@ -100,7 +109,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2019-11-08-4clojure-36.html">4clojure - Let it Be (36) &raquo;</a>
+        <a class="right" href="/posts/2019-11-09-4clojure-37.html">4clojure - Regular Expressions (37) &raquo;</a>
         
     </div>
 </div>
@@ -119,11 +128,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2019-11-10-4clojure-38.html">4clojure - Maximum value (38)</a></li>
+                        
                         <li><a href="/posts/2019-11-09-4clojure-37.html">4clojure - Regular Expressions (37)</a></li>
                         
                         <li><a href="/posts/2019-11-08-4clojure-36.html">4clojure - Let it Be (36)</a></li>
-                        
-                        <li><a href="/posts/2019-11-07-4clojure-35.html">4clojure - Local bindings (35)</a></li>
                         
                     </ul>
                 </div>
