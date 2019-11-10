@@ -73,25 +73,26 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 11월 10일 (일)</div>
+        <div class="col-lg-6">2019년 11월 11일 (월)</div>
         
     </div>
-    <h2>4clojure - Maximum value (38)</h2>
+    <h2>4clojure - Interleave Two Seqs (39)</h2>
 </div>
 <div>
     
-    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;&#95;&#95; 1 8 3 4&#41; 8&#41;
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;&#95;&#95; &#91;1 2 3&#93; &#91;:a :b :c&#93;&#41; '&#40;1 :a 2 :b 3 :c&#41;&#41;
 
-&#40;= &#40;&#95;&#95; 30 20&#41; 30&#41;
+&#40;= &#40;&#95;&#95; &#91;1 2&#93; &#91;3 4 5 6&#93;&#41; '&#40;1 3 2 4&#41;&#41;
 
-&#40;= &#40;&#95;&#95; 45 67 11&#41; 67&#41;
-</code></pre></p><p><strong>Solved 1</strong><pre><code class="clj">&#40;fn &#91;x &amp; xs&#93;
-  &#40;loop &#91;ls xs big x&#93;
-    &#40;cond &#40;empty? ls&#41; big
-          &#40;&gt; big &#40;first ls&#41;&#41; &#40;recur &#40;rest ls&#41; big&#41;
-          :else &#40;recur &#40;rest ls&#41; &#40;first ls&#41;&#41;&#41;&#41;&#41;
-</code></pre></p><p><strong>Solved 2</strong><pre><code class="clj">&#40;fn &#91;&amp; x&#93; &#40;last &#40;sort x&#41;&#41;&#41;
-</code></pre></p><p>주어지는 값에서 가장 큰 값을 찾는 문제이다. 예전에 풀었을 때는 너무 길게 풀이를 했었는데 간단한 방법이 있다. sort 후 last 값을 가져오면 가장 큰 값을 가져올 수 있다. 그런데 가변인수를 하는 방법을 몰라서 헤메다가 &를 사용하면 가변 인수라는 것을 알게 되어 또다른 해결책을 만들었다.</p>
+&#40;= &#40;&#95;&#95; &#91;1 2 3 4&#93; &#91;5&#93;&#41; &#91;1 5&#93;&#41;
+
+&#40;= &#40;&#95;&#95; &#91;30 20&#93; &#91;25 15&#93;&#41; &#91;30 25 20 15&#93;&#41;
+</code></pre></p><p>제한 : interleave</p><p><strong>Solved 1</strong><pre><code class="clj">mapcat list
+</code></pre></p><p>mapcat이라는 함수가 단순히 map + apply + concat의 합친 함수인줄 알았는데 실제로 해보니 두 함수만 가지고는 해결이 안된다는 것을 깨닫게 되었다. 간단하게 위와같은 형태로 해결이 가능하지만, map + apply + concat으로 해결한 풀이도 추가 한다.</p><p><strong>Solved 2</strong><pre><code class="clj">#&#40;-&gt;&gt; &#40;map list %1 %2&#41;
+		&#40;apply concat&#41;&#41;
+</code></pre></p><p>mapcat 함수를 분석 해보니 <pre><code class="clj">&#40;apply concat &#40;apply map f colls&#41;&#41;&#41;&#41;
+</code></pre></p><p>부분이 있었다 apply map f에 대한 의문점이 생겼었는데 이는 mapcat의 파라미터가 [f & coll]에서 오는 파라미터의 가변성에 착안한 구현이라고 생각 했다.</p><p>예를 든다면 (mapcat list [1 2 3] [:a :b :c]) 일때 내부적으로는<pre><code class="clj">&#40;apply map list &#91;&#91;1 2 3&#93;&#91;:a :b :c&#93;&#93;&#41;
+</code></pre></p><p>의 형태로 묶여서 들어가므로 apply가 꼭 필요하다. 예전에 알아두었던 개념이었는데 다시 상기를 하면서 정리 한다.</p>
 </div>
 
 <div id="post-tags">
@@ -109,7 +110,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2019-11-09-4clojure-37.html">4clojure - Regular Expressions (37) &raquo;</a>
+        <a class="right" href="/posts/2019-11-10-4clojure-38.html">4clojure - Maximum value (38) &raquo;</a>
         
     </div>
 </div>
@@ -128,11 +129,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2019-11-11-4clojure-39.html">4clojure - Interleave Two Seqs (39)</a></li>
+                        
                         <li><a href="/posts/2019-11-10-4clojure-38.html">4clojure - Maximum value (38)</a></li>
                         
                         <li><a href="/posts/2019-11-09-4clojure-37.html">4clojure - Regular Expressions (37)</a></li>
-                        
-                        <li><a href="/posts/2019-11-08-4clojure-36.html">4clojure - Let it Be (36)</a></li>
                         
                     </ul>
                 </div>
