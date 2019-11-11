@@ -12,11 +12,43 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Mon, 11 Nov 2019 06:23:09 +0900
+Tue, 12 Nov 2019 06:12:39 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-11-12-4clojure-40.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-11-12-4clojure-40.html
+</link>
+<title>
+4clojure - Interpose a Seq (40)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#40;&amp;#95;&amp;#95; 0 &amp;#91;1 2 3&amp;#93;&amp;#41; &amp;#91;1 0 2 0 3&amp;#93;&amp;#41;
+
+&amp;#40;= &amp;#40;apply str &amp;#40;&amp;#95;&amp;#95; &amp;quot;, &amp;quot; &amp;#91;&amp;quot;one&amp;quot; &amp;quot;two&amp;quot; &amp;quot;three&amp;quot;&amp;#93;&amp;#41;&amp;#41; &amp;quot;one, two, three&amp;quot;&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; :z &amp;#91;:a :b :c :d&amp;#93;&amp;#41; &amp;#91;:a :z :b :z :c :z :d&amp;#93;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;제한 : interpose&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;value y&amp;#93; &amp;#40;butlast &amp;#40;mapcat &amp;#40;fn &amp;#91;x&amp;#93; &amp;#40;list x value&amp;#41;&amp;#41; y&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;butlast는 마지막 값을 버리는 함수이다.&lt;/p&gt;&lt;p&gt;위 풀이 과정이 있지만 좀 더 나은 방법이 없는지 solution을 확인 하였는데 interleave, repeat의 조합을 활용 하는 방법이 있었다.&lt;/p&gt;&lt;p&gt;interleave는 갯수가 같은 seq 2개이상 이 있어야 사용이 가능하지만 repeat을 이용하면 하나의 원소를 반복한 seq로 만들어주게 되어 활용이 가능하다. repeat는 기본적으로 lazy이므로 take를 같이 사용해야 값을 가져올 수 있다.&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;take 3 &amp;#40;repeat 0&amp;#41;&amp;#41;
+;&amp;#40;0 0 0&amp;#41; 앞의 ;는 주석
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;interleave &amp;#40;repeat 0&amp;#41; &amp;#91;1 2 3&amp;#93;&amp;#41;
+;&amp;#40;0 1 0 2 0 3&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;interleave를 보다가 mapcat + repeat 조합으로 같은 결과를 가져올 수 있을 것 같아 시도를 해봤다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;mapcat list &amp;#40;repeat 0&amp;#41; &amp;#91;1 2 3&amp;#93;&amp;#41;
+;&amp;#40;0 1 0 2 0 3&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;mapcat이 가능하면 map + concat + apply도 가능하므로 사용을 해봤다. 보기 편하기 위해서 -&gt;&gt;를 사용하였다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;-&amp;gt;&amp;gt; &amp;#40;map list &amp;#40;repeat 0&amp;#41; &amp;#91;1 2 3&amp;#93;&amp;#41;
+	   &amp;#40;apply concat&amp;#41;&amp;#41;
+;&amp;#40;0 1 0 2 0 3&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;문제의 결과와 같기 위해서는 처음의 0은 없어야 하므로 rest 함수를 사용 하여 처음 값을 버리고 나머지 값을 사용하도록 하면 결과와 같아진다.&lt;/p&gt;
+</description>
+<pubDate>
+Tue, 12 Nov 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-11-11-4clojure-39.html
