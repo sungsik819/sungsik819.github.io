@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: Tags</title>
-    <link rel="canonical" href="http://dev-happy.com/tags.html">
+    <title>Dev Happy: 4clojure - Drop Every Nth Item (41)</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2019-11-13-4clojure-41.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -70,28 +70,55 @@
         <div class="col-lg-9">
             <div id="content">
                 
-<div id="tags-page">
-    <div id="page-header">
-        <h2>Tags</h2>
+<div id="post">
+    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">2019년 11월 13일 (수)</div>
+        
+    </div>
+    <h2>4clojure - Drop Every Nth Item (41)</h2>
+</div>
+<div>
+    
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;&#95;&#95; &#91;1 2 3 4 5 6 7 8&#93; 3&#41; &#91;1 2 4 5 7 8&#93;&#41;
+
+&#40;= &#40;&#95;&#95; &#91;:a :b :c :d :e :f&#93; 2&#41; &#91;:a :c :e&#93;&#41;
+
+&#40;= &#40;&#95;&#95; &#91;1 2 3 4 5 6&#93; 4&#41; &#91;1 2 3 5 6&#93;&#41;
+</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn &#91;x y&#93;
+  &#40;keep-indexed #&#40;if &#40;not= &#40;mod &#40;+ %1 1&#41; y&#41; 0&#41; %2&#41; x&#41;&#41;
+</code></pre></p><p>나머지 연산을 사용하여 index에 해당하는 배수는 필터링 하고, 나머지 값을 출력하는 문제이다. keep-indexed 함수가 있는데 index, value 형식으로 값을 준다.</p><pre><code class="clj">&#40;keep-indexed list &#91;:a :b&#93;&#41;
+;&#40;&#40;0 :a&#41; &#40;1 :b&#41;&#41;
+</code></pre><p>mod는 나머지 연산 함수 이다.<pre><code class="clj">&#40;mod 1 3&#41;
+;1
+
+&#40;mod 9 3&#41;
+;0
+</code></pre></p><p>solution에는 partition-all이라는 함수가 있는데 묶는 갯수, step을 값으로 받아서 출력하는 방식을 사용 하고 있다.</p><pre><code class="clj">&#40;partition-all 2 3 &#91;1 2 3 4 5 6 7 8&#93;&#41;
+;&#40;&#40;1 2&#41; &#40;4 5&#41; &#40;7 8&#41;&#41;
+</code></pre><p>2개씩 값을 묶고, 3step으로 이동하여 나오는 결과 이다.</p><p>나뉘어져 있는 결과를 apply + concat 을 사용하여 묶어주면 된다. partition 함수와 비슷한 역할을 하는데 partition은 3개씩 묶고 1개가 남으면 그것을 버리는데  partition-all은 3개씩 묶고 1개가 남으면 그것도 같이 출력을 한다.</p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/4clojure.html">4clojure</a>
+    
+    <a href="/Today I Learn.html">Today I Learn</a>
+    
+</div>
+
+
+    <div id="prev-next">
+        
+        
+        <a class="right" href="/posts/2019-11-12-4clojure-40.html">4clojure - Interpose a Seq (40) &raquo;</a>
+        
     </div>
 
-    <ul>
-        
-        <li><a href="/4clojure.html">4clojure</a></li>
-        
-        <li><a href="/Today I Learn.html">Today I Learn</a></li>
-        
-        <li><a href="/essay.html">essay</a></li>
-        
-        <li><a href="/python.html">python</a></li>
-        
-        <li><a href="/clojure.html">clojure</a></li>
-        
-        <li><a href="/why.html">why</a></li>
-        
-        <li><a href="/write.html">write</a></li>
-        
-    </ul>
+    
+
+
 </div>
 
             </div>
