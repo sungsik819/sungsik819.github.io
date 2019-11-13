@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: 4clojure - Regular Expressions (37)</title>
-    <link rel="canonical" href="http://dev-happy.com/posts/2019-11-09-4clojure-37.html">
+    <title>Dev Happy: 4clojure - Factorial Fun (42)</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2019-11-14-4clojure-42.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -73,16 +73,23 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 11월 9일 (토)</div>
+        <div class="col-lg-6">2019년 11월 14일 (목)</div>
         
     </div>
-    <h2>4clojure - Regular Expressions (37)</h2>
+    <h2>4clojure - Factorial Fun (42)</h2>
 </div>
 <div>
     
-    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#95;&#95; &#40;apply str &#40;re-seq #&quot;&#91;A-Z&#93;+&quot; &quot;bA1B3Ce &quot;&#41;&#41;&#41;
-</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&quot;ABC&quot;
-</code></pre></p><p>re-seq 함수는 정규식을 이용하여 문자열을 필터링 한다. re-seq함수로만 했을 때는 (“A”, “B”, “C”)로 결과값이 나오는데, (apply str)이 추가 되어 sequence로 되어있는 문자들을 문자열로 합쳐주는 역할을 한다.</p>
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;&#95;&#95; 1&#41; 1&#41;
+
+&#40;= &#40;&#95;&#95; 3&#41; 6&#41;
+
+&#40;= &#40;&#95;&#95; 5&#41; 120&#41;
+
+&#40;= &#40;&#95;&#95; 8&#41; 40320&#41;
+</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn &#91;x&#93;
+  &#40;apply &#42; &#40;range 1 &#40;inc x&#41;&#41;&#41;&#41;
+</code></pre></p><p>팩토리얼 문제이다. x로 들어오는 값은 포함을 해야하기 때문에 내부에서 계산시 inc로 1 증가 시켜 x의 값을 증가 시켰다. 그에 결과 리스트를 * 하여 값을 도출해 내었다.</p>
 </div>
 
 <div id="post-tags">
@@ -97,10 +104,8 @@
 
     <div id="prev-next">
         
-        <a href="/posts/2019-11-10-4clojure-38.html">&laquo; 4clojure - Maximum value (38)</a>
         
-        
-        <a class="right" href="/posts/2019-11-08-4clojure-36.html">4clojure - Let it Be (36) &raquo;</a>
+        <a class="right" href="/posts/2019-11-13-4clojure-41.html">4clojure - Drop Every Nth Item (41) &raquo;</a>
         
     </div>
 
