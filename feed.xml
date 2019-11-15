@@ -12,11 +12,87 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Fri, 15 Nov 2019 06:28:53 +0900
+Sat, 16 Nov 2019 06:13:43 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-11-16-4clojure-44.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-11-16-4clojure-44.html
+</link>
+<title>
+4clojure - Rotate Sequence (44)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#40;&amp;#95;&amp;#95; 2 &amp;#91;1 2 3 4 5&amp;#93;&amp;#41; '&amp;#40;3 4 5 1 2&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; -2 &amp;#91;1 2 3 4 5&amp;#93;&amp;#41; '&amp;#40;4 5 1 2 3&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; 6 &amp;#91;1 2 3 4 5&amp;#93;&amp;#41; '&amp;#40;2 3 4 5 1&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; 1 '&amp;#40;:a :b :c&amp;#41;&amp;#41; '&amp;#40;:b :c :a&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; -4 '&amp;#40;:a :b :c&amp;#41;&amp;#41; '&amp;#40;:c :a :b&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;n coll&amp;#93;
+	&amp;#40;let &amp;#91;cnt &amp;#40;count coll&amp;#41;
+			m &amp;#40;mod n cnt&amp;#41;&amp;#93;
+		&amp;#40;apply concat &amp;#40;list &amp;#40;drop m coll&amp;#41; &amp;#40;take m coll&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;partition-by를 사용하면 그룹으로 묶어주는 방법이 있다고 생각 했다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;partition-by #&amp;#40;&amp;gt;= 1 %&amp;#41; &amp;#91;1 2 3 4 5&amp;#93;&amp;#41;
+;; &amp;#40;&amp;#40;1&amp;#41; &amp;#40;2 3 4 5&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;위의 결과를 뒤집어서 합치면 되는데 into로 넣는 방법이 생각 났다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;into '&amp;#40;&amp;#41; &amp;#40;partition-by #&amp;#40;&amp;gt;= 1 %&amp;#41; &amp;#91;1 2 3 4 5&amp;#93;&amp;#41;&amp;#41;
+;; &amp;#40;&amp;#40;2 3 4 5&amp;#41; &amp;#40;1&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;이 결과를 가지고 이제 합치기만 하면 되므로 concat을 사용 했다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;apply concat &amp;#40;into '&amp;#40;&amp;#41; &amp;#40;partition-by #&amp;#40;&amp;gt;= 1 %&amp;#41; &amp;#91;1 2 3 4 5&amp;#93;&amp;#41;&amp;#41;&amp;#41;
+;; &amp;#40;2 3 4 5 1&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;여기까지의 결과만 보고 잘 된 것이라 생각 했는데 ‘(:a :b :c)에 대한 검증을 통과하지 못하므로 다시 해야된다.&lt;/p&gt;&lt;p&gt;index가 필요하다 판단이 들어서 iterate로 index 조합을 만들었다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;interleave &amp;#40;iterate inc 0&amp;#41; &amp;#91;1 2 3 4 5&amp;#93;&amp;#41;
+;; &amp;#40;0 1 1 2 2 3 3 4 4 5&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;이렇게 하면 인덱스와 값이 구분이 되지 않으므로 묶는 작업이 필요하다&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;partition 2 &amp;#40;interleave &amp;#40;iterate inc 0&amp;#41; &amp;#91;1 2 3 4 5&amp;#93;&amp;#41;&amp;#41;
+;; &amp;#40;&amp;#40;0 1&amp;#41; &amp;#40;1 2&amp;#41; &amp;#40;2 3&amp;#41; &amp;#40;3 4&amp;#41; &amp;#40;4 5&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;만들다보니 보기가 불편해서 -&gt;&gt; 로 보기 편하게 변형 했다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;-&amp;gt;&amp;gt; &amp;#40;interleave &amp;#40;iterate inc 0&amp;#41; &amp;#91;1 2 3 4 5&amp;#93;&amp;#41;
+	   &amp;#40;partition 2&amp;#41;&amp;#41;
+;; &amp;#40;&amp;#40;0 1&amp;#41; &amp;#40;1 2&amp;#41; &amp;#40;2 3&amp;#41; &amp;#40;3 4&amp;#41; &amp;#40;4 5&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;이제 first 값을 인덱스로 해서 검증을 하면 된다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;-&amp;gt;&amp;gt; &amp;#40;interleave &amp;#40;iterate inc 0&amp;#41; &amp;#91;1 2 3 4 5&amp;#93;&amp;#41;
+     &amp;#40;partition 2&amp;#41;
+	   &amp;#40;partition-by #&amp;#40;&amp;gt;= 1 &amp;#40;first %&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+;; &amp;#40;&amp;#40;&amp;#40;0 1&amp;#41; &amp;#40;1 2&amp;#41;&amp;#41; &amp;#40;&amp;#40;2 3&amp;#41; &amp;#40;3 4&amp;#41; &amp;#40;4 5&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;점점 괄호가 많아지는데 저걸 어떻게 한번에 없애면서 last 값만 가져오는지 고민이 필요하다.&lt;/p&gt;&lt;p&gt;문제를 고민하다가 아무래도 저 안에서 빠져나오지 못할 것 같아서 문제에 대한 search를 했다.&lt;/p&gt;&lt;p&gt;근데 그대로 답을 사용하긴 좀 그래서 mod만 참조를 하고 나머지는 내 생각으로 하기로 했다.&lt;/p&gt;&lt;p&gt;우선 mod는 나머지를 구하는 함수이다. rem과의 차이점은 아래 결과이다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;mod 6 -5&amp;#41;
+;; -4 -&amp;gt; &amp;#40;-5 &amp;#42; -2&amp;#41; + -4
+
+&amp;#40;rem 6 -5&amp;#41;
+;; 1 -&amp;gt; &amp;#40;-5 &amp;#42; -1&amp;#41; + 1
+
+&amp;#40;mod 6 -10&amp;#41;
+;; -4 -&amp;gt; &amp;#40;-10 &amp;#42; -1&amp;#41; -4
+
+&amp;#40;rem 6 -10&amp;#41;
+;; 6 -&amp;gt; &amp;#40;-10 &amp;#42; 0&amp;#41; + 6
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;위 문제에 있는 vector의 count와 적용을 한다면&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;mod -2 5&amp;#41;
+;; 3 -&amp;gt; &amp;#40;5 &amp;#42; -1&amp;#41; + 3
+
+&amp;#40;rem -2 5&amp;#41;
+;; -2 -&amp;gt; &amp;#40;5 &amp;#42; 0&amp;#41; -2
+
+&amp;#40;mod -4 3&amp;#41;
+;; 2 -&amp;gt; &amp;#40;3 &amp;#42; -2&amp;#41; +2
+
+&amp;#40;rem -4 3&amp;#41;
+;; -1 -&amp;gt; &amp;#40;3 &amp;#42; -1&amp;#41; -1
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;풀이를 만들어 보고 나서도 왜 저렇게 계산을 다르게 해야 되는건지 이해가 잘 가지는 않는다. 계산식을 만들어보면서 어떻게 하면 저 값이 나오는지 생각을 하면서 하다보니 수학 공부를 다시 하게 되는 느낌이었다.&lt;/p&gt;&lt;p&gt;last-take를 할 필요 없이 drop을 사용해서도 문제가 간단하게 풀릴수 있을 것 같아서 사용을 했고, flatten 보다는 apply concat을 사용하여 좀 더 내 생각을 넣도록 문제를 풀었다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;n coll&amp;#93;
+	&amp;#40;let &amp;#91;cnt &amp;#40;count coll&amp;#41;
+			m &amp;#40;mod n cnt&amp;#41;&amp;#93;
+		&amp;#40;apply concat &amp;#40;list &amp;#40;drop m coll&amp;#41; &amp;#40;take m coll&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;근데 생각을 해보니 아래와 같이 좀 더 줄여서도 가능 할 것 같다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;n coll&amp;#93;
+	&amp;#40;let &amp;#91;m &amp;#40;mod n &amp;#40;count coll&amp;#41;&amp;#41;&amp;#93;
+		&amp;#40;concat &amp;#40;drop m coll&amp;#41; &amp;#40;take m coll&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+</description>
+<pubDate>
+Sat, 16 Nov 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-11-15-4clojure-43.html
