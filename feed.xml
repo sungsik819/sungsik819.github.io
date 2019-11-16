@@ -12,11 +12,30 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Sat, 16 Nov 2019 06:13:43 +0900
+Sun, 17 Nov 2019 05:43:07 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-11-17-4clojure-45.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-11-17-4clojure-45.html
+</link>
+<title>
+4clojure - Intro to Iterate (45)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#95;&amp;#95; &amp;#40;take 5 &amp;#40;iterate #&amp;#40;+ 3 %&amp;#41; 1&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#91;1 4 7 10 13&amp;#93;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;iterate 입문 문제 이다. 단순하게 생각해서 +3을 하면서 5개를 가져오는 문제이다. 근데 iterate를 보면 이제는 계산을 하게 된다. 처음에 1로 시작하고, 그 후 (+ 3 1)로 4가 되고 그 다음에는 (+ 3 4)로 7이 되는 recursive 계산을 하게 된다.&lt;/p&gt;
+</description>
+<pubDate>
+Sun, 17 Nov 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-11-16-4clojure-44.html

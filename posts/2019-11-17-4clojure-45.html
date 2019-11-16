@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: 4clojure - Penultimate Element (20)</title>
-    <link rel="canonical" href="http://dev-happy.com/posts/2019-10-23-4clojure-20.html">
+    <title>Dev Happy: 4clojure - Intro to Iterate (45)</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2019-11-17-4clojure-45.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -73,20 +73,16 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 10월 23일 (수)</div>
+        <div class="col-lg-6">2019년 11월 17일 (일)</div>
         
     </div>
-    <h2>4clojure - Penultimate Element (20)</h2>
+    <h2>4clojure - Intro to Iterate (45)</h2>
 </div>
 <div>
     
-    <pre><code class="clojure">&#40;= &#40;&#95;&#95; &#40;list 1 2 3 4 5&#41;&#41; 4&#41;
-
-&#40;= &#40;&#95;&#95; &#91;&quot;a&quot; &quot;b&quot; &quot;c&quot;&#93;&#41; &quot;b&quot;&#41;
-
-&#40;= &#40;&#95;&#95; &#91;&#91;1 2&#93; &#91;3 4&#93;&#93;&#41; &#91;1 2&#93;&#41;
-</code></pre><pre><code class="clojure">#&#40;second &#40;reverse %&#41;&#41;
-</code></pre><p>19번 문제와 비슷한 문제 이다. 언뜻 보기에는 각각 다른 위치의 원소를 가져오는 문제 처럼 보여서 헷갈렸는데 결국에는 뒤집어서 두번째 원소를 가져오는 문제라는 사실을 깨닫고 풀게 된 문제이다. 앞으로 이런 문제들이 많을 텐데 생각의 확장이 필요 한 것 같다.</p>
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#95;&#95; &#40;take 5 &#40;iterate #&#40;+ 3 %&#41; 1&#41;&#41;&#41;
+</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&#91;1 4 7 10 13&#93;
+</code></pre></p><p>iterate 입문 문제 이다. 단순하게 생각해서 +3을 하면서 5개를 가져오는 문제이다. 근데 iterate를 보면 이제는 계산을 하게 된다. 처음에 1로 시작하고, 그 후 (+ 3 1)로 4가 되고 그 다음에는 (+ 3 4)로 7이 되는 recursive 계산을 하게 된다.</p>
 </div>
 
 <div id="post-tags">
@@ -101,10 +97,8 @@
 
     <div id="prev-next">
         
-        <a href="/posts/2019-10-24-4clojure-21.html">&laquo; 4clojure - Nth Element (21)</a>
         
-        
-        <a class="right" href="/posts/2019-10-22-4clojure-19.html">4clojure - Last Element (19) &raquo;</a>
+        <a class="right" href="/posts/2019-11-16-4clojure-44.html">4clojure - Rotate Sequence (44) &raquo;</a>
         
     </div>
 
