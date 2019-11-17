@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: Posts Tagged &quot;write&quot;</title>
-    <link rel="canonical" href="http://dev-happy.com/write.html">
+    <title>Dev Happy: 4clojure - Flipping out (46)</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2019-11-18-4clojure-46.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -70,17 +70,52 @@
         <div class="col-lg-9">
             <div id="content">
                 
-<div id="posts-by-tag">
-    <div id="page-header">
-        <h2>Posts Tagged &quot;write&quot;</h2>
+<div id="post">
+    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">2019년 11월 18일 (월)</div>
+        
     </div>
-    <ul>
+    <h2>4clojure - Flipping out (46)</h2>
+</div>
+<div>
     
-        <li>
-            <a href="/posts/2018-01-27-first-post.html">클로저로 된 블로그 생성</a>
-        </li>
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= 3 &#40;&#40;&#95;&#95; nth&#41; 2 &#91;1 2 3 4 5&#93;&#41;&#41;
+
+&#40;= true &#40;&#40;&#95;&#95; &gt;&#41; 7 8&#41;&#41;
+
+&#40;= 4 &#40;&#40;&#95;&#95; quot&#41; 2 8&#41;&#41;
+
+&#40;= &#91;1 2 3&#93; &#40;&#40;&#95;&#95; take&#41; &#91;1 2 3 4 5&#93; 3&#41;&#41;
+</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn &#91;f&#93;
+  &#40;fn &#91;x y&#93;
+    &#40;f y x&#41;&#41;&#41;
+</code></pre></p><p>함수 내부의 함수 정의를 하는 방법으로 문제를 해결 했다. 과정을 설명한다면 처음에 (fn [f])의 실행으로 (fn [x y]가 리턴되고 그 후에 x y값에 해당하는 결과를 (f y x)를 실행하므로써 해결을 한다.즉 이런 모양이다. </p><pre><code class="clj">&#40;&#40;&#40;fn &#91;f&#93; &#40;fn &#91;x y&#93; &#40;f y x&#41;&#41;&#41; nth&#41; 2 &#91;1 2 3 4 5&#93;&#41;
+
+&#40;&#40;fn &#91;x y&#93; &#40;nth y x&#41;&#41; 2 &#91;1 2 3 4 5&#93;&#41;
+</code></pre><p>처음과 같은 모양이 되었다가 함수가 실행되고 나서는 두번째와 같은 모양이 된다.</p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
     
-    </ul>
+    <a href="/4clojure.html">4clojure</a>
+    
+    <a href="/Today I Learn.html">Today I Learn</a>
+    
+</div>
+
+
+    <div id="prev-next">
+        
+        
+        <a class="right" href="/posts/2019-11-17-4clojure-45.html">4clojure - Intro to Iterate (45) &raquo;</a>
+        
+    </div>
+
+    
+
+
 </div>
 
             </div>

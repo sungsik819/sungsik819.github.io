@@ -12,11 +12,41 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Sun, 17 Nov 2019 05:43:07 +0900
+Mon, 18 Nov 2019 06:19:08 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-11-18-4clojure-46.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-11-18-4clojure-46.html
+</link>
+<title>
+4clojure - Flipping out (46)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= 3 &amp;#40;&amp;#40;&amp;#95;&amp;#95; nth&amp;#41; 2 &amp;#91;1 2 3 4 5&amp;#93;&amp;#41;&amp;#41;
+
+&amp;#40;= true &amp;#40;&amp;#40;&amp;#95;&amp;#95; &amp;gt;&amp;#41; 7 8&amp;#41;&amp;#41;
+
+&amp;#40;= 4 &amp;#40;&amp;#40;&amp;#95;&amp;#95; quot&amp;#41; 2 8&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#91;1 2 3&amp;#93; &amp;#40;&amp;#40;&amp;#95;&amp;#95; take&amp;#41; &amp;#91;1 2 3 4 5&amp;#93; 3&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;f&amp;#93;
+  &amp;#40;fn &amp;#91;x y&amp;#93;
+    &amp;#40;f y x&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;함수 내부의 함수 정의를 하는 방법으로 문제를 해결 했다. 과정을 설명한다면 처음에 (fn [f])의 실행으로 (fn [x y]가 리턴되고 그 후에 x y값에 해당하는 결과를 (f y x)를 실행하므로써 해결을 한다.즉 이런 모양이다. &lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;&amp;#40;&amp;#40;fn &amp;#91;f&amp;#93; &amp;#40;fn &amp;#91;x y&amp;#93; &amp;#40;f y x&amp;#41;&amp;#41;&amp;#41; nth&amp;#41; 2 &amp;#91;1 2 3 4 5&amp;#93;&amp;#41;
+
+&amp;#40;&amp;#40;fn &amp;#91;x y&amp;#93; &amp;#40;nth y x&amp;#41;&amp;#41; 2 &amp;#91;1 2 3 4 5&amp;#93;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;처음과 같은 모양이 되었다가 함수가 실행되고 나서는 두번째와 같은 모양이 된다.&lt;/p&gt;
+</description>
+<pubDate>
+Mon, 18 Nov 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-11-17-4clojure-45.html
