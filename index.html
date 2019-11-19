@@ -73,22 +73,18 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 11월 19일 (화)</div>
+        <div class="col-lg-6">2019년 11월 20일 (수)</div>
         
     </div>
-    <h2>4clojure - Contain Yourself (47)</h2>
+    <h2>4clojure - Intro to some (48)</h2>
 </div>
 <div>
     
-    <p><strong>Problem</strong><pre><code class="clj">&#40;contains? #{4 5 6} &#95;&#95;&#41;
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#95;&#95; &#40;some #{2 7 6} &#91;5 6 7 8&#93;&#41;&#41;
 
-&#40;contains? &#91;1 1 1 1 1&#93; &#95;&#95;&#41;
-
-&#40;contains? {4 :a 2 :b} &#95;&#95;&#41;
-
-&#40;not &#40;contains? &#91;1 2 4&#93; &#95;&#95;&#41;&#41;
-</code></pre></p><p><strong>Solved</strong><pre><code class="clj">4
-</code></pre></p><p>value값이 있는지 찾는 문제 이다. 하지만 vector에 대해서는 index에 값이 있는지 판단하는 함수로 변한다.  hash-map에 대해서는 key 값의 존재 여부도 판단 가능하다.</p>
+&#40;= &#95;&#95; &#40;some #&#40;when &#40;even? %&#41; %&#41; &#91;5 6 7 8&#93;&#41;&#41;
+</code></pre></p><p><strong>Solved</strong><pre><code class="clj">6
+</code></pre></p><p>some 함수 동작 관련 문제 이다. some 함수는 기본적으로  2번째 인자인 collection의 순서를 따른다. 즉, 1번째 문제에서와 같이 1번째 인자에 값이 먼저 있어도 2번째 인자의 순서에 따르기 때문에 6이 되는 것이다. 1번째 인자를 함수로도 판단이 가능하다. pred를predicate라고 하는데 부울 형식으로 값을 돌려주는 형식이라고 한다.</p>
 </div>
 
 <div id="post-tags">
@@ -106,7 +102,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2019-11-18-4clojure-46.html">4clojure - Flipping out (46) &raquo;</a>
+        <a class="right" href="/posts/2019-11-19-4clojure-47.html">4clojure - Contain Yourself (47) &raquo;</a>
         
     </div>
 </div>
@@ -125,11 +121,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2019-11-20-4clojure-48.html">4clojure - Intro to some (48)</a></li>
+                        
                         <li><a href="/posts/2019-11-19-4clojure-47.html">4clojure - Contain Yourself (47)</a></li>
                         
                         <li><a href="/posts/2019-11-18-4clojure-46.html">4clojure - Flipping out (46)</a></li>
-                        
-                        <li><a href="/posts/2019-11-17-4clojure-45.html">4clojure - Intro to Iterate (45)</a></li>
                         
                     </ul>
                 </div>

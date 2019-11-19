@@ -12,11 +12,32 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Tue, 19 Nov 2019 06:15:22 +0900
+Wed, 20 Nov 2019 06:09:08 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-11-20-4clojure-48.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-11-20-4clojure-48.html
+</link>
+<title>
+4clojure - Intro to some (48)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#95;&amp;#95; &amp;#40;some #{2 7 6} &amp;#91;5 6 7 8&amp;#93;&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#95;&amp;#95; &amp;#40;some #&amp;#40;when &amp;#40;even? %&amp;#41; %&amp;#41; &amp;#91;5 6 7 8&amp;#93;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;6
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;some 함수 동작 관련 문제 이다. some 함수는 기본적으로  2번째 인자인 collection의 순서를 따른다. 즉, 1번째 문제에서와 같이 1번째 인자에 값이 먼저 있어도 2번째 인자의 순서에 따르기 때문에 6이 되는 것이다. 1번째 인자를 함수로도 판단이 가능하다. pred를predicate라고 하는데 부울 형식으로 값을 돌려주는 형식이라고 한다.&lt;/p&gt;
+</description>
+<pubDate>
+Wed, 20 Nov 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-11-19-4clojure-47.html

@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: 4clojure - Let it Be (36)</title>
-    <link rel="canonical" href="http://dev-happy.com/posts/2019-11-08-4clojure-36.html">
+    <title>Dev Happy: 4clojure - Intro to some (48)</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2019-11-20-4clojure-48.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -73,20 +73,18 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 11월 8일 (금)</div>
+        <div class="col-lg-6">2019년 11월 20일 (수)</div>
         
     </div>
-    <h2>4clojure - Let it Be (36)</h2>
+    <h2>4clojure - Intro to some (48)</h2>
 </div>
 <div>
     
-    <p><strong>Problem</strong><pre><code class="clj">&#40;= 10 &#40;let &#95;&#95; &#40;+ x y&#41;&#41;&#41;
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#95;&#95; &#40;some #{2 7 6} &#91;5 6 7 8&#93;&#41;&#41;
 
-&#40;= 4 &#40;let &#95;&#95; &#40;+ y z&#41;&#41;&#41;
-
-&#40;= 1 &#40;let &#95;&#95; z&#41;&#41;
-</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&#91;x 7, y 3, z 1&#93;
-</code></pre></p><p>여러개의 값을 local binding을 하여 푸는 문제 이다. 기본적으로  let [] 형태로 여러개의 값을 local binding 가능하고 ,로 binding 별 구분이 가능하다. 변수 선언을 여러개 하는 방법이라고 생각 하면 될 것 같다. 어느 언어에서나 마찬가지 이겠지만 괄호 안에서만 그 값을 사용 가능하다는 것도 동일하다.</p>
+&#40;= &#95;&#95; &#40;some #&#40;when &#40;even? %&#41; %&#41; &#91;5 6 7 8&#93;&#41;&#41;
+</code></pre></p><p><strong>Solved</strong><pre><code class="clj">6
+</code></pre></p><p>some 함수 동작 관련 문제 이다. some 함수는 기본적으로  2번째 인자인 collection의 순서를 따른다. 즉, 1번째 문제에서와 같이 1번째 인자에 값이 먼저 있어도 2번째 인자의 순서에 따르기 때문에 6이 되는 것이다. 1번째 인자를 함수로도 판단이 가능하다. pred를predicate라고 하는데 부울 형식으로 값을 돌려주는 형식이라고 한다.</p>
 </div>
 
 <div id="post-tags">
@@ -101,10 +99,8 @@
 
     <div id="prev-next">
         
-        <a href="/posts/2019-11-09-4clojure-37.html">&laquo; 4clojure - Regular Expressions (37)</a>
         
-        
-        <a class="right" href="/posts/2019-11-07-4clojure-35.html">4clojure - Local bindings (35) &raquo;</a>
+        <a class="right" href="/posts/2019-11-19-4clojure-47.html">4clojure - Contain Yourself (47) &raquo;</a>
         
     </div>
 
