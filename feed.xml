@@ -12,11 +12,40 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Thu, 21 Nov 2019 06:31:26 +0900
+Fri, 22 Nov 2019 06:05:56 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-11-22-4clojure-50.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-11-22-4clojure-50.html
+</link>
+<title>
+4clojure - Split by Type (50)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#40;set &amp;#40;&amp;#95;&amp;#95; &amp;#91;1 :a 2 :b 3 :c&amp;#93;&amp;#41;&amp;#41; #{&amp;#91;1 2 3&amp;#93; &amp;#91;:a :b :c&amp;#93;}&amp;#41;
+
+&amp;#40;= &amp;#40;set &amp;#40;&amp;#95;&amp;#95; &amp;#91;:a &amp;quot;foo&amp;quot;  &amp;quot;bar&amp;quot; :b&amp;#93;&amp;#41;&amp;#41; #{&amp;#91;:a :b&amp;#93; &amp;#91;&amp;quot;foo&amp;quot; &amp;quot;bar&amp;quot;&amp;#93;}&amp;#41;
+
+&amp;#40;= &amp;#40;set &amp;#40;&amp;#95;&amp;#95; &amp;#91;&amp;#91;1 2&amp;#93; :a &amp;#91;3 4&amp;#93; 5 6 :b&amp;#93;&amp;#41;&amp;#41; #{&amp;#91;&amp;#91;1 2&amp;#93; &amp;#91;3 4&amp;#93;&amp;#93; &amp;#91;:a :b&amp;#93; &amp;#91;5 6&amp;#93;}&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;#&amp;#40;vals &amp;#40;group-by type %&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;같은 조건으로 묶어주는 함수가 group-by라는 것을 문서를 보다가 다시 되뇌었다. 분명히 group-by로 문제를 풀었던 것이 있었는데 생각이 안나는 것을 보면 지속적인 문제 풀이한 것을 봐야하지 않을까?하는 생각이 들었다.&lt;/p&gt;&lt;p&gt;아니면 너무 다른 방식이라서 쉽게 생각을 못했던 것일 수도 있고... 익숙한 방법으로만 생각을 하려고 하다보니 더 쉬운 방법이 생각이 나지 않았다.&lt;/p&gt;&lt;p&gt;우선 group-by를 사용을 했다. 같은 type으로 묶어주면 될 것 같아서 값을 확인 해봤다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;group-by type &amp;#91;1 :a 2 :b 3 :c&amp;#93;&amp;#41;
+;; {java.lang.Long &amp;#91;1 2 3&amp;#93;, clojure.lang.Keyword &amp;#91;:a :b :c&amp;#93;}
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;map으로 되어 있는 값을 어떻게 다시 꺼내와야 하는지에 대한 고민을 하다보니 concat으로 되지 않을까 해서 시도를 해봤다&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;concat &amp;#40;group-by type &amp;#91;1 :a 2 :b 3 :c&amp;#93;&amp;#41;&amp;#41;
+;; &amp;#40;&amp;#91;java.lang.Long &amp;#91;1 2 3&amp;#93;&amp;#93; &amp;#91;clojure.lang.Keyword &amp;#91;:a :b :c&amp;#93;&amp;#93;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;더 깊숙히 들어가 버렸다... 근데 생각 해보니 hash-map이다, key,value로 구성이 되어 있고 keys, values만 가져올수 있는 함수가 있었다는 것이 생각이 났다. 결국에는 테스트를 통과 하기 위해서는 values만 가져오면 된다는 것이 번뜩 생각 났다&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;vals &amp;#40;group-by type &amp;#91;1 :a 2 :b 3 :c&amp;#93;&amp;#41;&amp;#41;
+;; &amp;#40;&amp;#91;1 2 3&amp;#93; &amp;#91;:a :b :c&amp;#93;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+</description>
+<pubDate>
+Fri, 22 Nov 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-11-21-4clojure-49.html
