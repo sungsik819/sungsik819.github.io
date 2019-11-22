@@ -12,11 +12,28 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Fri, 22 Nov 2019 06:05:56 +0900
+Sat, 23 Nov 2019 06:01:16 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-11-23-again-4clojure.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-11-23-again-4clojure.html
+</link>
+<title>
+4clojure 를 다시 하면서..
+</title>
+<description>
+&lt;p&gt;50번까지 다시 정리를 하고, 풀이들을 보고, 다른 사람의 풀이와 비교를 해보면서 1개의 함수를 가지고 문제를 해결을 한다는 것이 어리석은 판단이라는 것을 깨닫게 되었다. 항상 어떠한 문제들을 해결 하려면 여러 함수의 조합을 사용해서 문제를 푸는 방식이 clojure답게 문제를 푸는 것이 아닌가 하는 생각이 들었다. &lt;/p&gt;&lt;p&gt;어떤 알고리즘을 내가 무식하게 만들어서 푸는 방법도 있겠지만 그걸 생각하기 전에 함수의 조합을 생각하고 이용하는 방법으로 푸는 것도 생각의 확장에 도움이 되리라 생각한다.&lt;/p&gt;
+</description>
+<pubDate>
+Sat, 23 Nov 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-11-22-4clojure-50.html
