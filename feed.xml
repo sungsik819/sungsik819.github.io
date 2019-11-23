@@ -12,11 +12,30 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Sat, 23 Nov 2019 06:01:16 +0900
+Sun, 24 Nov 2019 05:41:44 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-11-24-4clojure-51.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-11-24-4clojure-51.html
+</link>
+<title>
+4clojure - Advanced Destructuring (51)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#91;1 2 &amp;#91;3 4 5&amp;#93; &amp;#91;1 2 3 4 5&amp;#93;&amp;#93; &amp;#40;let &amp;#91;&amp;#91;a b &amp;amp; c :as d&amp;#93; &amp;#95;&amp;#95;&amp;#93; &amp;#91;a b c d&amp;#93;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#91;1 2 3 4 5&amp;#93;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;parameter 에 대한 인수 분해 문제 이다.[a b &amp; c :as d]의 의미를 알아야 하는데 결과적으로도 &lt;a href=''&gt;1 2 [3 4 5&lt;/a&gt;]가 되어야 한다. 즉 a = 1, b = 2, c = [3 4 5], d = [1 2 3 4 5]일 때 답이 되고, 분해되는 방식도 그 방식과 동일 하다. 사실 :as d는 인수의 전체를 반환하는 것이라 d 값이 무엇인지 를 알 수 있으면 쉽게 풀 수 있다. &lt;/p&gt;
+</description>
+<pubDate>
+Sun, 24 Nov 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-11-23-again-4clojure.html

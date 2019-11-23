@@ -73,14 +73,16 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 11월 23일 (토)</div>
+        <div class="col-lg-6">2019년 11월 24일 (일)</div>
         
     </div>
-    <h2>4clojure 를 다시 하면서..</h2>
+    <h2>4clojure - Advanced Destructuring (51)</h2>
 </div>
 <div>
     
-    <p>50번까지 다시 정리를 하고, 풀이들을 보고, 다른 사람의 풀이와 비교를 해보면서 1개의 함수를 가지고 문제를 해결을 한다는 것이 어리석은 판단이라는 것을 깨닫게 되었다. 항상 어떠한 문제들을 해결 하려면 여러 함수의 조합을 사용해서 문제를 푸는 방식이 clojure답게 문제를 푸는 것이 아닌가 하는 생각이 들었다. </p><p>어떤 알고리즘을 내가 무식하게 만들어서 푸는 방법도 있겠지만 그걸 생각하기 전에 함수의 조합을 생각하고 이용하는 방법으로 푸는 것도 생각의 확장에 도움이 되리라 생각한다.</p>
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#91;1 2 &#91;3 4 5&#93; &#91;1 2 3 4 5&#93;&#93; &#40;let &#91;&#91;a b &amp; c :as d&#93; &#95;&#95;&#93; &#91;a b c d&#93;&#41;&#41;
+</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&#91;1 2 3 4 5&#93;
+</code></pre></p><p>parameter 에 대한 인수 분해 문제 이다.[a b & c :as d]의 의미를 알아야 하는데 결과적으로도 <a href=''>1 2 [3 4 5</a>]가 되어야 한다. 즉 a = 1, b = 2, c = [3 4 5], d = [1 2 3 4 5]일 때 답이 되고, 분해되는 방식도 그 방식과 동일 하다. 사실 :as d는 인수의 전체를 반환하는 것이라 d 값이 무엇인지 를 알 수 있으면 쉽게 풀 수 있다. </p>
 </div>
 
 <div id="post-tags">
@@ -100,7 +102,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2019-11-22-4clojure-50.html">4clojure - Split by Type (50) &raquo;</a>
+        <a class="right" href="/posts/2019-11-23-again-4clojure.html">4clojure 를 다시 하면서.. &raquo;</a>
         
     </div>
 </div>
@@ -119,11 +121,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2019-11-24-4clojure-51.html">4clojure - Advanced Destructuring (51)</a></li>
+                        
                         <li><a href="/posts/2019-11-23-again-4clojure.html">4clojure 를 다시 하면서..</a></li>
                         
                         <li><a href="/posts/2019-11-22-4clojure-50.html">4clojure - Split by Type (50)</a></li>
-                        
-                        <li><a href="/posts/2019-11-21-4clojure-49.html">4clojure - Split a sequence (49)</a></li>
                         
                     </ul>
                 </div>
