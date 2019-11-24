@@ -12,11 +12,30 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Sun, 24 Nov 2019 05:41:44 +0900
+Mon, 25 Nov 2019 06:18:08 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-11-25-4clojure-52.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-11-25-4clojure-52.html
+</link>
+<title>
+4clojure - Intro to Destructuring (52)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#91;2 4&amp;#93; &amp;#40;let &amp;#91;&amp;#91;a b c d e&amp;#93; &amp;#91;0 1 2 3 4&amp;#93;&amp;#93; &amp;#95;&amp;#95;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#91;c e&amp;#93;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;인수분해에 대한 문제 이다. 다른 언어의 변수 대입과 동일하다고 생각하면 된다. 그러므로 a=0, b=1,c=2,d=3,e=4가 된다. [2 4]에 대한 동일성을 판단하는 문제 이므로 [c e]가 답이 된다.&lt;/p&gt;
+</description>
+<pubDate>
+Mon, 25 Nov 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-11-24-4clojure-51.html

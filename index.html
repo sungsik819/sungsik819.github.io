@@ -73,16 +73,16 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 11월 24일 (일)</div>
+        <div class="col-lg-6">2019년 11월 25일 (월)</div>
         
     </div>
-    <h2>4clojure - Advanced Destructuring (51)</h2>
+    <h2>4clojure - Intro to Destructuring (52)</h2>
 </div>
 <div>
     
-    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#91;1 2 &#91;3 4 5&#93; &#91;1 2 3 4 5&#93;&#93; &#40;let &#91;&#91;a b &amp; c :as d&#93; &#95;&#95;&#93; &#91;a b c d&#93;&#41;&#41;
-</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&#91;1 2 3 4 5&#93;
-</code></pre></p><p>parameter 에 대한 인수 분해 문제 이다.[a b & c :as d]의 의미를 알아야 하는데 결과적으로도 <a href=''>1 2 [3 4 5</a>]가 되어야 한다. 즉 a = 1, b = 2, c = [3 4 5], d = [1 2 3 4 5]일 때 답이 되고, 분해되는 방식도 그 방식과 동일 하다. 사실 :as d는 인수의 전체를 반환하는 것이라 d 값이 무엇인지 를 알 수 있으면 쉽게 풀 수 있다. </p>
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#91;2 4&#93; &#40;let &#91;&#91;a b c d e&#93; &#91;0 1 2 3 4&#93;&#93; &#95;&#95;&#41;&#41;
+</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&#91;c e&#93;
+</code></pre></p><p>인수분해에 대한 문제 이다. 다른 언어의 변수 대입과 동일하다고 생각하면 된다. 그러므로 a=0, b=1,c=2,d=3,e=4가 된다. [2 4]에 대한 동일성을 판단하는 문제 이므로 [c e]가 답이 된다.</p>
 </div>
 
 <div id="post-tags">
@@ -102,7 +102,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2019-11-23-again-4clojure.html">4clojure 를 다시 하면서.. &raquo;</a>
+        <a class="right" href="/posts/2019-11-24-4clojure-51.html">4clojure - Advanced Destructuring (51) &raquo;</a>
         
     </div>
 </div>
@@ -121,11 +121,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2019-11-25-4clojure-52.html">4clojure - Intro to Destructuring (52)</a></li>
+                        
                         <li><a href="/posts/2019-11-24-4clojure-51.html">4clojure - Advanced Destructuring (51)</a></li>
                         
                         <li><a href="/posts/2019-11-23-again-4clojure.html">4clojure 를 다시 하면서..</a></li>
-                        
-                        <li><a href="/posts/2019-11-22-4clojure-50.html">4clojure - Split by Type (50)</a></li>
                         
                     </ul>
                 </div>
