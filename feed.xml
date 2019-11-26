@@ -12,11 +12,37 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Tue, 26 Nov 2019 06:16:48 +0900
+Wed, 27 Nov 2019 06:18:23 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-11-27-4clojure-54.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-11-27-4clojure-54.html
+</link>
+<title>
+4clojure - Partition a Sequence (54)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#40;&amp;#95;&amp;#95; 3 &amp;#40;range 9&amp;#41;&amp;#41; '&amp;#40;&amp;#40;0 1 2&amp;#41; &amp;#40;3 4 5&amp;#41; &amp;#40;6 7 8&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; 2 &amp;#40;range 8&amp;#41;&amp;#41; '&amp;#40;&amp;#40;0 1&amp;#41; &amp;#40;2 3&amp;#41; &amp;#40;4 5&amp;#41; &amp;#40;6 7&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; 3 &amp;#40;range 8&amp;#41;&amp;#41; '&amp;#40;&amp;#40;0 1 2&amp;#41; &amp;#40;3 4 5&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;제한 : partition, partition-all&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;x coll&amp;#93;
+  &amp;#40;loop &amp;#91;result &amp;#91;&amp;#93; coll2 coll&amp;#93;
+    &amp;#40;if &amp;#40;or &amp;#40;empty? coll2&amp;#41; &amp;#40;&amp;gt; x &amp;#40;count coll2&amp;#41;&amp;#41;&amp;#41; result
+        &amp;#40;recur &amp;#40;conj result &amp;#40;take x coll2&amp;#41;&amp;#41; &amp;#40;drop x coll2&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;take, drop을 이용하여 파티션을 나누는 문제 이다. 좀 복잡해 보이기는 하지만 원리는 비슷하다고 생각한다. 좀 더 짧게 할 수 있는 방법이 있을까? 해서 다른 사람이 풀어논 문제를 봤지만 비슷하게 다들 해결을 해서 뭔가 획기적인 그런 것은 없었다.&lt;/p&gt;
+</description>
+<pubDate>
+Wed, 27 Nov 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-11-26-4clojure-53.html
