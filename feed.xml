@@ -12,11 +12,182 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Wed, 27 Nov 2019 06:18:23 +0900
+Thu, 28 Nov 2019 06:18:40 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-11-28-4clojure-55.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-11-28-4clojure-55.html
+</link>
+<title>
+4clojure - Count Occurrences (55)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#91;1 1 2 3 2 1 1&amp;#93;&amp;#41; {1 4, 2 2, 3 1}&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#91;:b :a :b :a :b&amp;#93;&amp;#41; {:a 2, :b 3}&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; '&amp;#40;&amp;#91;1 2&amp;#93; &amp;#91;1 3&amp;#93; &amp;#91;1 3&amp;#93;&amp;#41;&amp;#41; {&amp;#91;1 2&amp;#93; 1, &amp;#91;1 3&amp;#93; 2}&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;제한 : frequencies&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;x&amp;#93; 
+  &amp;#40;-&amp;gt;&amp;gt;
+   &amp;#40;partition-by identity &amp;#40;sort x&amp;#41;&amp;#41;
+   &amp;#40;map #&amp;#40;list &amp;#40;first %&amp;#41; &amp;#40;count %&amp;#41;&amp;#41;&amp;#41;
+   &amp;#40;apply concat&amp;#41;
+   &amp;#40;apply hash-map&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;처음에는 group-by로 하면 될 것 이라고 생각을 했다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;group-by count &amp;#91;1 1 2 3 2 1 1&amp;#93;&amp;#41;
+;;Execution error &amp;#40;UnsupportedOperationException&amp;#41; at user/eval296 &amp;#40;REPL:1&amp;#41;. 
+;;count not supported on this type: Long
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;근데 group-by는 string 값만 된다는 것을 알게 되었고, 다른 방법을 고민 했다.&lt;/p&gt;&lt;p&gt;갯수를 알아내기 위해 같은 값을 묶는 것이 필요하다고 생각하여  partition-by를 생각 했다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;partition-by identity &amp;#91;1 1 2 3 2 1 1&amp;#93;&amp;#41;
+;; &amp;#40;&amp;#40;1 1&amp;#41; &amp;#40;2&amp;#41; &amp;#40;3&amp;#41; &amp;#40;2&amp;#41; &amp;#40;1 1&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;근데 얖에서부터 같은 값만 찾다보니 뒤에 같은 값이 있을 경우에는 같이 묶어주지 못하는 현상이 있어서 sort를 적용 했다. key에 대한 sort도 되는지 테스트를 했다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;sort &amp;#91;:b :a :b :a :b&amp;#93;&amp;#41;
+;; &amp;#40;:a :a :b :b :b&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;다행히 sort가 되어서 적용을 했다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;partition-by identity &amp;#40;sort &amp;#91;1 1 2 3 2 1 1&amp;#93;&amp;#41;&amp;#41;
+;; &amp;#40;&amp;#40;1 1 1 1&amp;#41; &amp;#40;2 2&amp;#41; &amp;#40;3&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;이제 map으로 count를 적용하면 될거 같다. 슬슬 길어지므로 -&gt;&gt;를 사용 했다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;-&amp;gt;&amp;gt;
+	&amp;#40;partition-by identity &amp;#40;sort &amp;#91;1 1 2 3 2 1 1&amp;#93;&amp;#41;&amp;#41;
+	&amp;#40;map #&amp;#40;count %&amp;#41;&amp;#41;&amp;#41;
+;; &amp;#40;4 2 1&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;어떤 항목의 갯수가 같이 표시되지 않으므로 표시되도록 추가 했다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;;; 오류 상황1
+&amp;#40;-&amp;gt;&amp;gt;
+	&amp;#40;partition-by identity &amp;#40;sort &amp;#91;1 1 2 3 2 1 1&amp;#93;&amp;#41;&amp;#41;
+	&amp;#40;map #&amp;#40;% &amp;#40;count %&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+;; Error printing return value &amp;#40;ClassCastException&amp;#41; at user/eval318$fn &amp;#40;NO&amp;#95;SOURCE&amp;#95;FILE:1&amp;#41;.
+clojure.lang.Cons cannot be cast to clojure.lang.IFn
+
+;; 오류 상황2
+&amp;#40;-&amp;gt;&amp;gt;
+	&amp;#40;partition-by identity &amp;#40;sort &amp;#91;1 1 2 3 2 1 1&amp;#93;&amp;#41;&amp;#41;
+	&amp;#40;map #&amp;#40;&amp;#91;% &amp;#40;count %&amp;#41;&amp;#93;&amp;#41;&amp;#41;
+;; Error printing return value &amp;#40;ArityException&amp;#41; at clojure.lang.AFn/throwArity &amp;#40;AFn.java:429&amp;#41;.
+Wrong number of args &amp;#40;0&amp;#41; passed to: clojure.lang.PersistentVector
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;마음처럼 잘 안된다...함수를 넣어야 하는데 엉뚱한 값을 넣고 있었다..&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;-&amp;gt;&amp;gt;
+	&amp;#40;partition-by identity &amp;#40;sort &amp;#91;1 1 2 3 2 1 1&amp;#93;&amp;#41;&amp;#41;
+	&amp;#40;map #&amp;#40;list % &amp;#40;count %&amp;#41;&amp;#41;&amp;#41;
+;; &amp;#40;&amp;#40;&amp;#40;1 1 1 1&amp;#41; 4&amp;#41; &amp;#40;&amp;#40;2 2&amp;#41; 2&amp;#41; &amp;#40;&amp;#40;3&amp;#41; 1&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;전체 값이 필요한 것은 아니므로 first로 1개만 표시되도록 했다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;-&amp;gt;&amp;gt;
+	&amp;#40;partition-by identity &amp;#40;sort &amp;#91;1 1 2 3 2 1 1&amp;#93;&amp;#41;&amp;#41;
+	&amp;#40;map #&amp;#40;list &amp;#40;first %&amp;#41; &amp;#40;count %&amp;#41;&amp;#41;&amp;#41;
+;; &amp;#40;&amp;#40;1 4&amp;#41; &amp;#40;2 2&amp;#41; &amp;#40;3 1&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;이걸 이제 hash-map으로 바꾸면 끝이다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;-&amp;gt;&amp;gt;
+	&amp;#40;partition-by identity &amp;#40;sort &amp;#91;1 1 2 3 2 1 1&amp;#93;&amp;#41;&amp;#41;
+	&amp;#40;map #&amp;#40;list &amp;#40;first %&amp;#41; &amp;#40;count %&amp;#41;&amp;#41;&amp;#41;
+	&amp;#40;into {}&amp;#41;&amp;#41;
+
+;; Execution error &amp;#40;ClassCastException&amp;#41; at user/eval342 &amp;#40;REPL:1&amp;#41;. java.lang.Long cannot be cast to java.util.Map$Entry
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;hash-map 형식이 아니라서 안된단다....&lt;/p&gt;&lt;p&gt;그러면 전체 값을 하나로 합친 후에 하면 되지 않을까? 일단 합쳐보기로 했다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;-&amp;gt;&amp;gt;
+	&amp;#40;partition-by identity &amp;#40;sort &amp;#91;1 1 2 3 2 1 1&amp;#93;&amp;#41;&amp;#41;
+	&amp;#40;map #&amp;#40;list &amp;#40;first %&amp;#41; &amp;#40;count %&amp;#41;&amp;#41;&amp;#41;
+	&amp;#40;apply concat&amp;#41;&amp;#41;
+;; &amp;#40;1 4 2 2 3 1&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;근데 일단 다른 문항에 잇는 값들이 제대로 합쳐지는지 궁금해서 테스트 해봤다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;-&amp;gt;&amp;gt;
+	&amp;#40;partition-by identity &amp;#40;sort '&amp;#40;&amp;#91;1 2&amp;#93;, &amp;#91;1 3&amp;#93;, &amp;#91;1 3&amp;#93;&amp;#41;&amp;#41;&amp;#41;
+	&amp;#40;map #&amp;#40;list &amp;#40;first %&amp;#41; &amp;#40;count %&amp;#41;&amp;#41;&amp;#41;
+	&amp;#40;apply concat&amp;#41;&amp;#41;
+;; &amp;#40;&amp;#91;1 2&amp;#93; 1 &amp;#91;1 3&amp;#93; 2&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;원하는데로 합쳐지는 것 같다.&lt;/p&gt;&lt;p&gt;이제 hash-map을 적용 해보자 &lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;-&amp;gt;&amp;gt;
+	&amp;#40;partition-by identity &amp;#40;sort &amp;#91;1 1 2 3 2 1 1&amp;#93;&amp;#41;&amp;#41;
+	&amp;#40;map #&amp;#40;list &amp;#40;first %&amp;#41; &amp;#40;count %&amp;#41;&amp;#41;&amp;#41;
+	&amp;#40;apply hash-map concat&amp;#41;&amp;#41;
+
+;; Execution error &amp;#40;IllegalArgumentException&amp;#41; at user/eval366 &amp;#40;REPL:1&amp;#41;. No value supplied for key: &amp;#40;&amp;#91;1 3&amp;#93; 2&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;key가 필요하다고 안된단다...&lt;/p&gt;&lt;p&gt;그럼 이렇게는 어떨까?&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;-&amp;gt;&amp;gt;
+	&amp;#40;partition-by identity &amp;#40;sort &amp;#91;1 1 2 3 2 1 1&amp;#93;&amp;#41;&amp;#41;
+	&amp;#40;map #&amp;#40;list &amp;#40;first %&amp;#41; &amp;#40;count %&amp;#41;&amp;#41;&amp;#41;
+	&amp;#40;apply into hash-map concat&amp;#41;&amp;#41;
+;; Execution error &amp;#40;ArityException&amp;#41; at user/eval372 &amp;#40;REPL:1&amp;#41;.
+Wrong number of args &amp;#40;4&amp;#41; passed to: clojure.core/into
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;into 의 파리미터 갯수가 아니라고 하니 이 방법도 아닌것 같다.&lt;/p&gt;&lt;p&gt;하나로 합친 값에 너무 이상한 함수의 나열이라고 생각이 들어 다시 재정돈 하였다 우선 값을 합친 부분에서 다시 시작해보기로 했다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;-&amp;gt;&amp;gt;
+	&amp;#40;partition-by identity &amp;#40;sort &amp;#91;1 1 2 3 2 1 1&amp;#93;&amp;#41;&amp;#41;
+	&amp;#40;map #&amp;#40;list &amp;#40;first %&amp;#41; &amp;#40;count %&amp;#41;&amp;#41;&amp;#41;
+	&amp;#40;apply concat&amp;#41;&amp;#41;
+;; &amp;#40;1 4 2 2 3 1&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;hash-map의 사용법을 다시 테스트 해봤다. 위의 값을 가지고 다시 테스트 했다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;;; 오류 상황
+&amp;#40;hash-map '&amp;#40;1 4 2 2 3 1&amp;#41;&amp;#41;
+;; Execution error &amp;#40;IllegalArgumentException&amp;#41; at user/eval418 &amp;#40;REPL:1&amp;#41;. No value supplied for key: &amp;#40;1 4 2 2 3 1&amp;#41;
+
+&amp;#40;hash-map 1 4 2 2 3 1&amp;#41;
+;; {1 4, 3 1, 2 2}
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;사용법을 확실하게 알고 있지 않아서 발생한 오류라고 생각 한다...이제 apply로 합치면 문제가 해결 된다.&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;-&amp;gt;&amp;gt;
+	&amp;#40;partition-by identity &amp;#40;sort &amp;#91;1 1 2 3 2 1 1&amp;#93;&amp;#41;&amp;#41;
+	&amp;#40;map #&amp;#40;list &amp;#40;first %&amp;#41; &amp;#40;count %&amp;#41;&amp;#41;&amp;#41;
+	&amp;#40;apply concat&amp;#41;
+	&amp;#40;apply hash-map&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Solved 2&lt;/strong&gt; 문제를 풀고 나서 다른 방식도 있다는 것을 알게되어 분석 하고 싶어졌다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;comp &amp;#40;partial apply zipmap&amp;#41; 
+      &amp;#40;juxt keys &amp;#40;comp &amp;#40;partial map count&amp;#41; vals&amp;#41;&amp;#41; 
+      &amp;#40;partial group-by identity&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;위에 답에 대한 과정을 하나하나 뜯어 봤다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;&amp;#40;partial group-by identity&amp;#41; &amp;#91;1 1 2 3 2 1 1&amp;#93;&amp;#41;
+;; {1 &amp;#91;1 1 1 1&amp;#93;, 2 &amp;#91;2 2&amp;#93;, 3 &amp;#91;3&amp;#93;}
+
+&amp;#40;group-by identity &amp;#91;1 1 2 3 2 1 1&amp;#93;&amp;#41;
+;; {1 &amp;#91;1 1 1 1&amp;#93;, 2 &amp;#91;2 2&amp;#93;, 3 &amp;#91;3&amp;#93;}
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;group-by가 string에 대한 것인줄 알았는데 아니라는 것을 알게 되었다... identity가 이럴때도 사용 가능하다는 것을 다시한번 알게 되었다. 근데 왜 partial을 사용한건지는 잘 모르겠다. group-by만 해도 될거 같은데..&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;&amp;#40;comp &amp;#40;partial apply zipmap&amp;#41;
+      &amp;#40;juxt keys &amp;#40;comp &amp;#40;partial map count&amp;#41; vals&amp;#41;&amp;#41;
+      &amp;#40;group-by identity&amp;#41;&amp;#41; &amp;#91;1 1 2 3 2 1 1&amp;#93;&amp;#41;
+;; Execution error &amp;#40;ArityException&amp;#41; at user/eval474 &amp;#40;REPL:3&amp;#41;.
+Wrong number of args &amp;#40;1&amp;#41; passed to: clojure.core/group-by
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;안된다...partial이 있으면 무언가 준비된 상태로 둔다는 생각이 들었다. &lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;apply #&amp;#40;conj &amp;#91;0 1&amp;#93; %&amp;#41; &amp;#91;2 3 4 5&amp;#93;&amp;#41;
+;; Execution error &amp;#40;ArityException&amp;#41; at user/eval482 &amp;#40;REPL:1&amp;#41;.
+Wrong number of args &amp;#40;4&amp;#41; passed to: user/eval482/fn--483
+
+&amp;#40;apply #&amp;#40;conj &amp;#91;0 1&amp;#93; %&amp;amp;&amp;#41; &amp;#91;2 3 4 5&amp;#93;&amp;#41;
+;; &amp;#91;0 1 &amp;#40;2 3 4 5&amp;#41;&amp;#93;
+
+&amp;#40;apply &amp;#40;partial conj &amp;#91;0 1&amp;#93;&amp;#41; &amp;#91;2 3 4 5&amp;#93;&amp;#41;
+;; &amp;#91;0 1 2 3 4 5&amp;#93; 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;partial의 예제를 보니 실행을 할때 그때 조합을 만들어서 실행시키는 역할이 partial인 것 같다.&lt;/p&gt;&lt;p&gt;간단한 예제를 comp와 엮어서 만들어 봤을 때 아무래도 comp의 영향으로 partial이 없으면 안되는 것 같다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;&amp;#40;comp &amp;#40;apply +&amp;#41;&amp;#41; &amp;#91;1 2 3 4 5 6&amp;#93;&amp;#41;
+;; Execution error &amp;#40;ArityException&amp;#41; at user/eval492 &amp;#40;REPL:1&amp;#41;.
+Wrong number of args &amp;#40;1&amp;#41; passed to: clojure.core/apply
+
+&amp;#40;&amp;#40;comp &amp;#40;partial apply +&amp;#41;&amp;#41; &amp;#91;1 2 3 4 5 6&amp;#93;&amp;#41;
+;; 21
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;juxt는 원하는 항목을 vector로 엮어주는 함수이다. 즉, (list (first x) (count x))를 juxt로 얶어서 만들었다고 생각하면 될 것 같다.&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;&amp;#40;comp &amp;#40;juxt keys &amp;#40;comp &amp;#40;partial map count&amp;#41; vals&amp;#41;&amp;#41; 
+      &amp;#40;partial group-by identity&amp;#41; &amp;#91;1 1 2 3 2 1 1&amp;#93;&amp;#41; 
+;; {1 &amp;#91;1 1 1 1&amp;#93;, 2 &amp;#91;2 2&amp;#93;, 3 &amp;#91;3&amp;#93;} -&amp;gt; 1번 항목
+;; keys : &amp;#40;1 2 3&amp;#41;, vals : &amp;#91;&amp;#91;1 1 1 1&amp;#93; &amp;#91;2 2&amp;#93; &amp;#91;3&amp;#93;&amp;#93;
+;; &amp;#91;&amp;#40;1 2 3&amp;#41; &amp;#40;4 2 1&amp;#41;&amp;#93; -&amp;gt; 2번 항목
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;결과로 나오는  (1, 2, 3)은 1번 항목의 hash-map keys로 엮은 값이고, (4 2 1)은 1번 항목의 hash-map vals로 가져온 (comp (partial map count)  vals)로 계산된 값의 list로 생각하면 된다. 그래서 2번 항목이 계산 결과 값으로 나온다.&lt;/p&gt;&lt;p&gt;zipmap은 [(1 2 3) (4 2 1)]의 값을 합쳐서 하나의 hash-map으로 만들어준다. apply 없이 예제를 만든다면 아래와 같다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;zipmap '&amp;#40;1 2 3&amp;#41; '&amp;#40;4 2 1&amp;#41;&amp;#41;
+;; {1 4, 2 2, 3 1}
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;apply로 엮으면 아래와 같은 형식이 된다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;apply zipmap &amp;#91;'&amp;#40;1 2 3&amp;#41; '&amp;#40;4 2 1&amp;#41;&amp;#93;&amp;#41;
+;; {1 4, 2 2, 3 1}
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;comp와  엮이므로 partial이 있어야 계산이 완료가 된다.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved 3&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;reduce #&amp;#40;assoc % %2 &amp;#40;+ 1 &amp;#40;% %2 0&amp;#41;&amp;#41;&amp;#41; {}
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;이건 위의 방법보다 좀 더 간단한 문제이다.&lt;/p&gt;&lt;p&gt;우선 안쪽부터 분석을 해보면&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;{} 1 0&amp;#41;
+;; 0
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;hash-map안에 1이라는 값이 있으면 그 값을 반환하고 없으면 0을 반환한다는 얘기이다. 현재 상황에서는 {}안에 아무런 값이 없으므로 0이 된다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;+ 1 0&amp;#41;
+;; 1
+&amp;#40;assoc {} 1 1&amp;#41;
+;; {1 1}
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;그 값이 위와 같은 과정을 거치면 {1 1}이 된다.&lt;/p&gt;&lt;p&gt;다음 반복시에는 아래와 같은 과정을 거친다&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;{1 1} 1 0&amp;#41;
+;; 1
+&amp;#40;+ 1 1&amp;#41;
+;; 2
+&amp;#40;assoc {1 1} 1 2&amp;#41;
+;; {1 2}
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;위 과정은 {1 1} -&gt; {1 2}로 바뀌는 과정을 보여주고 있다, reduce 연산을 마지막까지 거치면 정답은 같아진다.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved 4&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;#&amp;#40;apply merge-with + &amp;#40;map &amp;#40;fn &amp;#91;a&amp;#93; {a 1}&amp;#41; %&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;apply에 대한 영향을 주는 함수는 (merge-with +) 에 대해서 영향을 주는 것이지 map에서 부터 영향을 주는 것은 아니다 그러므로 아래와 같은 동작이 되는 것은 아니다&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;map &amp;#40;fn &amp;#91;a&amp;#93; {a 1}&amp;#41; 1 1 2 3 2 1 1&amp;#41;
+;; Error printing return value &amp;#40;IllegalArgumentException&amp;#41; at clojure.lang.RT/seqFrom &amp;#40;RT.java:557&amp;#41;. Don't know how to create ISeq from: java.lang.Long
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;map 의 연산은 아래와 같은 결과를 준다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;map &amp;#40;fn &amp;#91;a&amp;#93; {a 1}&amp;#41; &amp;#91;1 1 2 3 2 1 1&amp;#93;&amp;#41;
+;; &amp;#40;{1 1} {1 1} {2 1} {3 1} {2 1} {1 1} {1 1}&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;apply의 영향으로 merge-with +의 연산은 아래와 같은 방식으로 된다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;merge-with + {1 1} {1 1} {2 1} {3 1} {2 1} {1 1} {1 1}&amp;#41;
+;; {1 4, 2 2, 3 1}
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;보통 merge는 아래와 같은 동작을 하는데 merge-with는 f를 받아서 추가적인 연산을 하게 된다는 것을 알았다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;merge {1 1} {1 1} {2 1} {3 1} {2 1} {1 1} {1 1}&amp;#41;
+;; {1 1, 2 1, 3 1} -&amp;gt; 덮어쓰는 동작을 함
+
+&amp;#40;merge-with + {1 1} {1 1} {2 1} {3 1} {2 1} {1 1} {1 1}&amp;#41;
+;; {1 4, 2 2, 3 1} -&amp;gt; + 함수의 영향으로 value에 + 를 한다.
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;merge-with에 익명함수를 만들려면 가변 인자를 받아야 한다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;merge-with #&amp;#40;list %&amp;amp;&amp;#41; {1 1} {1 1} {2 1} {3 1} {2 1} {1 1} {1 1}&amp;#41;
+;; {1 &amp;#40;&amp;#40;&amp;#40;&amp;#40;&amp;#40;&amp;#40;1 1&amp;#41;&amp;#41; 1&amp;#41;&amp;#41; 1&amp;#41;&amp;#41;, 2 &amp;#40;&amp;#40;1 1&amp;#41;&amp;#41;, 3 1}
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+</description>
+<pubDate>
+Thu, 28 Nov 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-11-27-4clojure-54.html
