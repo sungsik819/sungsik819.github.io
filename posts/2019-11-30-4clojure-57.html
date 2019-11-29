@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: problem 06</title>
-    <link rel="canonical" href="http://dev-happy.com/posts/2019-10-09-4clojure-06.html">
+    <title>Dev Happy: 4clojure - Simple Recursion (57)</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2019-11-30-4clojure-57.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -73,16 +73,22 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 10월 9일 (수)</div>
+        <div class="col-lg-6">2019년 11월 30일 (토)</div>
         
     </div>
-    <h2>problem 06</h2>
+    <h2>4clojure - Simple Recursion (57)</h2>
 </div>
 <div>
     
-    <pre><code class="clojure">&#40;= &#91;&#95;&#95;&#93; &#40;list :a :b :c&#41; &#40;vec '&#40;:a :b :c&#41;&#41; &#40;vector :a :b :c&#41;&#41;
-</code></pre><pre><code class="clojure">:a :b :c
-</code></pre><p> vector 자료형이다. vector를 생성하는 방법에 대해서 보여주고 있다. 중간에 vec은 list 자료형을 받으면 vector로 변환하는 함수이다. 기본적으로 내용이 같으면 vector, list는 서로 같다 그러므로 :a :b :c이면 성립힌다.</p>
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#95;&#95; &#40;&#40;fn foo &#91;x&#93; &#40;when &#40;&gt; x 0&#41; &#40;conj &#40;foo &#40;dec x&#41;&#41; x&#41;&#41;&#41; 5&#41;&#41;
+</code></pre></p><p><strong>Solved</strong><pre><code class="clj">'&#40;5 4 3 2 1&#41;
+</code></pre></p><p>recursive 문제이다 풀이를 한다면 아래와 같다<pre><code class="clj">&#40;conj &#40;conj &#40;conj &#40;conj &#40;conj nil 1&#41; 2&#41; 3&#41; 4&#41; 5&#41;
+;; &#40;conj &#40;conj &#40;conj &#40;conj &#40;1&#41; 2&#41; 3&#41; 4&#41; 5&#41;
+;; &#40;conj &#40;conj &#40;conj &#40;2 1&#41; 3&#41; 4&#41; 5&#41;
+;; &#40;conj &#40;conj &#40;3 2 1&#41; 4&#41; 5&#41;
+;; &#40;conj &#40;4 3 2 1&#41; 5&#41;
+;; &#40;5 4 3 2 1&#41;
+</code></pre></p>
 </div>
 
 <div id="post-tags">
@@ -97,10 +103,8 @@
 
     <div id="prev-next">
         
-        <a href="/posts/2019-10-10-4clojure-07.html">&laquo; problem 07</a>
         
-        
-        <a class="right" href="/posts/2019-10-08-4clojure-05.html">problem 05 &raquo;</a>
+        <a class="right" href="/posts/2019-11-29-4clojure-56.html">4clojure - Find Distinct Items (56) &raquo;</a>
         
     </div>
 

@@ -12,11 +12,36 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Fri, 29 Nov 2019 06:00:34 +0900
+Sat, 30 Nov 2019 08:02:27 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-11-30-4clojure-57.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-11-30-4clojure-57.html
+</link>
+<title>
+4clojure - Simple Recursion (57)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#95;&amp;#95; &amp;#40;&amp;#40;fn foo &amp;#91;x&amp;#93; &amp;#40;when &amp;#40;&amp;gt; x 0&amp;#41; &amp;#40;conj &amp;#40;foo &amp;#40;dec x&amp;#41;&amp;#41; x&amp;#41;&amp;#41;&amp;#41; 5&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;'&amp;#40;5 4 3 2 1&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;recursive 문제이다 풀이를 한다면 아래와 같다&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;conj &amp;#40;conj &amp;#40;conj &amp;#40;conj &amp;#40;conj nil 1&amp;#41; 2&amp;#41; 3&amp;#41; 4&amp;#41; 5&amp;#41;
+;; &amp;#40;conj &amp;#40;conj &amp;#40;conj &amp;#40;conj &amp;#40;1&amp;#41; 2&amp;#41; 3&amp;#41; 4&amp;#41; 5&amp;#41;
+;; &amp;#40;conj &amp;#40;conj &amp;#40;conj &amp;#40;2 1&amp;#41; 3&amp;#41; 4&amp;#41; 5&amp;#41;
+;; &amp;#40;conj &amp;#40;conj &amp;#40;3 2 1&amp;#41; 4&amp;#41; 5&amp;#41;
+;; &amp;#40;conj &amp;#40;4 3 2 1&amp;#41; 5&amp;#41;
+;; &amp;#40;5 4 3 2 1&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+</description>
+<pubDate>
+Sat, 30 Nov 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-11-29-4clojure-56.html

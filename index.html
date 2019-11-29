@@ -73,47 +73,22 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 11월 29일 (금)</div>
+        <div class="col-lg-6">2019년 11월 30일 (토)</div>
         
     </div>
-    <h2>4clojure - Find Distinct Items (56)</h2>
+    <h2>4clojure - Simple Recursion (57)</h2>
 </div>
 <div>
     
-    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;&#95;&#95; &#91;1 2 1 3 1 2 4&#93;&#41; &#91;1 2 3 4&#93;&#41;
-
-&#40;= &#40;&#95;&#95; &#91;:a :a :b :b :c :c&#93;&#41; &#91;:a :b :c&#93;&#41;
-
-&#40;= &#40;&#95;&#95; '&#40;&#91;2 4&#93; &#91;1 2&#93; &#91;1 3&#93; &#91;1 3&#93;&#41;&#41; '&#40;&#91;2 4&#93; &#91;1 2&#93; &#91;1 3&#93;&#41;&#41;
-
-&#40;= &#40;&#95;&#95; &#40;range 50&#41;&#41; &#40;range 50&#41;&#41;
-</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn &#91;coll&#93;
-  &#40;reduce &#40;fn &#91;acc num&#93; 
-            &#40;if &#40;some true? &#40;map #&#40;= % num&#41; acc&#41;&#41; acc
-              &#40;conj acc num&#41;&#41;&#41; &#91;&#93; coll&#41;&#41;
-</code></pre></p><p>순회하는 방식으로 [] 안에 값이 있으면 누적된 []를, 없으면 []안에 값을 추가하는 방식으로 문제를 해결 했다.</p><p>다른 사람이 푼 해결책을 보면</p><p><strong>Solved 2</strong><pre><code class="clj">reduce #&#40;{%2 %} &#40;&#40;set %&#41; %2&#41; &#40;conj % %2&#41;&#41; &#91;&#93;
-</code></pre></p><p>reduce 연산을 풀이하면 아래와 같다<pre><code class="clj">&#40;{1 &#91;&#93;} &#40;&#40;set &#91;&#93;&#41; 1&#41; &#40;conj &#91;&#93; 1&#41;&#41;
-;; &#91;1&#93;
-
-&#40;{2 &#91;1&#93;} &#40;&#40;set &#91;1&#93;&#41; 2&#41; &#40;conj &#91;1&#93; 2&#41;&#41;
-;; &#91;1 2&#93;
-
-&#40;{1 &#91;1 2&#93;} &#40;&#40;set &#91;1 2&#93;&#41; 1&#41; &#40;conj &#91;1 2&#93; 1&#41;&#41;
-;; &#91;1 2&#93;
-
-&#40;{3 &#91;1 2&#93;} &#40;&#40;set &#91;1 2&#93;&#41; 3&#41; &#40;conj &#91;1 2&#93; 3&#41;&#41;
-;; &#91;1 2 3&#93;
-</code></pre></p><p>중복 되는 값은 원래의 acc로 계산된 vector를 리턴하고 없으면 (conj)로 acc에 값을 추가하는 방식으로 계산을 한다. set에 값이 있을때와 없을 때의 연산을 비교해서 본다면 아래와 같다.<pre><code class="clj">;; set 안에 값이 있을 때
-&#40;{1 &#91;1 2&#93;} &#40;&#40;set &#91;1 2&#93;&#41; 1&#41; &#40;conj &#91;1 2&#93; 1&#41;&#41;
-;; &#40;{1 &#91;1 2&#93;} 1 &#40;conj &#91;1 2&#93; 1&#41;&#41;
-;; &#91;1 2&#93;
-
-;; set 안에 값이 없을 때
-&#40;{3 &#91;1 2&#93;} &#40;&#40;set &#91;1 2&#93;&#41; 3&#41; &#40;conj &#91;1 2&#93; 3&#41;&#41;
-;; &#40;{3 &#91;1 2&#93;} nil &#40;conj &#91;1 2&#93; 3&#41;&#41; 
-;; &#40;conj &#91;1 2&#93; 3&#41;
-;; &#91;1 2 3&#93;
-</code></pre></p><p>nil 값은 hash-map 안에 없으므로  conj 연산으로 값을 추가해 준다.</p><p>이런 방식이 실제 프로그래밍 하면서 쓰이지 않을 것 같다는 생각이 들긴 하지만 알아두면 그리고 분석을 할 줄 안다면 많은 도움이 될 것 같다.</p>
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#95;&#95; &#40;&#40;fn foo &#91;x&#93; &#40;when &#40;&gt; x 0&#41; &#40;conj &#40;foo &#40;dec x&#41;&#41; x&#41;&#41;&#41; 5&#41;&#41;
+</code></pre></p><p><strong>Solved</strong><pre><code class="clj">'&#40;5 4 3 2 1&#41;
+</code></pre></p><p>recursive 문제이다 풀이를 한다면 아래와 같다<pre><code class="clj">&#40;conj &#40;conj &#40;conj &#40;conj &#40;conj nil 1&#41; 2&#41; 3&#41; 4&#41; 5&#41;
+;; &#40;conj &#40;conj &#40;conj &#40;conj &#40;1&#41; 2&#41; 3&#41; 4&#41; 5&#41;
+;; &#40;conj &#40;conj &#40;conj &#40;2 1&#41; 3&#41; 4&#41; 5&#41;
+;; &#40;conj &#40;conj &#40;3 2 1&#41; 4&#41; 5&#41;
+;; &#40;conj &#40;4 3 2 1&#41; 5&#41;
+;; &#40;5 4 3 2 1&#41;
+</code></pre></p>
 </div>
 
 <div id="post-tags">
@@ -131,7 +106,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2019-11-28-4clojure-55.html">4clojure - Count Occurrences (55) &raquo;</a>
+        <a class="right" href="/posts/2019-11-29-4clojure-56.html">4clojure - Find Distinct Items (56) &raquo;</a>
         
     </div>
 </div>
@@ -150,11 +125,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2019-11-30-4clojure-57.html">4clojure - Simple Recursion (57)</a></li>
+                        
                         <li><a href="/posts/2019-11-29-4clojure-56.html">4clojure - Find Distinct Items (56)</a></li>
                         
                         <li><a href="/posts/2019-11-28-4clojure-55.html">4clojure - Count Occurrences (55)</a></li>
-                        
-                        <li><a href="/posts/2019-11-27-4clojure-54.html">4clojure - Partition a Sequence (54)</a></li>
                         
                     </ul>
                 </div>
