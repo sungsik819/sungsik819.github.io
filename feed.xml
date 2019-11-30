@@ -12,11 +12,123 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Sat, 30 Nov 2019 08:02:27 +0900
+Sun, 01 Dec 2019 05:31:15 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-12-01-4clojure-58.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-12-01-4clojure-58.html
+</link>
+<title>
+4clojure - Function Composition (58)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#91;3 2 1&amp;#93; &amp;#40;&amp;#40;&amp;#95;&amp;#95; rest reverse&amp;#41; &amp;#91;1 2 3 4&amp;#93;&amp;#41;&amp;#41;
+
+&amp;#40;= 5 &amp;#40;&amp;#40;&amp;#95;&amp;#95; &amp;#40;partial + 3&amp;#41; second&amp;#41; &amp;#91;1 2 3 4&amp;#93;&amp;#41;&amp;#41;
+
+&amp;#40;= true &amp;#40;&amp;#40;&amp;#95;&amp;#95; zero? #&amp;#40;mod % 8&amp;#41; +&amp;#41; 3 5 7 9&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;quot;HELLO&amp;quot; &amp;#40;&amp;#40;&amp;#95;&amp;#95; #&amp;#40;.toUpperCase %&amp;#41; #&amp;#40;apply str %&amp;#41; take&amp;#41; 5 &amp;quot;hello world&amp;quot;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;제한 : comp&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;&amp;amp; f&amp;#93;
+	&amp;#40;fn &amp;#91;&amp;amp; args&amp;#93;
+		&amp;#40;let &amp;#91;rf &amp;#40;reverse f&amp;#41;&amp;#93;
+			&amp;#40;reduce &amp;#40;fn &amp;#91;acc x&amp;#93; &amp;#40;x acc&amp;#41;&amp;#41; &amp;#40;apply &amp;#40;first rf&amp;#41; args&amp;#41; &amp;#40;rest rf&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;high-order-function 에 대한 사용 방법이 필요 할 것 같다. 함수를 넘겨주는 함수를 만드는데 시행착오이다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;defn rf &amp;#91;f&amp;#93;
+	&amp;#40;f&amp;#41;&amp;#41;
+
+&amp;#40;&amp;#40;rf +&amp;#41; 1 2 3 4&amp;#41;
+;; Execution error &amp;#40;ClassCastException&amp;#41; at user/eval230 &amp;#40;REPL:1&amp;#41;. java.lang.Long cannot be cast to clojure.lang.IFn
+
+&amp;#40;defn rf &amp;#91;f&amp;#93;
+	&amp;#40;fn &amp;#91;&amp;amp; x&amp;#93;
+	&amp;#40;f x&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;&amp;#40;rf +&amp;#41; 1 2 3 4&amp;#41;
+;; Execution error &amp;#40;ClassCastException&amp;#41; at java.lang.Class/cast &amp;#40;Class.java:3369&amp;#41;. Cannot cast clojure.lang.ArraySeq to java.lang.Number
+
+&amp;#40;&amp;#40;rf +&amp;#41; &amp;#91;1 2 3 4&amp;#93;&amp;#41;
+;; Execution error &amp;#40;ClassCastException&amp;#41; at java.lang.Class/cast &amp;#40;Class.java:3369&amp;#41;. Cannot cast clojure.lang.ArraySeq to java.lang.Number
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;만드는 방법을 확실하게 모르는 상태에서 시도만 계속 하다보니 오류를 남발하고 말았고, &amp;를 이용한 가변 인수가 어떠한 방식으로 안에서 사용 되는지도 모르는 상태에서 하다보니 오류만 발생시카고 말았다 가변 인수는 1 2 3 4  형식으로 사용하는 것이고, 내부에서는 [1 2 3 4] 로 들어온다&lt;/p&gt;&lt;p&gt;연산이 필요한 경우에는 apply를 사용하여 연산을 한다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;defn rf &amp;#91;f&amp;#93;
+	&amp;#40;fn &amp;#91;&amp;amp; x&amp;#93;
+	&amp;#40;apply f x&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;&amp;#40;rf +&amp;#41; 1 2 3 4&amp;#41;
+;; 10
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;모든 함수를 처리하는 것을 한번에 만들 수 없을 것 같아서 high-order-function 정의부터 하나하나 테스트 하면서 문제를 풀어보려고 한다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;defn rf &amp;#91;&amp;amp; f&amp;#93;
+	&amp;#40;fn &amp;#91;&amp;amp; args&amp;#93;
+		&amp;#40;&amp;#40;first f&amp;#41; args&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;&amp;#40;rf rest reverse&amp;#41; &amp;#91;1 2 3 4&amp;#93;&amp;#41;
+;;&amp;#40;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;rest reverse중 rest를 사용하는 함수를 만들어보고 싶었는데 원하는 결과대로 나오지 않는다.&lt;/p&gt;&lt;p&gt; 직접 rest를 넣어보기로 했다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;defn rf &amp;#91;&amp;amp; f&amp;#93;
+	&amp;#40;fn &amp;#91;&amp;amp; args&amp;#93;
+		&amp;#40;rest args&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;&amp;#40;rf rest reverse&amp;#41; &amp;#91;1 2 3 4&amp;#93;&amp;#41;
+;; &amp;#40;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;그래도 원하는 결과가 나오지 않는다.&lt;/p&gt;&lt;p&gt; args에 어떻게 파라미터가 들어가는지 확인을 해봤다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;defn rf &amp;#91;&amp;amp; f&amp;#93;
+	&amp;#40;fn &amp;#91;&amp;amp; args&amp;#93;
+		&amp;#40;println args&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;&amp;#40;rf rest&amp;#41; &amp;#91;1 2 3 4&amp;#93;&amp;#41;
+;; &amp;#40;&amp;#91;1 2 3 4&amp;#93;&amp;#41;
+;; nil
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;()로 감싸서 들어오는 것을 확인을 하니 apply는 꼭 필요한 것 같다.&lt;/p&gt;&lt;p&gt;apply를 넣고 만들어본 함수이다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;defn rf &amp;#91;&amp;amp; f&amp;#93;
+	&amp;#40;fn &amp;#91;&amp;amp; args&amp;#93;
+		&amp;#40;apply rest args&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;&amp;#40;rf rest&amp;#41; &amp;#91;1 2 3 4&amp;#93;&amp;#41;
+;; &amp;#40;2 3 4&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;원하는 결과대로 나온다&lt;/p&gt;&lt;p&gt;이제는 first를 넣고 rest 함수를 선택하도록 만들었다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;defn rf &amp;#91;&amp;amp; f&amp;#93;
+	&amp;#40;fn &amp;#91;&amp;amp; args&amp;#93;
+		&amp;#40;apply &amp;#40;first f&amp;#41; args&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;&amp;#40;rf rest reverse&amp;#41; &amp;#91;1 2 3 4&amp;#93;&amp;#41;
+;; &amp;#40;2 3 4&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;reduce로 사용이 가능할 것 같은데 방법은 알아 냈다&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;reduce #&amp;#40;%2 %&amp;#41; &amp;#91;1 2 3 4&amp;#93; &amp;#40;reverse &amp;#91;rest reverse&amp;#93;&amp;#41;&amp;#41;
+;; &amp;#40;3 2 1&amp;#41; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;근데 문제는 다른 테스트로 있는 , partial, 익명함수에 대한 처리가 문제이고, [rest reverse]는 vector로 해야 결과를 얻을 수 있다 안그러면 nil로 표시가 되는 현상이 있다.&lt;/p&gt;&lt;p&gt;해결 방법이 있는데 4clojure에서는 사용하지 못한다..&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;reduce &amp;#40;fn &amp;#91;acc x&amp;#93; `&amp;#40;&amp;#126;x &amp;#126;acc&amp;#41;&amp;#41; &amp;#91;1 2 3 4&amp;#93; '&amp;#40;rest reverse&amp;#41;&amp;#41;
+;; &amp;#40;reverse &amp;#40;rest &amp;#91;1 2 3 4&amp;#93;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;`는 list로 만들기 위한 reader macro를 사용할 수 있는 기호이다. ~는 list 생성시 저장된 값을 사용하게 해준다. 즉 ‘(x acc)로 리스트가 생성되는 것이 아니라 (rest [1 2 3 4])로 리스트가 생성이 된다.&lt;/p&gt;&lt;p&gt;결과 값을 가지고 eval 연산을 수행하면 된다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;eval &amp;#40;reduce &amp;#40;fn &amp;#91;acc x&amp;#93; `&amp;#40;&amp;#126;x &amp;#126;acc&amp;#41;&amp;#41; &amp;#91;1 2 3 4&amp;#93; '&amp;#40;rest reverse&amp;#41;&amp;#41;&amp;#41;
+;; &amp;#40;4 3 2&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;reduce에서 함수를 받을 때에는 함수라는 것을 인식을 할 수 있도록 해줘야 한다. ~ 매크로를 넣어줘야 한다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;reduce &amp;#40;fn &amp;#91;acc f&amp;#93; &amp;#40;f acc&amp;#41;&amp;#41; &amp;#91;1 2 3 4&amp;#93; `&amp;#40;&amp;#126;rest &amp;#126;reverse&amp;#41;&amp;#41;
+;; &amp;#40;4 3 2&amp;#41;
+
+&amp;#40;reduce &amp;#40;fn &amp;#91;acc f&amp;#93; &amp;#40;f acc&amp;#41;&amp;#41; &amp;#91;1 2 3 4&amp;#93; &amp;#40;reverse `&amp;#40;&amp;#126;rest &amp;#126;reverse&amp;#41;&amp;#41;&amp;#41;
+;; &amp;#40;3 2 1&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;그렇다면 인자로 받은 함수를 어떻게 함수로 인식을 해줘야 할까?&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;defn rf &amp;#91;&amp;amp; f&amp;#93;
+&amp;#40;fn &amp;#91;&amp;amp; args&amp;#93;
+&amp;#40;reduce &amp;#40;fn &amp;#91;acc f&amp;#93; &amp;#40;f &amp;#40;println f&amp;#41;&amp;#41;&amp;#41; args &amp;#40;reverse `&amp;#40;&amp;#126;@f&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;&amp;#40;rf rest reverse&amp;#41; &amp;#91;1 2 3 4&amp;#93;&amp;#41;
+;; #object&amp;#91;clojure.core$reverse 0x2db2dd9d clojure.core$reverse@2db2dd9d&amp;#93;
+;; #object&amp;#91;clojure.core$rest&amp;#95;&amp;#95;5388 0x35293c05  clojure.core$rest&amp;#95;&amp;#95;5388@35293c05&amp;#93;
+;; &amp;#40;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;원하는 답은 아니지만 f로 들어오는 함수의 리스트를 풀어서 함수임을 인식하는 ~@ 매크로를 사용하면 된다.&lt;/p&gt;&lt;p&gt;args에 대해서 아직 풀지못한 숙제가 있는데 그것은 [1 2 3 4]로 들어오는 args는 ([1 2 3 4])로 되어 버린다. 이것을 [1 2 3 4]로 만들어줘야 정상적인 답을 얻을 수 있다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;defn rf &amp;#91;&amp;amp; f&amp;#93;
+&amp;#40;fn &amp;#91;&amp;amp; args&amp;#93;
+&amp;#40;reduce &amp;#40;fn &amp;#91;acc f&amp;#93; &amp;#40;f &amp;#40;println args&amp;#41;&amp;#41;&amp;#41; args &amp;#40;reverse `&amp;#40;&amp;#126;@f&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;&amp;#40;rf rest reverse&amp;#41; &amp;#91;1 2 3 4&amp;#93;&amp;#41;
+;; &amp;#40;&amp;#91;1 2 3 4&amp;#93;&amp;#41;
+;; &amp;#40;&amp;#91;1 2 3 4&amp;#93;&amp;#41;
+;; &amp;#40;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;&amp;amp; f&amp;#93;
+	&amp;#40;fn &amp;#91;&amp;amp; args&amp;#93;
+		&amp;#40;let &amp;#91;rf &amp;#40;reverse f&amp;#41;&amp;#93;
+			&amp;#40;reduce &amp;#40;fn &amp;#91;acc x&amp;#93; &amp;#40;x acc&amp;#41;&amp;#41; &amp;#40;apply &amp;#40;first rf&amp;#41; args&amp;#41; &amp;#40;rest rf&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;문제의 답을 조금 참조를 해서 너무나도 쉽게 문제를 풀 수 있었다. 거의 다 오긴 했었는데 apply의 활용을 헤매다 보니 좀 많이 오래 걸렸다.&lt;/p&gt;&lt;p&gt;apply를 활용해야 ([])를 해결 할 수 있는데 그것을 생각 하지 못했다. 왜 초기화 인수에 apply를 해볼 생각을 못했었는지.. 무엇에 사로잡혀 문제를 헤메고 있었는지 나도 잘 모르겠다..조금 만 더 apply를 생각 했었다면 풀수도 있었을 것 같은데 안될거라고 생각을 했던 것이 다른 방향으로 문제를 풀려고 했던 것 같다, 결론 적으로는 `(~@)를 사용하면서까지 할 필요는 없었다는 것이고, 계산의 결과를 args로 해도 된다는 것을 깨달았다.&lt;/p&gt;
+</description>
+<pubDate>
+Sun, 01 Dec 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-11-30-4clojure-57.html
