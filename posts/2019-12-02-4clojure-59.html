@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: 4clojure - Reverse Interleave (43)</title>
-    <link rel="canonical" href="http://dev-happy.com/posts/2019-11-15-4clojure-43.html">
+    <title>Dev Happy: 4clojure - Juxtaposition (59)</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2019-12-02-4clojure-59.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -73,28 +73,24 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 11월 15일 (금)</div>
+        <div class="col-lg-6">2019년 12월 2일 (월)</div>
         
     </div>
-    <h2>4clojure - Reverse Interleave (43)</h2>
+    <h2>4clojure - Juxtaposition (59)</h2>
 </div>
 <div>
     
-    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;&#95;&#95; &#91;1 2 3 4 5 6&#93; 2&#41; '&#40;&#40;1 3 5&#41; &#40;2 4 6&#41;&#41;&#41;
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#91;21 6 1&#93; &#40;&#40;&#95;&#95; + max min&#41; 2 3 5 1 6 4&#41;&#41;
 
-&#40;= &#40;&#95;&#95; &#40;range 9&#41; 3&#41; '&#40;&#40;0 3 6&#41; &#40;1 4 7&#41; &#40;2 5 8&#41;&#41;&#41;
+&#40;= &#91;&quot;HELLO&quot; 5&#93; &#40;&#40;&#95;&#95; #&#40;.toUpperCase %&#41; count&#41; &quot;hello&quot;&#41;&#41;
 
-&#40;= &#40;&#95;&#95; &#40;range 10&#41; 5&#41; '&#40;&#40;0 5&#41; &#40;1 6&#41; &#40;2 7&#41; &#40;3 8&#41; &#40;4 9&#41;&#41;&#41;
-</code></pre></p><p><strong>Solved</strong><pre><code class="clj">#&#40;apply map list &#40;partition %2 %1&#41;&#41;
-</code></pre></p><p>지금까지 공부하면서 이것 저것 해본 결과에 대한 도움이 많이 된 것 같다. Medium 문제라서 긴장하고 있었는데 생각보다 간단하게 해결 할 수 있어서 기분은 좋다.</p><p>우선 어떻게 나눠서 문제를 풀어야 할까?에 대해서 생각을 많이 하다보니 partition이 떠올랐다. </p><p>1번을 예로 들어 partition 을 사용하게 되면 <pre><code class="clj">&#40;partition 2 &#91;1 2 3 4 5 6&#93;&#41;
-;; &#40;&#40;1 2&#41; &#40;3 4&#41; &#40;5 6&#41;&#41;
-</code></pre></p> <p>값 하나씩 순회를 하면 될 것이라 생각하고 (map list)를 사용을 했는데<pre><code class="clj">&#40;map list &#40;partition 2 &#91;1 2 3 4 5 6&#93;&#41;&#41;
-;; &#40;&#40;&#40;1 2&#41;&#41; &#40;&#40;3 4&#41;&#41; &#40;&#40;5 6&#41;&#41;&#41; 
-</code></pre></p><p>그래서 다른 방법을 찾아봐야 하는지 생각하다가 그동안 풀었던 문제에서 ((1 2) (3 4) (5 6))을 내부 원소의 1개의 값씩 순회를 하면서 답 과 같은 형태로 만들어주는 방식이 어렴풋이 떠올라서 찾아봤는데 </p><p>39번 문제애서 그런 형식이 있었다. </p><p>근데 (apply map list)인데 왜 답과 같은 형태가 나오는지는 잘 모르겠다...</p><p>(map list)에 다수의 파라미터를 넣으면 결과가 같아진다.<pre><code class="clj">&#40;map list ‘&#40;1 2&#41; ‘&#40;3 4&#41; ‘&#40;5 6&#41;&#41;
-;; &#40;&#40;1 3 5&#41; &#40;2 4 6&#41;&#41;
-</code></pre></p><p>apply의 동작이 단순히 collection을 한개 없애주는 함수인줄 알았는데 <pre><code class="clj">&#40;apply map list &#40;&#40;1 2&#41; &#40;3 4&#41; &#40;5 6&#41;&#41;&#41;
-;;‘&#40;map list ‘&#40;1 2&#41; ‘&#40;3 4&#41; ‘&#40;5 6&#41;&#41;
-</code></pre></p><p>와 같이  식으로 합쳐주는 함수라는 것을 알았다. </p><p>clojure는 공부를 하면 할 수록 심오한 함수의 동작에 다시한번 놀라게 된다.</p>
+&#40;= &#91;2 6 4&#93; &#40;&#40;&#95;&#95; :a :c :b&#41; {:a 2, :b 4, :c 6, :d 8 :e 10}&#41;&#41;
+</code></pre></p><p><strong>제한 : juxt</strong></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn &#91;a b &amp;&#91;c&#93;&#93;
+  &#40;fn &#91;&amp; x&#93;
+    &#40;if c
+      &#40;vector &#40;apply a x&#41; &#40;apply b x&#41; &#40;apply c x&#41;&#41;
+      &#40;vector &#40;apply a x&#41; &#40;apply b x&#41;&#41;&#41;&#41;&#41;
+</code></pre></p><p>juxt의 함수 동작을 구현하는 문제이다. 동작하는 방식은  ((juxt + max min) 2 3 5 1 6 4) 의 결과는 [21 6 1]이 되는데 + 는 21, max = 6, min = 1의 결과가 된다. juxt 함수의 내부가 저렇게 생기지 않았다고 생각이 들지만 문제의 답을 모두 충족하기 때문에 59번 문제 한정해서 충족한다고 생각한다.</p>
 </div>
 
 <div id="post-tags">
@@ -109,10 +105,8 @@
 
     <div id="prev-next">
         
-        <a href="/posts/2019-11-16-4clojure-44.html">&laquo; 4clojure - Rotate Sequence (44)</a>
         
-        
-        <a class="right" href="/posts/2019-11-14-4clojure-42.html">4clojure - Factorial Fun (42) &raquo;</a>
+        <a class="right" href="/posts/2019-12-01-4clojure-58.html">4clojure - Function Composition (58) &raquo;</a>
         
     </div>
 

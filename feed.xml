@@ -12,11 +12,38 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Sun, 01 Dec 2019 05:31:15 +0900
+Mon, 02 Dec 2019 06:17:09 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-12-02-4clojure-59.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-12-02-4clojure-59.html
+</link>
+<title>
+4clojure - Juxtaposition (59)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#91;21 6 1&amp;#93; &amp;#40;&amp;#40;&amp;#95;&amp;#95; + max min&amp;#41; 2 3 5 1 6 4&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#91;&amp;quot;HELLO&amp;quot; 5&amp;#93; &amp;#40;&amp;#40;&amp;#95;&amp;#95; #&amp;#40;.toUpperCase %&amp;#41; count&amp;#41; &amp;quot;hello&amp;quot;&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#91;2 6 4&amp;#93; &amp;#40;&amp;#40;&amp;#95;&amp;#95; :a :c :b&amp;#41; {:a 2, :b 4, :c 6, :d 8 :e 10}&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;제한 : juxt&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;a b &amp;amp;&amp;#91;c&amp;#93;&amp;#93;
+  &amp;#40;fn &amp;#91;&amp;amp; x&amp;#93;
+    &amp;#40;if c
+      &amp;#40;vector &amp;#40;apply a x&amp;#41; &amp;#40;apply b x&amp;#41; &amp;#40;apply c x&amp;#41;&amp;#41;
+      &amp;#40;vector &amp;#40;apply a x&amp;#41; &amp;#40;apply b x&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;juxt의 함수 동작을 구현하는 문제이다. 동작하는 방식은  ((juxt + max min) 2 3 5 1 6 4) 의 결과는 [21 6 1]이 되는데 + 는 21, max = 6, min = 1의 결과가 된다. juxt 함수의 내부가 저렇게 생기지 않았다고 생각이 들지만 문제의 답을 모두 충족하기 때문에 59번 문제 한정해서 충족한다고 생각한다.&lt;/p&gt;
+</description>
+<pubDate>
+Mon, 02 Dec 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-12-01-4clojure-58.html
