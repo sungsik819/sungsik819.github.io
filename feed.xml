@@ -12,11 +12,55 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Tue, 03 Dec 2019 05:51:44 +0900
+Wed, 04 Dec 2019 06:07:26 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-12-04-4clojure-61.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-12-04-4clojure-61.html
+</link>
+<title>
+4clojure - Map Construction (61)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#91;:a :b :c&amp;#93; &amp;#91;1 2 3&amp;#93;&amp;#41; {:a 1, :b 2, :c 3}&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#91;1 2 3 4&amp;#93; &amp;#91;&amp;quot;one&amp;quot; &amp;quot;two&amp;quot; &amp;quot;three&amp;quot;&amp;#93;&amp;#41; {1 &amp;quot;one&amp;quot;, 2 &amp;quot;two&amp;quot;, 3 &amp;quot;three&amp;quot;}&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#91;:foo :bar&amp;#93; &amp;#91;&amp;quot;foo&amp;quot; &amp;quot;bar&amp;quot; &amp;quot;baz&amp;quot;&amp;#93;&amp;#41; {:foo &amp;quot;foo&amp;quot;, :bar &amp;quot;bar&amp;quot;}&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;제한 : zipmap&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;x y&amp;#93;
+  &amp;#40;apply array-map &amp;#40;vec &amp;#40;mapcat list x y&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;vec를 빼고도 답이 가능 할 것 같다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;x y&amp;#93;
+  &amp;#40;apply array-map &amp;#40;mapcat list x y&amp;#41;&amp;#41;&amp;#41;
+
+;; array-map 대신 hash-map
+&amp;#40;fn &amp;#91;x y&amp;#93;
+  &amp;#40;apply hash-map &amp;#40;mapcat list x y&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;mapcat list는 항상 사용하던 함수지만 어떤 식으로 계산이 되는지 적어둘 필요성은 있다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;mapcat list &amp;#91;:a :b :c&amp;#93; &amp;#91;1 2 3&amp;#93;&amp;#41;
+;; &amp;#40;:a 1 :b 2 :c 3&amp;#41;
+
+;; apply를 사용하면 이런 식으로 사용 된다.
+&amp;#40;apply hash-map '&amp;#40;:a 1 :b 2 :c 3&amp;#41;&amp;#41;
+;; &amp;#40;hash-map :a 1 :b 2 :c 3&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;다른 답들도 있었다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;#&amp;#40;into {} &amp;#40;map vector % %2&amp;#41;&amp;#41;
+
+;; 위 답에 대한 해결되는 과정
+&amp;#40;map vector &amp;#91;:a :b :c&amp;#93; &amp;#91;1 2 3&amp;#93;&amp;#41;
+;; &amp;#40;&amp;#91;:a 1&amp;#93; &amp;#91;:b 2&amp;#93; &amp;#91;:c 3&amp;#93;&amp;#41;
+
+&amp;#40;into {} '&amp;#40;&amp;#91;:a 1&amp;#93; &amp;#91;:b 2&amp;#93; &amp;#91;:c 3&amp;#93;&amp;#41;&amp;#41;
+;; {:a 1, :b 2, :c 3}
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+</description>
+<pubDate>
+Wed, 04 Dec 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-12-03-4clojure-60.html
