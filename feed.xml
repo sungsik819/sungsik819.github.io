@@ -12,11 +12,35 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Wed, 04 Dec 2019 06:07:26 +0900
+Thu, 05 Dec 2019 06:16:25 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-12-05-4clojure-62.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-12-05-4clojure-62.html
+</link>
+<title>
+4clojure - Re-implement Iterate (62)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#40;take 5 &amp;#40;&amp;#95;&amp;#95; #&amp;#40;&amp;#42; 2 %&amp;#41; 1&amp;#41;&amp;#41; &amp;#91;1 2 4 8 16&amp;#93;&amp;#41;
+
+&amp;#40;= &amp;#40;take 100 &amp;#40;&amp;#95;&amp;#95; inc 0&amp;#41;&amp;#41; &amp;#40;take 100 &amp;#40;range&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#40;take 9 &amp;#40;&amp;#95;&amp;#95; #&amp;#40;inc &amp;#40;mod % 3&amp;#41;&amp;#41; 1&amp;#41;&amp;#41; &amp;#40;take 9 &amp;#40;cycle &amp;#91;1 2 3&amp;#93;&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;제한: iterate&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn iter &amp;#91;f x&amp;#93;
+  &amp;#40;lazy-seq &amp;#40;cons x &amp;#40;iter f &amp;#40;f x&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;itearate의 동작을 확실하게 알기 때문에 풀기가 그렇게 어렵지는 않았다. 이전에 계산된 값을 사용하는 방식으로 reduce 비스무리하게 동작을 한다고 생각하면 될 것 같다.&lt;/p&gt;&lt;p&gt;눈여겨 볼 부분은 lazy-seq이다. 게으른 연산을 수행을 하는데 값을 원할때까지 계산을 미루는 방식으로 사용 된다. &lt;/p&gt;&lt;p&gt;즉, 필요없는 데이터를 미리 로드 하지 않는다고 생각을 하면 될 것 같다.&lt;/p&gt;
+</description>
+<pubDate>
+Thu, 05 Dec 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-12-04-4clojure-61.html
