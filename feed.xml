@@ -12,11 +12,28 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Thu, 05 Dec 2019 06:16:25 +0900
+Fri, 06 Dec 2019 06:29:44 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-12-06-intro-css.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-12-06-intro-css.html
+</link>
+<title>
+CSS 정리
+</title>
+<description>
+&lt;p&gt;Front에서 html, javascript는 자신이 있지만 css는 익숙하지가 않다 그래서 블로그를 변형하면서 생기는 시행 착오들을 정리를 하려고 한다&lt;/p&gt;&lt;p&gt;아무것도 모른다고 생각하고 아주 기초적인 것 부터 하나씩 시간 날때마다, 4clojure 문제가 잘 풀리지 않을 때마다 하나씩 정리 할 생각이다.&lt;/p&gt;
+</description>
+<pubDate>
+Fri, 06 Dec 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-12-05-4clojure-62.html
