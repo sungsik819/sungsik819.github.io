@@ -12,11 +12,28 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Fri, 06 Dec 2019 06:29:44 +0900
+Sat, 07 Dec 2019 06:30:35 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-12-07-basic-css.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-12-07-basic-css.html
+</link>
+<title>
+CSS 기본
+</title>
+<description>
+&lt;ul&gt;&lt;li&gt;2개인 경우&lt;/li&gt;&lt;li&gt;* margin: 0 auto; -&gt; 가운데로 두기&lt;/li&gt;&lt;li&gt;* 0 -&gt; 상단, 하단&lt;/li&gt;&lt;li&gt;* auto -&gt; 좌측, 우측&lt;/li&gt;&lt;li&gt;3개인 경우&lt;/li&gt;&lt;li&gt;* margin: 30px 10px 40px&lt;/li&gt;&lt;li&gt;* 첫번째 값 -&gt; 위&lt;/li&gt;&lt;li&gt;* 두번째 -&gt; 좌, 우&lt;/li&gt;&lt;li&gt;* 세번째 -&gt; 아래		* &lt;/li&gt;&lt;li&gt;4개인 경우&lt;/li&gt;&lt;li&gt;* padding: 0 2opx 20px 20px;&lt;/li&gt;&lt;li&gt;* 첫번째 0 -&gt; 상단&lt;/li&gt;&lt;li&gt;* 두번째 20px -&gt; 우측&lt;/li&gt;&lt;li&gt;* 세번째 20px -&gt; 하단&lt;/li&gt;&lt;li&gt;* 네번째 20px -&gt; 좌측&lt;/li&gt;&lt;/ul&gt;
+</description>
+<pubDate>
+Sat, 07 Dec 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-12-06-intro-css.html
