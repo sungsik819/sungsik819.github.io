@@ -73,20 +73,42 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 12월 7일 (토)</div>
+        <div class="col-lg-6">2019년 12월 8일 (일)</div>
         
     </div>
-    <h2>CSS 기본</h2>
+    <h2>4clojure - Group a Sequence  (63)</h2>
 </div>
 <div>
     
-    <h2 id="2개인&#95;경우&#95;(margin:&#95;0&#95;auto;&#95;->&#95;가운데로&#95;두기)">2개인 경우 (margin: 0 auto; -> 가운데로 두기)</h2><ul><li>0 -> 상단, 하단</li><li>auto -> 좌측, 우측</li></ul><h2 id="3개인&#95;경우&#95;(margin:&#95;30px&#95;10px&#95;40px)">3개인 경우 (margin: 30px 10px 40px)</h2><ul><li>첫번째 값 -> 위</li><li>두번째 -> 좌, 우</li><li>세번째 -> 아래</li></ul><h2 id="4개인&#95;경우&#95;(padding:&#95;0&#95;2opx&#95;20px&#95;20px;)">4개인 경우 (padding: 0 2opx 20px 20px;)</h2><ul><li>첫번째 0 -> 상단</li><li>두번째 20px -> 우측</li><li>세번째 20px -> 하단</li><li>네번째 20px -> 좌측</li></ul>
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;&#95;&#95; #&#40;&gt; % 5&#41; &#91;1 3 6 8&#93;&#41; {false &#91;1 3&#93;, true &#91;6 8&#93;}&#41;
+
+&#40;= &#40;&#95;&#95; #&#40;apply / %&#41; &#91;&#91;1 2&#93; &#91;2 4&#93; &#91;4 6&#93; &#91;3 6&#93;&#93;&#41;
+   {1/2 &#91;&#91;1 2&#93; &#91;2 4&#93; &#91;3 6&#93;&#93;, 2/3 &#91;&#91;4 6&#93;&#93;}&#41;
+
+&#40;= &#40;&#95;&#95; count &#91;&#91;1&#93; &#91;1 2&#93; &#91;3&#93; &#91;1 2 3&#93; &#91;2 3&#93;&#93;&#41;
+   {1 &#91;&#91;1&#93; &#91;3&#93;&#93;, 2 &#91;&#91;1 2&#93; &#91;2 3&#93;&#93;, 3 &#91;&#91;1 2 3&#93;&#93;}&#41;
+</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn &#91;f coll&#93;
+  &#40;into {} &#40;map #&#40;vector &#40;f &#40;first %&#41;&#41; &#40;vec %&#41;&#41;
+                &#40;partition-by f &#40;sort coll&#41;&#41;&#41;&#41;&#41;
+</code></pre></p><p>이렇게 풀었었는데 다시 보기 좋게 ->> 로 작성 해봤다.</p><pre><code class="clj">&#40;fn &#91;f coll&#93;
+	&#40;-&gt;&gt; &#40;partition-by f &#40;sort coll&#41;&#41;
+		  &#40;map #&#40;vector &#40;f &#40;first %&#41;&#41; &#40;vec %&#41;&#41;&#41;
+		  &#40;into {}&#41;&#41;&#41;
+</code></pre><p>풀어본지 오래 되다보니 되새기는데 시간이 좀 걸리긴 한다.. 밑에는 풀이 과정에 따른 값의 변화 이다.<pre><code class="clj">&#40;partition-by #&#40;&gt; % 5&#41; &#40;sort &#91;1 3 6 8&#93;&#41;&#41;
+;; &#40;&#40;1 3&#41; &#40;6 8&#41;&#41;
+
+&#40;map #&#40;vector &#40;&#40;fn &#91;x&#93; &#40;&gt; x 5&#41;&#41; &#40;first %&#41;&#41; &#40;vec %&#41;&#41; '&#40;&#40;1 3&#41; &#40;6 8&#41;&#41;&#41;
+;; &#40;&#91;false &#91;1 3&#93;&#93; &#91;true &#91;6 8&#93;&#93;&#41;
+
+&#40;into {} '&#40;&#91;false &#91;1 3&#93;&#93; &#91;true &#91;6 8&#93;&#93;&#41;&#41;
+;; {false &#91;1 3&#93;, true &#91;6 8&#93;}
+</code></pre></p><p>중간에 map 함수가 잘 이해가 가지 않았었는데 생각해보니 partitoin-by를 계산 하면서 미리 계산해둔 값이므로 first만 확인 하든, 전체를 확인 하든 f에 대한 같은 결과 이므로 first만 확인을 하는 것이 계산 하는데 유리하다고 생각 했고, 어차피 값이 같다고 생각을 했던 것 같다.</p>
 </div>
 
 <div id="post-tags">
     <b>Tags: </b>
     
-    <a href="/css.html">css</a>
+    <a href="/4clojure.html">4clojure</a>
     
     <a href="/Today I Learn.html">Today I Learn</a>
     
@@ -98,7 +120,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2019-12-06-intro-css.html">CSS 정리 &raquo;</a>
+        <a class="right" href="/posts/2019-12-07-basic-css.html">CSS 기본 &raquo;</a>
         
     </div>
 </div>
@@ -117,11 +139,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2019-12-08-4clojure-63.html">4clojure - Group a Sequence  (63)</a></li>
+                        
                         <li><a href="/posts/2019-12-07-basic-css.html">CSS 기본</a></li>
                         
                         <li><a href="/posts/2019-12-06-intro-css.html">CSS 정리</a></li>
-                        
-                        <li><a href="/posts/2019-12-05-4clojure-62.html">4clojure - Re-implement Iterate (62)</a></li>
                         
                     </ul>
                 </div>
@@ -131,11 +153,11 @@
                     <h3>Tags</h3>
                     <ul>
                         
-                        <li><a href="/css.html">css</a></li>
+                        <li><a href="/4clojure.html">4clojure</a></li>
                         
                         <li><a href="/Today I Learn.html">Today I Learn</a></li>
                         
-                        <li><a href="/4clojure.html">4clojure</a></li>
+                        <li><a href="/css.html">css</a></li>
                         
                         <li><a href="/essay.html">essay</a></li>
                         
