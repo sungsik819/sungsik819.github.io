@@ -12,11 +12,43 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Sun, 08 Dec 2019 08:18:03 +0900
+Mon, 09 Dec 2019 06:20:34 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-12-09-4clojure-64.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-12-09-4clojure-64.html
+</link>
+<title>
+4clojure - Intro to Reduce (64)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= 15 &amp;#40;reduce &amp;#95;&amp;#95; &amp;#91;1 2 3 4 5&amp;#93;&amp;#41;&amp;#41;
+
+&amp;#40;=  0 &amp;#40;reduce &amp;#95;&amp;#95; &amp;#91;&amp;#93;&amp;#41;&amp;#41;
+
+&amp;#40;=  6 &amp;#40;reduce &amp;#95;&amp;#95; 1 &amp;#91;2 3&amp;#93;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;+
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;reduce에 대한 입문 문제 이다. reduce는 사용하기에 따라서 recursive동작과 같은 형태로도 만들수 있는 만능 함수이다. 앞으로도 자주 사용을 하게 될 것이라 기초적인 것이 제일 중요하다고 생각한다.&lt;/p&gt;&lt;p&gt;내부의 동작은 아래와 같다&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;reduce + &amp;#91;1 2 3 4 5&amp;#93;&amp;#41;
+;; &amp;#40;+ &amp;#40;+ &amp;#40;+ &amp;#40;+ 1 2&amp;#41; 3&amp;#41; 4&amp;#41; 5&amp;#41;
+;; &amp;#40;+ &amp;#40;+ &amp;#40;+ 3 3&amp;#41; 4&amp;#41; 5&amp;#41;
+;; &amp;#40;+ &amp;#40;+ 6 4&amp;#41; 5&amp;#41;
+;; &amp;#40;+ 10 5&amp;#41;
+;; 15
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;풀어서 보니 전형적인 recursive 동작이라고 생각한다. &lt;/p&gt;&lt;p&gt;apply와는 다르게 동작 한다는 것에 유의를 해야 한다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;apply + &amp;#91;1 2 3 4 5&amp;#93;&amp;#41;
+;; &amp;#40;+ 1 2 3 4 5&amp;#41;
+;; 15
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+</description>
+<pubDate>
+Mon, 09 Dec 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-12-08-4clojure-63.html
