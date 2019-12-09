@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: 4clojure - Contain Yourself (47)</title>
-    <link rel="canonical" href="http://dev-happy.com/posts/2019-11-19-4clojure-47.html">
+    <title>Dev Happy: 4clojure - Black Box Testing (65)</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2019-12-10-4clojure-65.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -73,22 +73,35 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 11월 19일 (화)</div>
+        <div class="col-lg-6">2019년 12월 10일 (화)</div>
         
     </div>
-    <h2>4clojure - Contain Yourself (47)</h2>
+    <h2>4clojure - Black Box Testing (65)</h2>
 </div>
 <div>
     
-    <p><strong>Problem</strong><pre><code class="clj">&#40;contains? #{4 5 6} &#95;&#95;&#41;
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= :map &#40;&#95;&#95; {:a 1, :b 2}&#41;&#41;
 
-&#40;contains? &#91;1 1 1 1 1&#93; &#95;&#95;&#41;
+&#40;= :list &#40;&#95;&#95; &#40;range &#40;rand-int 20&#41;&#41;&#41;&#41;
 
-&#40;contains? {4 :a 2 :b} &#95;&#95;&#41;
+&#40;= :vector &#40;&#95;&#95; &#91;1 2 3 4 5 6&#93;&#41;&#41;
 
-&#40;not &#40;contains? &#91;1 2 4&#93; &#95;&#95;&#41;&#41;
-</code></pre></p><p><strong>Solved</strong><pre><code class="clj">4
-</code></pre></p><p>value값이 있는지 찾는 문제 이다. 하지만 vector에 대해서는 index에 값이 있는지 판단하는 함수로 변한다.  hash-map에 대해서는 key 값의 존재 여부도 판단 가능하다.</p>
+&#40;= :set &#40;&#95;&#95; #{10 &#40;rand-int 5&#41;}&#41;&#41;
+
+&#40;= &#91;:map :set :vector :list&#93; &#40;map &#95;&#95; &#91;{} #{} &#91;&#93; &#40;&#41;&#93;&#41;&#41;
+</code></pre></p><p><strong>제한 : class, type, Class, vector?, sequential?, list?, seq?, map?, set?</strong> <strong>instance?,  getClass</strong></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn &#91;coll&#93;
+  &#40;let &#91;base &#40;empty coll&#41;&#93;
+    &#40;cond
+      &#40;= base {}&#41;  :map
+      &#40;= base #{}&#41; :set
+      &#40;= base '&#40;&#41;&#41; &#40;if &#40;reversible? coll&#41; :vector :list&#41;&#41;&#41;&#41;
+</code></pre></p><p>검증하는 함수 없이 어떻게 자료형을 알 수가 있는거지? 라는 생각이 먼저 든다. 어떻게 풀어야할지 감이 잡히지 않는다....</p><p>값이 들어있는 상태에서 empty로 만드는 함수가 있다는 것을 처음 알게 되었다.  그리고 collection 자체를 검증 할 수 있다는 것도 알게 되었다.</p><p>보통의 언어 같으면 저런식으로 collection을 비교하지 못해서 저런 방법이 있는지 조차 모르고 산다.</p><p>reversible? 이라는 함수는 확실하게는 잘 모르겠지만 Reversible 을 구현한 collection을 검증하는 함수인데 이게 무엇을 뜻하는지는 아직 잘 모르겠다.</p><p>찾아보니 reverse 가능한 seq를 reversible이라고 한다. 그래서 vector, sorted-map, sorted-set 이 true 값이 되는 것 같다.</p><p>그래서 이번에는 정말로 감이 잡히질 않아서 인터넷에서 찾아보고 공부한다는 마음 가짐으로 기록으로 남긴다.</p><p>다른 사람이 남긴 해답을 분석을 하고 싶어 졌다.<pre><code class="clj">#&#40;cond
+   &#40;= &#40;conj % nil&#41; %&#41; :map 
+   &#40;= &#40;conj % 0&#41; &#40;conj % 0 0&#41;&#41; :set
+   &#40;= &#40;conj % 0 1&#41; &#40;cons 1 &#40;cons 0 %&#41;&#41;&#41; :list
+   :else :vector&#41;
+</code></pre></p><pre><code class="clj">#&#40;&#40;zipmap &#40;map str &#91;{} #{} &#40;&#41; &#91;&#93;&#93;&#41; &#91;:map :set :list :vector&#93;&#41; &#40;str &#40;empty %&#41;&#41;&#41;
+</code></pre>
 </div>
 
 <div id="post-tags">
@@ -103,10 +116,8 @@
 
     <div id="prev-next">
         
-        <a href="/posts/2019-11-20-4clojure-48.html">&laquo; 4clojure - Intro to some (48)</a>
         
-        
-        <a class="right" href="/posts/2019-11-18-4clojure-46.html">4clojure - Flipping out (46) &raquo;</a>
+        <a class="right" href="/posts/2019-12-09-4clojure-64.html">4clojure - Intro to Reduce (64) &raquo;</a>
         
     </div>
 

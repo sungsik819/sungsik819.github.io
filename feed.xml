@@ -12,11 +12,49 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Mon, 09 Dec 2019 06:20:34 +0900
+Tue, 10 Dec 2019 06:22:24 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-12-10-4clojure-65.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-12-10-4clojure-65.html
+</link>
+<title>
+4clojure - Black Box Testing (65)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= :map &amp;#40;&amp;#95;&amp;#95; {:a 1, :b 2}&amp;#41;&amp;#41;
+
+&amp;#40;= :list &amp;#40;&amp;#95;&amp;#95; &amp;#40;range &amp;#40;rand-int 20&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;= :vector &amp;#40;&amp;#95;&amp;#95; &amp;#91;1 2 3 4 5 6&amp;#93;&amp;#41;&amp;#41;
+
+&amp;#40;= :set &amp;#40;&amp;#95;&amp;#95; #{10 &amp;#40;rand-int 5&amp;#41;}&amp;#41;&amp;#41;
+
+&amp;#40;= &amp;#91;:map :set :vector :list&amp;#93; &amp;#40;map &amp;#95;&amp;#95; &amp;#91;{} #{} &amp;#91;&amp;#93; &amp;#40;&amp;#41;&amp;#93;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;제한 : class, type, Class, vector?, sequential?, list?, seq?, map?, set?&lt;/strong&gt; &lt;strong&gt;instance?,  getClass&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;coll&amp;#93;
+  &amp;#40;let &amp;#91;base &amp;#40;empty coll&amp;#41;&amp;#93;
+    &amp;#40;cond
+      &amp;#40;= base {}&amp;#41;  :map
+      &amp;#40;= base #{}&amp;#41; :set
+      &amp;#40;= base '&amp;#40;&amp;#41;&amp;#41; &amp;#40;if &amp;#40;reversible? coll&amp;#41; :vector :list&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;검증하는 함수 없이 어떻게 자료형을 알 수가 있는거지? 라는 생각이 먼저 든다. 어떻게 풀어야할지 감이 잡히지 않는다....&lt;/p&gt;&lt;p&gt;값이 들어있는 상태에서 empty로 만드는 함수가 있다는 것을 처음 알게 되었다.  그리고 collection 자체를 검증 할 수 있다는 것도 알게 되었다.&lt;/p&gt;&lt;p&gt;보통의 언어 같으면 저런식으로 collection을 비교하지 못해서 저런 방법이 있는지 조차 모르고 산다.&lt;/p&gt;&lt;p&gt;reversible? 이라는 함수는 확실하게는 잘 모르겠지만 Reversible 을 구현한 collection을 검증하는 함수인데 이게 무엇을 뜻하는지는 아직 잘 모르겠다.&lt;/p&gt;&lt;p&gt;찾아보니 reverse 가능한 seq를 reversible이라고 한다. 그래서 vector, sorted-map, sorted-set 이 true 값이 되는 것 같다.&lt;/p&gt;&lt;p&gt;그래서 이번에는 정말로 감이 잡히질 않아서 인터넷에서 찾아보고 공부한다는 마음 가짐으로 기록으로 남긴다.&lt;/p&gt;&lt;p&gt;다른 사람이 남긴 해답을 분석을 하고 싶어 졌다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;#&amp;#40;cond
+   &amp;#40;= &amp;#40;conj % nil&amp;#41; %&amp;#41; :map 
+   &amp;#40;= &amp;#40;conj % 0&amp;#41; &amp;#40;conj % 0 0&amp;#41;&amp;#41; :set
+   &amp;#40;= &amp;#40;conj % 0 1&amp;#41; &amp;#40;cons 1 &amp;#40;cons 0 %&amp;#41;&amp;#41;&amp;#41; :list
+   :else :vector&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;#&amp;#40;&amp;#40;zipmap &amp;#40;map str &amp;#91;{} #{} &amp;#40;&amp;#41; &amp;#91;&amp;#93;&amp;#93;&amp;#41; &amp;#91;:map :set :list :vector&amp;#93;&amp;#41; &amp;#40;str &amp;#40;empty %&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+<pubDate>
+Tue, 10 Dec 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-12-09-4clojure-64.html
