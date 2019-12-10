@@ -73,35 +73,25 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 12월 10일 (화)</div>
+        <div class="col-lg-6">2019년 12월 11일 (수)</div>
         
     </div>
-    <h2>4clojure - Black Box Testing (65)</h2>
+    <h2>4clojure - Greatest Common Divisor (66)</h2>
 </div>
 <div>
     
-    <p><strong>Problem</strong><pre><code class="clj">&#40;= :map &#40;&#95;&#95; {:a 1, :b 2}&#41;&#41;
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;&#95;&#95; 2 4&#41; 2&#41;
 
-&#40;= :list &#40;&#95;&#95; &#40;range &#40;rand-int 20&#41;&#41;&#41;&#41;
+&#40;= &#40;&#95;&#95; 10 5&#41; 5&#41;
 
-&#40;= :vector &#40;&#95;&#95; &#91;1 2 3 4 5 6&#93;&#41;&#41;
+&#40;= &#40;&#95;&#95; 5 7&#41; 1&#41;
 
-&#40;= :set &#40;&#95;&#95; #{10 &#40;rand-int 5&#41;}&#41;&#41;
-
-&#40;= &#91;:map :set :vector :list&#93; &#40;map &#95;&#95; &#91;{} #{} &#91;&#93; &#40;&#41;&#93;&#41;&#41;
-</code></pre></p><p><strong>제한 : class, type, Class, vector?, sequential?, list?, seq?, map?, set?</strong> <strong>instance?,  getClass</strong></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn &#91;coll&#93;
-  &#40;let &#91;base &#40;empty coll&#41;&#93;
-    &#40;cond
-      &#40;= base {}&#41;  :map
-      &#40;= base #{}&#41; :set
-      &#40;= base '&#40;&#41;&#41; &#40;if &#40;reversible? coll&#41; :vector :list&#41;&#41;&#41;&#41;
-</code></pre></p><p>검증하는 함수 없이 어떻게 자료형을 알 수가 있는거지? 라는 생각이 먼저 든다. 어떻게 풀어야할지 감이 잡히지 않는다....</p><p>값이 들어있는 상태에서 empty로 만드는 함수가 있다는 것을 처음 알게 되었다.  그리고 collection 자체를 검증 할 수 있다는 것도 알게 되었다.</p><p>보통의 언어 같으면 저런식으로 collection을 비교하지 못해서 저런 방법이 있는지 조차 모르고 산다.</p><p>reversible? 이라는 함수는 확실하게는 잘 모르겠지만 Reversible 을 구현한 collection을 검증하는 함수인데 이게 무엇을 뜻하는지는 아직 잘 모르겠다.</p><p>찾아보니 reverse 가능한 seq를 reversible이라고 한다. 그래서 vector, sorted-map, sorted-set 이 true 값이 되는 것 같다.</p><p>그래서 이번에는 정말로 감이 잡히질 않아서 인터넷에서 찾아보고 공부한다는 마음 가짐으로 기록으로 남긴다.</p><p>다른 사람이 남긴 해답을 분석을 하고 싶어 졌다.<pre><code class="clj">#&#40;cond
-   &#40;= &#40;conj % nil&#41; %&#41; :map 
-   &#40;= &#40;conj % 0&#41; &#40;conj % 0 0&#41;&#41; :set
-   &#40;= &#40;conj % 0 1&#41; &#40;cons 1 &#40;cons 0 %&#41;&#41;&#41; :list
-   :else :vector&#41;
-</code></pre></p><pre><code class="clj">#&#40;&#40;zipmap &#40;map str &#91;{} #{} &#40;&#41; &#91;&#93;&#93;&#41; &#91;:map :set :list :vector&#93;&#41; &#40;str &#40;empty %&#41;&#41;&#41;
-</code></pre>
+&#40;= &#40;&#95;&#95; 1023 858&#41; 33&#41;
+</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn &#91;x y&#93;
+  &#40;loop &#91;a x b y&#93;
+    &#40;if &#40;= b 0&#41; a
+      &#40;recur b &#40;rem a b&#41;&#41;&#41;&#41;&#41;
+</code></pre></p><p>최대 공약수를 구하는 문제이다. 쉽게 구하는 수학적인 공식이 있는데 <a href='https://ko.wikipedia.org/wiki/%EC%9C%A0%ED%81%B4%EB%A6%AC%EB%93%9C_%ED%98%B8%EC%A0%9C%EB%B2%95'>유클리드 호제법</a>을 이용해서 문제를 쉽게 풀 수 있다. 그 공식을 이용하고 recursive로 문제를 풀었다.</p>
 </div>
 
 <div id="post-tags">
@@ -119,7 +109,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2019-12-09-4clojure-64.html">4clojure - Intro to Reduce (64) &raquo;</a>
+        <a class="right" href="/posts/2019-12-10-4clojure-65.html">4clojure - Black Box Testing (65) &raquo;</a>
         
     </div>
 </div>
@@ -138,11 +128,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2019-12-11-4clojure-66.html">4clojure - Greatest Common Divisor (66)</a></li>
+                        
                         <li><a href="/posts/2019-12-10-4clojure-65.html">4clojure - Black Box Testing (65)</a></li>
                         
                         <li><a href="/posts/2019-12-09-4clojure-64.html">4clojure - Intro to Reduce (64)</a></li>
-                        
-                        <li><a href="/posts/2019-12-08-4clojure-63.html">4clojure - Group a Sequence  (63)</a></li>
                         
                     </ul>
                 </div>
