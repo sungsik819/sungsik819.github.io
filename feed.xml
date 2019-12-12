@@ -12,11 +12,45 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Thu, 12 Dec 2019 06:18:49 +0900
+Fri, 13 Dec 2019 06:30:07 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-12-13-4clojure-68.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-12-13-4clojure-68.html
+</link>
+<title>
+4clojure - Recurring Theme (68)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#95;&amp;#95;
+  &amp;#40;loop &amp;#91;x 5
+         result &amp;#91;&amp;#93;&amp;#93;
+    &amp;#40;if &amp;#40;&amp;gt; x 0&amp;#41;
+      &amp;#40;recur &amp;#40;dec x&amp;#41; &amp;#40;conj result &amp;#40;+ 2 x&amp;#41;&amp;#41;&amp;#41;
+      result&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#91;7 6 5 4 3&amp;#93;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;recursive 문제 이다 다른 부분 보다는 recur 이 부분을 분석 할 수 있으면 문제는 쉽게 해결 가능 하다.&lt;/p&gt;&lt;p&gt;우선은 x = 5 값이고 result = []로 시작을 하게 되고, 반복을 하게 되면 아래와 같아진다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;conj &amp;#91;&amp;#93; 7&amp;#41;
+&amp;#40;conj &amp;#40;conj &amp;#91;&amp;#93; 7&amp;#41; 6&amp;#41;
+&amp;#40;conj &amp;#40;conj &amp;#40;conj &amp;#91;&amp;#93; 7&amp;#41; 6&amp;#41; 5&amp;#41;
+&amp;#40;conj &amp;#40;conj &amp;#40;conj &amp;#40;conj &amp;#91;&amp;#93; 7&amp;#41; 6&amp;#41; 5&amp;#41; 4&amp;#41;
+&amp;#40;conj &amp;#40;conj &amp;#40;conj &amp;#40;conj &amp;#40;conj &amp;#91;&amp;#93; 7&amp;#41; 6&amp;#41; 5&amp;#41; 4&amp;#41; 3&amp;#41;
+&amp;#40;conj &amp;#40;conj &amp;#40;conj &amp;#40;conj &amp;#91;7&amp;#93; 6&amp;#41; 5&amp;#41; 4&amp;#41; 3&amp;#41;
+&amp;#40;conj &amp;#40;conj &amp;#40;conj &amp;#91;7 6&amp;#93; 5&amp;#41; 4&amp;#41; 3&amp;#41;
+&amp;#40;conj &amp;#40;conj &amp;#91;7 6 5&amp;#93; 4&amp;#41; 3&amp;#41;
+&amp;#40;conj &amp;#91;7 6 5 4&amp;#93; 3&amp;#41;
+&amp;#91;7 6 5 4 3&amp;#93;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+</description>
+<pubDate>
+Fri, 13 Dec 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-12-12-4clojure-67.html
