@@ -73,37 +73,27 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 12월 13일 (금)</div>
+        <div class="col-lg-6">2019년 12월 14일 (토)</div>
         
     </div>
-    <h2>4clojure - Recurring Theme (68)</h2>
+    <h2>CSS - font</h2>
 </div>
 <div>
     
-    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#95;&#95;
-  &#40;loop &#91;x 5
-         result &#91;&#93;&#93;
-    &#40;if &#40;&gt; x 0&#41;
-      &#40;recur &#40;dec x&#41; &#40;conj result &#40;+ 2 x&#41;&#41;&#41;
-      result&#41;&#41;&#41;
-</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&#91;7 6 5 4 3&#93;
-</code></pre></p><p>recursive 문제 이다 다른 부분 보다는 recur 이 부분을 분석 할 수 있으면 문제는 쉽게 해결 가능 하다.</p><p>우선은 x = 5 값이고 result = []로 시작을 하게 되고, 반복을 하게 되면 아래와 같아진다.<pre><code class="clj">&#40;conj &#91;&#93; 7&#41;
-&#40;conj &#40;conj &#91;&#93; 7&#41; 6&#41;
-&#40;conj &#40;conj &#40;conj &#91;&#93; 7&#41; 6&#41; 5&#41;
-&#40;conj &#40;conj &#40;conj &#40;conj &#91;&#93; 7&#41; 6&#41; 5&#41; 4&#41;
-&#40;conj &#40;conj &#40;conj &#40;conj &#40;conj &#91;&#93; 7&#41; 6&#41; 5&#41; 4&#41; 3&#41;
-&#40;conj &#40;conj &#40;conj &#40;conj &#91;7&#93; 6&#41; 5&#41; 4&#41; 3&#41;
-&#40;conj &#40;conj &#40;conj &#91;7 6&#93; 5&#41; 4&#41; 3&#41;
-&#40;conj &#40;conj &#91;7 6 5&#93; 4&#41; 3&#41;
-&#40;conj &#91;7 6 5 4&#93; 3&#41;
-&#91;7 6 5 4 3&#93;
+    <p>구글의 font를 연결하고, 사용하는 방법을 알려준다</p><pre><code class="html">/&#42;head에 아래 추가 &#42;/
+&lt;link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
+          type='text/css'&gt;
+
+</code></pre><p>현재 family로 Alegreya로 지정이 되어 있다. css에서는 아래와 같이 사용 한다.<pre><code class="css">h1, h2, h3, h4, h5, h6 {
+    font-family: 'Alegreya';
+}
 </code></pre></p>
 </div>
 
 <div id="post-tags">
     <b>Tags: </b>
     
-    <a href="/4clojure.html">4clojure</a>
+    <a href="/css.html">css</a>
     
     <a href="/Today I Learn.html">Today I Learn</a>
     
@@ -115,7 +105,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2019-12-12-4clojure-67.html">4clojure - Prime Numbers (67) &raquo;</a>
+        <a class="right" href="/posts/2019-12-13-4clojure-68.html">4clojure - Recurring Theme (68) &raquo;</a>
         
     </div>
 </div>
@@ -134,11 +124,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2019-12-14-css-font.html">CSS - font</a></li>
+                        
                         <li><a href="/posts/2019-12-13-4clojure-68.html">4clojure - Recurring Theme (68)</a></li>
                         
                         <li><a href="/posts/2019-12-12-4clojure-67.html">4clojure - Prime Numbers (67)</a></li>
-                        
-                        <li><a href="/posts/2019-12-11-4clojure-66.html">4clojure - Greatest Common Divisor (66)</a></li>
                         
                     </ul>
                 </div>
@@ -148,11 +138,11 @@
                     <h3>Tags</h3>
                     <ul>
                         
-                        <li><a href="/4clojure.html">4clojure</a></li>
+                        <li><a href="/css.html">css</a></li>
                         
                         <li><a href="/Today I Learn.html">Today I Learn</a></li>
                         
-                        <li><a href="/css.html">css</a></li>
+                        <li><a href="/4clojure.html">4clojure</a></li>
                         
                         <li><a href="/essay.html">essay</a></li>
                         

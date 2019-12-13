@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: 4clojure 10</title>
-    <link rel="canonical" href="http://dev-happy.com/posts/2019-10-13-4clojure-10.html">
+    <title>Dev Happy: CSS - font</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2019-12-14-css-font.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -73,24 +73,27 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 10월 13일 (일)</div>
+        <div class="col-lg-6">2019년 12월 14일 (토)</div>
         
     </div>
-    <h2>4clojure 10</h2>
+    <h2>CSS - font</h2>
 </div>
 <div>
     
-    <pre><code class="clojure">&#40;= &#95;&#95; &#40;&#40;hash-map :a 10, :b 20, :c 30&#41; :b&#41;&#41;
+    <p>구글의 font를 연결하고, 사용하는 방법을 알려준다</p><pre><code class="html">/&#42;head에 아래 추가 &#42;/
+&lt;link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
+          type='text/css'&gt;
 
-&#40;= &#95;&#95; &#40;:b {:a 10, :b 20, :c 30}&#41;&#41;
-</code></pre><pre><code class="clojure">20
-</code></pre><p>python의 dictionary 자료형과 동일한 역할을 한다 clojure에서는 hash-map이라는 용어를 사용하고 만드는 방법은 위와 같이 {}에 :a 형태의 key와 value를 추가하여 생성한다. 위 문제에서는 :b key의 값을 가져오는 방법을 보여주고 있다. ({} :b)의 형태, (:b {})의 형태 모두 :b의 값을 가져오는 역할을 한다. 답은 20이다.</p>
+</code></pre><p>현재 family로 Alegreya로 지정이 되어 있다. css에서는 아래와 같이 사용 한다.<pre><code class="css">h1, h2, h3, h4, h5, h6 {
+    font-family: 'Alegreya';
+}
+</code></pre></p>
 </div>
 
 <div id="post-tags">
     <b>Tags: </b>
     
-    <a href="/4clojure.html">4clojure</a>
+    <a href="/css.html">css</a>
     
     <a href="/Today I Learn.html">Today I Learn</a>
     
@@ -99,10 +102,8 @@
 
     <div id="prev-next">
         
-        <a href="/posts/2019-10-14-4clojure-11.html">&laquo; 4clojure 11</a>
         
-        
-        <a class="right" href="/posts/2019-10-12-4clojure-09.html">4clojure 09 &raquo;</a>
+        <a class="right" href="/posts/2019-12-13-4clojure-68.html">4clojure - Recurring Theme (68) &raquo;</a>
         
     </div>
 
