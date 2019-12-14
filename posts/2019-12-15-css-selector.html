@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: CSS 정리</title>
-    <link rel="canonical" href="http://dev-happy.com/posts/2019-12-06-intro-css.html">
+    <title>Dev Happy: CSS - 선택자</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2019-12-15-css-selector.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -73,14 +73,57 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 12월 6일 (금)</div>
+        <div class="col-lg-6">2019년 12월 15일 (일)</div>
         
     </div>
-    <h2>CSS 정리</h2>
+    <h2>CSS - 선택자</h2>
 </div>
 <div>
     
-    <p>Front에서 html, javascript는 자신이 있지만 css는 익숙하지가 않다 그래서 블로그를 변형하면서 생기는 시행 착오들을 정리를 하려고 한다</p><p>아무것도 모른다고 생각하고 아주 기초적인 것 부터 하나씩 시간 날때마다, 4clojure 문제가 잘 풀리지 않을 때마다 하나씩 정리 할 생각이다.</p>
+    <h2 id="부모&#95;자식">부모 자식</h2><ul><li>h2 dev 형태로 한칸 띄어서 표시 한다.</li><li>모든 조합에서 가능하다.</li><li>> 도 있는데 두 태그 사이에 다른 태그가 없는 부모 자식 간에서 사용 가능하다.</li></ul><h2 id="or&#95;선택자">OR 선택자</h2><pre><code class="css">h1, h2, h3, h4, h5, h6 {
+	font-family: 'Alegreya';
+}
+h1, #id {
+	font-family: 'Alegreya';
+}
+h1, .id {
+	font-family: 'Alegreya';
+}
+.id, #id {
+	font-family: 'Alegreya';
+}
+
+</code></pre><p>형태로 ,로 구분한다.</p><h2 id="and&#95;선택자">AND 선택자</h2><pre><code class="css">h1#id {
+	font-family: 'Alegreya';
+}
+h1.id {
+	font-family: 'Alegreya';
+}  
+#id.id {
+	font-family: 'Alegreya';
+}
+  
+</code></pre><h2 id="가상&#95;이벤트&#95;선택자">가상 이벤트 선택자</h2><ul><li>아이, 클래스, 태그 뒤에 :선택자로 구분</li><li>태그상에는 따로 :선택자를 지정하지 않는다.</li><li>CSS에서만 지정하고 이벤트를 작성하면 됨</li><li>여러가지 가상 이벤트가 있으므로 찾아보면서 익히는 것이 필요하다.<pre><code class="html">&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+	.box{
+		background-color:#09c;
+		padding:10px;
+		margin-bottom:20px;
+	}
+	.hover-box:hover{
+		background-color:orange;
+	}
+	&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;div class=&quot;box hover-box&quot;&gt;
+		마우스를올려보세요.
+	&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</li></ul>
+</code></pre>	
 </div>
 
 <div id="post-tags">
@@ -95,10 +138,8 @@
 
     <div id="prev-next">
         
-        <a href="/posts/2019-12-07-basic-css.html">&laquo; CSS 기본</a>
         
-        
-        <a class="right" href="/posts/2019-12-05-4clojure-62.html">4clojure - Re-implement Iterate (62) &raquo;</a>
+        <a class="right" href="/posts/2019-12-14-css-font.html">CSS - font &raquo;</a>
         
     </div>
 

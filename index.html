@@ -73,21 +73,57 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 12월 14일 (토)</div>
+        <div class="col-lg-6">2019년 12월 15일 (일)</div>
         
     </div>
-    <h2>CSS - font</h2>
+    <h2>CSS - 선택자</h2>
 </div>
 <div>
     
-    <p>구글의 font를 연결하고, 사용하는 방법을 알려준다</p><pre><code class="html">/&#42;head에 아래 추가 &#42;/
-&lt;link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
-          type='text/css'&gt;
-
-</code></pre><p>현재 family로 Alegreya로 지정이 되어 있다. css에서는 아래와 같이 사용 한다.<pre><code class="css">h1, h2, h3, h4, h5, h6 {
-    font-family: 'Alegreya';
+    <h2 id="부모&#95;자식">부모 자식</h2><ul><li>h2 dev 형태로 한칸 띄어서 표시 한다.</li><li>모든 조합에서 가능하다.</li><li>> 도 있는데 두 태그 사이에 다른 태그가 없는 부모 자식 간에서 사용 가능하다.</li></ul><h2 id="or&#95;선택자">OR 선택자</h2><pre><code class="css">h1, h2, h3, h4, h5, h6 {
+	font-family: 'Alegreya';
 }
-</code></pre></p>
+h1, #id {
+	font-family: 'Alegreya';
+}
+h1, .id {
+	font-family: 'Alegreya';
+}
+.id, #id {
+	font-family: 'Alegreya';
+}
+
+</code></pre><p>형태로 ,로 구분한다.</p><h2 id="and&#95;선택자">AND 선택자</h2><pre><code class="css">h1#id {
+	font-family: 'Alegreya';
+}
+h1.id {
+	font-family: 'Alegreya';
+}  
+#id.id {
+	font-family: 'Alegreya';
+}
+  
+</code></pre><h2 id="가상&#95;이벤트&#95;선택자">가상 이벤트 선택자</h2><ul><li>아이, 클래스, 태그 뒤에 :선택자로 구분</li><li>태그상에는 따로 :선택자를 지정하지 않는다.</li><li>CSS에서만 지정하고 이벤트를 작성하면 됨</li><li>여러가지 가상 이벤트가 있으므로 찾아보면서 익히는 것이 필요하다.<pre><code class="html">&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+	.box{
+		background-color:#09c;
+		padding:10px;
+		margin-bottom:20px;
+	}
+	.hover-box:hover{
+		background-color:orange;
+	}
+	&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;div class=&quot;box hover-box&quot;&gt;
+		마우스를올려보세요.
+	&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</li></ul>
+</code></pre>	
 </div>
 
 <div id="post-tags">
@@ -105,7 +141,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2019-12-13-4clojure-68.html">4clojure - Recurring Theme (68) &raquo;</a>
+        <a class="right" href="/posts/2019-12-14-css-font.html">CSS - font &raquo;</a>
         
     </div>
 </div>
@@ -124,11 +160,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2019-12-15-css-selector.html">CSS - 선택자</a></li>
+                        
                         <li><a href="/posts/2019-12-14-css-font.html">CSS - font</a></li>
                         
                         <li><a href="/posts/2019-12-13-4clojure-68.html">4clojure - Recurring Theme (68)</a></li>
-                        
-                        <li><a href="/posts/2019-12-12-4clojure-67.html">4clojure - Prime Numbers (67)</a></li>
                         
                     </ul>
                 </div>

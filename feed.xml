@@ -12,11 +12,71 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Sat, 14 Dec 2019 08:18:39 +0900
+Sun, 15 Dec 2019 07:29:09 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-12-15-css-selector.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-12-15-css-selector.html
+</link>
+<title>
+CSS - 선택자
+</title>
+<description>
+&lt;h2 id=&quot;부모&amp;#95;자식&quot;&gt;부모 자식&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;h2 dev 형태로 한칸 띄어서 표시 한다.&lt;/li&gt;&lt;li&gt;모든 조합에서 가능하다.&lt;/li&gt;&lt;li&gt;&gt; 도 있는데 두 태그 사이에 다른 태그가 없는 부모 자식 간에서 사용 가능하다.&lt;/li&gt;&lt;/ul&gt;&lt;h2 id=&quot;or&amp;#95;선택자&quot;&gt;OR 선택자&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;css&quot;&gt;h1, h2, h3, h4, h5, h6 {
+	font-family: 'Alegreya';
+}
+h1, #id {
+	font-family: 'Alegreya';
+}
+h1, .id {
+	font-family: 'Alegreya';
+}
+.id, #id {
+	font-family: 'Alegreya';
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;형태로 ,로 구분한다.&lt;/p&gt;&lt;h2 id=&quot;and&amp;#95;선택자&quot;&gt;AND 선택자&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;css&quot;&gt;h1#id {
+	font-family: 'Alegreya';
+}
+h1.id {
+	font-family: 'Alegreya';
+}  
+#id.id {
+	font-family: 'Alegreya';
+}
+  
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;가상&amp;#95;이벤트&amp;#95;선택자&quot;&gt;가상 이벤트 선택자&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;아이, 클래스, 태그 뒤에 :선택자로 구분&lt;/li&gt;&lt;li&gt;태그상에는 따로 :선택자를 지정하지 않는다.&lt;/li&gt;&lt;li&gt;CSS에서만 지정하고 이벤트를 작성하면 됨&lt;/li&gt;&lt;li&gt;여러가지 가상 이벤트가 있으므로 찾아보면서 익히는 것이 필요하다.&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+&amp;lt;style&amp;gt;
+	.box{
+		background-color:#09c;
+		padding:10px;
+		margin-bottom:20px;
+	}
+	.hover-box:hover{
+		background-color:orange;
+	}
+	&amp;lt;/style&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+	&amp;lt;div class=&amp;quot;box hover-box&amp;quot;&amp;gt;
+		마우스를올려보세요.
+	&amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/li&gt;&lt;/ul&gt;
+&lt;/code&gt;&lt;/pre&gt;	
+</description>
+<pubDate>
+Sun, 15 Dec 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-12-14-css-font.html
