@@ -12,11 +12,66 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Sun, 15 Dec 2019 07:29:09 +0900
+Mon, 16 Dec 2019 06:17:39 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-12-16-4clojure-69.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-12-16-4clojure-69.html
+</link>
+<title>
+4clojure - Merge with a Function  (69)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#42; {:a 2, :b 3, :c 4} {:a 2} {:b 2} {:c 5}&amp;#41;
+   {:a 4, :b 6, :c 20}&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; - {1 10, 2 20} {1 3, 2 10, 3 15}&amp;#41;
+   {1 7, 2 10, 3 15}&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; concat {:a &amp;#91;3&amp;#93;, :b &amp;#91;6&amp;#93;} {:a &amp;#91;4 5&amp;#93;, :c &amp;#91;8 9&amp;#93;} {:b &amp;#91;7&amp;#93;}&amp;#41;
+   {:a &amp;#91;3 4 5&amp;#93;, :b &amp;#91;6 7&amp;#93;, :c &amp;#91;8 9&amp;#93;}&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;제한: merge-with&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn a &amp;#91;f &amp;amp; args&amp;#93;
+	&amp;#40;let &amp;#91;k &amp;#40;keys &amp;#40;apply merge args&amp;#41;&amp;#41;
+		  ca &amp;#40;fn &amp;#91;c coll&amp;#93; 
+				&amp;#40;let &amp;#91;v &amp;#40;filter #&amp;#40;not= % nil&amp;#41; &amp;#40;map #&amp;#40;% c&amp;#41; 									coll&amp;#41;&amp;#41;&amp;#93;
+					&amp;#40;if &amp;#40;&amp;gt; &amp;#40;count v&amp;#41; 1&amp;#41; {c &amp;#40;apply f v&amp;#41;} 
+						{c &amp;#40;first v&amp;#41;}&amp;#41;&amp;#41;&amp;#41;&amp;#93; 
+		&amp;#40;loop &amp;#91;ke k
+				result {}&amp;#93;
+			&amp;#40;if &amp;#40;empty? ke&amp;#41; result
+				&amp;#40;recur &amp;#40;rest ke&amp;#41; &amp;#40;into result &amp;#40;ca &amp;#40;first ke&amp;#41; args&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;첫번째 식에 대한 풀이를 이렇게 하면 되지 않을까 해서 만들어 봤다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;assoc {:a 2 :b 3 :c 4} :a &amp;#40;&amp;#42; &amp;#40;{:a 2 :b 3 :c 4} :a&amp;#41; 2&amp;#41;&amp;#41;
+;; {:a 4, :b 3, :c 4}
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;근데 위의 식을 reduce로 엮어서 하려리 잘 되지 않는다..&lt;/p&gt;&lt;p&gt;우선 아래의 순서대로 알고리즘을 작성을 하는 것이 좋을 것 같다.&lt;/p&gt;&lt;ol&gt;&lt;li&gt;모든 항목을 찾는다.&lt;/li&gt;&lt;li&gt;같은 항목을 가진 값에 연산을 적용 한다.&lt;/li&gt;&lt;li&gt;2를 반복 한다.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;없는 항목이 없도록 모든 항목을 찾는다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;keys &amp;#40;merge {:a 2, :b 3, :c 4} {:a 2} {:b 2} {:c 5}&amp;#41;&amp;#41;
+;; &amp;#40;:a :b :c&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;같은 항목을 가진 값에 연산을 적용 한다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;apply &amp;#42; &amp;#40;filter #&amp;#40;not= % nil&amp;#41; &amp;#40;map :a '&amp;#40;{:a 2, :b 3, :c 4} {:a 2} {:b 2} {:c 5}&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+;; 4
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;숫자에 대한 연산이 되지 않아 아래와 같이 변경 한다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;apply &amp;#42; &amp;#40;filter #&amp;#40;not= % nil&amp;#41; &amp;#40;map #&amp;#40;% :a&amp;#41; '&amp;#40;{:a 2, :b 3, :c 4} {:a 2} {:b 2} {:c 5}&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+;; 4
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;그리고 알고리즘은 아래와 같이 변경 된다.&lt;/p&gt;&lt;ol&gt;&lt;li&gt;모든 항목을 찾는다.&lt;/li&gt;&lt;li&gt;2개 이상의 같은 항목을 가진 값에 연산을 적용 한다.&lt;/li&gt;&lt;li&gt;2를 반복 한다.&lt;/li&gt;&lt;/ol&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn a &amp;#91;f &amp;amp; args&amp;#93;
+	&amp;#40;let &amp;#91;k &amp;#40;keys &amp;#40;apply merge args&amp;#41;&amp;#41;
+		  ca &amp;#40;fn &amp;#91;c coll&amp;#93; 
+				&amp;#40;let &amp;#91;v &amp;#40;filter #&amp;#40;not= % nil&amp;#41; &amp;#40;map #&amp;#40;% c&amp;#41; 									coll&amp;#41;&amp;#41;&amp;#93;
+					&amp;#40;if &amp;#40;&amp;gt; &amp;#40;count v&amp;#41; 1&amp;#41; {c &amp;#40;apply f v&amp;#41;} 
+						{c &amp;#40;first v&amp;#41;}&amp;#41;&amp;#41;&amp;#41;&amp;#93; 
+		&amp;#40;loop &amp;#91;ke k
+				result {}&amp;#93;
+			&amp;#40;if &amp;#40;empty? ke&amp;#41; result
+				&amp;#40;recur &amp;#40;rest ke&amp;#41; &amp;#40;into result &amp;#40;ca &amp;#40;first ke&amp;#41; args&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;	
+                	
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;생각했던 알고리즘에 비해서 계산식이 너무 복잡하게 나왔다. 이런 것이 잘못된 개념화를 나타내는 것이라는 생각이 든다. 좀 더 개념화를 잘 하기 위해서는 어떤 것을 해야할까? 내가 이 문제를 푸는데 있어서 생각했던 마음가짐이 무엇이었는지 생각해 보는 것도 의미가 있을 것 같다. 나도 모르게 빨리 풀어야한다는 급한 마음에서 이런 풀이가 나온 것 같고, 좀 더 개념화를 위해서 생각을 하는 시간이 더 필요하다는 것을 알게 된 것 같다.&lt;/p&gt;&lt;p&gt;짧게 문제를 푼 사람들은 어떤 개념화를 했는지 분석해보는 것도 의미가 있을 것 같다.&lt;/p&gt;&lt;ol&gt;&lt;li&gt;항목을 선택 한다.&lt;/li&gt;&lt;li&gt;공통된 항목이 여러개 있으면 값의 연산을 수행한다.&lt;/li&gt;&lt;li&gt;1을 반복 한다.이런 개념화를 하지 않았을까?하는 추측을 해본다.&lt;/li&gt;&lt;/ol&gt;
+</description>
+<pubDate>
+Mon, 16 Dec 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-12-15-css-selector.html

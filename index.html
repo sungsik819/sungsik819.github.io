@@ -73,63 +73,58 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 12월 15일 (일)</div>
+        <div class="col-lg-6">2019년 12월 16일 (월)</div>
         
     </div>
-    <h2>CSS - 선택자</h2>
+    <h2>4clojure - Merge with a Function  (69)</h2>
 </div>
 <div>
     
-    <h2 id="부모&#95;자식">부모 자식</h2><ul><li>h2 dev 형태로 한칸 띄어서 표시 한다.</li><li>모든 조합에서 가능하다.</li><li>> 도 있는데 두 태그 사이에 다른 태그가 없는 부모 자식 간에서 사용 가능하다.</li></ul><h2 id="or&#95;선택자">OR 선택자</h2><pre><code class="css">h1, h2, h3, h4, h5, h6 {
-	font-family: 'Alegreya';
-}
-h1, #id {
-	font-family: 'Alegreya';
-}
-h1, .id {
-	font-family: 'Alegreya';
-}
-.id, #id {
-	font-family: 'Alegreya';
-}
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;&#95;&#95; &#42; {:a 2, :b 3, :c 4} {:a 2} {:b 2} {:c 5}&#41;
+   {:a 4, :b 6, :c 20}&#41;
 
-</code></pre><p>형태로 ,로 구분한다.</p><h2 id="and&#95;선택자">AND 선택자</h2><pre><code class="css">h1#id {
-	font-family: 'Alegreya';
-}
-h1.id {
-	font-family: 'Alegreya';
-}  
-#id.id {
-	font-family: 'Alegreya';
-}
-  
-</code></pre><h2 id="가상&#95;이벤트&#95;선택자">가상 이벤트 선택자</h2><ul><li>아이, 클래스, 태그 뒤에 :선택자로 구분</li><li>태그상에는 따로 :선택자를 지정하지 않는다.</li><li>CSS에서만 지정하고 이벤트를 작성하면 됨</li><li>여러가지 가상 이벤트가 있으므로 찾아보면서 익히는 것이 필요하다.<pre><code class="html">&lt;html&gt;
-&lt;head&gt;
-&lt;style&gt;
-	.box{
-		background-color:#09c;
-		padding:10px;
-		margin-bottom:20px;
-	}
-	.hover-box:hover{
-		background-color:orange;
-	}
-	&lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-	&lt;div class=&quot;box hover-box&quot;&gt;
-		마우스를올려보세요.
-	&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</li></ul>
-</code></pre>	
+&#40;= &#40;&#95;&#95; - {1 10, 2 20} {1 3, 2 10, 3 15}&#41;
+   {1 7, 2 10, 3 15}&#41;
+
+&#40;= &#40;&#95;&#95; concat {:a &#91;3&#93;, :b &#91;6&#93;} {:a &#91;4 5&#93;, :c &#91;8 9&#93;} {:b &#91;7&#93;}&#41;
+   {:a &#91;3 4 5&#93;, :b &#91;6 7&#93;, :c &#91;8 9&#93;}&#41;
+</code></pre></p><p><strong>제한: merge-with</strong></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn a &#91;f &amp; args&#93;
+	&#40;let &#91;k &#40;keys &#40;apply merge args&#41;&#41;
+		  ca &#40;fn &#91;c coll&#93; 
+				&#40;let &#91;v &#40;filter #&#40;not= % nil&#41; &#40;map #&#40;% c&#41; 									coll&#41;&#41;&#93;
+					&#40;if &#40;&gt; &#40;count v&#41; 1&#41; {c &#40;apply f v&#41;} 
+						{c &#40;first v&#41;}&#41;&#41;&#41;&#93; 
+		&#40;loop &#91;ke k
+				result {}&#93;
+			&#40;if &#40;empty? ke&#41; result
+				&#40;recur &#40;rest ke&#41; &#40;into result &#40;ca &#40;first ke&#41; args&#41;&#41;&#41;&#41;&#41;&#41;&#41;
+
+</code></pre></p><p>첫번째 식에 대한 풀이를 이렇게 하면 되지 않을까 해서 만들어 봤다.<pre><code class="clj">&#40;assoc {:a 2 :b 3 :c 4} :a &#40;&#42; &#40;{:a 2 :b 3 :c 4} :a&#41; 2&#41;&#41;
+;; {:a 4, :b 3, :c 4}
+</code></pre></p><p>근데 위의 식을 reduce로 엮어서 하려리 잘 되지 않는다..</p><p>우선 아래의 순서대로 알고리즘을 작성을 하는 것이 좋을 것 같다.</p><ol><li>모든 항목을 찾는다.</li><li>같은 항목을 가진 값에 연산을 적용 한다.</li><li>2를 반복 한다.</li></ol><p>없는 항목이 없도록 모든 항목을 찾는다.<pre><code class="clj">&#40;keys &#40;merge {:a 2, :b 3, :c 4} {:a 2} {:b 2} {:c 5}&#41;&#41;
+;; &#40;:a :b :c&#41;
+</code></pre></p><p>같은 항목을 가진 값에 연산을 적용 한다.<pre><code class="clj">&#40;apply &#42; &#40;filter #&#40;not= % nil&#41; &#40;map :a '&#40;{:a 2, :b 3, :c 4} {:a 2} {:b 2} {:c 5}&#41;&#41;&#41;&#41;
+;; 4
+</code></pre></p><p>숫자에 대한 연산이 되지 않아 아래와 같이 변경 한다.<pre><code class="clj">&#40;apply &#42; &#40;filter #&#40;not= % nil&#41; &#40;map #&#40;% :a&#41; '&#40;{:a 2, :b 3, :c 4} {:a 2} {:b 2} {:c 5}&#41;&#41;&#41;&#41;
+;; 4
+</code></pre></p><p>그리고 알고리즘은 아래와 같이 변경 된다.</p><ol><li>모든 항목을 찾는다.</li><li>2개 이상의 같은 항목을 가진 값에 연산을 적용 한다.</li><li>2를 반복 한다.</li></ol><pre><code class="clj">&#40;fn a &#91;f &amp; args&#93;
+	&#40;let &#91;k &#40;keys &#40;apply merge args&#41;&#41;
+		  ca &#40;fn &#91;c coll&#93; 
+				&#40;let &#91;v &#40;filter #&#40;not= % nil&#41; &#40;map #&#40;% c&#41; 									coll&#41;&#41;&#93;
+					&#40;if &#40;&gt; &#40;count v&#41; 1&#41; {c &#40;apply f v&#41;} 
+						{c &#40;first v&#41;}&#41;&#41;&#41;&#93; 
+		&#40;loop &#91;ke k
+				result {}&#93;
+			&#40;if &#40;empty? ke&#41; result
+				&#40;recur &#40;rest ke&#41; &#40;into result &#40;ca &#40;first ke&#41; args&#41;&#41;&#41;&#41;&#41;&#41;&#41;	
+                	
+</code></pre><p>생각했던 알고리즘에 비해서 계산식이 너무 복잡하게 나왔다. 이런 것이 잘못된 개념화를 나타내는 것이라는 생각이 든다. 좀 더 개념화를 잘 하기 위해서는 어떤 것을 해야할까? 내가 이 문제를 푸는데 있어서 생각했던 마음가짐이 무엇이었는지 생각해 보는 것도 의미가 있을 것 같다. 나도 모르게 빨리 풀어야한다는 급한 마음에서 이런 풀이가 나온 것 같고, 좀 더 개념화를 위해서 생각을 하는 시간이 더 필요하다는 것을 알게 된 것 같다.</p><p>짧게 문제를 푼 사람들은 어떤 개념화를 했는지 분석해보는 것도 의미가 있을 것 같다.</p><ol><li>항목을 선택 한다.</li><li>공통된 항목이 여러개 있으면 값의 연산을 수행한다.</li><li>1을 반복 한다.이런 개념화를 하지 않았을까?하는 추측을 해본다.</li></ol>
 </div>
 
 <div id="post-tags">
     <b>Tags: </b>
     
-    <a href="/css.html">css</a>
+    <a href="/4clojure.html">4clojure</a>
     
     <a href="/Today I Learn.html">Today I Learn</a>
     
@@ -141,7 +136,7 @@ h1.id {
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2019-12-14-css-font.html">CSS - font &raquo;</a>
+        <a class="right" href="/posts/2019-12-15-css-selector.html">CSS - 선택자 &raquo;</a>
         
     </div>
 </div>
@@ -160,11 +155,11 @@ h1.id {
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2019-12-16-4clojure-69.html">4clojure - Merge with a Function  (69)</a></li>
+                        
                         <li><a href="/posts/2019-12-15-css-selector.html">CSS - 선택자</a></li>
                         
                         <li><a href="/posts/2019-12-14-css-font.html">CSS - font</a></li>
-                        
-                        <li><a href="/posts/2019-12-13-4clojure-68.html">4clojure - Recurring Theme (68)</a></li>
                         
                     </ul>
                 </div>
@@ -174,11 +169,11 @@ h1.id {
                     <h3>Tags</h3>
                     <ul>
                         
-                        <li><a href="/css.html">css</a></li>
+                        <li><a href="/4clojure.html">4clojure</a></li>
                         
                         <li><a href="/Today I Learn.html">Today I Learn</a></li>
                         
-                        <li><a href="/4clojure.html">4clojure</a></li>
+                        <li><a href="/css.html">css</a></li>
                         
                         <li><a href="/essay.html">essay</a></li>
                         
