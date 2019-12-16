@@ -12,11 +12,48 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Mon, 16 Dec 2019 06:17:39 +0900
+Tue, 17 Dec 2019 06:12:10 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-12-17-4clojure-70.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-12-17-4clojure-70.html
+</link>
+<title>
+4clojure - Word Sorting (70)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#40;&amp;#95;&amp;#95;  &amp;quot;Have a nice day.&amp;quot;&amp;#41;
+   &amp;#91;&amp;quot;a&amp;quot; &amp;quot;day&amp;quot; &amp;quot;Have&amp;quot; &amp;quot;nice&amp;quot;&amp;#93;&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95;  &amp;quot;Clojure is a fun language!&amp;quot;&amp;#41;
+   &amp;#91;&amp;quot;a&amp;quot; &amp;quot;Clojure&amp;quot; &amp;quot;fun&amp;quot; &amp;quot;is&amp;quot; &amp;quot;language&amp;quot;&amp;#93;&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95;  &amp;quot;Fools fall for foolish follies.&amp;quot;&amp;#41;
+   &amp;#91;&amp;quot;fall&amp;quot; &amp;quot;follies&amp;quot; &amp;quot;foolish&amp;quot; &amp;quot;Fools&amp;quot; &amp;quot;for&amp;quot;&amp;#93;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;st&amp;#93;
+  &amp;#40;sort-by clojure.string/lower-case &amp;#40;re-seq #&amp;quot;\w+&amp;quot; st&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;나눠서 sort 하면 되겠거니 하고 시도를 했다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;clojure.string/split &amp;quot;Have a nice day.&amp;quot; #&amp;quot; &amp;quot;&amp;#41;
+;; &amp;#91;&amp;quot;Have&amp;quot; &amp;quot;a&amp;quot; &amp;quot;nice&amp;quot; &amp;quot;day.&amp;quot;&amp;#93;
+
+&amp;#40;sort &amp;#40;clojure.string/split &amp;quot;Have a nice day.&amp;quot; #&amp;quot; &amp;quot;&amp;#41;&amp;#41;
+;; &amp;#40;&amp;quot;Have&amp;quot; &amp;quot;a&amp;quot; &amp;quot;day.&amp;quot; &amp;quot;nice&amp;quot;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;대문자가 생각대로 sort가 안되서 lowercase를 사용 하였다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;sort #&amp;#40;compare &amp;#40;clojure.string/lower-case %1&amp;#41; &amp;#40;clojure.string/lower-case %2&amp;#41;&amp;#41; &amp;#40;clojure.string/split &amp;quot;Have a nice day.&amp;quot; #&amp;quot; &amp;quot;&amp;#41;&amp;#41;
+;; &amp;#40;&amp;quot;a&amp;quot; &amp;quot;day.&amp;quot; &amp;quot;Have&amp;quot; &amp;quot;nice&amp;quot;&amp;#41;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;되겠거니 하고 답을 제출 했는데 unittest failed가 나오는 것이다. 라이브러리가 지원을 안하는 것인가? 하고 생각을 해보니..마지막 단어에 붙어 있는 마침표가 문제 였다.&lt;/p&gt;&lt;p&gt;그래서 정규식으로 다시 바꿔서 시도를 했다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;re-seq #&amp;quot;\w+&amp;quot; &amp;quot;Have a nice day.&amp;quot;&amp;#41;
+;; &amp;#40;&amp;quot;Have&amp;quot; &amp;quot;a&amp;quot; &amp;quot;nice&amp;quot; &amp;quot;day&amp;quot;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;마침표는 버리고 단어만 분리가 되는 것을 알수 있다. 이것 때문에 잘 실행 되고 있는 사이트 탓을 하였다. 왜냐하면 repl에서는 잘 되어서 단순하게 생각 했던 것 같다.&lt;/p&gt;
+</description>
+<pubDate>
+Tue, 17 Dec 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-12-16-4clojure-69.html

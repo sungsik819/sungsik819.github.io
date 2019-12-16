@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: 4clojure 18</title>
-    <link rel="canonical" href="http://dev-happy.com/posts/2019-10-21-4clojure-18.html">
+    <title>Dev Happy: 4clojure - Word Sorting (70)</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2019-12-17-4clojure-70.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -73,16 +73,34 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 10월 21일 (월)</div>
+        <div class="col-lg-6">2019년 12월 17일 (화)</div>
         
     </div>
-    <h2>4clojure 18</h2>
+    <h2>4clojure - Word Sorting (70)</h2>
 </div>
 <div>
     
-    <pre><code class="clojure">&#40;= &#95;&#95; &#40;filter #&#40;&gt; % 5&#41; '&#40;3 4 5 6 7&#41;&#41;&#41;
-</code></pre><pre><code class="clojure">'&#40;6 7&#41;
-</code></pre><p>filter에 동작에 관한 문제 이다. filter는 비교군에 대한 결과 값을 collection으로 주는 함수 이다. 따라서 결과는 ‘(6 7)이 된다.</p>
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;&#95;&#95;  &quot;Have a nice day.&quot;&#41;
+   &#91;&quot;a&quot; &quot;day&quot; &quot;Have&quot; &quot;nice&quot;&#93;&#41;
+
+&#40;= &#40;&#95;&#95;  &quot;Clojure is a fun language!&quot;&#41;
+   &#91;&quot;a&quot; &quot;Clojure&quot; &quot;fun&quot; &quot;is&quot; &quot;language&quot;&#93;&#41;
+
+&#40;= &#40;&#95;&#95;  &quot;Fools fall for foolish follies.&quot;&#41;
+   &#91;&quot;fall&quot; &quot;follies&quot; &quot;foolish&quot; &quot;Fools&quot; &quot;for&quot;&#93;&#41;
+</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn &#91;st&#93;
+  &#40;sort-by clojure.string/lower-case &#40;re-seq #&quot;\w+&quot; st&#41;&#41;&#41;
+</code></pre></p><p>나눠서 sort 하면 되겠거니 하고 시도를 했다.<pre><code class="clj">&#40;clojure.string/split &quot;Have a nice day.&quot; #&quot; &quot;&#41;
+;; &#91;&quot;Have&quot; &quot;a&quot; &quot;nice&quot; &quot;day.&quot;&#93;
+
+&#40;sort &#40;clojure.string/split &quot;Have a nice day.&quot; #&quot; &quot;&#41;&#41;
+;; &#40;&quot;Have&quot; &quot;a&quot; &quot;day.&quot; &quot;nice&quot;&#41;
+</code></pre></p><p>대문자가 생각대로 sort가 안되서 lowercase를 사용 하였다.<pre><code class="clj">&#40;sort #&#40;compare &#40;clojure.string/lower-case %1&#41; &#40;clojure.string/lower-case %2&#41;&#41; &#40;clojure.string/split &quot;Have a nice day.&quot; #&quot; &quot;&#41;&#41;
+;; &#40;&quot;a&quot; &quot;day.&quot; &quot;Have&quot; &quot;nice&quot;&#41;
+
+</code></pre></p><p>되겠거니 하고 답을 제출 했는데 unittest failed가 나오는 것이다. 라이브러리가 지원을 안하는 것인가? 하고 생각을 해보니..마지막 단어에 붙어 있는 마침표가 문제 였다.</p><p>그래서 정규식으로 다시 바꿔서 시도를 했다.<pre><code class="clj">&#40;re-seq #&quot;\w+&quot; &quot;Have a nice day.&quot;&#41;
+;; &#40;&quot;Have&quot; &quot;a&quot; &quot;nice&quot; &quot;day&quot;&#41;
+</code></pre></p><p>마침표는 버리고 단어만 분리가 되는 것을 알수 있다. 이것 때문에 잘 실행 되고 있는 사이트 탓을 하였다. 왜냐하면 repl에서는 잘 되어서 단순하게 생각 했던 것 같다.</p>
 </div>
 
 <div id="post-tags">
@@ -97,10 +115,8 @@
 
     <div id="prev-next">
         
-        <a href="/posts/2019-10-22-4clojure-19.html">&laquo; 4clojure - Last Element (19)</a>
         
-        
-        <a class="right" href="/posts/2019-10-20-4clojure-17.html">4clojure 17 &raquo;</a>
+        <a class="right" href="/posts/2019-12-16-4clojure-69.html">4clojure - Merge with a Function  (69) &raquo;</a>
         
     </div>
 
