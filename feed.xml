@@ -12,11 +12,43 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Tue, 17 Dec 2019 06:12:10 +0900
+Wed, 18 Dec 2019 06:19:47 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-12-18-4clojure-71.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-12-18-4clojure-71.html
+</link>
+<title>
+4clojure - Rearranging Code: -&gt; (71)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#40;sort &amp;#40;rest &amp;#40;reverse &amp;#91;2 5 4 1 3 6&amp;#93;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+   &amp;#40;-&amp;gt; &amp;#91;2 5 4 1 3 6&amp;#93; &amp;#40;reverse&amp;#41; &amp;#40;rest&amp;#41; &amp;#40;sort&amp;#41; &amp;#40;&amp;#95;&amp;#95;&amp;#41;&amp;#41;
+   5&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;last
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;thread first 문제 이다. clojure는 안쪽에서부터 계산이 되는데  - &gt; 를 사용하게 되면 순차적으로 읽을 수 있는 함수로 변하게 된다 비슷한 계산으로 -&gt;&gt;가 있는데 파라미터가 들어가는 위치만 다를 뿐 계산 방법은 같다.&lt;br /&gt;&lt;/p&gt;&lt;p&gt;아래의 흐름대로 collection이 변한다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;reverse &amp;#91;2 5 4 1 3 6&amp;#93;&amp;#41;
+;; &amp;#91;6 3 1 4 5 2&amp;#93;
+
+&amp;#40;rest &amp;#91;6 3 1 4 5 2&amp;#93;&amp;#41;
+;; &amp;#91;3 1 4 5 2&amp;#93;
+
+&amp;#40;sort &amp;#91;3 1 4 5 2&amp;#93;&amp;#41;
+;; &amp;#91;1 2 3 4 5&amp;#93;
+
+&amp;#40;last &amp;#91;1 2 3 4 5&amp;#93;&amp;#41;
+;; 5
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+</description>
+<pubDate>
+Wed, 18 Dec 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-12-17-4clojure-70.html
