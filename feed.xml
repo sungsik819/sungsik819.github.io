@@ -12,11 +12,96 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Thu, 19 Dec 2019 06:20:16 +0900
+Fri, 20 Dec 2019 06:45:55 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-12-20-4clojure-73.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-12-20-4clojure-73.html
+</link>
+<title>
+4clojure - Analyze a Tic-Tac-Toe Board (73)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= nil &amp;#40;&amp;#95;&amp;#95; &amp;#91;&amp;#91;:e :e :e&amp;#93;
+            &amp;#91;:e :e :e&amp;#93;
+            &amp;#91;:e :e :e&amp;#93;&amp;#93;&amp;#41;&amp;#41;
+
+&amp;#40;= :x &amp;#40;&amp;#95;&amp;#95; &amp;#91;&amp;#91;:x :e :o&amp;#93;
+           &amp;#91;:x :e :e&amp;#93;
+           &amp;#91;:x :e :o&amp;#93;&amp;#93;&amp;#41;&amp;#41;
+
+&amp;#40;= :o &amp;#40;&amp;#95;&amp;#95; &amp;#91;&amp;#91;:e :x :e&amp;#93;
+           &amp;#91;:o :o :o&amp;#93;
+           &amp;#91;:x :e :x&amp;#93;&amp;#93;&amp;#41;&amp;#41;
+
+&amp;#40;= nil &amp;#40;&amp;#95;&amp;#95; &amp;#91;&amp;#91;:x :e :o&amp;#93;
+            &amp;#91;:x :x :e&amp;#93;
+            &amp;#91;:o :x :o&amp;#93;&amp;#93;&amp;#41;&amp;#41;
+
+&amp;#40;= :x &amp;#40;&amp;#95;&amp;#95; &amp;#91;&amp;#91;:x :e :e&amp;#93;
+           &amp;#91;:o :x :e&amp;#93;
+           &amp;#91;:o :e :x&amp;#93;&amp;#93;&amp;#41;&amp;#41;
+
+&amp;#40;= :o &amp;#40;&amp;#95;&amp;#95; &amp;#91;&amp;#91;:x :e :o&amp;#93;
+           &amp;#91;:x :o :e&amp;#93;
+           &amp;#91;:o :e :x&amp;#93;&amp;#93;&amp;#41;&amp;#41;
+
+&amp;#40;= nil &amp;#40;&amp;#95;&amp;#95; &amp;#91;&amp;#91;:x :o :x&amp;#93;
+            &amp;#91;:x :o :x&amp;#93;
+            &amp;#91;:o :x :o&amp;#93;&amp;#93;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;coll&amp;#93;
+	&amp;#40;let &amp;#91;a &amp;#40;flatten &amp;#40;partition 1 4 &amp;#40;flatten coll&amp;#41;&amp;#41;&amp;#41;
+		  r &amp;#40;flatten &amp;#40;partition 1 4 &amp;#40;flatten &amp;#40;map #&amp;#40;reverse %&amp;#41; coll&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+		  b &amp;#40;into &amp;#40;into &amp;#40;into coll &amp;#40;apply map vector coll&amp;#41;&amp;#41; &amp;#91;a&amp;#93;&amp;#41; &amp;#91;r&amp;#93;&amp;#41;&amp;#93;
+	 &amp;#40;cond &amp;#40;some true? &amp;#40;map #&amp;#40;every? &amp;#40;fn &amp;#91;x&amp;#93; &amp;#40;= x :x&amp;#41;&amp;#41; %&amp;#41; b&amp;#41;&amp;#41; :x
+		   &amp;#40;some true? &amp;#40;map #&amp;#40;every? &amp;#40;fn &amp;#91;x&amp;#93; &amp;#40;= x :o&amp;#41;&amp;#41; %&amp;#41; b&amp;#41;&amp;#41; :o
+		 	:else nil&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;sort 해서 하면 되겠거니 했었는데 일직선이 되지 않는 값들에 대해서가 문제가 된다. 그래서 좀 더 생각해야 할 것 같다.&lt;/p&gt;&lt;p&gt;틱택토 게임은 기본적으로 빙고와 같다고 생각 한다.&lt;/p&gt;&lt;p&gt;일직선에 3개는 일단 해결이 될 것 같은데 밑으로는 어떻게 검증을 해야 하나 생각을 했을 때  밑으로 collection을 만들어 주면 될 것 같다는 생각이 들었다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;apply map vector &amp;#91;&amp;#91;:x :e :o&amp;#93; &amp;#91;:x :e :e&amp;#93; &amp;#91;:x :e :o&amp;#93;&amp;#93;&amp;#41;
+;; &amp;#40;&amp;#91;:x :x :x&amp;#93; &amp;#91;:e :e :e&amp;#93; &amp;#91;:o :e :o&amp;#93;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;대각선도 위와 같은 형태로 만들어서 검증을 할 수 있는 로직을 짜면 해결이 될 것 같다.&lt;/p&gt;&lt;p&gt;group-by로 검증 로직을 할 수 있을 것 같은데 좀 더 고민이 필요하다.&lt;/p&gt;&lt;p&gt;이 문제를 풀기 위한 데이터 구조가 어떻게 되는지 생각을 해봐야겠다.&lt;/p&gt;&lt;p&gt;내 생각에는 수직, 수평, 대각선 각각의 값들을 가진 3개의 백터 쌍으로 있는 collection을 먼저 만들어 놓고 검증을 하는 것이 낫겠다고 생각한다.&lt;/p&gt;&lt;p&gt;수평, 수직은 어떻게든 될 것 같은데 대각선을 어떻게 추출을 해야할지 좀 고민이 된다. 전통적인 방식으로만 하려고 생각하다보니 그것에는 적합하지 않다는 것을 느끼고 있다. 그래서 더 힘든 것 같다. 생각의 전환이라는 것이 한번 생각이 들면 바꿔서 생각을 한다는 것이 쉬운 일은 아니다.&lt;/p&gt;&lt;p&gt;검증은 every?로 하면 한 collection내의 값이 모두 동일해야 참이라는 것을 알 수 있다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;every? #&amp;#40;= % :x&amp;#41; &amp;#91;:x :x :x&amp;#93;&amp;#41;
+;; true
+
+&amp;#40;every? #&amp;#40;= % :x&amp;#41; &amp;#91;:x :x :o&amp;#93;&amp;#41;
+;; false
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;우선 수평, 수직에 대한 자료형을 만들어 봤다 &lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;into &amp;#91;&amp;#91;:x :e :o&amp;#93; &amp;#91;:x :e :e&amp;#93; &amp;#91;:x :e :o&amp;#93;&amp;#93; &amp;#40;apply map vector &amp;#91;&amp;#91;:x :e :o&amp;#93; &amp;#91;:x :e :e&amp;#93; &amp;#91;:x :e :o&amp;#93;&amp;#93;&amp;#41;&amp;#41;
+;; &amp;#91;&amp;#91;:x :e :o&amp;#93; &amp;#91;:x :e :e&amp;#93; &amp;#91;:x :e :o&amp;#93; &amp;#91;:x :x :x&amp;#93; &amp;#91;:e :e :e&amp;#93; &amp;#91;:o :e :o&amp;#93;&amp;#93;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;그리고 검사식은 아래와 같다. :x에 대한 every?가 true이고 그 결과를 가지고 true가 1개라도 있으면 true인 결과를 반환한다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;some true? &amp;#40;map #&amp;#40;every? &amp;#40;fn &amp;#91;x&amp;#93; &amp;#40;= x :x&amp;#41;&amp;#41; %&amp;#41; &amp;#91;&amp;#91;:x :e :o&amp;#93; &amp;#91;:x :e :e&amp;#93; &amp;#91;:x :e :o&amp;#93; &amp;#91;:x :x :x&amp;#93; &amp;#91;:e :e :e&amp;#93; &amp;#91;:o :e :o&amp;#93;&amp;#93;&amp;#41;&amp;#41;
+;; true		 
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;대각선을 제외하고 4개 통과하는 프로그램이다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;coll&amp;#93;
+	&amp;#40;let &amp;#91;b &amp;#40;into coll &amp;#40;apply map vector coll&amp;#41;&amp;#41;&amp;#93;
+	 &amp;#40;cond &amp;#40;some true? &amp;#40;map #&amp;#40;every? &amp;#40;fn &amp;#91;x&amp;#93; &amp;#40;= x :x&amp;#41;&amp;#41; %&amp;#41; b&amp;#41;&amp;#41; :x
+		   &amp;#40;some true? &amp;#40;map #&amp;#40;every? &amp;#40;fn &amp;#91;x&amp;#93; &amp;#40;= x :o&amp;#41;&amp;#41; %&amp;#41; b&amp;#41;&amp;#41; :o
+		 	:else nil&amp;#41;&amp;#41;&amp;#41;
+			
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;대각선을 가지고 오는 방법은 first, second, last인데.. 일단 여기까지만 생각이 난다. 반대 대각선은 last, second, first… 이 조합으로 구성을 어떻게 해야할지 생각하면 될 것 같다.&lt;/p&gt;&lt;p&gt;first,second, last 방법 말고, 값을 풀어서 다시 나누는 방법을 실행 해봤다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;flatten &amp;#40;partition 1 4 &amp;#40;flatten &amp;#91;&amp;#91;:x :e :e&amp;#93; &amp;#91;:o :x :e&amp;#93; &amp;#91;:o :e :x&amp;#93;&amp;#93;&amp;#41;&amp;#41;&amp;#41;
+;; &amp;#40;:x :x :x&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;반대 대각선은 이렇게 하면 될 것 같다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;flatten &amp;#40;partition 1 4 &amp;#40;flatten &amp;#40;map #&amp;#40;reverse %&amp;#41; &amp;#91;&amp;#91;:x :e :o&amp;#93; &amp;#91;:x :o :e&amp;#93; &amp;#91;:o :e :x&amp;#93;&amp;#93;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+;; &amp;#40;:o :o :o&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;coll&amp;#93;
+	&amp;#40;let &amp;#91;a &amp;#40;flatten &amp;#40;partition 1 4 &amp;#40;flatten coll&amp;#41;&amp;#41;&amp;#41;
+		  r &amp;#40;flatten &amp;#40;partition 1 4 &amp;#40;flatten &amp;#40;map #&amp;#40;reverse %&amp;#41; coll&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+		  b &amp;#40;into &amp;#40;into &amp;#40;into coll &amp;#40;apply map vector coll&amp;#41;&amp;#41; &amp;#91;a&amp;#93;&amp;#41; &amp;#91;r&amp;#93;&amp;#41;&amp;#93;
+	 &amp;#40;cond &amp;#40;some true? &amp;#40;map #&amp;#40;every? &amp;#40;fn &amp;#91;x&amp;#93; &amp;#40;= x :x&amp;#41;&amp;#41; %&amp;#41; b&amp;#41;&amp;#41; :x
+		   &amp;#40;some true? &amp;#40;map #&amp;#40;every? &amp;#40;fn &amp;#91;x&amp;#93; &amp;#40;= x :o&amp;#41;&amp;#41; %&amp;#41; b&amp;#41;&amp;#41; :o
+		 	:else nil&amp;#41;&amp;#41;&amp;#41;
+			
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;이번 문제를 풀어보면서 중요한 사실을 알게 된 것이 있는데 어떤 데이터 형식만을 고집하기 보다는 그 형식을 풀어서 문제는 다른 각도로 생각해보는 것도 필요하다는 것을 알게 되었다&lt;/p&gt;&lt;p&gt;아래와 같은 형식으로도 some을 변경이 가능하다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;coll&amp;#93;
+	&amp;#40;let &amp;#91;a &amp;#40;flatten &amp;#40;partition 1 4 &amp;#40;flatten coll&amp;#41;&amp;#41;&amp;#41;
+		  r &amp;#40;flatten &amp;#40;partition 1 4 &amp;#40;flatten &amp;#40;map #&amp;#40;reverse %&amp;#41; coll&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+		  b &amp;#40;into &amp;#40;into &amp;#40;into coll &amp;#40;apply map vector coll&amp;#41;&amp;#41; &amp;#91;a&amp;#93;&amp;#41; &amp;#91;r&amp;#93;&amp;#41;&amp;#93;
+	 &amp;#40;some {&amp;#91;:x :x :x&amp;#93; :x &amp;#91;:o :o :o&amp;#93; :o} b&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+</description>
+<pubDate>
+Fri, 20 Dec 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-12-19-4clojure-72.html
