@@ -12,11 +12,28 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Fri, 20 Dec 2019 06:45:55 +0900
+Sat, 21 Dec 2019 06:50:03 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-12-21-how-data-structure.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-12-21-how-data-structure.html
+</link>
+<title>
+어떻게 데이터 구조를 만들어야 할까?
+</title>
+<description>
+&lt;p&gt;문제를 풀다보니 자연스럽게 깨닫게 되는 것은 어떠한 구조로 만들어야 좀 더 쉬운 방법으로 해결이 가능한지를 깨닫게 된데 있다.&lt;/p&gt;&lt;p&gt;그냥 무작정 반복문을 사용해서 순회를 하고, if를 해서 분기를 하는 방법 보다는 그 문제를 해결하기 위한 좋은 데이터 구조가 반드시 존재 한다고 생각했고, 그 구조를 만들기 위해서 어떻게 함수들을 조합을 해야하는지가 가장 중요하다고 생각 했다.&lt;/p&gt;&lt;p&gt;아직은 좀 익숙하진 않지만 데이터의 구조를 만들려고 노력을 해야 나의 발전이 된다고 생각한다.&lt;/p&gt;&lt;p&gt;73번 tic-tac-toe 를 그런 방식으로 문제를 풀었다.&lt;/p&gt;
+</description>
+<pubDate>
+Sat, 21 Dec 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-12-20-4clojure-73.html
