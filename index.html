@@ -73,14 +73,16 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 12월 21일 (토)</div>
+        <div class="col-lg-6">2019년 12월 22일 (일)</div>
         
     </div>
-    <h2>어떻게 데이터 구조를 만들어야 할까?</h2>
+    <h2>데이터의 병합/분리</h2>
 </div>
 <div>
     
-    <p>문제를 풀다보니 자연스럽게 깨닫게 되는 것은 어떠한 구조로 만들어야 좀 더 쉬운 방법으로 해결이 가능한지를 깨닫게 된데 있다.</p><p>그냥 무작정 반복문을 사용해서 순회를 하고, if를 해서 분기를 하는 방법 보다는 그 문제를 해결하기 위한 좋은 데이터 구조가 반드시 존재 한다고 생각했고, 그 구조를 만들기 위해서 어떻게 함수들을 조합을 해야하는지가 가장 중요하다고 생각 했다.</p><p>아직은 좀 익숙하진 않지만 데이터의 구조를 만들려고 노력을 해야 나의 발전이 된다고 생각한다.</p><p>73번 tic-tac-toe 를 그런 방식으로 문제를 풀었다.</p>
+    <p>tic-tac-toe를 하면서 데이터 분리의 중요성을 느꼈다.</p><p>문제를 풀어보면서 중요한 사실을 알게 된 것이 있는데 어떤 데이터 형식만을 고집하기 보다는 그 형식을 풀어서 문제를 다른 각도로 생각해보는 것도 필요하다는 것을 알게 되었다</p><p>아래의 예시를 보여준다면 이러한 형태가 되겠다 <pre><code class="clj">&#40;flatten &#91;&#91;:x :e :e&#93; &#91;:o :x :e&#93; &#91;:o :e :x&#93;&#93;&#41;
+;; &#40;:x :e :e :o :x :e :o :e :x&#41;
+</code></pre></p><p>이러한 형태로 나타내면 생각지도 못한 문제 해결 방식이 떠오른다고 느꼈기 때문이다.</p><p>왜 그동안 이렇게 생각을 못했었는지 생각해 봤을 때 type이라는 형태에 묶여 있는 언어를 사용하다보니까 그 type을 벗어나면 안된다는 고정관념이 생겨버린것 같다.</p><p>그래서 더 나은 방식이 있는데도 불구 하고 for, if 방식으로만 생각을 할 수 밖에 없는 것 같다.</p><p>더 나은 해결 방식을 원한다면 풀어서 해결 해야한다는 것을 느끼게 되었다.</p>
 </div>
 
 <div id="post-tags">
@@ -98,7 +100,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2019-12-20-4clojure-73.html">4clojure - Analyze a Tic-Tac-Toe Board (73) &raquo;</a>
+        <a class="right" href="/posts/2019-12-21-how-data-structure.html">어떻게 데이터 구조를 만들어야 할까? &raquo;</a>
         
     </div>
 </div>
@@ -117,11 +119,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2019-12-22-data-merge-division.html">데이터의 병합/분리</a></li>
+                        
                         <li><a href="/posts/2019-12-21-how-data-structure.html">어떻게 데이터 구조를 만들어야 할까?</a></li>
                         
                         <li><a href="/posts/2019-12-20-4clojure-73.html">4clojure - Analyze a Tic-Tac-Toe Board (73)</a></li>
-                        
-                        <li><a href="/posts/2019-12-19-4clojure-72.html">4clojure - Rearranging Code: -&gt;&gt; (72)</a></li>
                         
                     </ul>
                 </div>

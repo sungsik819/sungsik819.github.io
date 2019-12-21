@@ -12,11 +12,30 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Sat, 21 Dec 2019 06:50:03 +0900
+Sun, 22 Dec 2019 06:36:38 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-12-22-data-merge-division.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-12-22-data-merge-division.html
+</link>
+<title>
+데이터의 병합/분리
+</title>
+<description>
+&lt;p&gt;tic-tac-toe를 하면서 데이터 분리의 중요성을 느꼈다.&lt;/p&gt;&lt;p&gt;문제를 풀어보면서 중요한 사실을 알게 된 것이 있는데 어떤 데이터 형식만을 고집하기 보다는 그 형식을 풀어서 문제를 다른 각도로 생각해보는 것도 필요하다는 것을 알게 되었다&lt;/p&gt;&lt;p&gt;아래의 예시를 보여준다면 이러한 형태가 되겠다 &lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;flatten &amp;#91;&amp;#91;:x :e :e&amp;#93; &amp;#91;:o :x :e&amp;#93; &amp;#91;:o :e :x&amp;#93;&amp;#93;&amp;#41;
+;; &amp;#40;:x :e :e :o :x :e :o :e :x&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;이러한 형태로 나타내면 생각지도 못한 문제 해결 방식이 떠오른다고 느꼈기 때문이다.&lt;/p&gt;&lt;p&gt;왜 그동안 이렇게 생각을 못했었는지 생각해 봤을 때 type이라는 형태에 묶여 있는 언어를 사용하다보니까 그 type을 벗어나면 안된다는 고정관념이 생겨버린것 같다.&lt;/p&gt;&lt;p&gt;그래서 더 나은 방식이 있는데도 불구 하고 for, if 방식으로만 생각을 할 수 밖에 없는 것 같다.&lt;/p&gt;&lt;p&gt;더 나은 해결 방식을 원한다면 풀어서 해결 해야한다는 것을 느끼게 되었다.&lt;/p&gt;
+</description>
+<pubDate>
+Sun, 22 Dec 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-12-21-how-data-structure.html
