@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: 4clojure - Reverse Interleave (43)</title>
-    <link rel="canonical" href="http://dev-happy.com/posts/2019-11-15-4clojure-43.html">
+    <title>Dev Happy: 4clojure - Filter Perfect Squares (74)</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2019-12-23-4clojure-74.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -73,28 +73,49 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 11월 15일 (금)</div>
+        <div class="col-lg-6">2019년 12월 23일 (월)</div>
         
     </div>
-    <h2>4clojure - Reverse Interleave (43)</h2>
+    <h2>4clojure - Filter Perfect Squares (74)</h2>
 </div>
 <div>
     
-    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;&#95;&#95; &#91;1 2 3 4 5 6&#93; 2&#41; '&#40;&#40;1 3 5&#41; &#40;2 4 6&#41;&#41;&#41;
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;&#95;&#95; &quot;4,5,6,7,8,9&quot;&#41; &quot;4,9&quot;&#41;
 
-&#40;= &#40;&#95;&#95; &#40;range 9&#41; 3&#41; '&#40;&#40;0 3 6&#41; &#40;1 4 7&#41; &#40;2 5 8&#41;&#41;&#41;
+&#40;= &#40;&#95;&#95; &quot;15,16,25,36,37&quot;&#41; &quot;16,25,36&quot;&#41;
+</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn &#91;st&#93;
+	&#40;clojure.string/join &quot;,&quot; 
+                         &#40;filter #&#40;zero? &#40;rem &#40;Math/sqrt %&#41; 1&#41;&#41; 
+                                 &#40;map read-string 
+                                      &#40;re-seq #&quot;\d+&quot; st&#41;&#41;&#41;&#41;&#41;
+</code></pre></p><p>우선 stirng을 collection으로 나누는 작업이 필요하다<pre><code class="clj">&#40;re-seq #&quot;\d+&quot; &quot;1,2,3,4,5,6,7&quot;&#41;
+;; &#40;&quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; &quot;5&quot; &quot;6&quot; &quot;7&quot;&#41;
+</code></pre></p><p>그다음에 나누어진 string을 int 형으로 변환을 해야한다.<pre><code class="clj">&#40;map read-string &#40;re-seq #&quot;\d+&quot; &quot;1,2,3,4,5,6,7&quot;&#41;&#41;
+;; &#40;1 2 3 4 5 6 7&#41;
+</code></pre></p><p>이제부터가 중요한데 사실 완전제곱수라는 것을 어떻게 판별을 해야하는지 아무리 생각을 해도 떠오르지가 않아서 인터넷으로 찾아 봤다. 그랬더니 아래와 같은 몇가지 방법이 있었다.<pre><code class="clj">;; 1
+&#40;rem &#40;Math/sqrt 4&#41; 1&#41;
+;; 0
 
-&#40;= &#40;&#95;&#95; &#40;range 10&#41; 5&#41; '&#40;&#40;0 5&#41; &#40;1 6&#41; &#40;2 7&#41; &#40;3 8&#41; &#40;4 9&#41;&#41;&#41;
-</code></pre></p><p><strong>Solved</strong><pre><code class="clj">#&#40;apply map list &#40;partition %2 %1&#41;&#41;
-</code></pre></p><p>지금까지 공부하면서 이것 저것 해본 결과에 대한 도움이 많이 된 것 같다. Medium 문제라서 긴장하고 있었는데 생각보다 간단하게 해결 할 수 있어서 기분은 좋다.</p><p>우선 어떻게 나눠서 문제를 풀어야 할까?에 대해서 생각을 많이 하다보니 partition이 떠올랐다. </p><p>1번을 예로 들어 partition 을 사용하게 되면 <pre><code class="clj">&#40;partition 2 &#91;1 2 3 4 5 6&#93;&#41;
-;; &#40;&#40;1 2&#41; &#40;3 4&#41; &#40;5 6&#41;&#41;
-</code></pre></p> <p>값 하나씩 순회를 하면 될 것이라 생각하고 (map list)를 사용을 했는데<pre><code class="clj">&#40;map list &#40;partition 2 &#91;1 2 3 4 5 6&#93;&#41;&#41;
-;; &#40;&#40;&#40;1 2&#41;&#41; &#40;&#40;3 4&#41;&#41; &#40;&#40;5 6&#41;&#41;&#41; 
-</code></pre></p><p>그래서 다른 방법을 찾아봐야 하는지 생각하다가 그동안 풀었던 문제에서 ((1 2) (3 4) (5 6))을 내부 원소의 1개의 값씩 순회를 하면서 답 과 같은 형태로 만들어주는 방식이 어렴풋이 떠올라서 찾아봤는데 </p><p>39번 문제애서 그런 형식이 있었다. </p><p>근데 (apply map list)인데 왜 답과 같은 형태가 나오는지는 잘 모르겠다...</p><p>(map list)에 다수의 파라미터를 넣으면 결과가 같아진다.<pre><code class="clj">&#40;map list ‘&#40;1 2&#41; ‘&#40;3 4&#41; ‘&#40;5 6&#41;&#41;
-;; &#40;&#40;1 3 5&#41; &#40;2 4 6&#41;&#41;
-</code></pre></p><p>apply의 동작이 단순히 collection을 한개 없애주는 함수인줄 알았는데 <pre><code class="clj">&#40;apply map list &#40;&#40;1 2&#41; &#40;3 4&#41; &#40;5 6&#41;&#41;&#41;
-;;‘&#40;map list ‘&#40;1 2&#41; ‘&#40;3 4&#41; ‘&#40;5 6&#41;&#41;
-</code></pre></p><p>와 같이  식으로 합쳐주는 함수라는 것을 알았다. </p><p>clojure는 공부를 하면 할 수록 심오한 함수의 동작에 다시한번 놀라게 된다.</p>
+;; 2
+&#40;= 2 &#40;&#42; &#40;int &#40;Math/sqrt 2&#41;&#41; &#40;int &#40;Math/sqrt 2&#41;&#41;&#41;&#41;
+;; false
+
+&#40;= 4 &#40;&#42; &#40;int &#40;Math/sqrt 4&#41;&#41; &#40;int &#40;Math/sqrt 4&#41;&#41;&#41;&#41;
+;; true
+
+;; 3
+&#40;== &#40;Math/sqrt 4&#41; &#40;int &#40;Math/sqrt 4&#41;&#41;&#41;
+;; true
+
+&#40;== &#40;Math/sqrt 3&#41; &#40;int &#40;Math/sqrt 3&#41;&#41;&#41;
+;; true
+</code></pre></p><p>총 3가지 방법을 예제로 변형을 해봤다.  1번째 방법은 정수 일때 1로 나누면 무조건 0으로 반환을 하는 성질을 이용해서 완전제곱수가 정수 이므로 그 원리를 이용 한 것이고 2번째는 제곱의 수가 원래 수와 같은지 판별을 할 수 있는 문제이다 사실 2번째 방법을 좀 더 생각했다면 생각했을 법한 방법이라고 생각 한다.</p><p>3번째 방법은 ==이 clojure에서 있는 등호라는 것을 몰랐기 때문에 생각을 할 수 없는 방법이라고 생각한다. ==의 사용법에 대해서는 좀 더 공부가 필요하다</p><p>나머지 식에 대한 성질이 수학적인 방법인 것 같아서 그 방법을 사용 하였다.</p><p>clojure.string/join을 사용하여 string으로 만드는 작업을 하였다.<pre><code class="clj">&#40;clojure.string/join &quot;,&quot; '&#40;1, 4&#41;&#41;
+;; &quot;1,4&quot;
+</code></pre></p><p>interpose와 apply를 사용하여 합치는 방법도 있다.<pre><code class="clj">&#40;interpose &quot;,&quot; &#91;1 4&#93;&#41;
+;; &#40;1 &quot;,&quot; 4&#41;
+&#40;apply str '&#40;1 &quot;,&quot; 4&#41;&#41;
+;; &quot;1,4&quot;
+</code></pre></p>
 </div>
 
 <div id="post-tags">
@@ -109,10 +130,8 @@
 
     <div id="prev-next">
         
-        <a href="/posts/2019-11-16-4clojure-44.html">&laquo; 4clojure - Rotate Sequence (44)</a>
         
-        
-        <a class="right" href="/posts/2019-11-14-4clojure-42.html">4clojure - Factorial Fun (42) &raquo;</a>
+        <a class="right" href="/posts/2019-12-22-data-merge-division.html">데이터의 병합/분리 &raquo;</a>
         
     </div>
 

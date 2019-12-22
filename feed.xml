@@ -12,11 +12,63 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Sun, 22 Dec 2019 06:36:38 +0900
+Mon, 23 Dec 2019 06:19:13 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-12-23-4clojure-74.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-12-23-4clojure-74.html
+</link>
+<title>
+4clojure - Filter Perfect Squares (74)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;quot;4,5,6,7,8,9&amp;quot;&amp;#41; &amp;quot;4,9&amp;quot;&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;quot;15,16,25,36,37&amp;quot;&amp;#41; &amp;quot;16,25,36&amp;quot;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;st&amp;#93;
+	&amp;#40;clojure.string/join &amp;quot;,&amp;quot; 
+                         &amp;#40;filter #&amp;#40;zero? &amp;#40;rem &amp;#40;Math/sqrt %&amp;#41; 1&amp;#41;&amp;#41; 
+                                 &amp;#40;map read-string 
+                                      &amp;#40;re-seq #&amp;quot;\d+&amp;quot; st&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;우선 stirng을 collection으로 나누는 작업이 필요하다&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;re-seq #&amp;quot;\d+&amp;quot; &amp;quot;1,2,3,4,5,6,7&amp;quot;&amp;#41;
+;; &amp;#40;&amp;quot;1&amp;quot; &amp;quot;2&amp;quot; &amp;quot;3&amp;quot; &amp;quot;4&amp;quot; &amp;quot;5&amp;quot; &amp;quot;6&amp;quot; &amp;quot;7&amp;quot;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;그다음에 나누어진 string을 int 형으로 변환을 해야한다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;map read-string &amp;#40;re-seq #&amp;quot;\d+&amp;quot; &amp;quot;1,2,3,4,5,6,7&amp;quot;&amp;#41;&amp;#41;
+;; &amp;#40;1 2 3 4 5 6 7&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;이제부터가 중요한데 사실 완전제곱수라는 것을 어떻게 판별을 해야하는지 아무리 생각을 해도 떠오르지가 않아서 인터넷으로 찾아 봤다. 그랬더니 아래와 같은 몇가지 방법이 있었다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;;; 1
+&amp;#40;rem &amp;#40;Math/sqrt 4&amp;#41; 1&amp;#41;
+;; 0
+
+;; 2
+&amp;#40;= 2 &amp;#40;&amp;#42; &amp;#40;int &amp;#40;Math/sqrt 2&amp;#41;&amp;#41; &amp;#40;int &amp;#40;Math/sqrt 2&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+;; false
+
+&amp;#40;= 4 &amp;#40;&amp;#42; &amp;#40;int &amp;#40;Math/sqrt 4&amp;#41;&amp;#41; &amp;#40;int &amp;#40;Math/sqrt 4&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+;; true
+
+;; 3
+&amp;#40;== &amp;#40;Math/sqrt 4&amp;#41; &amp;#40;int &amp;#40;Math/sqrt 4&amp;#41;&amp;#41;&amp;#41;
+;; true
+
+&amp;#40;== &amp;#40;Math/sqrt 3&amp;#41; &amp;#40;int &amp;#40;Math/sqrt 3&amp;#41;&amp;#41;&amp;#41;
+;; true
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;총 3가지 방법을 예제로 변형을 해봤다.  1번째 방법은 정수 일때 1로 나누면 무조건 0으로 반환을 하는 성질을 이용해서 완전제곱수가 정수 이므로 그 원리를 이용 한 것이고 2번째는 제곱의 수가 원래 수와 같은지 판별을 할 수 있는 문제이다 사실 2번째 방법을 좀 더 생각했다면 생각했을 법한 방법이라고 생각 한다.&lt;/p&gt;&lt;p&gt;3번째 방법은 ==이 clojure에서 있는 등호라는 것을 몰랐기 때문에 생각을 할 수 없는 방법이라고 생각한다. ==의 사용법에 대해서는 좀 더 공부가 필요하다&lt;/p&gt;&lt;p&gt;나머지 식에 대한 성질이 수학적인 방법인 것 같아서 그 방법을 사용 하였다.&lt;/p&gt;&lt;p&gt;clojure.string/join을 사용하여 string으로 만드는 작업을 하였다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;clojure.string/join &amp;quot;,&amp;quot; '&amp;#40;1, 4&amp;#41;&amp;#41;
+;; &amp;quot;1,4&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;interpose와 apply를 사용하여 합치는 방법도 있다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;interpose &amp;quot;,&amp;quot; &amp;#91;1 4&amp;#93;&amp;#41;
+;; &amp;#40;1 &amp;quot;,&amp;quot; 4&amp;#41;
+&amp;#40;apply str '&amp;#40;1 &amp;quot;,&amp;quot; 4&amp;#41;&amp;#41;
+;; &amp;quot;1,4&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+</description>
+<pubDate>
+Mon, 23 Dec 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-12-22-data-merge-division.html
