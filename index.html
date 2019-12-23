@@ -73,49 +73,77 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 12월 23일 (월)</div>
+        <div class="col-lg-6">2019년 12월 24일 (화)</div>
         
     </div>
-    <h2>4clojure - Filter Perfect Squares (74)</h2>
+    <h2>4clojure - Euler&#39;s Totient Function (75)</h2>
 </div>
 <div>
     
-    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;&#95;&#95; &quot;4,5,6,7,8,9&quot;&#41; &quot;4,9&quot;&#41;
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;&#95;&#95; 1&#41; 1&#41;
 
-&#40;= &#40;&#95;&#95; &quot;15,16,25,36,37&quot;&#41; &quot;16,25,36&quot;&#41;
-</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn &#91;st&#93;
-	&#40;clojure.string/join &quot;,&quot; 
-                         &#40;filter #&#40;zero? &#40;rem &#40;Math/sqrt %&#41; 1&#41;&#41; 
-                                 &#40;map read-string 
-                                      &#40;re-seq #&quot;\d+&quot; st&#41;&#41;&#41;&#41;&#41;
-</code></pre></p><p>우선 stirng을 collection으로 나누는 작업이 필요하다<pre><code class="clj">&#40;re-seq #&quot;\d+&quot; &quot;1,2,3,4,5,6,7&quot;&#41;
-;; &#40;&quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; &quot;5&quot; &quot;6&quot; &quot;7&quot;&#41;
-</code></pre></p><p>그다음에 나누어진 string을 int 형으로 변환을 해야한다.<pre><code class="clj">&#40;map read-string &#40;re-seq #&quot;\d+&quot; &quot;1,2,3,4,5,6,7&quot;&#41;&#41;
-;; &#40;1 2 3 4 5 6 7&#41;
-</code></pre></p><p>이제부터가 중요한데 사실 완전제곱수라는 것을 어떻게 판별을 해야하는지 아무리 생각을 해도 떠오르지가 않아서 인터넷으로 찾아 봤다. 그랬더니 아래와 같은 몇가지 방법이 있었다.<pre><code class="clj">;; 1
-&#40;rem &#40;Math/sqrt 4&#41; 1&#41;
-;; 0
+&#40;= &#40;&#95;&#95; 10&#41; &#40;count '&#40;1 3 7 9&#41;&#41; 4&#41;
 
-;; 2
-&#40;= 2 &#40;&#42; &#40;int &#40;Math/sqrt 2&#41;&#41; &#40;int &#40;Math/sqrt 2&#41;&#41;&#41;&#41;
-;; false
+&#40;= &#40;&#95;&#95; 40&#41; 16&#41;
 
-&#40;= 4 &#40;&#42; &#40;int &#40;Math/sqrt 4&#41;&#41; &#40;int &#40;Math/sqrt 4&#41;&#41;&#41;&#41;
-;; true
+&#40;= &#40;&#95;&#95; 99&#41; 60&#41;
+</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn &#91;n&#93;
+	&#40;if &#40;= n 1&#41; 1
+		&#40;let &#91;gcd &#40;fn &#91;a b&#93; &#40;if &#40;zero? b&#41; a &#40;recur b &#40;mod a b&#41;&#41;&#41;&#41;&#93;
+		&#40;count 
+         &#40;conj 
+          &#40;filter #&#40;= 1 %&#41; 
+                  &#40;map #&#40;gcd n %&#41; 
+                       &#40;filter #&#40;not= &#40;rem n %&#41; 0&#41; 
+                               &#40;range 1 n&#41;&#41;&#41;&#41; 1&#41;&#41;&#41;&#41;&#41;
+</code></pre></p><p>일단 10에 대한 범위가 필요하므로 range 함수를 사용 하였다.<pre><code class="clj">&#40;range 10&#41;
+;; &#40;0 1 2 3 4 5 6 7 8 9&#41;
+</code></pre></p><p>0은 빼도 되므로 1부터 시작하도록 했다.<pre><code class="clj">&#40;range 1 10&#41;
+;; &#40;1 2 3 4 5 6 7 8 9&#41;
+</code></pre></p><p>간단하게 나머지 연산을 하여 0이 아닌 값에 대해서 필터링 하면 될것 같다.<pre><code class="clj">&#40;filter #&#40;not= &#40;rem 10 %&#41; 0&#41; &#40;range 1 10&#41;&#41;
+;; &#40;3 4 6 7 8 9&#41;
+</code></pre></p><p>근데 하고나서 생각해보니 10과 다른 수에 대한 최대 공약수가 아닌 수를 구해야한다. 최대 공약수를 어떻게 식과 조합하여 만들 수 있을지 고민을 해봐야 한다.</p><pre><code class="clj">&#40;fn &#91;n&#93;
+	&#40;if &#40;= n 1&#41; 1
+		&#40;let &#91;gcd &#40;fn &#91;a b&#93; &#40;if &#40;zero? b&#41; a &#40;recur b &#40;mod a b&#41;&#41;&#41;&#41;&#93;
+		&#40;count 
+         &#40;conj 
+          &#40;filter #&#40;= 1 %&#41; 
+                  &#40;map #&#40;gcd n %&#41; 
+                       &#40;filter #&#40;not= &#40;rem n %&#41; 0&#41; 
+                               &#40;range 1 n&#41;&#41;&#41;&#41; 1&#41;&#41;&#41;&#41;&#41;
+</code></pre><p>let에 함수를 만들 수 있는 방법을 알게 되어 gcd를 만들었다. filter가 된 값들을 map으로 gcd를 하였다., <pre><code class="clj">&#40;defn x&#91;n&#93;
+&#40;if &#40;= n 1&#41; 1
+&#40;let &#91;gcd &#40;fn &#91;a b&#93; &#40;if &#40;zero? b&#41; a &#40;recur b &#40;mod a b&#41;&#41;&#41;&#41;&#93;
+&#40;map #&#40;gcd n %&#41; &#40;filter #&#40;not= &#40;rem n %&#41; 0&#41; &#40;range 1 n&#41;&#41;&#41;&#41;&#41;&#41;
 
-;; 3
-&#40;== &#40;Math/sqrt 4&#41; &#40;int &#40;Math/sqrt 4&#41;&#41;&#41;
-;; true
+user=&gt; &#40;x 10&#41;
+;; &#40;1 2 2 1 2 1&#41;
+</code></pre></p><p>1이 되는 값들만 filter를 한다. <pre><code class="clj">&#40;defn x&#91;n&#93;
+&#40;if &#40;= n 1&#41; 1
+&#40;let &#91;gcd &#40;fn &#91;a b&#93; &#40;if &#40;zero? b&#41; a &#40;recur b &#40;mod a b&#41;&#41;&#41;&#41;&#93;
+&#40;filter #&#40;= 1 %&#41; &#40;map #&#40;gcd n %&#41; &#40;filter #&#40;not= &#40;rem n %&#41; 0&#41; &#40;range 1 n&#41;&#41;&#41;&#41;&#41;&#41;&#41;
 
-&#40;== &#40;Math/sqrt 3&#41; &#40;int &#40;Math/sqrt 3&#41;&#41;&#41;
-;; true
-</code></pre></p><p>총 3가지 방법을 예제로 변형을 해봤다.  1번째 방법은 정수 일때 1로 나누면 무조건 0으로 반환을 하는 성질을 이용해서 완전제곱수가 정수 이므로 그 원리를 이용 한 것이고 2번째는 제곱의 수가 원래 수와 같은지 판별을 할 수 있는 문제이다 사실 2번째 방법을 좀 더 생각했다면 생각했을 법한 방법이라고 생각 한다.</p><p>3번째 방법은 ==이 clojure에서 있는 등호라는 것을 몰랐기 때문에 생각을 할 수 없는 방법이라고 생각한다. ==의 사용법에 대해서는 좀 더 공부가 필요하다</p><p>나머지 식에 대한 성질이 수학적인 방법인 것 같아서 그 방법을 사용 하였다.</p><p>clojure.string/join을 사용하여 string으로 만드는 작업을 하였다.<pre><code class="clj">&#40;clojure.string/join &quot;,&quot; '&#40;1, 4&#41;&#41;
-;; &quot;1,4&quot;
-</code></pre></p><p>interpose와 apply를 사용하여 합치는 방법도 있다.<pre><code class="clj">&#40;interpose &quot;,&quot; &#91;1 4&#93;&#41;
-;; &#40;1 &quot;,&quot; 4&#41;
-&#40;apply str '&#40;1 &quot;,&quot; 4&#41;&#41;
-;; &quot;1,4&quot;
-</code></pre></p>
+user=&gt; &#40;x 10&#41;
+;; &#40;1 1 1&#41;
+</code></pre></p><p>갯수가 다르게 표시가 되는데..생각해보니 1이 있어야 해서 conj로 1을 추가 하였다.</p><pre><code class="clj">&#40;defn x&#91;n&#93;
+&#40;if &#40;= n 1&#41; 1
+&#40;let &#91;gcd &#40;fn &#91;a b&#93; &#40;if &#40;zero? b&#41; a &#40;recur b &#40;mod a b&#41;&#41;&#41;&#41;&#93;
+&#40;conj &#40;filter #&#40;= 1 %&#41; &#40;map #&#40;gcd n %&#41; &#40;filter #&#40;not= &#40;rem n %&#41; 0&#41; &#40;range 1 n&#41;&#41;&#41;&#41; 1&#41;&#41;&#41;&#41;
+
+user=&gt; &#40;x 10&#41;
+;; &#40;1 1 1 1&#41;
+</code></pre><p>그 후 count로 값을 구했다.<pre><code class="clj">&#40;fn &#91;n&#93;
+	&#40;if &#40;= n 1&#41; 1
+		&#40;let &#91;gcd &#40;fn &#91;a b&#93; &#40;if &#40;zero? b&#41; a &#40;recur b &#40;mod a b&#41;&#41;&#41;&#41;&#93;
+		&#40;count 
+         &#40;conj 
+          &#40;filter #&#40;= 1 %&#41; 
+                  &#40;map #&#40;gcd n %&#41; 
+                       &#40;filter #&#40;not= &#40;rem n %&#41; 0&#41; 
+                               &#40;range 1 n&#41;&#41;&#41;&#41; 1&#41;&#41;&#41;&#41;&#41;
+user=&gt; &#40;x 10&#41;
+;; 4
+</code></pre></p><p>근데 생각해보니 내가 왜 나머지를 구해서 했는지 잘 모르겠다..뭔가 최대 공약수가 구해지지 않는 값들을 걸러내기 위함인데 저렇게 추가를 하다보니 1값을 넣는 코드가 추가가 되어 하지 않아도 될 계산을 하게 된 것 같다.</p>
 </div>
 
 <div id="post-tags">
@@ -133,7 +161,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2019-12-22-data-merge-division.html">데이터의 병합/분리 &raquo;</a>
+        <a class="right" href="/posts/2019-12-23-4clojure-74.html">4clojure - Filter Perfect Squares (74) &raquo;</a>
         
     </div>
 </div>
@@ -152,11 +180,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2019-12-24-4clojure-75.html">4clojure - Euler&#39;s Totient Function (75)</a></li>
+                        
                         <li><a href="/posts/2019-12-23-4clojure-74.html">4clojure - Filter Perfect Squares (74)</a></li>
                         
                         <li><a href="/posts/2019-12-22-data-merge-division.html">데이터의 병합/분리</a></li>
-                        
-                        <li><a href="/posts/2019-12-21-how-data-structure.html">어떻게 데이터 구조를 만들어야 할까?</a></li>
                         
                     </ul>
                 </div>

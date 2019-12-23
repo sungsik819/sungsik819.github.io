@@ -12,11 +12,91 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Mon, 23 Dec 2019 06:19:13 +0900
+Tue, 24 Dec 2019 06:24:20 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-12-24-4clojure-75.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-12-24-4clojure-75.html
+</link>
+<title>
+4clojure - Euler's Totient Function (75)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#40;&amp;#95;&amp;#95; 1&amp;#41; 1&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; 10&amp;#41; &amp;#40;count '&amp;#40;1 3 7 9&amp;#41;&amp;#41; 4&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; 40&amp;#41; 16&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; 99&amp;#41; 60&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;n&amp;#93;
+	&amp;#40;if &amp;#40;= n 1&amp;#41; 1
+		&amp;#40;let &amp;#91;gcd &amp;#40;fn &amp;#91;a b&amp;#93; &amp;#40;if &amp;#40;zero? b&amp;#41; a &amp;#40;recur b &amp;#40;mod a b&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#93;
+		&amp;#40;count 
+         &amp;#40;conj 
+          &amp;#40;filter #&amp;#40;= 1 %&amp;#41; 
+                  &amp;#40;map #&amp;#40;gcd n %&amp;#41; 
+                       &amp;#40;filter #&amp;#40;not= &amp;#40;rem n %&amp;#41; 0&amp;#41; 
+                               &amp;#40;range 1 n&amp;#41;&amp;#41;&amp;#41;&amp;#41; 1&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;일단 10에 대한 범위가 필요하므로 range 함수를 사용 하였다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;range 10&amp;#41;
+;; &amp;#40;0 1 2 3 4 5 6 7 8 9&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;0은 빼도 되므로 1부터 시작하도록 했다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;range 1 10&amp;#41;
+;; &amp;#40;1 2 3 4 5 6 7 8 9&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;간단하게 나머지 연산을 하여 0이 아닌 값에 대해서 필터링 하면 될것 같다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;filter #&amp;#40;not= &amp;#40;rem 10 %&amp;#41; 0&amp;#41; &amp;#40;range 1 10&amp;#41;&amp;#41;
+;; &amp;#40;3 4 6 7 8 9&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;근데 하고나서 생각해보니 10과 다른 수에 대한 최대 공약수가 아닌 수를 구해야한다. 최대 공약수를 어떻게 식과 조합하여 만들 수 있을지 고민을 해봐야 한다.&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;n&amp;#93;
+	&amp;#40;if &amp;#40;= n 1&amp;#41; 1
+		&amp;#40;let &amp;#91;gcd &amp;#40;fn &amp;#91;a b&amp;#93; &amp;#40;if &amp;#40;zero? b&amp;#41; a &amp;#40;recur b &amp;#40;mod a b&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#93;
+		&amp;#40;count 
+         &amp;#40;conj 
+          &amp;#40;filter #&amp;#40;= 1 %&amp;#41; 
+                  &amp;#40;map #&amp;#40;gcd n %&amp;#41; 
+                       &amp;#40;filter #&amp;#40;not= &amp;#40;rem n %&amp;#41; 0&amp;#41; 
+                               &amp;#40;range 1 n&amp;#41;&amp;#41;&amp;#41;&amp;#41; 1&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;let에 함수를 만들 수 있는 방법을 알게 되어 gcd를 만들었다. filter가 된 값들을 map으로 gcd를 하였다., &lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;defn x&amp;#91;n&amp;#93;
+&amp;#40;if &amp;#40;= n 1&amp;#41; 1
+&amp;#40;let &amp;#91;gcd &amp;#40;fn &amp;#91;a b&amp;#93; &amp;#40;if &amp;#40;zero? b&amp;#41; a &amp;#40;recur b &amp;#40;mod a b&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#93;
+&amp;#40;map #&amp;#40;gcd n %&amp;#41; &amp;#40;filter #&amp;#40;not= &amp;#40;rem n %&amp;#41; 0&amp;#41; &amp;#40;range 1 n&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+
+user=&amp;gt; &amp;#40;x 10&amp;#41;
+;; &amp;#40;1 2 2 1 2 1&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;1이 되는 값들만 filter를 한다. &lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;defn x&amp;#91;n&amp;#93;
+&amp;#40;if &amp;#40;= n 1&amp;#41; 1
+&amp;#40;let &amp;#91;gcd &amp;#40;fn &amp;#91;a b&amp;#93; &amp;#40;if &amp;#40;zero? b&amp;#41; a &amp;#40;recur b &amp;#40;mod a b&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#93;
+&amp;#40;filter #&amp;#40;= 1 %&amp;#41; &amp;#40;map #&amp;#40;gcd n %&amp;#41; &amp;#40;filter #&amp;#40;not= &amp;#40;rem n %&amp;#41; 0&amp;#41; &amp;#40;range 1 n&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+
+user=&amp;gt; &amp;#40;x 10&amp;#41;
+;; &amp;#40;1 1 1&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;갯수가 다르게 표시가 되는데..생각해보니 1이 있어야 해서 conj로 1을 추가 하였다.&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;defn x&amp;#91;n&amp;#93;
+&amp;#40;if &amp;#40;= n 1&amp;#41; 1
+&amp;#40;let &amp;#91;gcd &amp;#40;fn &amp;#91;a b&amp;#93; &amp;#40;if &amp;#40;zero? b&amp;#41; a &amp;#40;recur b &amp;#40;mod a b&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#93;
+&amp;#40;conj &amp;#40;filter #&amp;#40;= 1 %&amp;#41; &amp;#40;map #&amp;#40;gcd n %&amp;#41; &amp;#40;filter #&amp;#40;not= &amp;#40;rem n %&amp;#41; 0&amp;#41; &amp;#40;range 1 n&amp;#41;&amp;#41;&amp;#41;&amp;#41; 1&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+
+user=&amp;gt; &amp;#40;x 10&amp;#41;
+;; &amp;#40;1 1 1 1&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;그 후 count로 값을 구했다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;n&amp;#93;
+	&amp;#40;if &amp;#40;= n 1&amp;#41; 1
+		&amp;#40;let &amp;#91;gcd &amp;#40;fn &amp;#91;a b&amp;#93; &amp;#40;if &amp;#40;zero? b&amp;#41; a &amp;#40;recur b &amp;#40;mod a b&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#93;
+		&amp;#40;count 
+         &amp;#40;conj 
+          &amp;#40;filter #&amp;#40;= 1 %&amp;#41; 
+                  &amp;#40;map #&amp;#40;gcd n %&amp;#41; 
+                       &amp;#40;filter #&amp;#40;not= &amp;#40;rem n %&amp;#41; 0&amp;#41; 
+                               &amp;#40;range 1 n&amp;#41;&amp;#41;&amp;#41;&amp;#41; 1&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+user=&amp;gt; &amp;#40;x 10&amp;#41;
+;; 4
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;근데 생각해보니 내가 왜 나머지를 구해서 했는지 잘 모르겠다..뭔가 최대 공약수가 구해지지 않는 값들을 걸러내기 위함인데 저렇게 추가를 하다보니 1값을 넣는 코드가 추가가 되어 하지 않아도 될 계산을 하게 된 것 같다.&lt;/p&gt;
+</description>
+<pubDate>
+Tue, 24 Dec 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-12-23-4clojure-74.html
