@@ -73,77 +73,22 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 12월 24일 (화)</div>
+        <div class="col-lg-6">2019년 12월 25일 (수)</div>
         
     </div>
-    <h2>4clojure - Euler&#39;s Totient Function (75)</h2>
+    <h2>4clojure - Intro to Trampoline (76)</h2>
 </div>
 <div>
     
-    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;&#95;&#95; 1&#41; 1&#41;
-
-&#40;= &#40;&#95;&#95; 10&#41; &#40;count '&#40;1 3 7 9&#41;&#41; 4&#41;
-
-&#40;= &#40;&#95;&#95; 40&#41; 16&#41;
-
-&#40;= &#40;&#95;&#95; 99&#41; 60&#41;
-</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn &#91;n&#93;
-	&#40;if &#40;= n 1&#41; 1
-		&#40;let &#91;gcd &#40;fn &#91;a b&#93; &#40;if &#40;zero? b&#41; a &#40;recur b &#40;mod a b&#41;&#41;&#41;&#41;&#93;
-		&#40;count 
-         &#40;conj 
-          &#40;filter #&#40;= 1 %&#41; 
-                  &#40;map #&#40;gcd n %&#41; 
-                       &#40;filter #&#40;not= &#40;rem n %&#41; 0&#41; 
-                               &#40;range 1 n&#41;&#41;&#41;&#41; 1&#41;&#41;&#41;&#41;&#41;
-</code></pre></p><p>일단 10에 대한 범위가 필요하므로 range 함수를 사용 하였다.<pre><code class="clj">&#40;range 10&#41;
-;; &#40;0 1 2 3 4 5 6 7 8 9&#41;
-</code></pre></p><p>0은 빼도 되므로 1부터 시작하도록 했다.<pre><code class="clj">&#40;range 1 10&#41;
-;; &#40;1 2 3 4 5 6 7 8 9&#41;
-</code></pre></p><p>간단하게 나머지 연산을 하여 0이 아닌 값에 대해서 필터링 하면 될것 같다.<pre><code class="clj">&#40;filter #&#40;not= &#40;rem 10 %&#41; 0&#41; &#40;range 1 10&#41;&#41;
-;; &#40;3 4 6 7 8 9&#41;
-</code></pre></p><p>근데 하고나서 생각해보니 10과 다른 수에 대한 최대 공약수가 아닌 수를 구해야한다. 최대 공약수를 어떻게 식과 조합하여 만들 수 있을지 고민을 해봐야 한다.</p><pre><code class="clj">&#40;fn &#91;n&#93;
-	&#40;if &#40;= n 1&#41; 1
-		&#40;let &#91;gcd &#40;fn &#91;a b&#93; &#40;if &#40;zero? b&#41; a &#40;recur b &#40;mod a b&#41;&#41;&#41;&#41;&#93;
-		&#40;count 
-         &#40;conj 
-          &#40;filter #&#40;= 1 %&#41; 
-                  &#40;map #&#40;gcd n %&#41; 
-                       &#40;filter #&#40;not= &#40;rem n %&#41; 0&#41; 
-                               &#40;range 1 n&#41;&#41;&#41;&#41; 1&#41;&#41;&#41;&#41;&#41;
-</code></pre><p>let에 함수를 만들 수 있는 방법을 알게 되어 gcd를 만들었다. filter가 된 값들을 map으로 gcd를 하였다., <pre><code class="clj">&#40;defn x&#91;n&#93;
-&#40;if &#40;= n 1&#41; 1
-&#40;let &#91;gcd &#40;fn &#91;a b&#93; &#40;if &#40;zero? b&#41; a &#40;recur b &#40;mod a b&#41;&#41;&#41;&#41;&#93;
-&#40;map #&#40;gcd n %&#41; &#40;filter #&#40;not= &#40;rem n %&#41; 0&#41; &#40;range 1 n&#41;&#41;&#41;&#41;&#41;&#41;
-
-user=&gt; &#40;x 10&#41;
-;; &#40;1 2 2 1 2 1&#41;
-</code></pre></p><p>1이 되는 값들만 filter를 한다. <pre><code class="clj">&#40;defn x&#91;n&#93;
-&#40;if &#40;= n 1&#41; 1
-&#40;let &#91;gcd &#40;fn &#91;a b&#93; &#40;if &#40;zero? b&#41; a &#40;recur b &#40;mod a b&#41;&#41;&#41;&#41;&#93;
-&#40;filter #&#40;= 1 %&#41; &#40;map #&#40;gcd n %&#41; &#40;filter #&#40;not= &#40;rem n %&#41; 0&#41; &#40;range 1 n&#41;&#41;&#41;&#41;&#41;&#41;&#41;
-
-user=&gt; &#40;x 10&#41;
-;; &#40;1 1 1&#41;
-</code></pre></p><p>갯수가 다르게 표시가 되는데..생각해보니 1이 있어야 해서 conj로 1을 추가 하였다.</p><pre><code class="clj">&#40;defn x&#91;n&#93;
-&#40;if &#40;= n 1&#41; 1
-&#40;let &#91;gcd &#40;fn &#91;a b&#93; &#40;if &#40;zero? b&#41; a &#40;recur b &#40;mod a b&#41;&#41;&#41;&#41;&#93;
-&#40;conj &#40;filter #&#40;= 1 %&#41; &#40;map #&#40;gcd n %&#41; &#40;filter #&#40;not= &#40;rem n %&#41; 0&#41; &#40;range 1 n&#41;&#41;&#41;&#41; 1&#41;&#41;&#41;&#41;
-
-user=&gt; &#40;x 10&#41;
-;; &#40;1 1 1 1&#41;
-</code></pre><p>그 후 count로 값을 구했다.<pre><code class="clj">&#40;fn &#91;n&#93;
-	&#40;if &#40;= n 1&#41; 1
-		&#40;let &#91;gcd &#40;fn &#91;a b&#93; &#40;if &#40;zero? b&#41; a &#40;recur b &#40;mod a b&#41;&#41;&#41;&#41;&#93;
-		&#40;count 
-         &#40;conj 
-          &#40;filter #&#40;= 1 %&#41; 
-                  &#40;map #&#40;gcd n %&#41; 
-                       &#40;filter #&#40;not= &#40;rem n %&#41; 0&#41; 
-                               &#40;range 1 n&#41;&#41;&#41;&#41; 1&#41;&#41;&#41;&#41;&#41;
-user=&gt; &#40;x 10&#41;
-;; 4
-</code></pre></p><p>근데 생각해보니 내가 왜 나머지를 구해서 했는지 잘 모르겠다..뭔가 최대 공약수가 구해지지 않는 값들을 걸러내기 위함인데 저렇게 추가를 하다보니 1값을 넣는 코드가 추가가 되어 하지 않아도 될 계산을 하게 된 것 같다.</p>
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#95;&#95;
+   &#40;letfn
+     &#91;&#40;foo &#91;x y&#93; #&#40;bar &#40;conj x y&#41; y&#41;&#41;
+      &#40;bar &#91;x y&#93; &#40;if &#40;&gt; &#40;last x&#41; 10&#41;
+                   x
+                   #&#40;foo x &#40;+ 2 y&#41;&#41;&#41;&#41;&#93;
+     &#40;trampoline foo &#91;&#93; 1&#41;&#41;&#41;
+</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&#91;1 3 5 7 9 11&#93;
+</code></pre></p><p>trampoline 함수에 대한 사용법을 알게 하는 문제 이다. 함수를 엮고, 파라미터 값의 변경을 유지해주는 뭔가 reduce, do 이런 함수들로 연상이 되었다. 어찌어찌 분석을 하면서 풀긴 했지만 좀 더 사용법에 대해서는 알 필요성은 있다.</p>
 </div>
 
 <div id="post-tags">
@@ -161,7 +106,7 @@ user=&gt; &#40;x 10&#41;
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2019-12-23-4clojure-74.html">4clojure - Filter Perfect Squares (74) &raquo;</a>
+        <a class="right" href="/posts/2019-12-24-4clojure-75.html">4clojure - Euler&#39;s Totient Function (75) &raquo;</a>
         
     </div>
 </div>
@@ -180,11 +125,11 @@ user=&gt; &#40;x 10&#41;
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2019-12-25-4clojure-76.html">4clojure - Intro to Trampoline (76)</a></li>
+                        
                         <li><a href="/posts/2019-12-24-4clojure-75.html">4clojure - Euler&#39;s Totient Function (75)</a></li>
                         
                         <li><a href="/posts/2019-12-23-4clojure-74.html">4clojure - Filter Perfect Squares (74)</a></li>
-                        
-                        <li><a href="/posts/2019-12-22-data-merge-division.html">데이터의 병합/분리</a></li>
                         
                     </ul>
                 </div>
