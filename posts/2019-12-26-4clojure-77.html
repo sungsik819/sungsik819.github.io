@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: 4clojure 10</title>
-    <link rel="canonical" href="http://dev-happy.com/posts/2019-10-13-4clojure-10.html">
+    <title>Dev Happy: 4clojure - Anagram Finder (77)</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2019-12-26-4clojure-77.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -73,18 +73,42 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 10월 13일 (일)</div>
+        <div class="col-lg-6">2019년 12월 26일 (목)</div>
         
     </div>
-    <h2>4clojure 10</h2>
+    <h2>4clojure - Anagram Finder (77)</h2>
 </div>
 <div>
     
-    <pre><code class="clojure">&#40;= &#95;&#95; &#40;&#40;hash-map :a 10, :b 20, :c 30&#41; :b&#41;&#41;
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;&#95;&#95; &#91;&quot;meat&quot; &quot;mat&quot; &quot;team&quot; &quot;mate&quot; &quot;eat&quot;&#93;&#41;
+   #{#{&quot;meat&quot; &quot;team&quot; &quot;mate&quot;}}&#41;
 
-&#40;= &#95;&#95; &#40;:b {:a 10, :b 20, :c 30}&#41;&#41;
-</code></pre><pre><code class="clojure">20
-</code></pre><p>python의 dictionary 자료형과 동일한 역할을 한다 clojure에서는 hash-map이라는 용어를 사용하고 만드는 방법은 위와 같이 {}에 :a 형태의 key와 value를 추가하여 생성한다. 위 문제에서는 :b key의 값을 가져오는 방법을 보여주고 있다. ({} :b)의 형태, (:b {})의 형태 모두 :b의 값을 가져오는 역할을 한다. 답은 20이다.</p>
+&#40;= &#40;&#95;&#95; &#91;&quot;veer&quot; &quot;lake&quot; &quot;item&quot; &quot;kale&quot; &quot;mite&quot; &quot;ever&quot;&#93;&#41;
+   #{#{&quot;veer&quot; &quot;ever&quot;} #{&quot;lake&quot; &quot;kale&quot;} #{&quot;mite&quot; &quot;item&quot;}}&#41;
+</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn &#91;coll&#93; 
+	&#40;set &#40;map #&#40;set %&#41; 
+              &#40;filter #&#40;&gt; &#40;count %&#41; 1&#41; 
+                               &#40;vals &#40;group-by sort coll&#41;&#41;&#41;&#41;&#41;&#41;
+</code></pre></p><p>비슷한 단어의 묶음을 만들어서 하면될 것이라고 생각을 했다. 그래서 어떻게 알 수 있을까? 생각을 하다가 sort를 해서 비교를 하면 될 것이라 생각을 했다 어차피 알파벳의 순서는 정해져 있으니까..</p><p>그리고 그것을 group-by로 묶어주면 같은 알파벳이 들어간 단어들을 묶어줄 수 있겠다고 생각했다.</p><pre><code class="clj">&#40;group-by sort &#91;&quot;meat&quot; &quot;mat&quot; &quot;team&quot; &quot;mate&quot; &quot;eat&quot;&#93;&#41;
+;; {&#40;\a \e \m \t&#41; &#91;&quot;meat&quot; &quot;team&quot; &quot;mate&quot;&#93;, &#40;\a \m \t&#41; &#91;&quot;mat&quot;&#93;, &#40;\a \e \t&#41; &#91;&quot;eat&quot;&#93;}
+
+&#40;group-by sort &#91;&quot;veer&quot; &quot;lake&quot; &quot;item&quot; &quot;kale&quot; &quot;mite&quot; &quot;ever&quot;&#93;&#41;
+;; {&#40;\e \e \r \v&#41; &#91;&quot;veer&quot; &quot;ever&quot;&#93;, &#40;\a \e \k \l&#41; &#91;&quot;lake&quot; &quot;kale&quot;&#93;, &#40;\e \i \m \t&#41; &#91;&quot;item&quot; &quot;mite&quot;&#93;}
+</code></pre><p>여기에 1개 이상이 있는 값을 필터링 하고 vals를 가져오면 문제가 해결 될 것 같았다.<pre><code class="clj">&#40;filter #&#40;&gt; &#40;count %&#41; 1&#41; &#40;vals &#40;group-by sort &#91;&quot;veer&quot; &quot;lake&quot; &quot;item&quot; &quot;kale&quot; &quot;mite&quot; &quot;ever&quot;&#93;&#41;&#41;&#41;
+;; &#40;&#91;&quot;veer&quot; &quot;ever&quot;&#93; &#91;&quot;lake&quot; &quot;kale&quot;&#93; &#91;&quot;item&quot; &quot;mite&quot;&#93;&#41;
+</code></pre></p><p>테스트를 돌렸을 때 통과가 안되었다.  자료형까지 다 같아야 하나보다. into 조합으로 set으로 변경하는 함수를 만들었다. 우선 내부의 vector를 변경해야 하므로 아래와 같이 했다.<pre><code class="clj">&#40;map #&#40;into #{} %&#41; '&#40;&#91;&quot;veer&quot; &quot;ever&quot;&#93; &#91;&quot;lake&quot; &quot;kale&quot;&#93; &#91;&quot;item&quot; &quot;mite&quot;&#93;&#41;
+&#41;
+;; &#40;#{&quot;ever&quot; &quot;veer&quot;} #{&quot;kale&quot; &quot;lake&quot;} #{&quot;item&quot; &quot;mite&quot;}&#41;
+</code></pre></p><p>그다음 다시 into를 사용해서 바깥의 list를 변경 했다.<pre><code class="clj">&#40;into #{} &#40;map #&#40;into #{} %&#41; '&#40;&#91;&quot;veer&quot; &quot;ever&quot;&#93; &#91;&quot;lake&quot; &quot;kale&quot;&#93; &#91;&quot;item&quot; &quot;mite&quot;&#93;&#41;&#41;&#41;
+;; #{#{&quot;kale&quot; &quot;lake&quot;} #{&quot;item&quot; &quot;mite&quot;} #{&quot;ever&quot; &quot;veer&quot;}}
+</code></pre></p><p>생각해보니 굳이 into를 사용해서 set을 변환하지 않아도 될것 같다.<pre><code class="clj">&#40;set &#40;map #&#40;set %&#41; '&#40;&#91;&quot;veer&quot; &quot;ever&quot;&#93; &#91;&quot;lake&quot; &quot;kale&quot;&#93; &#91;&quot;item&quot; &quot;mite&quot;&#93;&#41;&#41;&#41;
+
+;; #{#{&quot;kale&quot; &quot;lake&quot;} #{&quot;item&quot; &quot;mite&quot;} #{&quot;ever&quot; &quot;veer&quot;}}
+</code></pre></p><p>최종 해답 함수 이다.<pre><code class="clj">&#40;fn &#91;coll&#93; 
+	&#40;set &#40;map #&#40;set %&#41; 
+              &#40;filter #&#40;&gt; &#40;count %&#41; 1&#41; 
+                               &#40;vals &#40;group-by sort coll&#41;&#41;&#41;&#41;&#41;&#41;
+</code></pre></p>
 </div>
 
 <div id="post-tags">
@@ -99,10 +123,8 @@
 
     <div id="prev-next">
         
-        <a href="/posts/2019-10-14-4clojure-11.html">&laquo; 4clojure 11</a>
         
-        
-        <a class="right" href="/posts/2019-10-12-4clojure-09.html">4clojure 09 &raquo;</a>
+        <a class="right" href="/posts/2019-12-25-4clojure-76.html">4clojure - Intro to Trampoline (76) &raquo;</a>
         
     </div>
 

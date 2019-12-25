@@ -12,11 +12,56 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Wed, 25 Dec 2019 05:45:15 +0900
+Thu, 26 Dec 2019 05:57:37 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-12-26-4clojure-77.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-12-26-4clojure-77.html
+</link>
+<title>
+4clojure - Anagram Finder (77)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#91;&amp;quot;meat&amp;quot; &amp;quot;mat&amp;quot; &amp;quot;team&amp;quot; &amp;quot;mate&amp;quot; &amp;quot;eat&amp;quot;&amp;#93;&amp;#41;
+   #{#{&amp;quot;meat&amp;quot; &amp;quot;team&amp;quot; &amp;quot;mate&amp;quot;}}&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#91;&amp;quot;veer&amp;quot; &amp;quot;lake&amp;quot; &amp;quot;item&amp;quot; &amp;quot;kale&amp;quot; &amp;quot;mite&amp;quot; &amp;quot;ever&amp;quot;&amp;#93;&amp;#41;
+   #{#{&amp;quot;veer&amp;quot; &amp;quot;ever&amp;quot;} #{&amp;quot;lake&amp;quot; &amp;quot;kale&amp;quot;} #{&amp;quot;mite&amp;quot; &amp;quot;item&amp;quot;}}&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;coll&amp;#93; 
+	&amp;#40;set &amp;#40;map #&amp;#40;set %&amp;#41; 
+              &amp;#40;filter #&amp;#40;&amp;gt; &amp;#40;count %&amp;#41; 1&amp;#41; 
+                               &amp;#40;vals &amp;#40;group-by sort coll&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;비슷한 단어의 묶음을 만들어서 하면될 것이라고 생각을 했다. 그래서 어떻게 알 수 있을까? 생각을 하다가 sort를 해서 비교를 하면 될 것이라 생각을 했다 어차피 알파벳의 순서는 정해져 있으니까..&lt;/p&gt;&lt;p&gt;그리고 그것을 group-by로 묶어주면 같은 알파벳이 들어간 단어들을 묶어줄 수 있겠다고 생각했다.&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;group-by sort &amp;#91;&amp;quot;meat&amp;quot; &amp;quot;mat&amp;quot; &amp;quot;team&amp;quot; &amp;quot;mate&amp;quot; &amp;quot;eat&amp;quot;&amp;#93;&amp;#41;
+;; {&amp;#40;\a \e \m \t&amp;#41; &amp;#91;&amp;quot;meat&amp;quot; &amp;quot;team&amp;quot; &amp;quot;mate&amp;quot;&amp;#93;, &amp;#40;\a \m \t&amp;#41; &amp;#91;&amp;quot;mat&amp;quot;&amp;#93;, &amp;#40;\a \e \t&amp;#41; &amp;#91;&amp;quot;eat&amp;quot;&amp;#93;}
+
+&amp;#40;group-by sort &amp;#91;&amp;quot;veer&amp;quot; &amp;quot;lake&amp;quot; &amp;quot;item&amp;quot; &amp;quot;kale&amp;quot; &amp;quot;mite&amp;quot; &amp;quot;ever&amp;quot;&amp;#93;&amp;#41;
+;; {&amp;#40;\e \e \r \v&amp;#41; &amp;#91;&amp;quot;veer&amp;quot; &amp;quot;ever&amp;quot;&amp;#93;, &amp;#40;\a \e \k \l&amp;#41; &amp;#91;&amp;quot;lake&amp;quot; &amp;quot;kale&amp;quot;&amp;#93;, &amp;#40;\e \i \m \t&amp;#41; &amp;#91;&amp;quot;item&amp;quot; &amp;quot;mite&amp;quot;&amp;#93;}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;여기에 1개 이상이 있는 값을 필터링 하고 vals를 가져오면 문제가 해결 될 것 같았다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;filter #&amp;#40;&amp;gt; &amp;#40;count %&amp;#41; 1&amp;#41; &amp;#40;vals &amp;#40;group-by sort &amp;#91;&amp;quot;veer&amp;quot; &amp;quot;lake&amp;quot; &amp;quot;item&amp;quot; &amp;quot;kale&amp;quot; &amp;quot;mite&amp;quot; &amp;quot;ever&amp;quot;&amp;#93;&amp;#41;&amp;#41;&amp;#41;
+;; &amp;#40;&amp;#91;&amp;quot;veer&amp;quot; &amp;quot;ever&amp;quot;&amp;#93; &amp;#91;&amp;quot;lake&amp;quot; &amp;quot;kale&amp;quot;&amp;#93; &amp;#91;&amp;quot;item&amp;quot; &amp;quot;mite&amp;quot;&amp;#93;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;테스트를 돌렸을 때 통과가 안되었다.  자료형까지 다 같아야 하나보다. into 조합으로 set으로 변경하는 함수를 만들었다. 우선 내부의 vector를 변경해야 하므로 아래와 같이 했다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;map #&amp;#40;into #{} %&amp;#41; '&amp;#40;&amp;#91;&amp;quot;veer&amp;quot; &amp;quot;ever&amp;quot;&amp;#93; &amp;#91;&amp;quot;lake&amp;quot; &amp;quot;kale&amp;quot;&amp;#93; &amp;#91;&amp;quot;item&amp;quot; &amp;quot;mite&amp;quot;&amp;#93;&amp;#41;
+&amp;#41;
+;; &amp;#40;#{&amp;quot;ever&amp;quot; &amp;quot;veer&amp;quot;} #{&amp;quot;kale&amp;quot; &amp;quot;lake&amp;quot;} #{&amp;quot;item&amp;quot; &amp;quot;mite&amp;quot;}&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;그다음 다시 into를 사용해서 바깥의 list를 변경 했다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;into #{} &amp;#40;map #&amp;#40;into #{} %&amp;#41; '&amp;#40;&amp;#91;&amp;quot;veer&amp;quot; &amp;quot;ever&amp;quot;&amp;#93; &amp;#91;&amp;quot;lake&amp;quot; &amp;quot;kale&amp;quot;&amp;#93; &amp;#91;&amp;quot;item&amp;quot; &amp;quot;mite&amp;quot;&amp;#93;&amp;#41;&amp;#41;&amp;#41;
+;; #{#{&amp;quot;kale&amp;quot; &amp;quot;lake&amp;quot;} #{&amp;quot;item&amp;quot; &amp;quot;mite&amp;quot;} #{&amp;quot;ever&amp;quot; &amp;quot;veer&amp;quot;}}
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;생각해보니 굳이 into를 사용해서 set을 변환하지 않아도 될것 같다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;set &amp;#40;map #&amp;#40;set %&amp;#41; '&amp;#40;&amp;#91;&amp;quot;veer&amp;quot; &amp;quot;ever&amp;quot;&amp;#93; &amp;#91;&amp;quot;lake&amp;quot; &amp;quot;kale&amp;quot;&amp;#93; &amp;#91;&amp;quot;item&amp;quot; &amp;quot;mite&amp;quot;&amp;#93;&amp;#41;&amp;#41;&amp;#41;
+
+;; #{#{&amp;quot;kale&amp;quot; &amp;quot;lake&amp;quot;} #{&amp;quot;item&amp;quot; &amp;quot;mite&amp;quot;} #{&amp;quot;ever&amp;quot; &amp;quot;veer&amp;quot;}}
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;최종 해답 함수 이다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;coll&amp;#93; 
+	&amp;#40;set &amp;#40;map #&amp;#40;set %&amp;#41; 
+              &amp;#40;filter #&amp;#40;&amp;gt; &amp;#40;count %&amp;#41; 1&amp;#41; 
+                               &amp;#40;vals &amp;#40;group-by sort coll&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+</description>
+<pubDate>
+Thu, 26 Dec 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-12-25-4clojure-76.html
