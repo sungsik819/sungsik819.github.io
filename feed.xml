@@ -12,11 +12,64 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Thu, 26 Dec 2019 05:57:37 +0900
+Fri, 27 Dec 2019 06:15:34 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-12-27-4clojure-78.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-12-27-4clojure-78.html
+</link>
+<title>
+4clojure - Reimplement Trampoline (78)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#40;letfn &amp;#91;&amp;#40;triple &amp;#91;x&amp;#93; #&amp;#40;sub-two &amp;#40;&amp;#42; 3 x&amp;#41;&amp;#41;&amp;#41;
+          &amp;#40;sub-two &amp;#91;x&amp;#93; #&amp;#40;stop?&amp;#40;- x 2&amp;#41;&amp;#41;&amp;#41;
+          &amp;#40;stop? &amp;#91;x&amp;#93; &amp;#40;if &amp;#40;&amp;gt; x 50&amp;#41; x #&amp;#40;triple x&amp;#41;&amp;#41;&amp;#41;&amp;#93;
+    &amp;#40;&amp;#95;&amp;#95; triple 2&amp;#41;&amp;#41;
+  82&amp;#41;
+
+&amp;#40;= &amp;#40;letfn &amp;#91;&amp;#40;my-even? &amp;#91;x&amp;#93; &amp;#40;if &amp;#40;zero? x&amp;#41; true #&amp;#40;my-odd? &amp;#40;dec x&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+          &amp;#40;my-odd? &amp;#91;x&amp;#93; &amp;#40;if &amp;#40;zero? x&amp;#41; false #&amp;#40;my-even? &amp;#40;dec x&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#93;
+    &amp;#40;map &amp;#40;partial &amp;#95;&amp;#95; my-even?&amp;#41; &amp;#40;range 6&amp;#41;&amp;#41;&amp;#41;
+  &amp;#91;true false true false true false&amp;#93;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;제한 : trampoline&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;f &amp;amp; args&amp;#93; &amp;#40;loop &amp;#91;f &amp;#40;apply f args&amp;#41;&amp;#93; &amp;#40;if &amp;#40;fn? f&amp;#41; &amp;#40;recur &amp;#40;f&amp;#41;&amp;#41; f&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;그냥 함수 호출 하는 방법으로 해봤다&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;letfn &amp;#91;&amp;#40;triple &amp;#91;x&amp;#93; #&amp;#40;sub-two &amp;#40;&amp;#42; 3 x&amp;#41;&amp;#41;&amp;#41;
+          &amp;#40;sub-two &amp;#91;x&amp;#93; #&amp;#40;stop?&amp;#40;- x 2&amp;#41;&amp;#41;&amp;#41;
+          &amp;#40;stop? &amp;#91;x&amp;#93; &amp;#40;if &amp;#40;&amp;gt; x 50&amp;#41; x #&amp;#40;triple x&amp;#41;&amp;#41;&amp;#41;&amp;#93;
+    &amp;#40;&amp;#40;fn &amp;#91;f x&amp;#93; &amp;#40;f x&amp;#41;&amp;#41; triple 2&amp;#41;&amp;#41;
+;; #object&amp;#91;user$eval136$triple&amp;#95;&amp;#95;137$fn&amp;#95;&amp;#95;138 0x2f05be7f &amp;quot;user$eval136$triple&amp;#95;&amp;#95;137$fn&amp;#95;&amp;#95;138@2f05be7f&amp;quot;&amp;#93;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;실행할 준비가 되는 상태로만 되는 것 같다.&lt;/p&gt;&lt;p&gt;함수의 실행에 대한 문제가 아니라 뭔가 다른 방식에 대한 문제 인 것 같다. 간단하게 함수를 호출을 해도 그냥 정의만 되어 버린다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;letfn &amp;#91;&amp;#40;triple &amp;#91;x&amp;#93; #&amp;#40;sub-two &amp;#40;&amp;#42; 3 x&amp;#41;&amp;#41;&amp;#41;
+          &amp;#40;sub-two &amp;#91;x&amp;#93; #&amp;#40;stop?&amp;#40;- x 2&amp;#41;&amp;#41;&amp;#41;
+          &amp;#40;stop? &amp;#91;x&amp;#93; &amp;#40;if &amp;#40;&amp;gt; x 50&amp;#41; x #&amp;#40;triple x&amp;#41;&amp;#41;&amp;#41;&amp;#93;
+    &amp;#40;triple 2&amp;#41;&amp;#41;
+;; #object&amp;#91;user$eval152$triple&amp;#95;&amp;#95;153$fn&amp;#95;&amp;#95;154 0x68ad99fe &amp;quot;user$eval152$triple&amp;#95;&amp;#95;153$fn&amp;#95;&amp;#95;154@68ad99fe&amp;quot;&amp;#93;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;뭔가 내가 모르는 다른 방식이 더 있는 것 같다. 그걸 어떻게 찾아야 할지 고민이 된다. 왜 실행이 되지 않는지 라는 생각이 자꾸 들긴 한다.&lt;/p&gt;&lt;p&gt;생각하다가 도저히 답이 안나와서 다른 사람들은 어떻게 풀었는지 참고를 하기로 했다. 왜 위에 함수가 실행이 되지 않는지도 이해가 가지 않아서 정말 모르는 방법인거 같아 참고한다.&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;f &amp;amp; args&amp;#93; &amp;#40;loop &amp;#91;f &amp;#40;apply f args&amp;#41;&amp;#93; &amp;#40;if &amp;#40;fn? f&amp;#41; &amp;#40;recur &amp;#40;f&amp;#41;&amp;#41; f&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;문제를 잘못 이해하고 있었다 함수 내부에서 익명 함수를 사용한 것이 아니라 함수를 반환하고 있었다 그래서 위 해결 방법에서 fn?으로 반환된 결과가 함수인지를 판단하고 그 함수를 실행 시켜서 하고 있었던 것이다 결과적으로 (fn)과 같은 동작의 샆 태그인데 왜 저렇게 동작이 되는 것인지 계속 고민을 하고 있었던 것이다 위 1번테스트를 풀이 한다면 다음과 같은 흐름으로 실행이 된다&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;triple 2&amp;#41;
+;; &amp;#40;apply triple '&amp;#40;2&amp;#41;&amp;#41;
+;; &amp;#40;#&amp;#40;sub-two 6&amp;#41;&amp;#41;
+;; &amp;#40;apply #&amp;#40;stop? 4&amp;#41; '&amp;#40;&amp;#41;&amp;#41;
+;; &amp;#40;#&amp;#40;triple 4&amp;#41;&amp;#41; 
+;; &amp;#40;apply #&amp;#40;sub-two 12&amp;#41; '&amp;#40;&amp;#41;&amp;#41;
+;; &amp;#40;#&amp;#40;stop? 10&amp;#41;&amp;#41;
+;; &amp;#40;apply #&amp;#40;triple 10&amp;#41; '&amp;#40;&amp;#41;&amp;#41;
+;; &amp;#40;#&amp;#40;sub-two 30&amp;#41;&amp;#41;
+;; &amp;#40;apply #&amp;#40;stop? 28&amp;#41; '&amp;#40;&amp;#41;&amp;#41;
+;; &amp;#40;#&amp;#40;triple 28&amp;#41;&amp;#41; 
+;; &amp;#40;apply #&amp;#40;sub-two 84&amp;#41; '&amp;#40;&amp;#41;&amp;#41;
+;; &amp;#40;#&amp;#40;stop? 82&amp;#41;&amp;#41;
+;; 82
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+<pubDate>
+Fri, 27 Dec 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-12-26-4clojure-77.html

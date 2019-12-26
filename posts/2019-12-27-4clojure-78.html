@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: problem 05</title>
-    <link rel="canonical" href="http://dev-happy.com/posts/2019-10-08-4clojure-05.html">
+    <title>Dev Happy: 4clojure - Reimplement Trampoline (78)</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2019-12-27-4clojure-78.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -73,18 +73,50 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 10월 8일 (화)</div>
+        <div class="col-lg-6">2019년 12월 27일 (금)</div>
         
     </div>
-    <h2>problem 05</h2>
+    <h2>4clojure - Reimplement Trampoline (78)</h2>
 </div>
 <div>
     
-    <pre><code class="clojure">&#40;= &#95;&#95; &#40;conj '&#40;2 3 4&#41; 1&#41;&#41;
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;letfn &#91;&#40;triple &#91;x&#93; #&#40;sub-two &#40;&#42; 3 x&#41;&#41;&#41;
+          &#40;sub-two &#91;x&#93; #&#40;stop?&#40;- x 2&#41;&#41;&#41;
+          &#40;stop? &#91;x&#93; &#40;if &#40;&gt; x 50&#41; x #&#40;triple x&#41;&#41;&#41;&#93;
+    &#40;&#95;&#95; triple 2&#41;&#41;
+  82&#41;
 
-&#40;= &#95;&#95; &#40;conj '&#40;3 4&#41; 2 1&#41;&#41;
-</code></pre><pre><code class="clojure">'&#40;1 2 3 4&#41;
-</code></pre><p>처음으로 테스트를 통과해야하는 문제가 2개가 되었다. conj는 list 자료형인 경우 앞에 값을 추가를 한다, 2개가 있는 경우 앞에 값부터 차례로 값을 앞으로 추가를 한다. stack이라고 생각하면 쉬울 것 같다. 그러므로’(1 2 3 4)이면 등호를 만족 한다.</p>
+&#40;= &#40;letfn &#91;&#40;my-even? &#91;x&#93; &#40;if &#40;zero? x&#41; true #&#40;my-odd? &#40;dec x&#41;&#41;&#41;&#41;
+          &#40;my-odd? &#91;x&#93; &#40;if &#40;zero? x&#41; false #&#40;my-even? &#40;dec x&#41;&#41;&#41;&#41;&#93;
+    &#40;map &#40;partial &#95;&#95; my-even?&#41; &#40;range 6&#41;&#41;&#41;
+  &#91;true false true false true false&#93;&#41;
+</code></pre></p><p><strong>제한 : trampoline</strong></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn &#91;f &amp; args&#93; &#40;loop &#91;f &#40;apply f args&#41;&#93; &#40;if &#40;fn? f&#41; &#40;recur &#40;f&#41;&#41; f&#41;&#41;&#41;
+</code></pre></p><p>그냥 함수 호출 하는 방법으로 해봤다<pre><code class="clj">&#40;letfn &#91;&#40;triple &#91;x&#93; #&#40;sub-two &#40;&#42; 3 x&#41;&#41;&#41;
+          &#40;sub-two &#91;x&#93; #&#40;stop?&#40;- x 2&#41;&#41;&#41;
+          &#40;stop? &#91;x&#93; &#40;if &#40;&gt; x 50&#41; x #&#40;triple x&#41;&#41;&#41;&#93;
+    &#40;&#40;fn &#91;f x&#93; &#40;f x&#41;&#41; triple 2&#41;&#41;
+;; #object&#91;user$eval136$triple&#95;&#95;137$fn&#95;&#95;138 0x2f05be7f &quot;user$eval136$triple&#95;&#95;137$fn&#95;&#95;138@2f05be7f&quot;&#93;
+</code></pre></p><p>실행할 준비가 되는 상태로만 되는 것 같다.</p><p>함수의 실행에 대한 문제가 아니라 뭔가 다른 방식에 대한 문제 인 것 같다. 간단하게 함수를 호출을 해도 그냥 정의만 되어 버린다.<pre><code class="clj">&#40;letfn &#91;&#40;triple &#91;x&#93; #&#40;sub-two &#40;&#42; 3 x&#41;&#41;&#41;
+          &#40;sub-two &#91;x&#93; #&#40;stop?&#40;- x 2&#41;&#41;&#41;
+          &#40;stop? &#91;x&#93; &#40;if &#40;&gt; x 50&#41; x #&#40;triple x&#41;&#41;&#41;&#93;
+    &#40;triple 2&#41;&#41;
+;; #object&#91;user$eval152$triple&#95;&#95;153$fn&#95;&#95;154 0x68ad99fe &quot;user$eval152$triple&#95;&#95;153$fn&#95;&#95;154@68ad99fe&quot;&#93;
+</code></pre></p><p>뭔가 내가 모르는 다른 방식이 더 있는 것 같다. 그걸 어떻게 찾아야 할지 고민이 된다. 왜 실행이 되지 않는지 라는 생각이 자꾸 들긴 한다.</p><p>생각하다가 도저히 답이 안나와서 다른 사람들은 어떻게 풀었는지 참고를 하기로 했다. 왜 위에 함수가 실행이 되지 않는지도 이해가 가지 않아서 정말 모르는 방법인거 같아 참고한다.</p><pre><code class="clj">&#40;fn &#91;f &amp; args&#93; &#40;loop &#91;f &#40;apply f args&#41;&#93; &#40;if &#40;fn? f&#41; &#40;recur &#40;f&#41;&#41; f&#41;&#41;&#41;
+</code></pre><p>문제를 잘못 이해하고 있었다 함수 내부에서 익명 함수를 사용한 것이 아니라 함수를 반환하고 있었다 그래서 위 해결 방법에서 fn?으로 반환된 결과가 함수인지를 판단하고 그 함수를 실행 시켜서 하고 있었던 것이다 결과적으로 (fn)과 같은 동작의 샆 태그인데 왜 저렇게 동작이 되는 것인지 계속 고민을 하고 있었던 것이다 위 1번테스트를 풀이 한다면 다음과 같은 흐름으로 실행이 된다</p><pre><code class="clj">&#40;triple 2&#41;
+;; &#40;apply triple '&#40;2&#41;&#41;
+;; &#40;#&#40;sub-two 6&#41;&#41;
+;; &#40;apply #&#40;stop? 4&#41; '&#40;&#41;&#41;
+;; &#40;#&#40;triple 4&#41;&#41; 
+;; &#40;apply #&#40;sub-two 12&#41; '&#40;&#41;&#41;
+;; &#40;#&#40;stop? 10&#41;&#41;
+;; &#40;apply #&#40;triple 10&#41; '&#40;&#41;&#41;
+;; &#40;#&#40;sub-two 30&#41;&#41;
+;; &#40;apply #&#40;stop? 28&#41; '&#40;&#41;&#41;
+;; &#40;#&#40;triple 28&#41;&#41; 
+;; &#40;apply #&#40;sub-two 84&#41; '&#40;&#41;&#41;
+;; &#40;#&#40;stop? 82&#41;&#41;
+;; 82
+</code></pre>
 </div>
 
 <div id="post-tags">
@@ -99,10 +131,8 @@
 
     <div id="prev-next">
         
-        <a href="/posts/2019-10-09-4clojure-06.html">&laquo; problem 06</a>
         
-        
-        <a class="right" href="/posts/2019-10-07-4clojure-04.html">problem 04 &raquo;</a>
+        <a class="right" href="/posts/2019-12-26-4clojure-77.html">4clojure - Anagram Finder (77) &raquo;</a>
         
     </div>
 
