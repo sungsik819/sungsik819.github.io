@@ -12,11 +12,82 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Fri, 27 Dec 2019 06:15:34 +0900
+Sat, 28 Dec 2019 06:29:09 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2019-12-28-4clojure-79.html
+</guid>
+<link>
+http://dev-happy.com/posts/2019-12-28-4clojure-79.html
+</link>
+<title>
+4clojure - Triangle Minimal Path (79)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= 7 &amp;#40;&amp;#95;&amp;#95; '&amp;#40;&amp;#91;1&amp;#93;
+          &amp;#91;2 4&amp;#93;
+         &amp;#91;5 1 4&amp;#93;
+        &amp;#91;2 3 4 5&amp;#93;&amp;#41;&amp;#41;&amp;#41; ; 1-&amp;gt;2-&amp;gt;1-&amp;gt;3
+
+&amp;#40;= 20 &amp;#40;&amp;#95;&amp;#95; '&amp;#40;&amp;#91;3&amp;#93;
+           &amp;#91;2 4&amp;#93;
+          &amp;#91;1 9 3&amp;#93;
+         &amp;#91;9 9 2 4&amp;#93;
+        &amp;#91;4 6 6 7 8&amp;#93;
+       &amp;#91;5 7 3 5 1 4&amp;#93;&amp;#41;&amp;#41;&amp;#41; ; 3-&amp;gt;4-&amp;gt;3-&amp;gt;2-&amp;gt;7-&amp;gt;1
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;col&amp;#93;
+  &amp;#40;first 
+     &amp;#40;reduce #&amp;#40;map + 
+                   &amp;#40;map min &amp;#40;butlast %1&amp;#41; &amp;#40;rest %1 &amp;#41;&amp;#41;               %2&amp;#41;  
+
+            &amp;#40;reverse col&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;작은 숫자로만 이동하는 문제인거 같았는데 마지막에 최소 값으로 결과가 나오는 문제이다.&lt;/p&gt;&lt;p&gt;이건 따로 이동이라는 관점으로 볼 것이 아니라 각각 하나의 vector로 보고 한다면 그냥 sort 후 first 값을 가져오면 될것 같아 보인다.&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;reduce #&amp;#40;+ % &amp;#40;first &amp;#40;sort %2&amp;#41;&amp;#41;&amp;#41; &amp;#40;first &amp;#40;first '&amp;#40;&amp;#91;1&amp;#93; &amp;#91;2 4&amp;#93; &amp;#91;5 1 4&amp;#93; &amp;#91;2 3 4 5&amp;#93;&amp;#41;&amp;#41;&amp;#41; &amp;#40;rest '&amp;#40;&amp;#91;1&amp;#93; &amp;#91;2 4&amp;#93; &amp;#91;5 1 4&amp;#93; &amp;#91;2 3 4 5&amp;#93;&amp;#41;&amp;#41;&amp;#41;
+;; 6
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;답과 다르게 나온다..근데 생각을 해보니 이동하는 범위가 한정되어 있는데 sort를 해버리면 이동하는 값이 변하게 되므로  그건 안된다..&lt;/p&gt;&lt;p&gt;2번째 문제를 봤을 때도 3-&gt;2로 가야할 것 같은데 결과가 최소값이 되어야 하므로 3-&gt;4로 이동 한 것으로 볼 수 있을 것 같다.&lt;/p&gt;&lt;p&gt;어떻게 3이 2, 4로만 이동할 수 있다는 것을 보장 할 수 있고, 2가 1, 9로만 이동하는 것을 보장 할 수 있는 데이터를 만들 수 있을지 고민을 해야겠다.&lt;/p&gt;&lt;p&gt;모든 경로에 해당하는 숫자들을 나열하는 방법이 있다. 근데 그것을 하는 것이 최선인지는 잘 모르겠다 하지만 함수형 언어라면 그 방법을 쉽게 할 수 있다고 생각이 든다.&lt;/p&gt;&lt;p&gt;즉 아래와 같은 형식으로 바뀌어야 한다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#91;&amp;#91;1&amp;#93; &amp;#91;2 4&amp;#93; &amp;#91;5 1 4&amp;#93; &amp;#91;2 3 4 5&amp;#93;&amp;#93;
+;; &amp;#91;&amp;#91;1 2 5 2&amp;#93; &amp;#91;1 2 5 3&amp;#93; &amp;#91;1 2 1 3&amp;#93; &amp;#91;1 2 1 4&amp;#93;...&amp;#93;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;뭔가 이동을 제한 할 수 있는 방법을 생각해야하는 것은 아닌가 생각이 든다.&lt;/p&gt;&lt;p&gt;합을 어떻게 만들고 그 합이 나오는 리스트를 어떻게 가져오는 생각을 해봤을 때 group-by가 있다는 생각이 들었다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;group-by &amp;#40;fn &amp;#91;x&amp;#93; &amp;#40;apply + x&amp;#41;&amp;#41; &amp;#91;&amp;#91;1 2 5 2&amp;#93; &amp;#91;1 2 5 3&amp;#93;&amp;#93;&amp;#41;
+;; {10 &amp;#91;&amp;#91;1 2 5 2&amp;#93;&amp;#93;, 11 &amp;#91;&amp;#91;1 2 5 3&amp;#93;&amp;#93;}
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;근데 생각해보니 왜 위의 방식이 필요한지 모르겠다 그냥 결과중에서 가장 작은 값을 주면 되는 것인데 굳이 값들을 풀어서 답을 줄 필요성은 없는 것 같다. 그렇다면 일단 모든 경로의 값들을 어떻게 추려내야하는지가 문제 이다.&lt;/p&gt;&lt;p&gt;first, rest를 가지고 그리고 butlast를 응용해서 풀 수 있을 것 같은데 그것을 어떻게 풀어내야하는지 고민이 되고 있다.우선은 위 테스트 에서 first의 값을 가져왔다 처음의 1을 어떻게 처리를 해야할지 고민이 되긴 하지만 일단은 first로 가져오는 식이 필요하다는 것을 알게 되었다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;map #&amp;#40;first %&amp;#41; '&amp;#40;&amp;#91;2 4&amp;#93; &amp;#91;5 1 4&amp;#93; &amp;#91;2 3 4 5&amp;#93;&amp;#41;&amp;#41;
+;; &amp;#40;2 5 2&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;위 식을 rest를 하면 나오는 식이 아래와 같다&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;map #&amp;#40;rest %&amp;#41; '&amp;#40;&amp;#91;2 4&amp;#93; &amp;#91;5 1 4&amp;#93; &amp;#91;2 3 4 5&amp;#93;&amp;#41;&amp;#41;
+;; &amp;#40;&amp;#40;4&amp;#41; &amp;#40;1 4&amp;#41; &amp;#40;3 4 5&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;아무래도 너무 오래 시간을 끈거 같은 느낌이 들어서 검색해서 푼 방식을 찾아 봤다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;col&amp;#93;
+  &amp;#40;first 
+     &amp;#40;reduce #&amp;#40;map + 
+                   &amp;#40;map min &amp;#40;butlast %1&amp;#41; &amp;#40;rest %1 &amp;#41;&amp;#41;               %2&amp;#41;  
+
+            &amp;#40;reverse col&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;풀이를 본 순간 딱 내가 풀이를 생각할 수 없는 방식이었다. 우선 reverse를 한 후의 풀이 과정을 간략하게 설명을 한다면&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;map min &amp;#40;butlast &amp;#91;2 3 4 5&amp;#93;&amp;#41; &amp;#40;rest &amp;#91;2 3 4 5&amp;#93;&amp;#41;&amp;#41;
+;; &amp;#40;2 3 4&amp;#41;
+
+&amp;#40;map + '&amp;#40;2 3 4&amp;#41; '&amp;#40;5 1 4&amp;#41;&amp;#41;
+;; &amp;#40;7 4 8&amp;#41;
+
+&amp;#40;map min &amp;#40;butlast &amp;#91;7 4 8&amp;#93;&amp;#41; &amp;#40;rest &amp;#91;7 4 8&amp;#93;&amp;#41;&amp;#41;
+;; &amp;#40;4 4&amp;#41;
+
+&amp;#40;map + '&amp;#40;4 4&amp;#41; &amp;#91;2 4&amp;#93;&amp;#41;
+;; &amp;#40;6 8&amp;#41;
+
+&amp;#40;map min &amp;#40;butlast '&amp;#40;6 8&amp;#41;&amp;#41; &amp;#40;rest '&amp;#40;6 8&amp;#41;&amp;#41;&amp;#41;
+;; &amp;#40;6&amp;#41;
+
+&amp;#40;map + '&amp;#40;6&amp;#41; &amp;#91;1&amp;#93;&amp;#41;
+;; &amp;#40;7&amp;#41;
+
+&amp;#40;first '&amp;#40;7&amp;#41;&amp;#41;
+;; 7
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;다른 것 보다는 reverse로 뒤집어서 하는 것이 키 포인트인 것 같다. 순차적으로 식을 더해가면서 작은 수만 찾아 더하는 방식이 reverse로 아니면 할 수 없을 것 같다는 생각이 들었기 때문이다. 그리고 점차 갯수를 줄여서 바로 윗단계의 갯수와 맞추는 방식에서 좀 놀랐다고 해야할 것 같다. 보통은 그런 방식을 생각 할 수 없을 것 같기 때문이다.&lt;/p&gt;&lt;p&gt;어떻게 위와 같은 식을 해답을 만들려고 했을까? 갑자기 그 것이 궁금 해졌다.  저 문제를 푼 사람들은 많은 시행착오 끝에 문제를 풀었을까? 아니면 바로 저렇게 하는 것을 생각을 해낸 것일까?  함수의 용도를 다 알고 생각해 내는 것인지 아니면 다른 기본적인 지식을 가지고 생각을 하는 건지 궁금해졌다.&lt;/p&gt;&lt;p&gt;근데 내가 위에서 생각했던 식의 방식으로도 풀이를 해보고 싶은 마음이 크다. 이번에는 못했지만 다시 도전을 할 때에는 꼭 내 방식으로 풀이를 하고 싶다.&lt;/p&gt;
+</description>
+<pubDate>
+Sat, 28 Dec 2019 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-12-27-4clojure-78.html
