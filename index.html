@@ -73,74 +73,60 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 12월 28일 (토)</div>
+        <div class="col-lg-6">2019년 12월 29일 (일)</div>
         
     </div>
-    <h2>4clojure - Triangle Minimal Path (79)</h2>
+    <h2>CSS - 블로그의 CSS 분석</h2>
 </div>
 <div>
     
-    <p><strong>Problem</strong><pre><code class="clj">&#40;= 7 &#40;&#95;&#95; '&#40;&#91;1&#93;
-          &#91;2 4&#93;
-         &#91;5 1 4&#93;
-        &#91;2 3 4 5&#93;&#41;&#41;&#41; ; 1-&gt;2-&gt;1-&gt;3
+    <p>현재 사용하고 있는 블로그의 CSS를 분석해보기로 했다. 얼마나 공부가 될지는 잘 모르겠지만 CSS를 분석하다보면 어느정도 사이트를 변경 할 수 있지 않을까하는 기대감도 있다. 솔직히 명령어를 하나하나 공부하면서 하는 것 보다는 좀 더 현실적인 면을 공부하는 것이 낫다는 것이 결론이고, 점점 4clojure의 문제가 어려워지고 있어서 4clojure의 문제 풀이의 압박을 조금이나마 해소를 하고 싶기도 하다. 점점 컨텐츠도 늘려가는 것이 목적이기도 하고, 점점 내가 할 수 있는 것을 늘리고 싶은 목적이 더 크다.</p><p>base.html이 가장 중심이 되는 파일이므로 여기에서 사용하는 CSS를 분석 해보기로 한다.</p><p>우선은 중심이 되는  navbar 관련 css이다.<pre><code class="css">.navbar {
+    border-radius: 0;
+    box-shadow: 0 0 0 0,0 6px 12px rgba&#40;34,34,34,0.3&#41;;
+}
 
-&#40;= 20 &#40;&#95;&#95; '&#40;&#91;3&#93;
-           &#91;2 4&#93;
-          &#91;1 9 3&#93;
-         &#91;9 9 2 4&#93;
-        &#91;4 6 6 7 8&#93;
-       &#91;5 7 3 5 1 4&#93;&#41;&#41;&#41; ; 3-&gt;4-&gt;3-&gt;2-&gt;7-&gt;1
-</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn &#91;col&#93;
-  &#40;first 
-     &#40;reduce #&#40;map + 
-                   &#40;map min &#40;butlast %1&#41; &#40;rest %1 &#41;&#41;               %2&#41;  
+.navbar-default {
+    background-color: #428bca;
+    border: none;
+}
 
-            &#40;reverse col&#41;&#41;&#41;&#41;
-</code></pre></p><p>작은 숫자로만 이동하는 문제인거 같았는데 마지막에 최소 값으로 결과가 나오는 문제이다.</p><p>이건 따로 이동이라는 관점으로 볼 것이 아니라 각각 하나의 vector로 보고 한다면 그냥 sort 후 first 값을 가져오면 될것 같아 보인다.</p><pre><code class="clj">&#40;reduce #&#40;+ % &#40;first &#40;sort %2&#41;&#41;&#41; &#40;first &#40;first '&#40;&#91;1&#93; &#91;2 4&#93; &#91;5 1 4&#93; &#91;2 3 4 5&#93;&#41;&#41;&#41; &#40;rest '&#40;&#91;1&#93; &#91;2 4&#93; &#91;5 1 4&#93; &#91;2 3 4 5&#93;&#41;&#41;&#41;
-;; 6
-</code></pre><p>답과 다르게 나온다..근데 생각을 해보니 이동하는 범위가 한정되어 있는데 sort를 해버리면 이동하는 값이 변하게 되므로  그건 안된다..</p><p>2번째 문제를 봤을 때도 3->2로 가야할 것 같은데 결과가 최소값이 되어야 하므로 3->4로 이동 한 것으로 볼 수 있을 것 같다.</p><p>어떻게 3이 2, 4로만 이동할 수 있다는 것을 보장 할 수 있고, 2가 1, 9로만 이동하는 것을 보장 할 수 있는 데이터를 만들 수 있을지 고민을 해야겠다.</p><p>모든 경로에 해당하는 숫자들을 나열하는 방법이 있다. 근데 그것을 하는 것이 최선인지는 잘 모르겠다 하지만 함수형 언어라면 그 방법을 쉽게 할 수 있다고 생각이 든다.</p><p>즉 아래와 같은 형식으로 바뀌어야 한다.<pre><code class="clj">&#91;&#91;1&#93; &#91;2 4&#93; &#91;5 1 4&#93; &#91;2 3 4 5&#93;&#93;
-;; &#91;&#91;1 2 5 2&#93; &#91;1 2 5 3&#93; &#91;1 2 1 3&#93; &#91;1 2 1 4&#93;...&#93;
-</code></pre></p><p>뭔가 이동을 제한 할 수 있는 방법을 생각해야하는 것은 아닌가 생각이 든다.</p><p>합을 어떻게 만들고 그 합이 나오는 리스트를 어떻게 가져오는 생각을 해봤을 때 group-by가 있다는 생각이 들었다.<pre><code class="clj">&#40;group-by &#40;fn &#91;x&#93; &#40;apply + x&#41;&#41; &#91;&#91;1 2 5 2&#93; &#91;1 2 5 3&#93;&#93;&#41;
-;; {10 &#91;&#91;1 2 5 2&#93;&#93;, 11 &#91;&#91;1 2 5 3&#93;&#93;}
-</code></pre></p><p>근데 생각해보니 왜 위의 방식이 필요한지 모르겠다 그냥 결과중에서 가장 작은 값을 주면 되는 것인데 굳이 값들을 풀어서 답을 줄 필요성은 없는 것 같다. 그렇다면 일단 모든 경로의 값들을 어떻게 추려내야하는지가 문제 이다.</p><p>first, rest를 가지고 그리고 butlast를 응용해서 풀 수 있을 것 같은데 그것을 어떻게 풀어내야하는지 고민이 되고 있다.우선은 위 테스트 에서 first의 값을 가져왔다 처음의 1을 어떻게 처리를 해야할지 고민이 되긴 하지만 일단은 first로 가져오는 식이 필요하다는 것을 알게 되었다.<pre><code class="clj">&#40;map #&#40;first %&#41; '&#40;&#91;2 4&#93; &#91;5 1 4&#93; &#91;2 3 4 5&#93;&#41;&#41;
-;; &#40;2 5 2&#41;
-</code></pre></p><p>위 식을 rest를 하면 나오는 식이 아래와 같다<pre><code class="clj">&#40;map #&#40;rest %&#41; '&#40;&#91;2 4&#93; &#91;5 1 4&#93; &#91;2 3 4 5&#93;&#41;&#41;
-;; &#40;&#40;4&#41; &#40;1 4&#41; &#40;3 4 5&#41;&#41;
-</code></pre></p><p>아무래도 너무 오래 시간을 끈거 같은 느낌이 들어서 검색해서 푼 방식을 찾아 봤다.<pre><code class="clj">&#40;fn &#91;col&#93;
-  &#40;first 
-     &#40;reduce #&#40;map + 
-                   &#40;map min &#40;butlast %1&#41; &#40;rest %1 &#41;&#41;               %2&#41;  
-
-            &#40;reverse col&#41;&#41;&#41;&#41;
-
-</code></pre></p><p>풀이를 본 순간 딱 내가 풀이를 생각할 수 없는 방식이었다. 우선 reverse를 한 후의 풀이 과정을 간략하게 설명을 한다면<pre><code class="clj">&#40;map min &#40;butlast &#91;2 3 4 5&#93;&#41; &#40;rest &#91;2 3 4 5&#93;&#41;&#41;
-;; &#40;2 3 4&#41;
-
-&#40;map + '&#40;2 3 4&#41; '&#40;5 1 4&#41;&#41;
-;; &#40;7 4 8&#41;
-
-&#40;map min &#40;butlast &#91;7 4 8&#93;&#41; &#40;rest &#91;7 4 8&#93;&#41;&#41;
-;; &#40;4 4&#41;
-
-&#40;map + '&#40;4 4&#41; &#91;2 4&#93;&#41;
-;; &#40;6 8&#41;
-
-&#40;map min &#40;butlast '&#40;6 8&#41;&#41; &#40;rest '&#40;6 8&#41;&#41;&#41;
-;; &#40;6&#41;
-
-&#40;map + '&#40;6&#41; &#91;1&#93;&#41;
-;; &#40;7&#41;
-
-&#40;first '&#40;7&#41;&#41;
-;; 7
-</code></pre></p><p>다른 것 보다는 reverse로 뒤집어서 하는 것이 키 포인트인 것 같다. 순차적으로 식을 더해가면서 작은 수만 찾아 더하는 방식이 reverse로 아니면 할 수 없을 것 같다는 생각이 들었기 때문이다. 그리고 점차 갯수를 줄여서 바로 윗단계의 갯수와 맞추는 방식에서 좀 놀랐다고 해야할 것 같다. 보통은 그런 방식을 생각 할 수 없을 것 같기 때문이다.</p><p>어떻게 위와 같은 식을 해답을 만들려고 했을까? 갑자기 그 것이 궁금 해졌다.  저 문제를 푼 사람들은 많은 시행착오 끝에 문제를 풀었을까? 아니면 바로 저렇게 하는 것을 생각을 해낸 것일까?  함수의 용도를 다 알고 생각해 내는 것인지 아니면 다른 기본적인 지식을 가지고 생각을 하는 건지 궁금해졌다.</p><p>근데 내가 위에서 생각했던 식의 방식으로도 풀이를 해보고 싶은 마음이 크다. 이번에는 못했지만 다시 도전을 할 때에는 꼭 내 방식으로 풀이를 하고 싶다.</p>
+.navbar-default .navbar-brand {
+    color: #fff;
+    font-family: 'Alegreya';
+}
+</code></pre></p><p>위 3가지의 CSS는 아래의 부분에서 사용한다.<pre><code class="html">&lt;nav class=&quot;navbar navbar-default&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;navbar-header&quot;&gt;
+            &lt;button type=&quot;button&quot; class=&quot;navbar-toggle collapsed&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#navbar&quot; aria-expanded=&quot;false&quot; aria-controls=&quot;navbar&quot;&gt;
+                &lt;span class=&quot;sr-only&quot;&gt;Toggle navigation&lt;/span&gt;
+                &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+                &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+                &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+            &lt;/button&gt;
+            &lt;a class=&quot;navbar-brand&quot; href=&quot;{{index-uri}}&quot;&gt;{{title}}&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div id=&quot;navbar&quot; class=&quot;navbar-collapse collapse&quot;&gt;
+            &lt;ul class=&quot;nav navbar-nav navbar-right&quot;&gt;
+                &lt;li {% if home %} class=&quot;active&quot; {% endif %}&gt;&lt;a href=&quot;{{index-uri}}&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li
+                {% if archives %} class=&quot;active&quot; {% endif %}&gt;&lt;a href=&quot;{{archives-uri}}&quot;&gt;Archives&lt;/a&gt;&lt;/li&gt;
+                {% for nav-page in navbar-pages %}
+                &lt;li
+                {%ifequal page.uri nav-page.uri %} class=&quot;active&quot; {% endifequal %}&gt;
+                &lt;a href=&quot;{{nav-page.uri}}&quot;&gt;{{nav-page.title}}&lt;/a&gt;
+                &lt;/li&gt;
+                {% endfor %}
+            &lt;/ul&gt;
+        &lt;/div&gt;&lt;!--/.nav-collapse --&gt;
+    &lt;/div&gt;&lt;!--/.container-fluid --&gt;
+&lt;/nav&gt;
+</code></pre></p><p>navbar-default가 메인이 되고 navbar는 그림자를 만든다. 없애고, 확인을 했을 때 확연한 차이가 있었다. 그리고 중요한 것은 navbar-default가 없는 경우에는 font도 적용이 안되는데 그건 navbar-brand가 font를 적용을 하고 있기 때문에 navbar-default가 없을 경우에는 font가 적용되지 않는다.</p>
 </div>
 
 <div id="post-tags">
     <b>Tags: </b>
     
-    <a href="/4clojure.html">4clojure</a>
+    <a href="/css.html">css</a>
     
     <a href="/Today I Learn.html">Today I Learn</a>
     
@@ -152,7 +138,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2019-12-27-4clojure-78.html">4clojure - Reimplement Trampoline (78) &raquo;</a>
+        <a class="right" href="/posts/2019-12-28-4clojure-79.html">4clojure - Triangle Minimal Path (79) &raquo;</a>
         
     </div>
 </div>
@@ -171,11 +157,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2019-12-29-css-blog.html">CSS - 블로그의 CSS 분석</a></li>
+                        
                         <li><a href="/posts/2019-12-28-4clojure-79.html">4clojure - Triangle Minimal Path (79)</a></li>
                         
                         <li><a href="/posts/2019-12-27-4clojure-78.html">4clojure - Reimplement Trampoline (78)</a></li>
-                        
-                        <li><a href="/posts/2019-12-26-4clojure-77.html">4clojure - Anagram Finder (77)</a></li>
                         
                     </ul>
                 </div>
@@ -185,13 +171,13 @@
                     <h3>Tags</h3>
                     <ul>
                         
-                        <li><a href="/4clojure.html">4clojure</a></li>
+                        <li><a href="/css.html">css</a></li>
                         
                         <li><a href="/Today I Learn.html">Today I Learn</a></li>
                         
-                        <li><a href="/essay.html">essay</a></li>
+                        <li><a href="/4clojure.html">4clojure</a></li>
                         
-                        <li><a href="/css.html">css</a></li>
+                        <li><a href="/essay.html">essay</a></li>
                         
                         <li><a href="/python.html">python</a></li>
                         

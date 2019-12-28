@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: 클로저로 된 블로그 생성</title>
-    <link rel="canonical" href="http://dev-happy.com/posts/2018-01-27-first-post.html">
+    <title>Dev Happy: CSS - 블로그의 CSS 분석</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2019-12-29-css-blog.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -73,28 +73,70 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2018년 1월 27일 (토)</div>
+        <div class="col-lg-6">2019년 12월 29일 (일)</div>
         
     </div>
-    <h2>클로저로 된 블로그 생성</h2>
+    <h2>CSS - 블로그의 CSS 분석</h2>
 </div>
 <div>
     
-    <h3 id="블로그에&#95;작성을&#95;할&#95;글">블로그에 작성을 할 글</h3><ul><li>새롭게 알게 된 내용 정리</li><li>독서 감상문</li><li>알고 있는 내용 정리</li><li>블로그 테마 수정</li><li>알고리즘 문제 풀이</li><li>블로그 코드 수정하여 기능 추가</li><li>이력서 정리</li><li>등등</li></ul>
+    <p>현재 사용하고 있는 블로그의 CSS를 분석해보기로 했다. 얼마나 공부가 될지는 잘 모르겠지만 CSS를 분석하다보면 어느정도 사이트를 변경 할 수 있지 않을까하는 기대감도 있다. 솔직히 명령어를 하나하나 공부하면서 하는 것 보다는 좀 더 현실적인 면을 공부하는 것이 낫다는 것이 결론이고, 점점 4clojure의 문제가 어려워지고 있어서 4clojure의 문제 풀이의 압박을 조금이나마 해소를 하고 싶기도 하다. 점점 컨텐츠도 늘려가는 것이 목적이기도 하고, 점점 내가 할 수 있는 것을 늘리고 싶은 목적이 더 크다.</p><p>base.html이 가장 중심이 되는 파일이므로 여기에서 사용하는 CSS를 분석 해보기로 한다.</p><p>우선은 중심이 되는  navbar 관련 css이다.<pre><code class="css">.navbar {
+    border-radius: 0;
+    box-shadow: 0 0 0 0,0 6px 12px rgba&#40;34,34,34,0.3&#41;;
+}
+
+.navbar-default {
+    background-color: #428bca;
+    border: none;
+}
+
+.navbar-default .navbar-brand {
+    color: #fff;
+    font-family: 'Alegreya';
+}
+</code></pre></p><p>위 3가지의 CSS는 아래의 부분에서 사용한다.<pre><code class="html">&lt;nav class=&quot;navbar navbar-default&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;navbar-header&quot;&gt;
+            &lt;button type=&quot;button&quot; class=&quot;navbar-toggle collapsed&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#navbar&quot; aria-expanded=&quot;false&quot; aria-controls=&quot;navbar&quot;&gt;
+                &lt;span class=&quot;sr-only&quot;&gt;Toggle navigation&lt;/span&gt;
+                &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+                &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+                &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+            &lt;/button&gt;
+            &lt;a class=&quot;navbar-brand&quot; href=&quot;{{index-uri}}&quot;&gt;{{title}}&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div id=&quot;navbar&quot; class=&quot;navbar-collapse collapse&quot;&gt;
+            &lt;ul class=&quot;nav navbar-nav navbar-right&quot;&gt;
+                &lt;li {% if home %} class=&quot;active&quot; {% endif %}&gt;&lt;a href=&quot;{{index-uri}}&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li
+                {% if archives %} class=&quot;active&quot; {% endif %}&gt;&lt;a href=&quot;{{archives-uri}}&quot;&gt;Archives&lt;/a&gt;&lt;/li&gt;
+                {% for nav-page in navbar-pages %}
+                &lt;li
+                {%ifequal page.uri nav-page.uri %} class=&quot;active&quot; {% endifequal %}&gt;
+                &lt;a href=&quot;{{nav-page.uri}}&quot;&gt;{{nav-page.title}}&lt;/a&gt;
+                &lt;/li&gt;
+                {% endfor %}
+            &lt;/ul&gt;
+        &lt;/div&gt;&lt;!--/.nav-collapse --&gt;
+    &lt;/div&gt;&lt;!--/.container-fluid --&gt;
+&lt;/nav&gt;
+</code></pre></p><p>navbar-default가 메인이 되고 navbar는 그림자를 만든다. 없애고, 확인을 했을 때 확연한 차이가 있었다. 그리고 중요한 것은 navbar-default가 없는 경우에는 font도 적용이 안되는데 그건 navbar-brand가 font를 적용을 하고 있기 때문에 navbar-default가 없을 경우에는 font가 적용되지 않는다.</p>
 </div>
 
 <div id="post-tags">
     <b>Tags: </b>
     
-    <a href="/write.html">write</a>
+    <a href="/css.html">css</a>
+    
+    <a href="/Today I Learn.html">Today I Learn</a>
     
 </div>
 
 
     <div id="prev-next">
         
-        <a href="/posts/2018-02-07-why-clojure-blog.html">&laquo; 왜 클로저로 블로그를 만들었는가?</a>
         
+        <a class="right" href="/posts/2019-12-28-4clojure-79.html">4clojure - Triangle Minimal Path (79) &raquo;</a>
         
     </div>
 
