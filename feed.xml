@@ -12,11 +12,59 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Tue, 31 Dec 2019 06:01:48 +0900
+Wed, 01 Jan 2020 06:57:08 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2020-01-01-4clojure-80.html
+</guid>
+<link>
+http://dev-happy.com/posts/2020-01-01-4clojure-80.html
+</link>
+<title>
+4clojure - Perfect Numbers (80)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#40;&amp;#95;&amp;#95; 6&amp;#41; true&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; 7&amp;#41; false&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; 496&amp;#41; true&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; 500&amp;#41; false&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; 8128&amp;#41; true&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;x&amp;#93;
+	&amp;#40;let &amp;#91;y &amp;#40;filter #&amp;#40;= &amp;#40;mod x %&amp;#41; 0&amp;#41; &amp;#40;range 1 &amp;#40;+ &amp;#40;int &amp;#40;Math/sqrt x&amp;#41;&amp;#41; 1&amp;#41;&amp;#41;&amp;#41;&amp;#93;
+		&amp;#40;-&amp;gt;&amp;gt; &amp;#40;reduce #&amp;#40;conj % &amp;#40;quot x %2&amp;#41;&amp;#41; y y&amp;#41;
+			 &amp;#40;filter #&amp;#40;not= x %&amp;#41;&amp;#41;
+			 &amp;#40;apply +&amp;#41;
+             &amp;#40;= x&amp;#41;&amp;#41;&amp;#41;&amp;#41;  
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;완전수를 구하는 문제이다. 제곱근의 약수를 구한 다음에 그 수와 나눠지는 수들을 저장 후 자신을 제외한 나머지 수의 합을 구하는 방법을 사용 했다. &lt;/p&gt;&lt;p&gt;제곱근 이상으로는 약수가 반복적이므로 제곱근에 대한 수를 구했다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;take &amp;#40;int &amp;#40;Math/sqrt 28&amp;#41;&amp;#41; &amp;#40;iterate inc 1&amp;#41;&amp;#41;
+;; &amp;#40;1 2 3 4 5&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;여기에 나눠서 나머지가 0이되는 값을 구했다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;filter #&amp;#40;= &amp;#40;mod 28 %&amp;#41; 0&amp;#41; &amp;#40;take &amp;#40;int &amp;#40;Math/sqrt 28&amp;#41;&amp;#41; &amp;#40;iterate inc 1&amp;#41;&amp;#41;&amp;#41;
+;; &amp;#40;1 2 4&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;그 후, 제곱근 이상의 약수를 구했다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;reduce #&amp;#40;conj % &amp;#40;quot 28 %2&amp;#41;&amp;#41; &amp;#40;filter #&amp;#40;= &amp;#40;mod 28 %&amp;#41; 0&amp;#41; &amp;#40;take &amp;#40;int &amp;#40;Math/sqrt 28&amp;#41;&amp;#41; &amp;#40;iterate inc 1&amp;#41;&amp;#41;&amp;#41; &amp;#91;1 2 4&amp;#93;&amp;#41;
+;; &amp;#40;7 14 28 1 2 4&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;자기 자신은 걸러내고&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;filter #&amp;#40;not= 28 %&amp;#41; &amp;#40;reduce #&amp;#40;conj % &amp;#40;quot 28 %2&amp;#41;&amp;#41; &amp;#40;filter #&amp;#40;= &amp;#40;mod 28 %&amp;#41; 0&amp;#41; &amp;#40;take &amp;#40;int &amp;#40;Math/sqrt 28&amp;#41;&amp;#41; &amp;#40;iterate inc 1&amp;#41;&amp;#41;&amp;#41; &amp;#91;1 2 4&amp;#93;&amp;#41;&amp;#41;
+;; &amp;#40;7 14 1 2 4&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;그 값들을 더해주면 된다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;apply + &amp;#40;filter #&amp;#40;not= 28 %&amp;#41; &amp;#40;reduce #&amp;#40;conj % &amp;#40;quot 28 %2&amp;#41;&amp;#41; &amp;#40;filter #&amp;#40;= &amp;#40;mod 28 %&amp;#41; 0&amp;#41; &amp;#40;take &amp;#40;int &amp;#40;Math/sqrt 28&amp;#41;&amp;#41; &amp;#40;iterate inc 1&amp;#41;&amp;#41;&amp;#41; &amp;#91;1 2 4&amp;#93;&amp;#41;&amp;#41;&amp;#41;
+;; 28
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;이것을 테스트 하기 위한 함수 이다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;x&amp;#93;
+	&amp;#40;let &amp;#91;y &amp;#40;filter #&amp;#40;= &amp;#40;mod x %&amp;#41; 0&amp;#41; &amp;#40;take &amp;#40;int &amp;#40;Math/sqrt x&amp;#41;&amp;#41; &amp;#40;iterate inc 1&amp;#41;&amp;#41;&amp;#41;&amp;#93;
+		&amp;#40;-&amp;gt;&amp;gt; &amp;#40;reduce #&amp;#40;conj % &amp;#40;quot x %2&amp;#41;&amp;#41; y y&amp;#41;
+			 &amp;#40;filter #&amp;#40;not= x %&amp;#41;&amp;#41;
+			 &amp;#40;apply +&amp;#41;
+           	 &amp;#40;= x&amp;#41;&amp;#41;&amp;#41;&amp;#41;   
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;좀 길게 쓴 감이 없지않아 있긴 하지만 약수를 구하는 방법과 그것을 활용하는 그리고, 전통적인 for를 활용하는 방법을 사용하지 않았다는 데에서 뿌듯함을 느끼고 있다. &lt;/p&gt;
+</description>
+<pubDate>
+Wed, 01 Jan 2020 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2019-12-31-what-i-want-4clojure.html
