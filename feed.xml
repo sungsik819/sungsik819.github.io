@@ -12,11 +12,40 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Wed, 01 Jan 2020 06:57:08 +0900
+Thu, 02 Jan 2020 06:04:45 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2020-01-02-4clojure-81.html
+</guid>
+<link>
+http://dev-happy.com/posts/2020-01-02-4clojure-81.html
+</link>
+<title>
+4clojure - Set Intersection (81)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#40;&amp;#95;&amp;#95; #{0 1 2 3} #{2 3 4 5}&amp;#41; #{2 3}&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; #{0 1 2} #{3 4 5}&amp;#41; #{}&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; #{:a :b :c :d} #{:c :e :a :f :d}&amp;#41; #{:a :c :d}&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;제한 : intersection&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;a b&amp;#93;
+  &amp;#40;set &amp;#40;sort &amp;#40;filter &amp;#40;fn &amp;#91;x&amp;#93; &amp;#40;not &amp;#40;nil? x&amp;#41;&amp;#41;&amp;#41; &amp;#40;mapcat &amp;#40;fn &amp;#91;x&amp;#93; &amp;#40;map &amp;#40;fn &amp;#91;y&amp;#93; &amp;#40;if &amp;#40;= x y&amp;#41; y&amp;#41;&amp;#41; b&amp;#41;&amp;#41; a&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;풀긴 풀었었지만 뭔가 방식이 석연치 않아서 좀 더 clojure 답게 변경을 하고 싶다. 근데 아무리 생각을 해봐도 반복을 사용해서 밖에 방법이 떠오르지 않아서 다른 답변을 봤는데 황당할 정도로 간단한 방법이 있었다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;#&amp;#40;set &amp;#40;filter % %2&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;filter에 그런 동작이 가능한지도 몰랐고, 문법적으로 그게 왜 되는지도 잘 모르겠지만 어쨌든 아래와 같은 동작이 가능하다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;filter #{0 1 2 3} #{2 3 4 5}&amp;#41;
+;; &amp;#40;3 2&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;또 다른 답변이 뭔가 좀 더 나은 방법으로 보인다. 해석하기도 쉽고&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;x y&amp;#93;
+  &amp;#40;set &amp;#40;filter #&amp;#40;contains? x %&amp;#41; y&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+</description>
+<pubDate>
+Thu, 02 Jan 2020 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2020-01-01-4clojure-80.html

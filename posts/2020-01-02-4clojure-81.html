@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: 4clojure - Re-implement Iterate (62)</title>
-    <link rel="canonical" href="http://dev-happy.com/posts/2019-12-05-4clojure-62.html">
+    <title>Dev Happy: 4clojure - Set Intersection (81)</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2020-01-02-4clojure-81.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -73,21 +73,26 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 12월 5일 (목)</div>
+        <div class="col-lg-6">2020년 1월 2일 (목)</div>
         
     </div>
-    <h2>4clojure - Re-implement Iterate (62)</h2>
+    <h2>4clojure - Set Intersection (81)</h2>
 </div>
 <div>
     
-    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;take 5 &#40;&#95;&#95; #&#40;&#42; 2 %&#41; 1&#41;&#41; &#91;1 2 4 8 16&#93;&#41;
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;&#95;&#95; #{0 1 2 3} #{2 3 4 5}&#41; #{2 3}&#41;
 
-&#40;= &#40;take 100 &#40;&#95;&#95; inc 0&#41;&#41; &#40;take 100 &#40;range&#41;&#41;&#41;
+&#40;= &#40;&#95;&#95; #{0 1 2} #{3 4 5}&#41; #{}&#41;
 
-&#40;= &#40;take 9 &#40;&#95;&#95; #&#40;inc &#40;mod % 3&#41;&#41; 1&#41;&#41; &#40;take 9 &#40;cycle &#91;1 2 3&#93;&#41;&#41;&#41;
-</code></pre></p><p><strong>제한: iterate</strong></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn iter &#91;f x&#93;
-  &#40;lazy-seq &#40;cons x &#40;iter f &#40;f x&#41;&#41;&#41;&#41;&#41;
-</code></pre></p><p>itearate의 동작을 확실하게 알기 때문에 풀기가 그렇게 어렵지는 않았다. 이전에 계산된 값을 사용하는 방식으로 reduce 비스무리하게 동작을 한다고 생각하면 될 것 같다.</p><p>눈여겨 볼 부분은 lazy-seq이다. 게으른 연산을 수행을 하는데 값을 원할때까지 계산을 미루는 방식으로 사용 된다. </p><p>즉, 필요없는 데이터를 미리 로드 하지 않는다고 생각을 하면 될 것 같다.</p>
+&#40;= &#40;&#95;&#95; #{:a :b :c :d} #{:c :e :a :f :d}&#41; #{:a :c :d}&#41;
+</code></pre></p><p><strong>제한 : intersection</strong></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn &#91;a b&#93;
+  &#40;set &#40;sort &#40;filter &#40;fn &#91;x&#93; &#40;not &#40;nil? x&#41;&#41;&#41; &#40;mapcat &#40;fn &#91;x&#93; &#40;map &#40;fn &#91;y&#93; &#40;if &#40;= x y&#41; y&#41;&#41; b&#41;&#41; a&#41;&#41;&#41;&#41;&#41;
+</code></pre></p><p>풀긴 풀었었지만 뭔가 방식이 석연치 않아서 좀 더 clojure 답게 변경을 하고 싶다. 근데 아무리 생각을 해봐도 반복을 사용해서 밖에 방법이 떠오르지 않아서 다른 답변을 봤는데 황당할 정도로 간단한 방법이 있었다.<pre><code class="clj">#&#40;set &#40;filter % %2&#41;&#41;
+</code></pre></p><p>filter에 그런 동작이 가능한지도 몰랐고, 문법적으로 그게 왜 되는지도 잘 모르겠지만 어쨌든 아래와 같은 동작이 가능하다.<pre><code class="clj">&#40;filter #{0 1 2 3} #{2 3 4 5}&#41;
+;; &#40;3 2&#41;
+</code></pre></p><p>또 다른 답변이 뭔가 좀 더 나은 방법으로 보인다. 해석하기도 쉽고<pre><code class="clj">&#40;fn &#91;x y&#93;
+  &#40;set &#40;filter #&#40;contains? x %&#41; y&#41;&#41;&#41;
+</code></pre></p>
 </div>
 
 <div id="post-tags">
@@ -102,10 +107,8 @@
 
     <div id="prev-next">
         
-        <a href="/posts/2019-12-06-intro-css.html">&laquo; CSS 정리</a>
         
-        
-        <a class="right" href="/posts/2019-12-04-4clojure-61.html">4clojure - Map Construction (61) &raquo;</a>
+        <a class="right" href="/posts/2020-01-01-4clojure-80.html">4clojure - Perfect Numbers (80) &raquo;</a>
         
     </div>
 

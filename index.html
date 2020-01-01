@@ -73,45 +73,26 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2020년 1월 1일 (수)</div>
+        <div class="col-lg-6">2020년 1월 2일 (목)</div>
         
     </div>
-    <h2>4clojure - Perfect Numbers (80)</h2>
+    <h2>4clojure - Set Intersection (81)</h2>
 </div>
 <div>
     
-    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;&#95;&#95; 6&#41; true&#41;
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;&#95;&#95; #{0 1 2 3} #{2 3 4 5}&#41; #{2 3}&#41;
 
-&#40;= &#40;&#95;&#95; 7&#41; false&#41;
+&#40;= &#40;&#95;&#95; #{0 1 2} #{3 4 5}&#41; #{}&#41;
 
-&#40;= &#40;&#95;&#95; 496&#41; true&#41;
-
-&#40;= &#40;&#95;&#95; 500&#41; false&#41;
-
-&#40;= &#40;&#95;&#95; 8128&#41; true&#41;
-</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn &#91;x&#93;
-	&#40;let &#91;y &#40;filter #&#40;= &#40;mod x %&#41; 0&#41; &#40;range 1 &#40;+ &#40;int &#40;Math/sqrt x&#41;&#41; 1&#41;&#41;&#41;&#93;
-		&#40;-&gt;&gt; &#40;reduce #&#40;conj % &#40;quot x %2&#41;&#41; y y&#41;
-			 &#40;filter #&#40;not= x %&#41;&#41;
-			 &#40;apply +&#41;
-             &#40;= x&#41;&#41;&#41;&#41;  
-</code></pre></p><p>완전수를 구하는 문제이다. 제곱근의 약수를 구한 다음에 그 수와 나눠지는 수들을 저장 후 자신을 제외한 나머지 수의 합을 구하는 방법을 사용 했다. </p><p>제곱근 이상으로는 약수가 반복적이므로 제곱근에 대한 수를 구했다.<pre><code class="clj">&#40;take &#40;int &#40;Math/sqrt 28&#41;&#41; &#40;iterate inc 1&#41;&#41;
-;; &#40;1 2 3 4 5&#41;
-</code></pre></p><p>여기에 나눠서 나머지가 0이되는 값을 구했다.<pre><code class="clj">&#40;filter #&#40;= &#40;mod 28 %&#41; 0&#41; &#40;take &#40;int &#40;Math/sqrt 28&#41;&#41; &#40;iterate inc 1&#41;&#41;&#41;
-;; &#40;1 2 4&#41;
-</code></pre></p><p>그 후, 제곱근 이상의 약수를 구했다.<pre><code class="clj">&#40;reduce #&#40;conj % &#40;quot 28 %2&#41;&#41; &#40;filter #&#40;= &#40;mod 28 %&#41; 0&#41; &#40;take &#40;int &#40;Math/sqrt 28&#41;&#41; &#40;iterate inc 1&#41;&#41;&#41; &#91;1 2 4&#93;&#41;
-;; &#40;7 14 28 1 2 4&#41;
-</code></pre></p><p>자기 자신은 걸러내고<pre><code class="clj">&#40;filter #&#40;not= 28 %&#41; &#40;reduce #&#40;conj % &#40;quot 28 %2&#41;&#41; &#40;filter #&#40;= &#40;mod 28 %&#41; 0&#41; &#40;take &#40;int &#40;Math/sqrt 28&#41;&#41; &#40;iterate inc 1&#41;&#41;&#41; &#91;1 2 4&#93;&#41;&#41;
-;; &#40;7 14 1 2 4&#41;
-</code></pre></p><p>그 값들을 더해주면 된다.<pre><code class="clj">&#40;apply + &#40;filter #&#40;not= 28 %&#41; &#40;reduce #&#40;conj % &#40;quot 28 %2&#41;&#41; &#40;filter #&#40;= &#40;mod 28 %&#41; 0&#41; &#40;take &#40;int &#40;Math/sqrt 28&#41;&#41; &#40;iterate inc 1&#41;&#41;&#41; &#91;1 2 4&#93;&#41;&#41;&#41;
-;; 28
-</code></pre></p><p>이것을 테스트 하기 위한 함수 이다.<pre><code class="clj">&#40;fn &#91;x&#93;
-	&#40;let &#91;y &#40;filter #&#40;= &#40;mod x %&#41; 0&#41; &#40;take &#40;int &#40;Math/sqrt x&#41;&#41; &#40;iterate inc 1&#41;&#41;&#41;&#93;
-		&#40;-&gt;&gt; &#40;reduce #&#40;conj % &#40;quot x %2&#41;&#41; y y&#41;
-			 &#40;filter #&#40;not= x %&#41;&#41;
-			 &#40;apply +&#41;
-           	 &#40;= x&#41;&#41;&#41;&#41;   
-</code></pre></p><p>좀 길게 쓴 감이 없지않아 있긴 하지만 약수를 구하는 방법과 그것을 활용하는 그리고, 전통적인 for를 활용하는 방법을 사용하지 않았다는 데에서 뿌듯함을 느끼고 있다. </p>
+&#40;= &#40;&#95;&#95; #{:a :b :c :d} #{:c :e :a :f :d}&#41; #{:a :c :d}&#41;
+</code></pre></p><p><strong>제한 : intersection</strong></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn &#91;a b&#93;
+  &#40;set &#40;sort &#40;filter &#40;fn &#91;x&#93; &#40;not &#40;nil? x&#41;&#41;&#41; &#40;mapcat &#40;fn &#91;x&#93; &#40;map &#40;fn &#91;y&#93; &#40;if &#40;= x y&#41; y&#41;&#41; b&#41;&#41; a&#41;&#41;&#41;&#41;&#41;
+</code></pre></p><p>풀긴 풀었었지만 뭔가 방식이 석연치 않아서 좀 더 clojure 답게 변경을 하고 싶다. 근데 아무리 생각을 해봐도 반복을 사용해서 밖에 방법이 떠오르지 않아서 다른 답변을 봤는데 황당할 정도로 간단한 방법이 있었다.<pre><code class="clj">#&#40;set &#40;filter % %2&#41;&#41;
+</code></pre></p><p>filter에 그런 동작이 가능한지도 몰랐고, 문법적으로 그게 왜 되는지도 잘 모르겠지만 어쨌든 아래와 같은 동작이 가능하다.<pre><code class="clj">&#40;filter #{0 1 2 3} #{2 3 4 5}&#41;
+;; &#40;3 2&#41;
+</code></pre></p><p>또 다른 답변이 뭔가 좀 더 나은 방법으로 보인다. 해석하기도 쉽고<pre><code class="clj">&#40;fn &#91;x y&#93;
+  &#40;set &#40;filter #&#40;contains? x %&#41; y&#41;&#41;&#41;
+</code></pre></p>
 </div>
 
 <div id="post-tags">
@@ -129,7 +110,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2019-12-31-what-i-want-4clojure.html">4clojure로 얻고 싶은 것은 무엇일까? &raquo;</a>
+        <a class="right" href="/posts/2020-01-01-4clojure-80.html">4clojure - Perfect Numbers (80) &raquo;</a>
         
     </div>
 </div>
@@ -148,11 +129,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2020-01-02-4clojure-81.html">4clojure - Set Intersection (81)</a></li>
+                        
                         <li><a href="/posts/2020-01-01-4clojure-80.html">4clojure - Perfect Numbers (80)</a></li>
                         
                         <li><a href="/posts/2019-12-31-what-i-want-4clojure.html">4clojure로 얻고 싶은 것은 무엇일까?</a></li>
-                        
-                        <li><a href="/posts/2019-12-30-retrospective.html">2019년 회고</a></li>
                         
                     </ul>
                 </div>
