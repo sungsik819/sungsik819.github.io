@@ -73,26 +73,28 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2020년 1월 2일 (목)</div>
+        <div class="col-lg-6">2020년 1월 3일 (금)</div>
         
     </div>
-    <h2>4clojure - Set Intersection (81)</h2>
+    <h2>4clojure - A Half-Truth (83)</h2>
 </div>
 <div>
     
-    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;&#95;&#95; #{0 1 2 3} #{2 3 4 5}&#41; #{2 3}&#41;
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= false &#40;&#95;&#95; false false&#41;&#41;
 
-&#40;= &#40;&#95;&#95; #{0 1 2} #{3 4 5}&#41; #{}&#41;
+&#40;= true &#40;&#95;&#95; true false&#41;&#41;
 
-&#40;= &#40;&#95;&#95; #{:a :b :c :d} #{:c :e :a :f :d}&#41; #{:a :c :d}&#41;
-</code></pre></p><p><strong>제한 : intersection</strong></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn &#91;a b&#93;
-  &#40;set &#40;sort &#40;filter &#40;fn &#91;x&#93; &#40;not &#40;nil? x&#41;&#41;&#41; &#40;mapcat &#40;fn &#91;x&#93; &#40;map &#40;fn &#91;y&#93; &#40;if &#40;= x y&#41; y&#41;&#41; b&#41;&#41; a&#41;&#41;&#41;&#41;&#41;
-</code></pre></p><p>풀긴 풀었었지만 뭔가 방식이 석연치 않아서 좀 더 clojure 답게 변경을 하고 싶다. 근데 아무리 생각을 해봐도 반복을 사용해서 밖에 방법이 떠오르지 않아서 다른 답변을 봤는데 황당할 정도로 간단한 방법이 있었다.<pre><code class="clj">#&#40;set &#40;filter % %2&#41;&#41;
-</code></pre></p><p>filter에 그런 동작이 가능한지도 몰랐고, 문법적으로 그게 왜 되는지도 잘 모르겠지만 어쨌든 아래와 같은 동작이 가능하다.<pre><code class="clj">&#40;filter #{0 1 2 3} #{2 3 4 5}&#41;
-;; &#40;3 2&#41;
-</code></pre></p><p>또 다른 답변이 뭔가 좀 더 나은 방법으로 보인다. 해석하기도 쉽고<pre><code class="clj">&#40;fn &#91;x y&#93;
-  &#40;set &#40;filter #&#40;contains? x %&#41; y&#41;&#41;&#41;
-</code></pre></p>
+&#40;= false &#40;&#95;&#95; true&#41;&#41;
+
+&#40;= false &#40;&#95;&#95; true&#41;&#41;
+
+&#40;= true &#40;&#95;&#95; false true false&#41;&#41;
+
+&#40;= false &#40;&#95;&#95; true true true&#41;&#41;
+
+&#40;= true &#40;&#95;&#95; true true true false&#41;&#41;
+</code></pre></p><p><strong>Solved</strong><pre><code class="clj">not=
+</code></pre></p><p>전부 같지 않을 때의 식을 계산하는 문제이다. 즉, 조건이 전부 true 또는 false가 아니여야만 true가 되어야 하는 즉 = 이 아니일때의 식이 성립 하는 문제이다. 그래서 not=일때 모든 식이 성립을 한다.</p>
 </div>
 
 <div id="post-tags">
@@ -110,7 +112,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2020-01-01-4clojure-80.html">4clojure - Perfect Numbers (80) &raquo;</a>
+        <a class="right" href="/posts/2020-01-02-4clojure-81.html">4clojure - Set Intersection (81) &raquo;</a>
         
     </div>
 </div>
@@ -129,11 +131,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2020-01-03-4clojure-83.html">4clojure - A Half-Truth (83)</a></li>
+                        
                         <li><a href="/posts/2020-01-02-4clojure-81.html">4clojure - Set Intersection (81)</a></li>
                         
                         <li><a href="/posts/2020-01-01-4clojure-80.html">4clojure - Perfect Numbers (80)</a></li>
-                        
-                        <li><a href="/posts/2019-12-31-what-i-want-4clojure.html">4clojure로 얻고 싶은 것은 무엇일까?</a></li>
                         
                     </ul>
                 </div>

@@ -12,11 +12,42 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Thu, 02 Jan 2020 06:04:45 +0900
+Fri, 03 Jan 2020 06:33:45 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2020-01-03-4clojure-83.html
+</guid>
+<link>
+http://dev-happy.com/posts/2020-01-03-4clojure-83.html
+</link>
+<title>
+4clojure - A Half-Truth (83)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= false &amp;#40;&amp;#95;&amp;#95; false false&amp;#41;&amp;#41;
+
+&amp;#40;= true &amp;#40;&amp;#95;&amp;#95; true false&amp;#41;&amp;#41;
+
+&amp;#40;= false &amp;#40;&amp;#95;&amp;#95; true&amp;#41;&amp;#41;
+
+&amp;#40;= false &amp;#40;&amp;#95;&amp;#95; true&amp;#41;&amp;#41;
+
+&amp;#40;= true &amp;#40;&amp;#95;&amp;#95; false true false&amp;#41;&amp;#41;
+
+&amp;#40;= false &amp;#40;&amp;#95;&amp;#95; true true true&amp;#41;&amp;#41;
+
+&amp;#40;= true &amp;#40;&amp;#95;&amp;#95; true true true false&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;not=
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;전부 같지 않을 때의 식을 계산하는 문제이다. 즉, 조건이 전부 true 또는 false가 아니여야만 true가 되어야 하는 즉 = 이 아니일때의 식이 성립 하는 문제이다. 그래서 not=일때 모든 식이 성립을 한다.&lt;/p&gt;
+</description>
+<pubDate>
+Fri, 03 Jan 2020 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2020-01-02-4clojure-81.html
