@@ -12,11 +12,37 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Fri, 03 Jan 2020 06:33:45 +0900
+Sat, 04 Jan 2020 06:59:04 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2020-01-04-4clojure-88.html
+</guid>
+<link>
+http://dev-happy.com/posts/2020-01-04-4clojure-88.html
+</link>
+<title>
+4clojure - Symmetric Difference (88)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#40;&amp;#95;&amp;#95; #{1 2 3 4 5 6} #{1 3 5 7}&amp;#41; #{2 4 6 7}&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; #{:a :b :c} #{}&amp;#41; #{:a :b :c}&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; #{} #{4 5 6}&amp;#41; #{4 5 6}&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; #{&amp;#91;1 2&amp;#93; &amp;#91;2 3&amp;#93;} #{&amp;#91;2 3&amp;#93; &amp;#91;3 4&amp;#93;}&amp;#41; #{&amp;#91;1 2&amp;#93; &amp;#91;3 4&amp;#93;}&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn symdiff &amp;#91;set1 set2&amp;#93;
+  &amp;#40;set &amp;#40;concat &amp;#40;apply disj set1 set2&amp;#41; &amp;#40;apply disj set2 set1&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;disj라는 함수가 있는데 이것은 conj와 다르게 내부에 있는 값을 제거 하는 함수이다. 그 사용법을 응용을 한 것이고, 해당 collection의 값을 제거하는 것도 가능하다.&lt;/p&gt;
+</description>
+<pubDate>
+Sat, 04 Jan 2020 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2020-01-03-4clojure-83.html
