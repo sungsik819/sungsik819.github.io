@@ -12,11 +12,41 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Sat, 04 Jan 2020 06:59:04 +0900
+Sun, 05 Jan 2020 06:33:33 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2020-01-05-4clojure-90.html
+</guid>
+<link>
+http://dev-happy.com/posts/2020-01-05-4clojure-90.html
+</link>
+<title>
+4clojure - Cartesian Product (90)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#40;&amp;#95;&amp;#95; #{&amp;quot;ace&amp;quot; &amp;quot;king&amp;quot; &amp;quot;queen&amp;quot;} #{&amp;quot;♠&amp;quot; &amp;quot;♥&amp;quot; &amp;quot;♦&amp;quot; &amp;quot;♣&amp;quot;}&amp;#41;
+   #{&amp;#91;&amp;quot;ace&amp;quot;   &amp;quot;♠&amp;quot;&amp;#93; &amp;#91;&amp;quot;ace&amp;quot;   &amp;quot;♥&amp;quot;&amp;#93; &amp;#91;&amp;quot;ace&amp;quot;   &amp;quot;♦&amp;quot;&amp;#93; &amp;#91;&amp;quot;ace&amp;quot;   &amp;quot;♣&amp;quot;&amp;#93;
+     &amp;#91;&amp;quot;king&amp;quot;  &amp;quot;♠&amp;quot;&amp;#93; &amp;#91;&amp;quot;king&amp;quot;  &amp;quot;♥&amp;quot;&amp;#93; &amp;#91;&amp;quot;king&amp;quot;  &amp;quot;♦&amp;quot;&amp;#93; &amp;#91;&amp;quot;king&amp;quot;  &amp;quot;♣&amp;quot;&amp;#93;
+     &amp;#91;&amp;quot;queen&amp;quot; &amp;quot;♠&amp;quot;&amp;#93; &amp;#91;&amp;quot;queen&amp;quot; &amp;quot;♥&amp;quot;&amp;#93; &amp;#91;&amp;quot;queen&amp;quot; &amp;quot;♦&amp;quot;&amp;#93; &amp;#91;&amp;quot;queen&amp;quot; &amp;quot;♣&amp;quot;&amp;#93;}&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; #{1 2 3} #{4 5}&amp;#41;
+   #{&amp;#91;1 4&amp;#93; &amp;#91;2 4&amp;#93; &amp;#91;3 4&amp;#93; &amp;#91;1 5&amp;#93; &amp;#91;2 5&amp;#93; &amp;#91;3 5&amp;#93;}&amp;#41;
+
+&amp;#40;= 300 &amp;#40;count &amp;#40;&amp;#95;&amp;#95; &amp;#40;into #{} &amp;#40;range 10&amp;#41;&amp;#41;
+                  &amp;#40;into #{} &amp;#40;range 30&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;a b&amp;#93;
+  &amp;#40;into #{} &amp;#40;mapcat &amp;#40;fn &amp;#91;x&amp;#93; &amp;#40;map #&amp;#40;vector x %&amp;#41; b&amp;#41;&amp;#41; a&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;이중 for문의 느낌으로 문제가 해결 되었다.  뭔가 깔끔하게 해결된 느낌은 아니긴 하지만 문제를 풀었다는데 의의를 둬야 할 것 같다.&lt;/p&gt;&lt;p&gt;다른 풀이 중 간단한 풀이가 있는데 아래와 같다&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;#&amp;#40;set &amp;#40;for &amp;#91;x %1 y %2&amp;#93; &amp;#91;x y&amp;#93;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;기본적으로 생각 할 때의 for는 단 하나의 자료에 대해서만 반복이 가능하다고 생각할 수 있는데 clojure에서는 이중으로 할 때도 단 하나의 for로만 가능하다는 사실에 적잖게 놀랐다. &lt;/p&gt;
+</description>
+<pubDate>
+Sun, 05 Jan 2020 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2020-01-04-4clojure-88.html

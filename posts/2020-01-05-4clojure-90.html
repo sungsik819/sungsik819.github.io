@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: 4clojure - Local bindings (35)</title>
-    <link rel="canonical" href="http://dev-happy.com/posts/2019-11-07-4clojure-35.html">
+    <title>Dev Happy: 4clojure - Cartesian Product (90)</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2020-01-05-4clojure-90.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -73,20 +73,27 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 11월 7일 (목)</div>
+        <div class="col-lg-6">2020년 1월 5일 (일)</div>
         
     </div>
-    <h2>4clojure - Local bindings (35)</h2>
+    <h2>4clojure - Cartesian Product (90)</h2>
 </div>
 <div>
     
-    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#95;&#95; &#40;let &#91;x 5&#93; &#40;+ 2 x&#41;&#41;&#41;
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;&#95;&#95; #{&quot;ace&quot; &quot;king&quot; &quot;queen&quot;} #{&quot;♠&quot; &quot;♥&quot; &quot;♦&quot; &quot;♣&quot;}&#41;
+   #{&#91;&quot;ace&quot;   &quot;♠&quot;&#93; &#91;&quot;ace&quot;   &quot;♥&quot;&#93; &#91;&quot;ace&quot;   &quot;♦&quot;&#93; &#91;&quot;ace&quot;   &quot;♣&quot;&#93;
+     &#91;&quot;king&quot;  &quot;♠&quot;&#93; &#91;&quot;king&quot;  &quot;♥&quot;&#93; &#91;&quot;king&quot;  &quot;♦&quot;&#93; &#91;&quot;king&quot;  &quot;♣&quot;&#93;
+     &#91;&quot;queen&quot; &quot;♠&quot;&#93; &#91;&quot;queen&quot; &quot;♥&quot;&#93; &#91;&quot;queen&quot; &quot;♦&quot;&#93; &#91;&quot;queen&quot; &quot;♣&quot;&#93;}&#41;
 
-&#40;= &#95;&#95; &#40;let &#91;x 3, y 10&#93; &#40;- y x&#41;&#41;&#41;
+&#40;= &#40;&#95;&#95; #{1 2 3} #{4 5}&#41;
+   #{&#91;1 4&#93; &#91;2 4&#93; &#91;3 4&#93; &#91;1 5&#93; &#91;2 5&#93; &#91;3 5&#93;}&#41;
 
-&#40;= &#95;&#95; &#40;let &#91;x 21&#93; &#40;let &#91;y 3&#93; &#40;/ x y&#41;&#41;&#41;&#41;
-</code></pre></p><p><strong>Solved</strong><pre><code class="clj">5
-</code></pre></p><p>let이라는 local binding을 연습하는 문제이다. 다른 언어에서 사용하는 형식인 x = 5 와 같은 형태라고 생각하면 될 것 같다. 한번 선언이 되면 변경이 불가능 하다는 다른 점이 있다.</p>
+&#40;= 300 &#40;count &#40;&#95;&#95; &#40;into #{} &#40;range 10&#41;&#41;
+                  &#40;into #{} &#40;range 30&#41;&#41;&#41;&#41;&#41;
+</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn &#91;a b&#93;
+  &#40;into #{} &#40;mapcat &#40;fn &#91;x&#93; &#40;map #&#40;vector x %&#41; b&#41;&#41; a&#41;&#41;&#41;
+</code></pre></p><p>이중 for문의 느낌으로 문제가 해결 되었다.  뭔가 깔끔하게 해결된 느낌은 아니긴 하지만 문제를 풀었다는데 의의를 둬야 할 것 같다.</p><p>다른 풀이 중 간단한 풀이가 있는데 아래와 같다<pre><code class="clj">#&#40;set &#40;for &#91;x %1 y %2&#93; &#91;x y&#93;&#41;&#41;
+</code></pre></p><p>기본적으로 생각 할 때의 for는 단 하나의 자료에 대해서만 반복이 가능하다고 생각할 수 있는데 clojure에서는 이중으로 할 때도 단 하나의 for로만 가능하다는 사실에 적잖게 놀랐다. </p>
 </div>
 
 <div id="post-tags">
@@ -101,10 +108,8 @@
 
     <div id="prev-next">
         
-        <a href="/posts/2019-11-08-4clojure-36.html">&laquo; 4clojure - Let it Be (36)</a>
         
-        
-        <a class="right" href="/posts/2019-11-06-4clojure-34.html">4clojure - Implement range (34) &raquo;</a>
+        <a class="right" href="/posts/2020-01-04-4clojure-88.html">4clojure - Symmetric Difference (88) &raquo;</a>
         
     </div>
 
