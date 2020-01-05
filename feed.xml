@@ -12,11 +12,53 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Sun, 05 Jan 2020 06:33:33 +0900
+Mon, 06 Jan 2020 06:06:57 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2020-01-06-4clojure-95.html
+</guid>
+<link>
+http://dev-happy.com/posts/2020-01-06-4clojure-95.html
+</link>
+<title>
+4clojure - To Tree, or not to Tree (95)
+</title>
+<description>
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;= &amp;#40;&amp;#95;&amp;#95; '&amp;#40;:a &amp;#40;:b nil nil&amp;#41; nil&amp;#41;&amp;#41;
+   true&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; '&amp;#40;:a &amp;#40;:b nil nil&amp;#41;&amp;#41;&amp;#41;
+   false&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#91;1 nil &amp;#91;2 &amp;#91;3 nil nil&amp;#93; &amp;#91;4 nil nil&amp;#93;&amp;#93;&amp;#93;&amp;#41;
+   true&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#91;1 &amp;#91;2 nil nil&amp;#93; &amp;#91;3 nil nil&amp;#93; &amp;#91;4 nil nil&amp;#93;&amp;#93;&amp;#41;
+   false&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#91;1 &amp;#91;2 &amp;#91;3 &amp;#91;4 nil nil&amp;#93; nil&amp;#93; nil&amp;#93; nil&amp;#93;&amp;#41;
+   true&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; &amp;#91;1 &amp;#91;2 &amp;#91;3 &amp;#91;4 false nil&amp;#93; nil&amp;#93; nil&amp;#93; nil&amp;#93;&amp;#41;
+   false&amp;#41;
+
+&amp;#40;= &amp;#40;&amp;#95;&amp;#95; '&amp;#40;:a nil &amp;#40;&amp;#41;&amp;#41;&amp;#41;
+   false&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn tree? &amp;#91;col&amp;#93;
+  &amp;#40;or &amp;#40;nil? col&amp;#41;
+      &amp;#40;and &amp;#40;coll? col&amp;#41;
+           &amp;#40;= 3 &amp;#40;count col&amp;#41;&amp;#41;
+           &amp;#40;every? tree? &amp;#40;rest col&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;이진 트리를 검증하는 문제 이다. node, 왼쪽, 오른쪽 총 3개의 값이 필요하고, 왼쪽, 오른쪽 둘 중 하나라고 없으면 이진트리가 아니이다, 하지만 nil 값이 있으면 이진트리의 마지막 이라는 것을 보여주는 형식으로 하고 있다.&lt;/p&gt;&lt;p&gt;every? 함수를 이용해서 tree?의 함수를 검증을 하고 있다  every?는 collection의 모든 값들이 참이면 true를 반환하는 함수이다.&lt;/p&gt;
+</description>
+<pubDate>
+Mon, 06 Jan 2020 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2020-01-05-4clojure-90.html

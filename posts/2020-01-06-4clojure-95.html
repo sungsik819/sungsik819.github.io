@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: 4clojure - Flatten a Sequence (28)</title>
-    <link rel="canonical" href="http://dev-happy.com/posts/2019-10-31-4clojure-28.html">
+    <title>Dev Happy: 4clojure - To Tree, or not to Tree (95)</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2020-01-06-4clojure-95.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -73,23 +73,39 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 10월 31일 (목)</div>
+        <div class="col-lg-6">2020년 1월 6일 (월)</div>
         
     </div>
-    <h2>4clojure - Flatten a Sequence (28)</h2>
+    <h2>4clojure - To Tree, or not to Tree (95)</h2>
 </div>
 <div>
     
-    <pre><code class="clojure">&#40;= &#40;&#95;&#95; '&#40;&#40;1 2&#41; 3 &#91;4 &#91;5 6&#93;&#93;&#41;&#41; '&#40;1 2 3 4 5 6&#41;&#41;
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;&#95;&#95; '&#40;:a &#40;:b nil nil&#41; nil&#41;&#41;
+   true&#41;
 
-&#40;= &#40;&#95;&#95; &#91;&quot;a&quot; &#91;&quot;b&quot;&#93; &quot;c&quot;&#93;&#41; '&#40;&quot;a&quot; &quot;b&quot; &quot;c&quot;&#41;&#41;
+&#40;= &#40;&#95;&#95; '&#40;:a &#40;:b nil nil&#41;&#41;&#41;
+   false&#41;
 
-&#40;= &#40;&#95;&#95; '&#40;&#40;&#40;&#40;:a&#41;&#41;&#41;&#41;&#41; '&#40;:a&#41;&#41;
-</code></pre><p>제한: flatten<pre><code class="clojure">&#40;fn myflatten &#91;x&#93;
-  &#40;cond &#40;not &#40;sequential? x&#41;&#41; &#40;list x&#41;
-        &#40;empty? x&#41; nil
-        :else &#40;concat &#40;myflatten &#40;first x&#41;&#41; &#40;myflatten &#40;rest x&#41;&#41;&#41;&#41;&#41;
-</code></pre></p><p>번호 순서 대로 과거에 풀었던 문제들을 다시 정리를 하면서 분석을 하고 있다. 중첩collection을 없애고 하나의 collection으로 만드는 문제인데 concat과 sequential?로 문제를 풀었다. 기본적으로 concat은 collection에 대해서 합쳐지는 것 같아서 (list)로 만들어 반환을 해주고 있다. 이때 당시에 이 문제를 풀때 위와 같은 형태의 recursive아니면 답이 없다고 생각을 했는데 clojure라면 더 나은 답이 있으리라 판단이 든다.</p>
+&#40;= &#40;&#95;&#95; &#91;1 nil &#91;2 &#91;3 nil nil&#93; &#91;4 nil nil&#93;&#93;&#93;&#41;
+   true&#41;
+
+&#40;= &#40;&#95;&#95; &#91;1 &#91;2 nil nil&#93; &#91;3 nil nil&#93; &#91;4 nil nil&#93;&#93;&#41;
+   false&#41;
+
+&#40;= &#40;&#95;&#95; &#91;1 &#91;2 &#91;3 &#91;4 nil nil&#93; nil&#93; nil&#93; nil&#93;&#41;
+   true&#41;
+
+&#40;= &#40;&#95;&#95; &#91;1 &#91;2 &#91;3 &#91;4 false nil&#93; nil&#93; nil&#93; nil&#93;&#41;
+   false&#41;
+
+&#40;= &#40;&#95;&#95; '&#40;:a nil &#40;&#41;&#41;&#41;
+   false&#41;
+</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn tree? &#91;col&#93;
+  &#40;or &#40;nil? col&#41;
+      &#40;and &#40;coll? col&#41;
+           &#40;= 3 &#40;count col&#41;&#41;
+           &#40;every? tree? &#40;rest col&#41;&#41;&#41;&#41;&#41;
+</code></pre></p><p>이진 트리를 검증하는 문제 이다. node, 왼쪽, 오른쪽 총 3개의 값이 필요하고, 왼쪽, 오른쪽 둘 중 하나라고 없으면 이진트리가 아니이다, 하지만 nil 값이 있으면 이진트리의 마지막 이라는 것을 보여주는 형식으로 하고 있다.</p><p>every? 함수를 이용해서 tree?의 함수를 검증을 하고 있다  every?는 collection의 모든 값들이 참이면 true를 반환하는 함수이다.</p>
 </div>
 
 <div id="post-tags">
@@ -104,10 +120,8 @@
 
     <div id="prev-next">
         
-        <a href="/posts/2019-11-01-4clojure-29.html">&laquo; 4clojure - Get the Caps (29)</a>
         
-        
-        <a class="right" href="/posts/2019-10-30-4clojure-27.html">4clojure - Palindrome Detector (27) &raquo;</a>
+        <a class="right" href="/posts/2020-01-05-4clojure-90.html">4clojure - Cartesian Product (90) &raquo;</a>
         
     </div>
 

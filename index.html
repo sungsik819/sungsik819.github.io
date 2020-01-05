@@ -73,27 +73,39 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2020년 1월 5일 (일)</div>
+        <div class="col-lg-6">2020년 1월 6일 (월)</div>
         
     </div>
-    <h2>4clojure - Cartesian Product (90)</h2>
+    <h2>4clojure - To Tree, or not to Tree (95)</h2>
 </div>
 <div>
     
-    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;&#95;&#95; #{&quot;ace&quot; &quot;king&quot; &quot;queen&quot;} #{&quot;♠&quot; &quot;♥&quot; &quot;♦&quot; &quot;♣&quot;}&#41;
-   #{&#91;&quot;ace&quot;   &quot;♠&quot;&#93; &#91;&quot;ace&quot;   &quot;♥&quot;&#93; &#91;&quot;ace&quot;   &quot;♦&quot;&#93; &#91;&quot;ace&quot;   &quot;♣&quot;&#93;
-     &#91;&quot;king&quot;  &quot;♠&quot;&#93; &#91;&quot;king&quot;  &quot;♥&quot;&#93; &#91;&quot;king&quot;  &quot;♦&quot;&#93; &#91;&quot;king&quot;  &quot;♣&quot;&#93;
-     &#91;&quot;queen&quot; &quot;♠&quot;&#93; &#91;&quot;queen&quot; &quot;♥&quot;&#93; &#91;&quot;queen&quot; &quot;♦&quot;&#93; &#91;&quot;queen&quot; &quot;♣&quot;&#93;}&#41;
+    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;&#95;&#95; '&#40;:a &#40;:b nil nil&#41; nil&#41;&#41;
+   true&#41;
 
-&#40;= &#40;&#95;&#95; #{1 2 3} #{4 5}&#41;
-   #{&#91;1 4&#93; &#91;2 4&#93; &#91;3 4&#93; &#91;1 5&#93; &#91;2 5&#93; &#91;3 5&#93;}&#41;
+&#40;= &#40;&#95;&#95; '&#40;:a &#40;:b nil nil&#41;&#41;&#41;
+   false&#41;
 
-&#40;= 300 &#40;count &#40;&#95;&#95; &#40;into #{} &#40;range 10&#41;&#41;
-                  &#40;into #{} &#40;range 30&#41;&#41;&#41;&#41;&#41;
-</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn &#91;a b&#93;
-  &#40;into #{} &#40;mapcat &#40;fn &#91;x&#93; &#40;map #&#40;vector x %&#41; b&#41;&#41; a&#41;&#41;&#41;
-</code></pre></p><p>이중 for문의 느낌으로 문제가 해결 되었다.  뭔가 깔끔하게 해결된 느낌은 아니긴 하지만 문제를 풀었다는데 의의를 둬야 할 것 같다.</p><p>다른 풀이 중 간단한 풀이가 있는데 아래와 같다<pre><code class="clj">#&#40;set &#40;for &#91;x %1 y %2&#93; &#91;x y&#93;&#41;&#41;
-</code></pre></p><p>기본적으로 생각 할 때의 for는 단 하나의 자료에 대해서만 반복이 가능하다고 생각할 수 있는데 clojure에서는 이중으로 할 때도 단 하나의 for로만 가능하다는 사실에 적잖게 놀랐다. </p>
+&#40;= &#40;&#95;&#95; &#91;1 nil &#91;2 &#91;3 nil nil&#93; &#91;4 nil nil&#93;&#93;&#93;&#41;
+   true&#41;
+
+&#40;= &#40;&#95;&#95; &#91;1 &#91;2 nil nil&#93; &#91;3 nil nil&#93; &#91;4 nil nil&#93;&#93;&#41;
+   false&#41;
+
+&#40;= &#40;&#95;&#95; &#91;1 &#91;2 &#91;3 &#91;4 nil nil&#93; nil&#93; nil&#93; nil&#93;&#41;
+   true&#41;
+
+&#40;= &#40;&#95;&#95; &#91;1 &#91;2 &#91;3 &#91;4 false nil&#93; nil&#93; nil&#93; nil&#93;&#41;
+   false&#41;
+
+&#40;= &#40;&#95;&#95; '&#40;:a nil &#40;&#41;&#41;&#41;
+   false&#41;
+</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn tree? &#91;col&#93;
+  &#40;or &#40;nil? col&#41;
+      &#40;and &#40;coll? col&#41;
+           &#40;= 3 &#40;count col&#41;&#41;
+           &#40;every? tree? &#40;rest col&#41;&#41;&#41;&#41;&#41;
+</code></pre></p><p>이진 트리를 검증하는 문제 이다. node, 왼쪽, 오른쪽 총 3개의 값이 필요하고, 왼쪽, 오른쪽 둘 중 하나라고 없으면 이진트리가 아니이다, 하지만 nil 값이 있으면 이진트리의 마지막 이라는 것을 보여주는 형식으로 하고 있다.</p><p>every? 함수를 이용해서 tree?의 함수를 검증을 하고 있다  every?는 collection의 모든 값들이 참이면 true를 반환하는 함수이다.</p>
 </div>
 
 <div id="post-tags">
@@ -111,7 +123,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2020-01-04-4clojure-88.html">4clojure - Symmetric Difference (88) &raquo;</a>
+        <a class="right" href="/posts/2020-01-05-4clojure-90.html">4clojure - Cartesian Product (90) &raquo;</a>
         
     </div>
 </div>
@@ -130,11 +142,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2020-01-06-4clojure-95.html">4clojure - To Tree, or not to Tree (95)</a></li>
+                        
                         <li><a href="/posts/2020-01-05-4clojure-90.html">4clojure - Cartesian Product (90)</a></li>
                         
                         <li><a href="/posts/2020-01-04-4clojure-88.html">4clojure - Symmetric Difference (88)</a></li>
-                        
-                        <li><a href="/posts/2020-01-03-4clojure-83.html">4clojure - A Half-Truth (83)</a></li>
                         
                     </ul>
                 </div>
