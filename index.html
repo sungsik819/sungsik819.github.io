@@ -73,45 +73,20 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2020년 1월 6일 (월)</div>
+        <div class="col-lg-6">2020년 1월 7일 (화)</div>
         
     </div>
-    <h2>4clojure - To Tree, or not to Tree (95)</h2>
+    <h2>today i learn 연속 100일 달성!</h2>
 </div>
 <div>
     
-    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#40;&#95;&#95; '&#40;:a &#40;:b nil nil&#41; nil&#41;&#41;
-   true&#41;
-
-&#40;= &#40;&#95;&#95; '&#40;:a &#40;:b nil nil&#41;&#41;&#41;
-   false&#41;
-
-&#40;= &#40;&#95;&#95; &#91;1 nil &#91;2 &#91;3 nil nil&#93; &#91;4 nil nil&#93;&#93;&#93;&#41;
-   true&#41;
-
-&#40;= &#40;&#95;&#95; &#91;1 &#91;2 nil nil&#93; &#91;3 nil nil&#93; &#91;4 nil nil&#93;&#93;&#41;
-   false&#41;
-
-&#40;= &#40;&#95;&#95; &#91;1 &#91;2 &#91;3 &#91;4 nil nil&#93; nil&#93; nil&#93; nil&#93;&#41;
-   true&#41;
-
-&#40;= &#40;&#95;&#95; &#91;1 &#91;2 &#91;3 &#91;4 false nil&#93; nil&#93; nil&#93; nil&#93;&#41;
-   false&#41;
-
-&#40;= &#40;&#95;&#95; '&#40;:a nil &#40;&#41;&#41;&#41;
-   false&#41;
-</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&#40;fn tree? &#91;col&#93;
-  &#40;or &#40;nil? col&#41;
-      &#40;and &#40;coll? col&#41;
-           &#40;= 3 &#40;count col&#41;&#41;
-           &#40;every? tree? &#40;rest col&#41;&#41;&#41;&#41;&#41;
-</code></pre></p><p>이진 트리를 검증하는 문제 이다. node, 왼쪽, 오른쪽 총 3개의 값이 필요하고, 왼쪽, 오른쪽 둘 중 하나라고 없으면 이진트리가 아니이다, 하지만 nil 값이 있으면 이진트리의 마지막 이라는 것을 보여주는 형식으로 하고 있다.</p><p>every? 함수를 이용해서 tree?의 함수를 검증을 하고 있다  every?는 collection의 모든 값들이 참이면 true를 반환하는 함수이다.</p>
+    <p>목표를 100일로 한 것은 아니였지만 매일 아침 작성을 하다보니 100일을 채우게 되었다.</p><p>대부분이 문제 풀이였지만 문제 풀이 안에서도 무언가 깨닫는 것들이 있으면 깨달은 내용도 작성을 하려고 노력을 했던 것 같다.</p><p>블로그를 일기장의 형태로 계속 가져갈 생각은 없으므로 일기장 보다는 좀 더 내가 배우고 싶은 것 하고 싶은 것들을 위주로 컨텐츠를 만들려고 한다.</p><p>그리고 매일 작성하는 것은 여기서 그만 하려고 한다. 지금까지는 어떻게든 컨텐츠를 만들어서 했었는데 앞으로는 좀 더 의미가 있는 것들을 가지고 길게 볼 생각이다.</p>
 </div>
 
 <div id="post-tags">
     <b>Tags: </b>
     
-    <a href="/4clojure.html">4clojure</a>
+    <a href="/essay.html">essay</a>
     
     <a href="/Today I Learn.html">Today I Learn</a>
     
@@ -123,7 +98,7 @@
     <div id="prev-next">
         
         
-        <a class="right" href="/posts/2020-01-05-4clojure-90.html">4clojure - Cartesian Product (90) &raquo;</a>
+        <a class="right" href="/posts/2020-01-06-4clojure-95.html">4clojure - To Tree, or not to Tree (95) &raquo;</a>
         
     </div>
 </div>
@@ -142,11 +117,11 @@
                     <h3>Recent Posts</h3>
                     <ul>
                         
+                        <li><a href="/posts/2020-01-07-cong-100.html">today i learn 연속 100일 달성!</a></li>
+                        
                         <li><a href="/posts/2020-01-06-4clojure-95.html">4clojure - To Tree, or not to Tree (95)</a></li>
                         
                         <li><a href="/posts/2020-01-05-4clojure-90.html">4clojure - Cartesian Product (90)</a></li>
-                        
-                        <li><a href="/posts/2020-01-04-4clojure-88.html">4clojure - Symmetric Difference (88)</a></li>
                         
                     </ul>
                 </div>
