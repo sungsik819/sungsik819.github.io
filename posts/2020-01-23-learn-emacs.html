@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Dev Happy: 4clojure - Recurring Theme (68)</title>
-    <link rel="canonical" href="http://dev-happy.com/posts/2019-12-13-4clojure-68.html">
+    <title>Dev Happy: Emacs 를 공부 하다</title>
+    <link rel="canonical" href="http://dev-happy.com/posts/2020-01-23-learn-emacs.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -73,37 +73,20 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 12월 13일 (금)</div>
+        <div class="col-lg-6">2020년 1월 23일 (목)</div>
         
     </div>
-    <h2>4clojure - Recurring Theme (68)</h2>
+    <h2>Emacs 를 공부 하다</h2>
 </div>
 <div>
     
-    <p><strong>Problem</strong><pre><code class="clj">&#40;= &#95;&#95;
-  &#40;loop &#91;x 5
-         result &#91;&#93;&#93;
-    &#40;if &#40;&gt; x 0&#41;
-      &#40;recur &#40;dec x&#41; &#40;conj result &#40;+ 2 x&#41;&#41;&#41;
-      result&#41;&#41;&#41;
-</code></pre></p><p><strong>Solved</strong><pre><code class="clj">&#91;7 6 5 4 3&#93;
-</code></pre></p><p>recursive 문제 이다 다른 부분 보다는 recur 이 부분을 분석 할 수 있으면 문제는 쉽게 해결 가능 하다.</p><p>우선은 x = 5 값이고 result = []로 시작을 하게 되고, 반복을 하게 되면 아래와 같아진다.<pre><code class="clj">&#40;conj &#91;&#93; 7&#41;
-&#40;conj &#40;conj &#91;&#93; 7&#41; 6&#41;
-&#40;conj &#40;conj &#40;conj &#91;&#93; 7&#41; 6&#41; 5&#41;
-&#40;conj &#40;conj &#40;conj &#40;conj &#91;&#93; 7&#41; 6&#41; 5&#41; 4&#41;
-&#40;conj &#40;conj &#40;conj &#40;conj &#40;conj &#91;&#93; 7&#41; 6&#41; 5&#41; 4&#41; 3&#41;
-&#40;conj &#40;conj &#40;conj &#40;conj &#91;7&#93; 6&#41; 5&#41; 4&#41; 3&#41;
-&#40;conj &#40;conj &#40;conj &#91;7 6&#93; 5&#41; 4&#41; 3&#41;
-&#40;conj &#40;conj &#91;7 6 5&#93; 4&#41; 3&#41;
-&#40;conj &#91;7 6 5 4&#93; 3&#41;
-&#91;7 6 5 4 3&#93;
-</code></pre></p>
+    <p>예전부터 선망의 툴이 한가지 있었는데 그것은 Emacs 이다.</p><p>뭔가 요즘 나오는 IDE와는 다른 매력의 툴로써 배우기가 까다롭다는 생각에 계속 시도를 하다가 포기를 했는데 새해부터는 이것을 공부해보기로 마음 먹었다.</p><p>그리고 실무에서 사용을 해보고 싶어졌다.</p><p>익숙해지는데 얼마나 걸릴지는 잘 모르겠다 하지만 나름대로 그것들을 기록해 나가면서 하다보면 익숙해 지리라 생각한다. 그 과정을 담아보고 싶다.</p>
 </div>
 
 <div id="post-tags">
     <b>Tags: </b>
     
-    <a href="/4clojure.html">4clojure</a>
+    <a href="/emacs.html">emacs</a>
     
     <a href="/Today I Learn.html">Today I Learn</a>
     
@@ -112,10 +95,8 @@
 
     <div id="prev-next">
         
-        <a href="/posts/2019-12-14-css-font.html">&laquo; CSS - font</a>
         
-        
-        <a class="right" href="/posts/2019-12-12-4clojure-67.html">4clojure - Prime Numbers (67) &raquo;</a>
+        <a class="right" href="/posts/2020-01-07-cong-100.html">today i learn 연속 100일 달성! &raquo;</a>
         
     </div>
 
