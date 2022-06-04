@@ -12,11 +12,28 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Fri, 22 Oct 2021 06:52:12 +0900
+Sun, 05 Jun 2022 08:08:34 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2022-06-05-write.html
+</guid>
+<link>
+http://dev-happy.com/posts/2022-06-05-write.html
+</link>
+<title>
+블로그 글을 다시 쓰면서
+</title>
+<description>
+&lt;p&gt;매일 뭔가를 다짐하면서 시작을 하지만 정작 하지 않는다는 것을 알게 되었다.&lt;/p&gt;&lt;p&gt;그래서 최소한 일주일에 1개는 블로그 글을 써볼 생각이다.&lt;/p&gt;&lt;p&gt;어떤 글이 되더라도 뭔가를 끄적이더라도, 지속적으로 할 명분이 필요하다.&lt;/p&gt;&lt;p&gt;깨닫거나 배우거나 그런 글을 쓰는 것이 이제는 필요하다.&lt;/p&gt;&lt;p&gt;어떠한 양식, 형식 없이 일기글이 될 수도 있을 것 같다.&lt;/p&gt;
+</description>
+<pubDate>
+Sun, 05 Jun 2022 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2021-10-22-write-project-euler.html
