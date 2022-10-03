@@ -12,11 +12,28 @@ http://dev-happy.com/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Sun, 05 Jun 2022 08:08:34 +0900
+Tue, 04 Oct 2022 06:39:26 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://dev-happy.com/posts/2022-10-04-restart-4clojure.html
+</guid>
+<link>
+http://dev-happy.com/posts/2022-10-04-restart-4clojure.html
+</link>
+<title>
+4clojure부터 시작
+</title>
+<description>
+&lt;p&gt;이런 저런 일로 많은 고민이 있었다. &lt;/p&gt;&lt;p&gt;무엇을 해야하는지 고민이 됐다.&lt;/p&gt;&lt;p&gt;결론은 내가 재미를 느끼는 것을 다시 시작하기로 했다.&lt;/p&gt;&lt;p&gt;그 첫번째로 4clojure를 그동안 문제 풀었던 소스코드를 정리하고 &lt;/p&gt;&lt;p&gt;다시 돌아보면서 clojure를 되새기는 것이다.&lt;/p&gt;&lt;p&gt;매일 20분씩 코드를 정리하면서 &lt;/p&gt;&lt;p&gt;내가 풀어본 문제의 블로그를 보면서 못풀었던 문제들을 블로그에 정리 한다.&lt;/p&gt;&lt;p&gt;https://github.com/sungsik819/4clojure&lt;/p&gt;
+</description>
+<pubDate>
+Tue, 04 Oct 2022 00:00:00 +0900
+</pubDate>
+</item>
 <item>
 <guid>
 http://dev-happy.com/posts/2022-06-05-write.html
