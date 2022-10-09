@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <rss version='2.0' xmlns:atom='http://www.w3.org/2005/Atom'>
 <channel>
-<atom:link href='http://dev-happy.com/' rel='self' type='application/rss+xml'/>
+<atom:link href='https://sungsik819.github.io/' rel='self' type='application/rss+xml'/>
 <title>
-Dev Happy
+Sungsik
 </title>
 <link>
-http://dev-happy.com/
+https://sungsik819.github.io/
 </link>
 <description>
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Tue, 04 Oct 2022 06:39:26 +0900
+Mon, 10 Oct 2022 08:46:07 +0900
 </lastBuildDate>
 <generator>
 clj-rss

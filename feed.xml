@@ -1,28 +1,28 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <rss version='2.0' xmlns:atom='http://www.w3.org/2005/Atom'>
 <channel>
-<atom:link href='http://dev-happy.com/' rel='self' type='application/rss+xml'/>
+<atom:link href='https://sungsik819.github.io/' rel='self' type='application/rss+xml'/>
 <title>
-Dev Happy
+Sungsik
 </title>
 <link>
-http://dev-happy.com/
+https://sungsik819.github.io/
 </link>
 <description>
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Tue, 04 Oct 2022 06:39:26 +0900
+Mon, 10 Oct 2022 08:46:07 +0900
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
 <item>
 <guid>
-http://dev-happy.com/posts/2022-10-04-restart-4clojure.html
+https://sungsik819.github.io/posts/2022-10-04-restart-4clojure.html
 </guid>
 <link>
-http://dev-happy.com/posts/2022-10-04-restart-4clojure.html
+https://sungsik819.github.io/posts/2022-10-04-restart-4clojure.html
 </link>
 <title>
 4clojure부터 시작
@@ -36,10 +36,10 @@ Tue, 04 Oct 2022 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2022-06-05-write.html
+https://sungsik819.github.io/posts/2022-06-05-write.html
 </guid>
 <link>
-http://dev-happy.com/posts/2022-06-05-write.html
+https://sungsik819.github.io/posts/2022-06-05-write.html
 </link>
 <title>
 블로그 글을 다시 쓰면서
@@ -53,10 +53,10 @@ Sun, 05 Jun 2022 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2021-10-22-write-project-euler.html
+https://sungsik819.github.io/posts/2021-10-22-write-project-euler.html
 </guid>
 <link>
-http://dev-happy.com/posts/2021-10-22-write-project-euler.html
+https://sungsik819.github.io/posts/2021-10-22-write-project-euler.html
 </link>
 <title>
 프로젝트 오일러를 시작하면서
@@ -70,10 +70,10 @@ Fri, 22 Oct 2021 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2020-01-23-learn-emacs.html
+https://sungsik819.github.io/posts/2020-01-23-learn-emacs.html
 </guid>
 <link>
-http://dev-happy.com/posts/2020-01-23-learn-emacs.html
+https://sungsik819.github.io/posts/2020-01-23-learn-emacs.html
 </link>
 <title>
 Emacs 를 공부 하다
@@ -87,10 +87,10 @@ Thu, 23 Jan 2020 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2020-01-07-cong-100.html
+https://sungsik819.github.io/posts/2020-01-07-cong-100.html
 </guid>
 <link>
-http://dev-happy.com/posts/2020-01-07-cong-100.html
+https://sungsik819.github.io/posts/2020-01-07-cong-100.html
 </link>
 <title>
 today i learn 연속 100일 달성!
@@ -104,10 +104,10 @@ Tue, 07 Jan 2020 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2020-01-06-4clojure-95.html
+https://sungsik819.github.io/posts/2020-01-06-4clojure-95.html
 </guid>
 <link>
-http://dev-happy.com/posts/2020-01-06-4clojure-95.html
+https://sungsik819.github.io/posts/2020-01-06-4clojure-95.html
 </link>
 <title>
 4clojure - To Tree, or not to Tree (95)
@@ -146,10 +146,10 @@ Mon, 06 Jan 2020 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2020-01-05-4clojure-90.html
+https://sungsik819.github.io/posts/2020-01-05-4clojure-90.html
 </guid>
 <link>
-http://dev-happy.com/posts/2020-01-05-4clojure-90.html
+https://sungsik819.github.io/posts/2020-01-05-4clojure-90.html
 </link>
 <title>
 4clojure - Cartesian Product (90)
@@ -176,10 +176,10 @@ Sun, 05 Jan 2020 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2020-01-04-4clojure-88.html
+https://sungsik819.github.io/posts/2020-01-04-4clojure-88.html
 </guid>
 <link>
-http://dev-happy.com/posts/2020-01-04-4clojure-88.html
+https://sungsik819.github.io/posts/2020-01-04-4clojure-88.html
 </link>
 <title>
 4clojure - Symmetric Difference (88)
@@ -202,10 +202,10 @@ Sat, 04 Jan 2020 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2020-01-03-4clojure-83.html
+https://sungsik819.github.io/posts/2020-01-03-4clojure-83.html
 </guid>
 <link>
-http://dev-happy.com/posts/2020-01-03-4clojure-83.html
+https://sungsik819.github.io/posts/2020-01-03-4clojure-83.html
 </link>
 <title>
 4clojure - A Half-Truth (83)
@@ -233,10 +233,10 @@ Fri, 03 Jan 2020 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2020-01-02-4clojure-81.html
+https://sungsik819.github.io/posts/2020-01-02-4clojure-81.html
 </guid>
 <link>
-http://dev-happy.com/posts/2020-01-02-4clojure-81.html
+https://sungsik819.github.io/posts/2020-01-02-4clojure-81.html
 </link>
 <title>
 4clojure - Set Intersection (81)
@@ -262,10 +262,10 @@ Thu, 02 Jan 2020 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2020-01-01-4clojure-80.html
+https://sungsik819.github.io/posts/2020-01-01-4clojure-80.html
 </guid>
 <link>
-http://dev-happy.com/posts/2020-01-01-4clojure-80.html
+https://sungsik819.github.io/posts/2020-01-01-4clojure-80.html
 </link>
 <title>
 4clojure - Perfect Numbers (80)
@@ -310,10 +310,10 @@ Wed, 01 Jan 2020 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-31-what-i-want-4clojure.html
+https://sungsik819.github.io/posts/2019-12-31-what-i-want-4clojure.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-31-what-i-want-4clojure.html
+https://sungsik819.github.io/posts/2019-12-31-what-i-want-4clojure.html
 </link>
 <title>
 4clojure로 얻고 싶은 것은 무엇일까?
@@ -327,10 +327,10 @@ Tue, 31 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-30-retrospective.html
+https://sungsik819.github.io/posts/2019-12-30-retrospective.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-30-retrospective.html
+https://sungsik819.github.io/posts/2019-12-30-retrospective.html
 </link>
 <title>
 2019년 회고
@@ -344,10 +344,10 @@ Mon, 30 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-29-css-blog.html
+https://sungsik819.github.io/posts/2019-12-29-css-blog.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-29-css-blog.html
+https://sungsik819.github.io/posts/2019-12-29-css-blog.html
 </link>
 <title>
 CSS - 블로그의 CSS 분석
@@ -401,10 +401,10 @@ Sun, 29 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-28-4clojure-79.html
+https://sungsik819.github.io/posts/2019-12-28-4clojure-79.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-28-4clojure-79.html
+https://sungsik819.github.io/posts/2019-12-28-4clojure-79.html
 </link>
 <title>
 4clojure - Triangle Minimal Path (79)
@@ -472,10 +472,10 @@ Sat, 28 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-27-4clojure-78.html
+https://sungsik819.github.io/posts/2019-12-27-4clojure-78.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-27-4clojure-78.html
+https://sungsik819.github.io/posts/2019-12-27-4clojure-78.html
 </link>
 <title>
 4clojure - Reimplement Trampoline (78)
@@ -525,10 +525,10 @@ Fri, 27 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-26-4clojure-77.html
+https://sungsik819.github.io/posts/2019-12-26-4clojure-77.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-26-4clojure-77.html
+https://sungsik819.github.io/posts/2019-12-26-4clojure-77.html
 </link>
 <title>
 4clojure - Anagram Finder (77)
@@ -570,10 +570,10 @@ Thu, 26 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-25-4clojure-76.html
+https://sungsik819.github.io/posts/2019-12-25-4clojure-76.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-25-4clojure-76.html
+https://sungsik819.github.io/posts/2019-12-25-4clojure-76.html
 </link>
 <title>
 4clojure - Intro to Trampoline (76)
@@ -595,10 +595,10 @@ Wed, 25 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-24-4clojure-75.html
+https://sungsik819.github.io/posts/2019-12-24-4clojure-75.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-24-4clojure-75.html
+https://sungsik819.github.io/posts/2019-12-24-4clojure-75.html
 </link>
 <title>
 4clojure - Euler's Totient Function (75)
@@ -675,10 +675,10 @@ Tue, 24 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-23-4clojure-74.html
+https://sungsik819.github.io/posts/2019-12-23-4clojure-74.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-23-4clojure-74.html
+https://sungsik819.github.io/posts/2019-12-23-4clojure-74.html
 </link>
 <title>
 4clojure - Filter Perfect Squares (74)
@@ -727,10 +727,10 @@ Mon, 23 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-22-data-merge-division.html
+https://sungsik819.github.io/posts/2019-12-22-data-merge-division.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-22-data-merge-division.html
+https://sungsik819.github.io/posts/2019-12-22-data-merge-division.html
 </link>
 <title>
 데이터의 병합/분리
@@ -746,10 +746,10 @@ Sun, 22 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-21-how-data-structure.html
+https://sungsik819.github.io/posts/2019-12-21-how-data-structure.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-21-how-data-structure.html
+https://sungsik819.github.io/posts/2019-12-21-how-data-structure.html
 </link>
 <title>
 어떻게 데이터 구조를 만들어야 할까?
@@ -763,10 +763,10 @@ Sat, 21 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-20-4clojure-73.html
+https://sungsik819.github.io/posts/2019-12-20-4clojure-73.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-20-4clojure-73.html
+https://sungsik819.github.io/posts/2019-12-20-4clojure-73.html
 </link>
 <title>
 4clojure - Analyze a Tic-Tac-Toe Board (73)
@@ -848,10 +848,10 @@ Fri, 20 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-19-4clojure-72.html
+https://sungsik819.github.io/posts/2019-12-19-4clojure-72.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-19-4clojure-72.html
+https://sungsik819.github.io/posts/2019-12-19-4clojure-72.html
 </link>
 <title>
 4clojure - Rearranging Code: -&gt;&gt; (72)
@@ -880,10 +880,10 @@ Thu, 19 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-18-4clojure-71.html
+https://sungsik819.github.io/posts/2019-12-18-4clojure-71.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-18-4clojure-71.html
+https://sungsik819.github.io/posts/2019-12-18-4clojure-71.html
 </link>
 <title>
 4clojure - Rearranging Code: -&gt; (71)
@@ -912,10 +912,10 @@ Wed, 18 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-17-4clojure-70.html
+https://sungsik819.github.io/posts/2019-12-17-4clojure-70.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-17-4clojure-70.html
+https://sungsik819.github.io/posts/2019-12-17-4clojure-70.html
 </link>
 <title>
 4clojure - Word Sorting (70)
@@ -949,10 +949,10 @@ Tue, 17 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-16-4clojure-69.html
+https://sungsik819.github.io/posts/2019-12-16-4clojure-69.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-16-4clojure-69.html
+https://sungsik819.github.io/posts/2019-12-16-4clojure-69.html
 </link>
 <title>
 4clojure - Merge with a Function  (69)
@@ -1004,10 +1004,10 @@ Mon, 16 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-15-css-selector.html
+https://sungsik819.github.io/posts/2019-12-15-css-selector.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-15-css-selector.html
+https://sungsik819.github.io/posts/2019-12-15-css-selector.html
 </link>
 <title>
 CSS - 선택자
@@ -1064,10 +1064,10 @@ Sun, 15 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-14-css-font.html
+https://sungsik819.github.io/posts/2019-12-14-css-font.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-14-css-font.html
+https://sungsik819.github.io/posts/2019-12-14-css-font.html
 </link>
 <title>
 CSS - font
@@ -1088,10 +1088,10 @@ Sat, 14 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-13-4clojure-68.html
+https://sungsik819.github.io/posts/2019-12-13-4clojure-68.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-13-4clojure-68.html
+https://sungsik819.github.io/posts/2019-12-13-4clojure-68.html
 </link>
 <title>
 4clojure - Recurring Theme (68)
@@ -1122,10 +1122,10 @@ Fri, 13 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-12-4clojure-67.html
+https://sungsik819.github.io/posts/2019-12-12-4clojure-67.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-12-4clojure-67.html
+https://sungsik819.github.io/posts/2019-12-12-4clojure-67.html
 </link>
 <title>
 4clojure - Prime Numbers (67)
@@ -1169,10 +1169,10 @@ Thu, 12 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-11-4clojure-66.html
+https://sungsik819.github.io/posts/2019-12-11-4clojure-66.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-11-4clojure-66.html
+https://sungsik819.github.io/posts/2019-12-11-4clojure-66.html
 </link>
 <title>
 4clojure - Greatest Common Divisor (66)
@@ -1197,10 +1197,10 @@ Wed, 11 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-10-4clojure-65.html
+https://sungsik819.github.io/posts/2019-12-10-4clojure-65.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-10-4clojure-65.html
+https://sungsik819.github.io/posts/2019-12-10-4clojure-65.html
 </link>
 <title>
 4clojure - Black Box Testing (65)
@@ -1235,10 +1235,10 @@ Tue, 10 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-09-4clojure-64.html
+https://sungsik819.github.io/posts/2019-12-09-4clojure-64.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-09-4clojure-64.html
+https://sungsik819.github.io/posts/2019-12-09-4clojure-64.html
 </link>
 <title>
 4clojure - Intro to Reduce (64)
@@ -1267,10 +1267,10 @@ Mon, 09 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-08-4clojure-63.html
+https://sungsik819.github.io/posts/2019-12-08-4clojure-63.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-08-4clojure-63.html
+https://sungsik819.github.io/posts/2019-12-08-4clojure-63.html
 </link>
 <title>
 4clojure - Group a Sequence  (63)
@@ -1306,10 +1306,10 @@ Sun, 08 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-07-basic-css.html
+https://sungsik819.github.io/posts/2019-12-07-basic-css.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-07-basic-css.html
+https://sungsik819.github.io/posts/2019-12-07-basic-css.html
 </link>
 <title>
 CSS 기본
@@ -1323,10 +1323,10 @@ Sat, 07 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-06-intro-css.html
+https://sungsik819.github.io/posts/2019-12-06-intro-css.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-06-intro-css.html
+https://sungsik819.github.io/posts/2019-12-06-intro-css.html
 </link>
 <title>
 CSS 정리
@@ -1340,10 +1340,10 @@ Fri, 06 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-05-4clojure-62.html
+https://sungsik819.github.io/posts/2019-12-05-4clojure-62.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-05-4clojure-62.html
+https://sungsik819.github.io/posts/2019-12-05-4clojure-62.html
 </link>
 <title>
 4clojure - Re-implement Iterate (62)
@@ -1364,10 +1364,10 @@ Thu, 05 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-04-4clojure-61.html
+https://sungsik819.github.io/posts/2019-12-04-4clojure-61.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-04-4clojure-61.html
+https://sungsik819.github.io/posts/2019-12-04-4clojure-61.html
 </link>
 <title>
 4clojure - Map Construction (61)
@@ -1408,10 +1408,10 @@ Wed, 04 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-03-4clojure-60.html
+https://sungsik819.github.io/posts/2019-12-03-4clojure-60.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-03-4clojure-60.html
+https://sungsik819.github.io/posts/2019-12-03-4clojure-60.html
 </link>
 <title>
 4clojure - Sequence Reductions (60)
@@ -1508,10 +1508,10 @@ Tue, 03 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-02-4clojure-59.html
+https://sungsik819.github.io/posts/2019-12-02-4clojure-59.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-02-4clojure-59.html
+https://sungsik819.github.io/posts/2019-12-02-4clojure-59.html
 </link>
 <title>
 4clojure - Juxtaposition (59)
@@ -1535,10 +1535,10 @@ Mon, 02 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-12-01-4clojure-58.html
+https://sungsik819.github.io/posts/2019-12-01-4clojure-58.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-12-01-4clojure-58.html
+https://sungsik819.github.io/posts/2019-12-01-4clojure-58.html
 </link>
 <title>
 4clojure - Function Composition (58)
@@ -1647,10 +1647,10 @@ Sun, 01 Dec 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-30-4clojure-57.html
+https://sungsik819.github.io/posts/2019-11-30-4clojure-57.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-30-4clojure-57.html
+https://sungsik819.github.io/posts/2019-11-30-4clojure-57.html
 </link>
 <title>
 4clojure - Simple Recursion (57)
@@ -1672,10 +1672,10 @@ Sat, 30 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-29-4clojure-56.html
+https://sungsik819.github.io/posts/2019-11-29-4clojure-56.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-29-4clojure-56.html
+https://sungsik819.github.io/posts/2019-11-29-4clojure-56.html
 </link>
 <title>
 4clojure - Find Distinct Items (56)
@@ -1722,10 +1722,10 @@ Fri, 29 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-28-4clojure-55.html
+https://sungsik819.github.io/posts/2019-11-28-4clojure-55.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-28-4clojure-55.html
+https://sungsik819.github.io/posts/2019-11-28-4clojure-55.html
 </link>
 <title>
 4clojure - Count Occurrences (55)
@@ -1893,10 +1893,10 @@ Thu, 28 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-27-4clojure-54.html
+https://sungsik819.github.io/posts/2019-11-27-4clojure-54.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-27-4clojure-54.html
+https://sungsik819.github.io/posts/2019-11-27-4clojure-54.html
 </link>
 <title>
 4clojure - Partition a Sequence (54)
@@ -1919,10 +1919,10 @@ Wed, 27 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-26-4clojure-53.html
+https://sungsik819.github.io/posts/2019-11-26-4clojure-53.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-26-4clojure-53.html
+https://sungsik819.github.io/posts/2019-11-26-4clojure-53.html
 </link>
 <title>
 4clojure - Longest Increasing Sub-Seq (53)
@@ -1979,10 +1979,10 @@ Tue, 26 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-25-4clojure-52.html
+https://sungsik819.github.io/posts/2019-11-25-4clojure-52.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-25-4clojure-52.html
+https://sungsik819.github.io/posts/2019-11-25-4clojure-52.html
 </link>
 <title>
 4clojure - Intro to Destructuring (52)
@@ -1998,10 +1998,10 @@ Mon, 25 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-24-4clojure-51.html
+https://sungsik819.github.io/posts/2019-11-24-4clojure-51.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-24-4clojure-51.html
+https://sungsik819.github.io/posts/2019-11-24-4clojure-51.html
 </link>
 <title>
 4clojure - Advanced Destructuring (51)
@@ -2017,10 +2017,10 @@ Sun, 24 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-23-again-4clojure.html
+https://sungsik819.github.io/posts/2019-11-23-again-4clojure.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-23-again-4clojure.html
+https://sungsik819.github.io/posts/2019-11-23-again-4clojure.html
 </link>
 <title>
 4clojure 를 다시 하면서..
@@ -2034,10 +2034,10 @@ Sat, 23 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-22-4clojure-50.html
+https://sungsik819.github.io/posts/2019-11-22-4clojure-50.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-22-4clojure-50.html
+https://sungsik819.github.io/posts/2019-11-22-4clojure-50.html
 </link>
 <title>
 4clojure - Split by Type (50)
@@ -2063,10 +2063,10 @@ Fri, 22 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-21-4clojure-49.html
+https://sungsik819.github.io/posts/2019-11-21-4clojure-49.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-21-4clojure-49.html
+https://sungsik819.github.io/posts/2019-11-21-4clojure-49.html
 </link>
 <title>
 4clojure - Split a sequence (49)
@@ -2087,10 +2087,10 @@ Thu, 21 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-20-4clojure-48.html
+https://sungsik819.github.io/posts/2019-11-20-4clojure-48.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-20-4clojure-48.html
+https://sungsik819.github.io/posts/2019-11-20-4clojure-48.html
 </link>
 <title>
 4clojure - Intro to some (48)
@@ -2108,10 +2108,10 @@ Wed, 20 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-19-4clojure-47.html
+https://sungsik819.github.io/posts/2019-11-19-4clojure-47.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-19-4clojure-47.html
+https://sungsik819.github.io/posts/2019-11-19-4clojure-47.html
 </link>
 <title>
 4clojure - Contain Yourself (47)
@@ -2133,10 +2133,10 @@ Tue, 19 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-18-4clojure-46.html
+https://sungsik819.github.io/posts/2019-11-18-4clojure-46.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-18-4clojure-46.html
+https://sungsik819.github.io/posts/2019-11-18-4clojure-46.html
 </link>
 <title>
 4clojure - Flipping out (46)
@@ -2163,10 +2163,10 @@ Mon, 18 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-17-4clojure-45.html
+https://sungsik819.github.io/posts/2019-11-17-4clojure-45.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-17-4clojure-45.html
+https://sungsik819.github.io/posts/2019-11-17-4clojure-45.html
 </link>
 <title>
 4clojure - Intro to Iterate (45)
@@ -2182,10 +2182,10 @@ Sun, 17 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-16-4clojure-44.html
+https://sungsik819.github.io/posts/2019-11-16-4clojure-44.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-16-4clojure-44.html
+https://sungsik819.github.io/posts/2019-11-16-4clojure-44.html
 </link>
 <title>
 4clojure - Rotate Sequence (44)
@@ -2258,10 +2258,10 @@ Sat, 16 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-15-4clojure-43.html
+https://sungsik819.github.io/posts/2019-11-15-4clojure-43.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-15-4clojure-43.html
+https://sungsik819.github.io/posts/2019-11-15-4clojure-43.html
 </link>
 <title>
 4clojure - Reverse Interleave (43)
@@ -2289,10 +2289,10 @@ Fri, 15 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-14-4clojure-42.html
+https://sungsik819.github.io/posts/2019-11-14-4clojure-42.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-14-4clojure-42.html
+https://sungsik819.github.io/posts/2019-11-14-4clojure-42.html
 </link>
 <title>
 4clojure - Factorial Fun (42)
@@ -2315,10 +2315,10 @@ Thu, 14 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-13-4clojure-41.html
+https://sungsik819.github.io/posts/2019-11-13-4clojure-41.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-13-4clojure-41.html
+https://sungsik819.github.io/posts/2019-11-13-4clojure-41.html
 </link>
 <title>
 4clojure - Drop Every Nth Item (41)
@@ -2348,10 +2348,10 @@ Wed, 13 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-12-4clojure-40.html
+https://sungsik819.github.io/posts/2019-11-12-4clojure-40.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-12-4clojure-40.html
+https://sungsik819.github.io/posts/2019-11-12-4clojure-40.html
 </link>
 <title>
 4clojure - Interpose a Seq (40)
@@ -2380,10 +2380,10 @@ Tue, 12 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-11-4clojure-39.html
+https://sungsik819.github.io/posts/2019-11-11-4clojure-39.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-11-4clojure-39.html
+https://sungsik819.github.io/posts/2019-11-11-4clojure-39.html
 </link>
 <title>
 4clojure - Interleave Two Seqs (39)
@@ -2409,10 +2409,10 @@ Mon, 11 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-10-4clojure-38.html
+https://sungsik819.github.io/posts/2019-11-10-4clojure-38.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-10-4clojure-38.html
+https://sungsik819.github.io/posts/2019-11-10-4clojure-38.html
 </link>
 <title>
 4clojure - Maximum value (38)
@@ -2437,10 +2437,10 @@ Sun, 10 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-09-4clojure-37.html
+https://sungsik819.github.io/posts/2019-11-09-4clojure-37.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-09-4clojure-37.html
+https://sungsik819.github.io/posts/2019-11-09-4clojure-37.html
 </link>
 <title>
 4clojure - Regular Expressions (37)
@@ -2456,10 +2456,10 @@ Sat, 09 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-08-4clojure-36.html
+https://sungsik819.github.io/posts/2019-11-08-4clojure-36.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-08-4clojure-36.html
+https://sungsik819.github.io/posts/2019-11-08-4clojure-36.html
 </link>
 <title>
 4clojure - Let it Be (36)
@@ -2479,10 +2479,10 @@ Fri, 08 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-07-4clojure-35.html
+https://sungsik819.github.io/posts/2019-11-07-4clojure-35.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-07-4clojure-35.html
+https://sungsik819.github.io/posts/2019-11-07-4clojure-35.html
 </link>
 <title>
 4clojure - Local bindings (35)
@@ -2493,7 +2493,7 @@ http://dev-happy.com/posts/2019-11-07-4clojure-35.html
 &amp;#40;= &amp;#95;&amp;#95; &amp;#40;let &amp;#91;x 3, y 10&amp;#93; &amp;#40;- y x&amp;#41;&amp;#41;&amp;#41;
 
 &amp;#40;= &amp;#95;&amp;#95; &amp;#40;let &amp;#91;x 21&amp;#93; &amp;#40;let &amp;#91;y 3&amp;#93; &amp;#40;/ x y&amp;#41;&amp;#41;&amp;#41;&amp;#41;
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;5
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;7
 &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;let이라는 local binding을 연습하는 문제이다. 다른 언어에서 사용하는 형식인 x = 5 와 같은 형태라고 생각하면 될 것 같다. 한번 선언이 되면 변경이 불가능 하다는 다른 점이 있다.&lt;/p&gt;
 </description>
 <pubDate>
@@ -2502,10 +2502,10 @@ Thu, 07 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-06-4clojure-34.html
+https://sungsik819.github.io/posts/2019-11-06-4clojure-34.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-06-4clojure-34.html
+https://sungsik819.github.io/posts/2019-11-06-4clojure-34.html
 </link>
 <title>
 4clojure - Implement range (34)
@@ -2529,10 +2529,10 @@ Wed, 06 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-05-4clojure-33.html
+https://sungsik819.github.io/posts/2019-11-05-4clojure-33.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-05-4clojure-33.html
+https://sungsik819.github.io/posts/2019-11-05-4clojure-33.html
 </link>
 <title>
 4clojure - Replicate a Sequence (33)
@@ -2558,10 +2558,10 @@ Tue, 05 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-04-4clojure-32.html
+https://sungsik819.github.io/posts/2019-11-04-4clojure-32.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-04-4clojure-32.html
+https://sungsik819.github.io/posts/2019-11-04-4clojure-32.html
 </link>
 <title>
 4clojure - Duplicate a Sequence (32)
@@ -2595,10 +2595,10 @@ Mon, 04 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-03-4clojure-31.html
+https://sungsik819.github.io/posts/2019-11-03-4clojure-31.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-03-4clojure-31.html
+https://sungsik819.github.io/posts/2019-11-03-4clojure-31.html
 </link>
 <title>
 4clojure - Pack a Sequence (31)
@@ -2618,10 +2618,10 @@ Sun, 03 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-02-4clojure-30.html
+https://sungsik819.github.io/posts/2019-11-02-4clojure-30.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-02-4clojure-30.html
+https://sungsik819.github.io/posts/2019-11-02-4clojure-30.html
 </link>
 <title>
 4clojure - Compress a Sequence (30)
@@ -2666,10 +2666,10 @@ Sat, 02 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-11-01-4clojure-29.html
+https://sungsik819.github.io/posts/2019-11-01-4clojure-29.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-11-01-4clojure-29.html
+https://sungsik819.github.io/posts/2019-11-01-4clojure-29.html
 </link>
 <title>
 4clojure - Get the Caps (29)
@@ -2691,10 +2691,10 @@ Fri, 01 Nov 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-31-4clojure-28.html
+https://sungsik819.github.io/posts/2019-10-31-4clojure-28.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-31-4clojure-28.html
+https://sungsik819.github.io/posts/2019-10-31-4clojure-28.html
 </link>
 <title>
 4clojure - Flatten a Sequence (28)
@@ -2717,10 +2717,10 @@ Thu, 31 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-30-4clojure-27.html
+https://sungsik819.github.io/posts/2019-10-30-4clojure-27.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-30-4clojure-27.html
+https://sungsik819.github.io/posts/2019-10-30-4clojure-27.html
 </link>
 <title>
 4clojure - Palindrome Detector (27)
@@ -2744,10 +2744,10 @@ Wed, 30 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-29-4clojure-26.html
+https://sungsik819.github.io/posts/2019-10-29-4clojure-26.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-29-4clojure-26.html
+https://sungsik819.github.io/posts/2019-10-29-4clojure-26.html
 </link>
 <title>
 4clojure - Fibonacci Sequence (26)
@@ -2776,10 +2776,10 @@ Tue, 29 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-28-4clojure-25.html
+https://sungsik819.github.io/posts/2019-10-28-4clojure-25.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-28-4clojure-25.html
+https://sungsik819.github.io/posts/2019-10-28-4clojure-25.html
 </link>
 <title>
 4clojure - Find the odd numbers (25)
@@ -2801,10 +2801,10 @@ Mon, 28 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-27-4clojure-24.html
+https://sungsik819.github.io/posts/2019-10-27-4clojure-24.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-27-4clojure-24.html
+https://sungsik819.github.io/posts/2019-10-27-4clojure-24.html
 </link>
 <title>
 4clojure - Sum It All Up (24)
@@ -2829,10 +2829,10 @@ Sun, 27 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-26-4clojure-23.html
+https://sungsik819.github.io/posts/2019-10-26-4clojure-23.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-26-4clojure-23.html
+https://sungsik819.github.io/posts/2019-10-26-4clojure-23.html
 </link>
 <title>
 4clojure - Reverse a Sequence (23)
@@ -2860,10 +2860,10 @@ Sat, 26 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-25-4clojure-22.html
+https://sungsik819.github.io/posts/2019-10-25-4clojure-22.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-25-4clojure-22.html
+https://sungsik819.github.io/posts/2019-10-25-4clojure-22.html
 </link>
 <title>
 4clojure - Count a Sequence (22)
@@ -2894,10 +2894,10 @@ Fri, 25 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-24-4clojure-21.html
+https://sungsik819.github.io/posts/2019-10-24-4clojure-21.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-24-4clojure-21.html
+https://sungsik819.github.io/posts/2019-10-24-4clojure-21.html
 </link>
 <title>
 4clojure - Nth Element (21)
@@ -2923,10 +2923,10 @@ Thu, 24 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-23-4clojure-20.html
+https://sungsik819.github.io/posts/2019-10-23-4clojure-20.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-23-4clojure-20.html
+https://sungsik819.github.io/posts/2019-10-23-4clojure-20.html
 </link>
 <title>
 4clojure - Penultimate Element (20)
@@ -2946,10 +2946,10 @@ Wed, 23 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-22-4clojure-19.html
+https://sungsik819.github.io/posts/2019-10-22-4clojure-19.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-22-4clojure-19.html
+https://sungsik819.github.io/posts/2019-10-22-4clojure-19.html
 </link>
 <title>
 4clojure - Last Element (19)
@@ -2969,10 +2969,10 @@ Tue, 22 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-21-4clojure-18.html
+https://sungsik819.github.io/posts/2019-10-21-4clojure-18.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-21-4clojure-18.html
+https://sungsik819.github.io/posts/2019-10-21-4clojure-18.html
 </link>
 <title>
 4clojure 18
@@ -2988,10 +2988,10 @@ Mon, 21 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-20-4clojure-17.html
+https://sungsik819.github.io/posts/2019-10-20-4clojure-17.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-20-4clojure-17.html
+https://sungsik819.github.io/posts/2019-10-20-4clojure-17.html
 </link>
 <title>
 4clojure 17
@@ -3007,10 +3007,10 @@ Sun, 20 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-19-4clojure-16.html
+https://sungsik819.github.io/posts/2019-10-19-4clojure-16.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-19-4clojure-16.html
+https://sungsik819.github.io/posts/2019-10-19-4clojure-16.html
 </link>
 <title>
 4clojure 16
@@ -3030,10 +3030,10 @@ Sat, 19 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-18-4clojure-15.html
+https://sungsik819.github.io/posts/2019-10-18-4clojure-15.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-18-4clojure-15.html
+https://sungsik819.github.io/posts/2019-10-18-4clojure-15.html
 </link>
 <title>
 4clojure 15
@@ -3055,10 +3055,10 @@ Fri, 18 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-17-4clojure-14.html
+https://sungsik819.github.io/posts/2019-10-17-4clojure-14.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-17-4clojure-14.html
+https://sungsik819.github.io/posts/2019-10-17-4clojure-14.html
 </link>
 <title>
 4clojure 14
@@ -3080,10 +3080,10 @@ Thu, 17 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-16-4clojure-13.html
+https://sungsik819.github.io/posts/2019-10-16-4clojure-13.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-16-4clojure-13.html
+https://sungsik819.github.io/posts/2019-10-16-4clojure-13.html
 </link>
 <title>
 4clojure 13
@@ -3099,10 +3099,10 @@ Wed, 16 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-15-4clojure-12.html
+https://sungsik819.github.io/posts/2019-10-15-4clojure-12.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-15-4clojure-12.html
+https://sungsik819.github.io/posts/2019-10-15-4clojure-12.html
 </link>
 <title>
 4clojure 12
@@ -3122,10 +3122,10 @@ Tue, 15 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-14-4clojure-11.html
+https://sungsik819.github.io/posts/2019-10-14-4clojure-11.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-14-4clojure-11.html
+https://sungsik819.github.io/posts/2019-10-14-4clojure-11.html
 </link>
 <title>
 4clojure 11
@@ -3142,10 +3142,10 @@ Mon, 14 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-13-4clojure-10.html
+https://sungsik819.github.io/posts/2019-10-13-4clojure-10.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-13-4clojure-10.html
+https://sungsik819.github.io/posts/2019-10-13-4clojure-10.html
 </link>
 <title>
 4clojure 10
@@ -3163,10 +3163,10 @@ Sun, 13 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-12-4clojure-09.html
+https://sungsik819.github.io/posts/2019-10-12-4clojure-09.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-12-4clojure-09.html
+https://sungsik819.github.io/posts/2019-10-12-4clojure-09.html
 </link>
 <title>
 4clojure 09
@@ -3182,10 +3182,10 @@ Sat, 12 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-11-4clojure-08.html
+https://sungsik819.github.io/posts/2019-10-11-4clojure-08.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-11-4clojure-08.html
+https://sungsik819.github.io/posts/2019-10-11-4clojure-08.html
 </link>
 <title>
 problem 08
@@ -3203,10 +3203,10 @@ Fri, 11 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-10-4clojure-07.html
+https://sungsik819.github.io/posts/2019-10-10-4clojure-07.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-10-4clojure-07.html
+https://sungsik819.github.io/posts/2019-10-10-4clojure-07.html
 </link>
 <title>
 problem 07
@@ -3224,10 +3224,10 @@ Thu, 10 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-09-4clojure-06.html
+https://sungsik819.github.io/posts/2019-10-09-4clojure-06.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-09-4clojure-06.html
+https://sungsik819.github.io/posts/2019-10-09-4clojure-06.html
 </link>
 <title>
 problem 06
@@ -3243,10 +3243,10 @@ Wed, 09 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-08-4clojure-05.html
+https://sungsik819.github.io/posts/2019-10-08-4clojure-05.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-08-4clojure-05.html
+https://sungsik819.github.io/posts/2019-10-08-4clojure-05.html
 </link>
 <title>
 problem 05
@@ -3264,10 +3264,10 @@ Tue, 08 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-07-4clojure-04.html
+https://sungsik819.github.io/posts/2019-10-07-4clojure-04.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-07-4clojure-04.html
+https://sungsik819.github.io/posts/2019-10-07-4clojure-04.html
 </link>
 <title>
 problem 04
@@ -3283,10 +3283,10 @@ Mon, 07 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-06-4clojure-03.html
+https://sungsik819.github.io/posts/2019-10-06-4clojure-03.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-06-4clojure-03.html
+https://sungsik819.github.io/posts/2019-10-06-4clojure-03.html
 </link>
 <title>
 problem 03
@@ -3302,10 +3302,10 @@ Sun, 06 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-05-4clojure-02.html
+https://sungsik819.github.io/posts/2019-10-05-4clojure-02.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-05-4clojure-02.html
+https://sungsik819.github.io/posts/2019-10-05-4clojure-02.html
 </link>
 <title>
 problem 02
@@ -3321,10 +3321,10 @@ Sat, 05 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-04-4clojure-01.html
+https://sungsik819.github.io/posts/2019-10-04-4clojure-01.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-04-4clojure-01.html
+https://sungsik819.github.io/posts/2019-10-04-4clojure-01.html
 </link>
 <title>
 problem 01
@@ -3340,10 +3340,10 @@ Fri, 04 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-03-4clojure-start.html
+https://sungsik819.github.io/posts/2019-10-03-4clojure-start.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-03-4clojure-start.html
+https://sungsik819.github.io/posts/2019-10-03-4clojure-start.html
 </link>
 <title>
 4clojure 정리
@@ -3357,10 +3357,10 @@ Thu, 03 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-02-stop-retention.html
+https://sungsik819.github.io/posts/2019-10-02-stop-retention.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-02-stop-retention.html
+https://sungsik819.github.io/posts/2019-10-02-stop-retention.html
 </link>
 <title>
 리텐션이 낮고 사용자가 감소 또는 유지된다는 것은?
@@ -3374,10 +3374,10 @@ Wed, 02 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-10-01-think-in-box.html
+https://sungsik819.github.io/posts/2019-10-01-think-in-box.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-10-01-think-in-box.html
+https://sungsik819.github.io/posts/2019-10-01-think-in-box.html
 </link>
 <title>
 틀안에서 생각한다는 것의 의미
@@ -3391,10 +3391,10 @@ Tue, 01 Oct 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-09-30-think-extend.html
+https://sungsik819.github.io/posts/2019-09-30-think-extend.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-09-30-think-extend.html
+https://sungsik819.github.io/posts/2019-09-30-think-extend.html
 </link>
 <title>
 확장성이라는 것에 대한 생각
@@ -3408,10 +3408,10 @@ Mon, 30 Sep 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-09-27-how-db-select.html
+https://sungsik819.github.io/posts/2019-09-27-how-db-select.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-09-27-how-db-select.html
+https://sungsik819.github.io/posts/2019-09-27-how-db-select.html
 </link>
 <title>
 RDB select에 대한 고찰
@@ -3425,10 +3425,10 @@ Fri, 27 Sep 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-09-26-sql-vs-java.html
+https://sungsik819.github.io/posts/2019-09-26-sql-vs-java.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-09-26-sql-vs-java.html
+https://sungsik819.github.io/posts/2019-09-26-sql-vs-java.html
 </link>
 <title>
 SQL query VS java (프로그래밍 언어)
@@ -3442,10 +3442,10 @@ Thu, 26 Sep 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-09-25-python-reduce.html
+https://sungsik819.github.io/posts/2019-09-25-python-reduce.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-09-25-python-reduce.html
+https://sungsik819.github.io/posts/2019-09-25-python-reduce.html
 </link>
 <title>
 Python3 reduce 사용
@@ -3479,10 +3479,10 @@ Wed, 25 Sep 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2019-09-24-experience-python.html
+https://sungsik819.github.io/posts/2019-09-24-experience-python.html
 </guid>
 <link>
-http://dev-happy.com/posts/2019-09-24-experience-python.html
+https://sungsik819.github.io/posts/2019-09-24-experience-python.html
 </link>
 <title>
 Python을 2년 사용해 보고
@@ -3496,10 +3496,10 @@ Tue, 24 Sep 2019 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2018-02-07-why-clojure-blog.html
+https://sungsik819.github.io/posts/2018-02-07-why-clojure-blog.html
 </guid>
 <link>
-http://dev-happy.com/posts/2018-02-07-why-clojure-blog.html
+https://sungsik819.github.io/posts/2018-02-07-why-clojure-blog.html
 </link>
 <title>
 왜 클로저로 블로그를 만들었는가?
@@ -3513,10 +3513,10 @@ Wed, 07 Feb 2018 00:00:00 +0900
 </item>
 <item>
 <guid>
-http://dev-happy.com/posts/2018-01-27-first-post.html
+https://sungsik819.github.io/posts/2018-01-27-first-post.html
 </guid>
 <link>
-http://dev-happy.com/posts/2018-01-27-first-post.html
+https://sungsik819.github.io/posts/2018-01-27-first-post.html
 </link>
 <title>
 클로저로 된 블로그 생성
