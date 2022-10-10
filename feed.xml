@@ -12,7 +12,7 @@ https://sungsik819.github.io/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Mon, 10 Oct 2022 08:46:07 +0900
+Mon, 10 Oct 2022 09:05:40 +0900
 </lastBuildDate>
 <generator>
 clj-rss
@@ -2429,7 +2429,8 @@ https://sungsik819.github.io/posts/2019-11-10-4clojure-38.html
           &amp;#40;&amp;gt; big &amp;#40;first ls&amp;#41;&amp;#41; &amp;#40;recur &amp;#40;rest ls&amp;#41; big&amp;#41;
           :else &amp;#40;recur &amp;#40;rest ls&amp;#41; &amp;#40;first ls&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
 &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved 2&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;fn &amp;#91;&amp;amp; x&amp;#93; &amp;#40;last &amp;#40;sort x&amp;#41;&amp;#41;&amp;#41;
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;주어지는 값에서 가장 큰 값을 찾는 문제이다. 예전에 풀었을 때는 너무 길게 풀이를 했었는데 간단한 방법이 있다. sort 후 last 값을 가져오면 가장 큰 값을 가져올 수 있다. 그런데 가변인수를 하는 방법을 몰라서 헤메다가 &amp;를 사용하면 가변 인수라는 것을 알게 되어 또다른 해결책을 만들었다.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;주어지는 값에서 가장 큰 값을 찾는 문제이다. 예전에 풀었을 때는 너무 길게 풀이를 했었는데 간단한 방법이 있다. sort 후 last 값을 가져오면 가장 큰 값을 가져올 수 있다. 그런데 가변인수를 하는 방법을 몰라서 헤메다가 &amp;를 사용하면 가변 인수라는 것을 알게 되어 또다른 해결책을 만들었다.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved 3&lt;/strong&gt; reduce를 사용하여 푸는 방법도 있다.&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;reduce #&amp;#40;if &amp;#40;&amp;gt; % %2&amp;#41; % %2&amp;#41; xs&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;reduce의 동작을 이용하여 %값이 크면 %로 저장하고, %2가 크면 %2로 임시 저장되는 방식이다.&lt;/p&gt;
 </description>
 <pubDate>
 Sun, 10 Nov 2019 00:00:00 +0900
