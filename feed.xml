@@ -12,7 +12,7 @@ https://sungsik819.github.io/
 개발 관련 경험 및 성찰들을 기록
 </description>
 <lastBuildDate>
-Mon, 10 Oct 2022 09:05:40 +0900
+Wed, 12 Oct 2022 07:13:06 +0900
 </lastBuildDate>
 <generator>
 clj-rss
@@ -2338,9 +2338,15 @@ https://sungsik819.github.io/posts/2019-11-13-4clojure-41.html
 
 &amp;#40;mod 9 3&amp;#41;
 ;0
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved 2&lt;/strong&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;apply concat #&amp;#40;partition-all &amp;#40;dec %2&amp;#41; %2 %1&amp;#41;
 &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;solution에는 partition-all이라는 함수가 있는데 묶는 갯수, step을 값으로 받아서 출력하는 방식을 사용 하고 있다.&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;partition-all 2 3 &amp;#91;1 2 3 4 5 6 7 8&amp;#93;&amp;#41;
 ;&amp;#40;&amp;#40;1 2&amp;#41; &amp;#40;4 5&amp;#41; &amp;#40;7 8&amp;#41;&amp;#41;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;2개씩 값을 묶고, 3step으로 이동하여 나오는 결과 이다.&lt;/p&gt;&lt;p&gt;나뉘어져 있는 결과를 apply + concat 을 사용하여 묶어주면 된다. partition 함수와 비슷한 역할을 하는데 partition은 3개씩 묶고 1개가 남으면 그것을 버리는데  partition-all은 3개씩 묶고 1개가 남으면 그것도 같이 출력을 한다.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;2개씩 값을 묶고, 3step으로 이동하여 나오는 결과 이다.&lt;/p&gt;&lt;p&gt;나뉘어져 있는 결과를 apply + concat 을 사용하여 묶어주면 된다. partition 함수와 비슷한 역할을 하는데 partition은 3개씩 묶고 1개가 남으면 그것을 버리는데  partition-all은 3개씩 묶고 1개가 남으면 그것도 같이 출력을 한다.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Solved 3&lt;/strong&gt; 추가: 2022-10-12&lt;pre&gt;&lt;code class=&quot;clj&quot;&gt;&amp;#40;defn my-dropitem3 &amp;#91;coll x&amp;#93;
+  &amp;#40;-&amp;gt;&amp;gt; &amp;#40;take &amp;#40;count coll&amp;#41; &amp;#40;iterate inc 1&amp;#41;&amp;#41;
+       &amp;#40;map list coll&amp;#41;
+       &amp;#40;remove &amp;#40;fn &amp;#91;&amp;#91;&amp;#95; k&amp;#93;&amp;#93; &amp;#40;= 0 &amp;#40;mod k x&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+       &amp;#40;map &amp;#40;fn &amp;#91;&amp;#91;v &amp;#95;&amp;#93;&amp;#93; v&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;filter를 사용하여 할 수 있는 방법이 있지 않을까 생각을 하다가  k v로 값을 만들어서 걸러주는 방법을 이용 해도 되지 않을까 싶어서 26번 문제를 참고하여 답을 만들었다. thread last를 사용하기 위해서 k v의 위치를 바꿔서 사용 하였고, mod의 값이 0일 경우 삭제하는 remove를 사용하여 구현 하였다.&lt;/p&gt;
 </description>
 <pubDate>
 Wed, 13 Nov 2019 00:00:00 +0900

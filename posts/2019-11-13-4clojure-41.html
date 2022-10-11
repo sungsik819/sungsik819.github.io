@@ -94,9 +94,15 @@
 
 &#40;mod 9 3&#41;
 ;0
+</code></pre></p><p><strong>Solved 2</strong><pre><code class="clj">apply concat #&#40;partition-all &#40;dec %2&#41; %2 %1&#41;
 </code></pre></p><p>solution에는 partition-all이라는 함수가 있는데 묶는 갯수, step을 값으로 받아서 출력하는 방식을 사용 하고 있다.</p><pre><code class="clj">&#40;partition-all 2 3 &#91;1 2 3 4 5 6 7 8&#93;&#41;
 ;&#40;&#40;1 2&#41; &#40;4 5&#41; &#40;7 8&#41;&#41;
-</code></pre><p>2개씩 값을 묶고, 3step으로 이동하여 나오는 결과 이다.</p><p>나뉘어져 있는 결과를 apply + concat 을 사용하여 묶어주면 된다. partition 함수와 비슷한 역할을 하는데 partition은 3개씩 묶고 1개가 남으면 그것을 버리는데  partition-all은 3개씩 묶고 1개가 남으면 그것도 같이 출력을 한다.</p>
+</code></pre><p>2개씩 값을 묶고, 3step으로 이동하여 나오는 결과 이다.</p><p>나뉘어져 있는 결과를 apply + concat 을 사용하여 묶어주면 된다. partition 함수와 비슷한 역할을 하는데 partition은 3개씩 묶고 1개가 남으면 그것을 버리는데  partition-all은 3개씩 묶고 1개가 남으면 그것도 같이 출력을 한다.</p><p><strong>Solved 3</strong> 추가: 2022-10-12<pre><code class="clj">&#40;defn my-dropitem3 &#91;coll x&#93;
+  &#40;-&gt;&gt; &#40;take &#40;count coll&#41; &#40;iterate inc 1&#41;&#41;
+       &#40;map list coll&#41;
+       &#40;remove &#40;fn &#91;&#91;&#95; k&#93;&#93; &#40;= 0 &#40;mod k x&#41;&#41;&#41;&#41;
+       &#40;map &#40;fn &#91;&#91;v &#95;&#93;&#93; v&#41;&#41;&#41;&#41;
+</code></pre></p><p>filter를 사용하여 할 수 있는 방법이 있지 않을까 생각을 하다가  k v로 값을 만들어서 걸러주는 방법을 이용 해도 되지 않을까 싶어서 26번 문제를 참고하여 답을 만들었다. thread last를 사용하기 위해서 k v의 위치를 바꿔서 사용 하였고, mod의 값이 0일 경우 삭제하는 remove를 사용하여 구현 하였다.</p>
 </div>
 
 <div id="post-tags">
