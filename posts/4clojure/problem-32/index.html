@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Sungsik: 4clojure - Duplicate a Sequence (32)</title>
+    
+<meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
+
+<meta name="description" content="Problem">
+
+<meta property="og:description" content="Problem">
+
+<meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-32/" />
+<meta property="og:title" content="4clojure - Duplicate a Sequence (32)" />
+<meta property="og:type" content="article" />
+
+    <link rel="canonical" href="https://sungsik819.github.io/posts/4clojure/problem-32/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700" rel="stylesheet"
+          type="text/css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
+    <link href="/css/screen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Sungsik</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li ><a href="/">Home</a></li>
+                <li
+                ><a href="/archives/">Archives</a></li>
+                
+                <li
+                >
+                <a href="/pages/vision/">Vision</a>
+                </li>
+                
+                <li
+                >
+                <a href="/pages/features/">Features</a>
+                </li>
+                
+                <li
+                >
+                <a href="/pages/about/">About</a>
+                </li>
+                
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+</nav>
+
+
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-lg-9">
+            <div id="content">
+                
+<div id="post">
+    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">2019년 11월 4일</div>
+        
+    </div>
+    <h2>4clojure - Duplicate a Sequence (32)</h2>
+</div>
+<div>
+    
+    <p><strong>Problem</strong></p><pre><code class="clojure">(= (__ [1 2 3]) '(1 1 2 2 3 3))
+
+(= (__ [:a :a :b :b]) '(:a :a :a :a :b :b :b :b))
+
+(= (__ [[1 2] [3 4]]) '([1 2] [1 2] [3 4] [3 4]))
+
+(= (__ [[1 2] [3 4]]) '([1 2] [1 2] [3 4] [3 4]))
+</code></pre><p><strong>Solved</strong></p><pre><code class="clojure">mapcat (fn [x] (list x x))
+
+mapcat #(repeat 2 %)
+
+mapcat #(take 2 (iterate identity %))
+</code></pre><p>값을 하나씩 추가로 생성을 하고 collection인 경우 collection을 그대로 복사하는 문제이다. mapcat을 사용하였는데 map  + apply + concat으로 풀어서 해도 해결 가능 하다.</p><p>interleave를 사용하여 해결한 방식도 있었는데 같은 collection을 2번 합쳐서 해결하는 방식이 있었다.</p><p>interleave의 작동 방식을 테스트하는 예제를 만들어 봤다.</p><pre><code class="clj">(interleave [4 5 6] [1 2 3])
+;; (4 1 5 2 6 3)
+
+(interleave [[4 5 6]] [1 2 3])
+;; ([4 5 6] 1)
+
+(interleave [4] [1 2 3])
+;; (4 1)
+</code></pre>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags/4clojure/">4clojure</a>
+    
+    <a href="/tags/Today%20I%20Learn/">Today I Learn</a>
+    
+</div>
+
+
+    <div id="prev-next">
+        
+        <a href="/posts/4clojure/problem-33/">&laquo; 4clojure - Replicate a Sequence (33)</a>
+        
+        
+        <a class="right" href="/posts/4clojure/problem-31/">4clojure - Pack a Sequence (31) &raquo;</a>
+        
+    </div>
+
+    
+
+
+</div>
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div id="sidebar">
+                
+                <div id="recent">
+                    <h3>Recent Posts</h3>
+                    <ul>
+                        
+                        <li><a href="/posts/4clojure/restart-4clojure/">4clojure부터 시작</a></li>
+                        
+                        <li><a href="/posts/write/">블로그 글을 다시 쓰면서</a></li>
+                        
+                        <li><a href="/posts/write-project-euler/">프로젝트 오일러를 시작하면서</a></li>
+                        
+                    </ul>
+                </div>
+                
+                
+                <div id="tags">
+                    <h3>Tags</h3>
+                    <ul>
+                        
+                        <li><a href="/tags/essay/">essay</a></li>
+                        
+                        <li><a href="/tags/clojure/">clojure</a></li>
+                        
+                        <li><a href="/tags/retrospective/">retrospective</a></li>
+                        
+                        <li><a href="/tags/4clojure/">4clojure</a></li>
+                        
+                        <li><a href="/tags/why/">why</a></li>
+                        
+                        <li><a href="/tags/css/">css</a></li>
+                        
+                        <li><a href="/tags/math/">math</a></li>
+                        
+                        <li><a href="/tags/emacs/">emacs</a></li>
+                        
+                        <li><a href="/tags/Today%20I%20Learn/">Today I Learn</a></li>
+                        
+                        <li><a href="/tags/python/">python</a></li>
+                        
+                        <li><a href="/tags/project%20euler/">project euler</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <footer>Copyright &copy; 2022 sungsik819
+        <p style="text-align: center;">Powered by <a href="http://cryogenweb.org">Cryogen</a></p></footer>
+</div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="/js/highlight.pack.js" type="application/javascript"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+</body>
+</html>

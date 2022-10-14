@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Sungsik: 4clojure - Filter Perfect Squares (74)</title>
+    
+<meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
+
+<meta name="description" content="Problem">
+
+<meta property="og:description" content="Problem">
+
+<meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-74/" />
+<meta property="og:title" content="4clojure - Filter Perfect Squares (74)" />
+<meta property="og:type" content="article" />
+
+    <link rel="canonical" href="https://sungsik819.github.io/posts/4clojure/problem-74/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700" rel="stylesheet"
+          type="text/css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
+    <link href="/css/screen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Sungsik</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li ><a href="/">Home</a></li>
+                <li
+                ><a href="/archives/">Archives</a></li>
+                
+                <li
+                >
+                <a href="/pages/vision/">Vision</a>
+                </li>
+                
+                <li
+                >
+                <a href="/pages/features/">Features</a>
+                </li>
+                
+                <li
+                >
+                <a href="/pages/about/">About</a>
+                </li>
+                
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+</nav>
+
+
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-lg-9">
+            <div id="content">
+                
+<div id="post">
+    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">2019년 12월 23일</div>
+        
+    </div>
+    <h2>4clojure - Filter Perfect Squares (74)</h2>
+</div>
+<div>
+    
+    <p><strong>Problem</strong></p><pre><code class="clj">(= (__ "4,5,6,7,8,9") "4,9")
+
+(= (__ "15,16,25,36,37") "16,25,36")
+</code></pre><p><strong>Solved</strong></p><pre><code class="clj">(fn [st]
+	(clojure.string/join "," 
+                         (filter #(zero? (rem (Math/sqrt %) 1)) 
+                                 (map read-string 
+                                      (re-seq #"\d+" st)))))
+</code></pre><p>우선 stirng을 collection으로 나누는 작업이 필요하다</p><pre><code class="clj">(re-seq #"\d+" "1,2,3,4,5,6,7")
+;; ("1" "2" "3" "4" "5" "6" "7")
+</code></pre><p>그다음에 나누어진 string을 int 형으로 변환을 해야한다.</p><pre><code class="clj">(map read-string (re-seq #"\d+" "1,2,3,4,5,6,7"))
+;; (1 2 3 4 5 6 7)
+</code></pre><p>이제부터가 중요한데 사실 완전제곱수라는 것을 어떻게 판별을 해야하는지 아무리 생각을 해도 떠오르지가 않아서 인터넷으로 찾아 봤다.
+그랬더니 아래와 같은 몇가지 방법이 있었다.</p><pre><code class="clj">;; 1
+(rem (Math/sqrt 4) 1)
+;; 0
+
+;; 2
+(= 2 (* (int (Math/sqrt 2)) (int (Math/sqrt 2))))
+;; false
+
+(= 4 (* (int (Math/sqrt 4)) (int (Math/sqrt 4))))
+;; true
+
+;; 3
+(== (Math/sqrt 4) (int (Math/sqrt 4)))
+;; true
+
+(== (Math/sqrt 3) (int (Math/sqrt 3)))
+;; true
+</code></pre><p>총 3가지 방법을 예제로 변형을 해봤다.  1번째 방법은 정수 일때 1로 나누면 무조건 0으로 반환을 하는 성질을 이용해서 완전제곱수가 정수 이므로 그 원리를 이용 한 것이고 2번째는 제곱의 수가 원래 수와 같은지 판별을 할 수 있는 문제이다 사실 2번째 방법을 좀 더 생각했다면 생각했을 법한 방법이라고 생각 한다.</p><p>3번째 방법은 ==이 clojure에서 있는 등호라는 것을 몰랐기 때문에 생각을 할 수 없는 방법이라고 생각한다. ==의 사용법에 대해서는 좀 더 공부가 필요하다</p><p>나머지 식에 대한 성질이 수학적인 방법인 것 같아서 그 방법을 사용 하였다.</p><p>clojure.string/join을 사용하여 string으로 만드는 작업을 하였다.</p><pre><code class="clj">(clojure.string/join "," '(1, 4))
+;; "1,4"
+</code></pre><p>interpose와 apply를 사용하여 합치는 방법도 있다.</p><pre><code class="clj">(interpose "," [1 4])
+;; (1 "," 4)
+(apply str '(1 "," 4))
+;; "1,4"
+</code></pre>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags/4clojure/">4clojure</a>
+    
+    <a href="/tags/Today%20I%20Learn/">Today I Learn</a>
+    
+</div>
+
+
+    <div id="prev-next">
+        
+        <a href="/posts/4clojure/problem-75/">&laquo; 4clojure - Euler&#39;s Totient Function (75)</a>
+        
+        
+        <a class="right" href="/posts/essay/data-merge-division/">데이터의 병합/분리 &raquo;</a>
+        
+    </div>
+
+    
+
+
+</div>
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div id="sidebar">
+                
+                <div id="recent">
+                    <h3>Recent Posts</h3>
+                    <ul>
+                        
+                        <li><a href="/posts/4clojure/restart-4clojure/">4clojure부터 시작</a></li>
+                        
+                        <li><a href="/posts/write/">블로그 글을 다시 쓰면서</a></li>
+                        
+                        <li><a href="/posts/write-project-euler/">프로젝트 오일러를 시작하면서</a></li>
+                        
+                    </ul>
+                </div>
+                
+                
+                <div id="tags">
+                    <h3>Tags</h3>
+                    <ul>
+                        
+                        <li><a href="/tags/essay/">essay</a></li>
+                        
+                        <li><a href="/tags/clojure/">clojure</a></li>
+                        
+                        <li><a href="/tags/retrospective/">retrospective</a></li>
+                        
+                        <li><a href="/tags/4clojure/">4clojure</a></li>
+                        
+                        <li><a href="/tags/why/">why</a></li>
+                        
+                        <li><a href="/tags/css/">css</a></li>
+                        
+                        <li><a href="/tags/math/">math</a></li>
+                        
+                        <li><a href="/tags/emacs/">emacs</a></li>
+                        
+                        <li><a href="/tags/Today%20I%20Learn/">Today I Learn</a></li>
+                        
+                        <li><a href="/tags/python/">python</a></li>
+                        
+                        <li><a href="/tags/project%20euler/">project euler</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <footer>Copyright &copy; 2022 sungsik819
+        <p style="text-align: center;">Powered by <a href="http://cryogenweb.org">Cryogen</a></p></footer>
+</div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="/js/highlight.pack.js" type="application/javascript"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+</body>
+</html>

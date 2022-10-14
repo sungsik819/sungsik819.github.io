@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Sungsik: 4clojure - Analyze a Tic-Tac-Toe Board (73)</title>
+    
+<meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
+
+<meta name="description" content="Problem">
+
+<meta property="og:description" content="Problem">
+
+<meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-73/" />
+<meta property="og:title" content="4clojure - Analyze a Tic-Tac-Toe Board (73)" />
+<meta property="og:type" content="article" />
+
+    <link rel="canonical" href="https://sungsik819.github.io/posts/4clojure/problem-73/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700" rel="stylesheet"
+          type="text/css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
+    <link href="/css/screen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Sungsik</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li ><a href="/">Home</a></li>
+                <li
+                ><a href="/archives/">Archives</a></li>
+                
+                <li
+                >
+                <a href="/pages/vision/">Vision</a>
+                </li>
+                
+                <li
+                >
+                <a href="/pages/features/">Features</a>
+                </li>
+                
+                <li
+                >
+                <a href="/pages/about/">About</a>
+                </li>
+                
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+</nav>
+
+
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-lg-9">
+            <div id="content">
+                
+<div id="post">
+    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">2019년 12월 20일</div>
+        
+    </div>
+    <h2>4clojure - Analyze a Tic-Tac-Toe Board (73)</h2>
+</div>
+<div>
+    
+    <p><strong>Problem</strong></p><pre><code class="clj">(= nil (__ [[:e :e :e]
+            [:e :e :e]
+            [:e :e :e]]))
+
+(= :x (__ [[:x :e :o]
+           [:x :e :e]
+           [:x :e :o]]))
+
+(= :o (__ [[:e :x :e]
+           [:o :o :o]
+           [:x :e :x]]))
+
+(= nil (__ [[:x :e :o]
+            [:x :x :e]
+            [:o :x :o]]))
+
+(= :x (__ [[:x :e :e]
+           [:o :x :e]
+           [:o :e :x]]))
+
+(= :o (__ [[:x :e :o]
+           [:x :o :e]
+           [:o :e :x]]))
+
+(= nil (__ [[:x :o :x]
+            [:x :o :x]
+            [:o :x :o]]))
+</code></pre><p><strong>Solved</strong></p><pre><code class="clj">(fn [coll]
+	(let [a (flatten (partition 1 4 (flatten coll)))
+		  r (flatten (partition 1 4 (flatten (map #(reverse %) coll))))
+		  b (into (into (into coll (apply map vector coll)) [a]) [r])]
+	 (cond (some true? (map #(every? (fn [x] (= x :x)) %) b)) :x
+		   (some true? (map #(every? (fn [x] (= x :o)) %) b)) :o
+		 	:else nil)))
+</code></pre><p>sort 해서 하면 되겠거니 했었는데 일직선이 되지 않는 값들에 대해서가 문제가 된다. 그래서 좀 더 생각해야 할 것 같다.</p><p>틱택토 게임은 기본적으로 빙고와 같다고 생각 한다.</p><p>일직선에 3개는 일단 해결이 될 것 같은데 밑으로는 어떻게 검증을 해야 하나 생각을 했을 때  밑으로 collection을 만들어 주면 될 것 같다는 생각이 들었다.</p><pre><code class="clj">(apply map vector [[:x :e :o] [:x :e :e] [:x :e :o]])
+;; ([:x :x :x] [:e :e :e] [:o :e :o])
+</code></pre><p>대각선도 위와 같은 형태로 만들어서 검증을 할 수 있는 로직을 짜면 해결이 될 것 같다.</p><p>group-by로 검증 로직을 할 수 있을 것 같은데 좀 더 고민이 필요하다.</p><p>이 문제를 풀기 위한 데이터 구조가 어떻게 되는지 생각을 해봐야겠다.</p><p>내 생각에는 수직, 수평, 대각선 각각의 값들을 가진 3개의 백터 쌍으로 있는 collection을 먼저 만들어 놓고 검증을 하는 것이 낫겠다고 생각한다.</p><p>수평, 수직은 어떻게든 될 것 같은데 대각선을 어떻게 추출을 해야할지 좀 고민이 된다.
+전통적인 방식으로만 하려고 생각하다보니 그것에는 적합하지 않다는 것을 느끼고 있다. 그래서 더 힘든 것 같다. 생각의 전환이라는 것이 한번 생각이 들면 바꿔서 생각을 한다는 것이 쉬운 일은 아니다.</p><p>검증은 every?로 하면 한 collection내의 값이 모두 동일해야 참이라는 것을 알 수 있다.</p><pre><code class="clj">(every? #(= % :x) [:x :x :x])
+;; true
+
+(every? #(= % :x) [:x :x :o])
+;; false
+</code></pre><p>우선 수평, 수직에 대한 자료형을 만들어 봤다</p><pre><code class="clj">(into [[:x :e :o] [:x :e :e] [:x :e :o]] (apply map vector [[:x :e :o] [:x :e :e] [:x :e :o]]))
+;; [[:x :e :o] [:x :e :e] [:x :e :o] [:x :x :x] [:e :e :e] [:o :e :o]]
+</code></pre><p>그리고 검사식은 아래와 같다.
+:x에 대한 every?가 true이고 그 결과를 가지고 true가 1개라도 있으면 true인 결과를 반환한다.</p><pre><code class="clj">(some true? (map #(every? (fn [x] (= x :x)) %) [[:x :e :o] [:x :e :e] [:x :e :o] [:x :x :x] [:e :e :e] [:o :e :o]]))
+;; true		 
+</code></pre><p>대각선을 제외하고 4개 통과하는 프로그램이다.</p><pre><code class="clj">(fn [coll]
+	(let [b (into coll (apply map vector coll))]
+	 (cond (some true? (map #(every? (fn [x] (= x :x)) %) b)) :x
+		   (some true? (map #(every? (fn [x] (= x :o)) %) b)) :o
+		 	:else nil)))
+			
+</code></pre><p>대각선을 가지고 오는 방법은 first, second, last인데.. 일단 여기까지만 생각이 난다.
+반대 대각선은 last, second, first… 이 조합으로 구성을 어떻게 해야할지 생각하면 될 것 같다.</p><p>first,second, last 방법 말고, 값을 풀어서 다시 나누는 방법을 실행 해봤다.</p><pre><code class="clj">(flatten (partition 1 4 (flatten [[:x :e :e] [:o :x :e] [:o :e :x]])))
+;; (:x :x :x)
+</code></pre><p>반대 대각선은 이렇게 하면 될 것 같다.</p><pre><code class="clj">(flatten (partition 1 4 (flatten (map #(reverse %) [[:x :e :o] [:x :o :e] [:o :e :x]]))))
+;; (:o :o :o)
+</code></pre><pre><code class="clj">(fn [coll]
+	(let [a (flatten (partition 1 4 (flatten coll)))
+		  r (flatten (partition 1 4 (flatten (map #(reverse %) coll))))
+		  b (into (into (into coll (apply map vector coll)) [a]) [r])]
+	 (cond (some true? (map #(every? (fn [x] (= x :x)) %) b)) :x
+		   (some true? (map #(every? (fn [x] (= x :o)) %) b)) :o
+		 	:else nil)))
+			
+</code></pre><p>이번 문제를 풀어보면서 중요한 사실을 알게 된 것이 있는데 어떤 데이터 형식만을 고집하기 보다는 그 형식을 풀어서 문제는 다른 각도로 생각해보는 것도 필요하다는 것을 알게 되었다</p><p>아래와 같은 형식으로도 some을 변경이 가능하다.</p><pre><code class="clj">(fn [coll]
+	(let [a (flatten (partition 1 4 (flatten coll)))
+		  r (flatten (partition 1 4 (flatten (map #(reverse %) coll))))
+		  b (into (into (into coll (apply map vector coll)) [a]) [r])]
+	 (some {[:x :x :x] :x [:o :o :o] :o} b)))
+</code></pre>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags/4clojure/">4clojure</a>
+    
+    <a href="/tags/Today%20I%20Learn/">Today I Learn</a>
+    
+</div>
+
+
+    <div id="prev-next">
+        
+        <a href="/posts/essay/how-data-structure/">&laquo; 어떻게 데이터 구조를 만들어야 할까?</a>
+        
+        
+        <a class="right" href="/posts/4clojure/problem-72/">4clojure - Rearranging Code: -&gt;&gt; (72) &raquo;</a>
+        
+    </div>
+
+    
+
+
+</div>
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div id="sidebar">
+                
+                <div id="recent">
+                    <h3>Recent Posts</h3>
+                    <ul>
+                        
+                        <li><a href="/posts/4clojure/restart-4clojure/">4clojure부터 시작</a></li>
+                        
+                        <li><a href="/posts/write/">블로그 글을 다시 쓰면서</a></li>
+                        
+                        <li><a href="/posts/write-project-euler/">프로젝트 오일러를 시작하면서</a></li>
+                        
+                    </ul>
+                </div>
+                
+                
+                <div id="tags">
+                    <h3>Tags</h3>
+                    <ul>
+                        
+                        <li><a href="/tags/essay/">essay</a></li>
+                        
+                        <li><a href="/tags/clojure/">clojure</a></li>
+                        
+                        <li><a href="/tags/retrospective/">retrospective</a></li>
+                        
+                        <li><a href="/tags/4clojure/">4clojure</a></li>
+                        
+                        <li><a href="/tags/why/">why</a></li>
+                        
+                        <li><a href="/tags/css/">css</a></li>
+                        
+                        <li><a href="/tags/math/">math</a></li>
+                        
+                        <li><a href="/tags/emacs/">emacs</a></li>
+                        
+                        <li><a href="/tags/Today%20I%20Learn/">Today I Learn</a></li>
+                        
+                        <li><a href="/tags/python/">python</a></li>
+                        
+                        <li><a href="/tags/project%20euler/">project euler</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <footer>Copyright &copy; 2022 sungsik819
+        <p style="text-align: center;">Powered by <a href="http://cryogenweb.org">Cryogen</a></p></footer>
+</div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="/js/highlight.pack.js" type="application/javascript"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+</body>
+</html>

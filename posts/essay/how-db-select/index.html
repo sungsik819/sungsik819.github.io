@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Sungsik: RDB select에 대한 고찰</title>
+    
+<meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
+
+<meta name="description" content="개발을 하다보면 rdb는 필수로 사용을 하게 된다그렇지만 rdb에 있는데이터의 구조를 확장성 있게 사용한다는 것은 또다른 어려움이 있다고 생각한다">
+
+<meta property="og:description" content="개발을 하다보면 rdb는 필수로 사용을 하게 된다그렇지만 rdb에 있는데이터의 구조를 확장성 있게 사용한다는 것은 또다른 어려움이 있다고 생각한다">
+
+<meta property="og:url" content="https://sungsik819.github.io/posts/essay/how-db-select/" />
+<meta property="og:title" content="RDB select에 대한 고찰" />
+<meta property="og:type" content="article" />
+
+    <link rel="canonical" href="https://sungsik819.github.io/posts/essay/how-db-select/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700" rel="stylesheet"
+          type="text/css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
+    <link href="/css/screen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Sungsik</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li ><a href="/">Home</a></li>
+                <li
+                ><a href="/archives/">Archives</a></li>
+                
+                <li
+                >
+                <a href="/pages/vision/">Vision</a>
+                </li>
+                
+                <li
+                >
+                <a href="/pages/features/">Features</a>
+                </li>
+                
+                <li
+                >
+                <a href="/pages/about/">About</a>
+                </li>
+                
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+</nav>
+
+
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-lg-9">
+            <div id="content">
+                
+<div id="post">
+    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">2019년 9월 27일</div>
+        
+    </div>
+    <h2>RDB select에 대한 고찰</h2>
+</div>
+<div>
+    
+    <p>개발을 하다보면 rdb는 필수로 사용을 하게 된다</p><p>그렇지만 rdb에 있는데이터의 구조를 확장성 있게 사용한다는 것은 또다른 어려움이 있다고 생각한다</p><p>rdb 구조를 잘 설계하면 확장성있게 사용 가능한가?라는 질문에는 아니오라고 얘기하고 싶다 그 이유는 2차원으로 사용하는 rdb의 특성상 원하는 구조로 다시 바꾸기란 쉽지만은 않기때문이다</p><p>원하는 데이터를 전송할때도 전송할 데이터에 대한 구조만 작성을 하는 것이 확장성이 있을까 하면 아니오이고 필히 수정 또는 확장을 요구하는 현상이 반드시 일어난다고 생각한다</p><p>내가 하고 싶은 것은 테이블 전체의 데이터 구조들을 정의 해놓고 select를 하고 원하는 데이터만 선택적으로 전송한다면 변화에는 유용하리라 생각한다</p><p>아직 그렇게 작성을 해보진 않아서 얼마나 속도에 영향이 있을지는 모르겠지만 시도해볼만 하다고 생각한다</p><p>다시 생각을 해보니 너무 rdb 설계에 의존을 하는 것은 않좋다는 생각이 들었다. db를 먼저 설계 하고 클래스를 설계를 하게 되니 확장성이 안그래도 없는데 더 없어졌다는 생각이 들었고 db를 설계하기 전에 class를 설계하는 습관이 필요하다는 생각이 들었다. 그래야 test 코드도 원하는데로 만들수 있고, 확장 및 변경에 용이하리라 생각한다.</p><p>db 보다는 domain이 중요하다.</p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags/essay/">essay</a>
+    
+    <a href="/tags/Today%20I%20Learn/">Today I Learn</a>
+    
+</div>
+
+
+    <div id="prev-next">
+        
+        <a href="/posts/essay/think-extend/">&laquo; 확장성이라는 것에 대한 생각</a>
+        
+        
+        <a class="right" href="/posts/essay/sql-vs-java/">SQL query VS java (프로그래밍 언어) &raquo;</a>
+        
+    </div>
+
+    
+
+
+</div>
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div id="sidebar">
+                
+                <div id="recent">
+                    <h3>Recent Posts</h3>
+                    <ul>
+                        
+                        <li><a href="/posts/4clojure/restart-4clojure/">4clojure부터 시작</a></li>
+                        
+                        <li><a href="/posts/write/">블로그 글을 다시 쓰면서</a></li>
+                        
+                        <li><a href="/posts/write-project-euler/">프로젝트 오일러를 시작하면서</a></li>
+                        
+                    </ul>
+                </div>
+                
+                
+                <div id="tags">
+                    <h3>Tags</h3>
+                    <ul>
+                        
+                        <li><a href="/tags/essay/">essay</a></li>
+                        
+                        <li><a href="/tags/clojure/">clojure</a></li>
+                        
+                        <li><a href="/tags/retrospective/">retrospective</a></li>
+                        
+                        <li><a href="/tags/4clojure/">4clojure</a></li>
+                        
+                        <li><a href="/tags/why/">why</a></li>
+                        
+                        <li><a href="/tags/css/">css</a></li>
+                        
+                        <li><a href="/tags/math/">math</a></li>
+                        
+                        <li><a href="/tags/emacs/">emacs</a></li>
+                        
+                        <li><a href="/tags/Today%20I%20Learn/">Today I Learn</a></li>
+                        
+                        <li><a href="/tags/python/">python</a></li>
+                        
+                        <li><a href="/tags/project%20euler/">project euler</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <footer>Copyright &copy; 2022 sungsik819
+        <p style="text-align: center;">Powered by <a href="http://cryogenweb.org">Cryogen</a></p></footer>
+</div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="/js/highlight.pack.js" type="application/javascript"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+</body>
+</html>
