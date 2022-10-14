@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Sungsik: 4clojure - Black Box Testing (65)</title>
+    
+<meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,write,project euler">
+
+<meta name="description" content="Problem">
+
+<meta property="og:description" content="Problem">
+
+<meta property="og:url" content="https://sungsik819.github.io/posts/2019-12-10-4clojure-65/" />
+<meta property="og:title" content="4clojure - Black Box Testing (65)" />
+<meta property="og:type" content="article" />
+
+    <link rel="canonical" href="https://sungsik819.github.io/posts/2019-12-10-4clojure-65/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700" rel="stylesheet"
+          type="text/css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
+    <link href="/css/screen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Sungsik</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li ><a href="/">Home</a></li>
+                <li
+                ><a href="/archives/">Archives</a></li>
+                
+                <li
+                >
+                <a href="/pages/vision/">Vision</a>
+                </li>
+                
+                <li
+                >
+                <a href="/pages/features/">Features</a>
+                </li>
+                
+                <li
+                >
+                <a href="/pages/about/">About</a>
+                </li>
+                
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+</nav>
+
+
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-lg-9">
+            <div id="content">
+                
+<div id="post">
+    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">2019년 12월 10일</div>
+        
+    </div>
+    <h2>4clojure - Black Box Testing (65)</h2>
+</div>
+<div>
+    
+    <p><strong>Problem</strong></p><pre><code class="clj">(= :map (__ {:a 1, :b 2}))
+
+(= :list (__ (range (rand-int 20))))
+
+(= :vector (__ [1 2 3 4 5 6]))
+
+(= :set (__ #{10 (rand-int 5)}))
+
+(= [:map :set :vector :list] (map __ [{} #{} [] ()]))
+</code></pre><p><strong>제한 : class, type, Class, vector?, sequential?, list?, seq?, map?, set?</strong><strong>instance?,  getClass</strong></p><p><strong>Solved</strong></p><pre><code class="clj">(fn [coll]
+  (let [base (empty coll)]
+    (cond
+      (= base {})  :map
+      (= base #{}) :set
+      (= base '()) (if (reversible? coll) :vector :list))))
+</code></pre><p>검증하는 함수 없이 어떻게 자료형을 알 수가 있는거지? 라는 생각이 먼저 든다.
+어떻게 풀어야할지 감이 잡히지 않는다....</p><p>값이 들어있는 상태에서 empty로 만드는 함수가 있다는 것을 처음 알게 되었다.
+그리고 collection 자체를 검증 할 수 있다는 것도 알게 되었다.</p><p>보통의 언어 같으면 저런식으로 collection을 비교하지 못해서 저런 방법이 있는지 조차 모르고 산다.</p><p>reversible? 이라는 함수는 확실하게는 잘 모르겠지만 Reversible 을 구현한 collection을 검증하는 함수인데 이게 무엇을 뜻하는지는 아직 잘 모르겠다.</p><p>찾아보니 reverse 가능한 seq를 reversible이라고 한다. 그래서 vector, sorted-map, sorted-set 이 true 값이 되는 것 같다.</p><p>그래서 이번에는 정말로 감이 잡히질 않아서 인터넷에서 찾아보고 공부한다는 마음 가짐으로 기록으로 남긴다.</p><p>다른 사람이 남긴 해답을 분석을 하고 싶어 졌다.</p><pre><code class="clj">#(cond
+   (= (conj % nil) %) :map 
+   (= (conj % 0) (conj % 0 0)) :set
+   (= (conj % 0 1) (cons 1 (cons 0 %))) :list
+   :else :vector)
+</code></pre><pre><code class="clj">#((zipmap (map str [{} #{} () []]) [:map :set :list :vector]) (str (empty %)))
+</code></pre>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags/4clojure/">4clojure</a>
+    
+    <a href="/tags/Today%20I%20Learn/">Today I Learn</a>
+    
+</div>
+
+
+    <div id="prev-next">
+        
+        <a href="/posts/2019-12-11-4clojure-66/">&laquo; 4clojure - Greatest Common Divisor (66)</a>
+        
+        
+        <a class="right" href="/posts/2019-12-09-4clojure-64/">4clojure - Intro to Reduce (64) &raquo;</a>
+        
+    </div>
+
+    
+
+
+</div>
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div id="sidebar">
+                
+                <div id="recent">
+                    <h3>Recent Posts</h3>
+                    <ul>
+                        
+                        <li><a href="/posts/2022-10-04-restart-4clojure/">4clojure부터 시작</a></li>
+                        
+                        <li><a href="/posts/2022-06-05-write/">블로그 글을 다시 쓰면서</a></li>
+                        
+                        <li><a href="/posts/2021-10-22-write-project-euler/">프로젝트 오일러를 시작하면서</a></li>
+                        
+                    </ul>
+                </div>
+                
+                
+                <div id="tags">
+                    <h3>Tags</h3>
+                    <ul>
+                        
+                        <li><a href="/tags/essay/">essay</a></li>
+                        
+                        <li><a href="/tags/clojure/">clojure</a></li>
+                        
+                        <li><a href="/tags/retrospective/">retrospective</a></li>
+                        
+                        <li><a href="/tags/4clojure/">4clojure</a></li>
+                        
+                        <li><a href="/tags/why/">why</a></li>
+                        
+                        <li><a href="/tags/css/">css</a></li>
+                        
+                        <li><a href="/tags/math/">math</a></li>
+                        
+                        <li><a href="/tags/emacs/">emacs</a></li>
+                        
+                        <li><a href="/tags/Today%20I%20Learn/">Today I Learn</a></li>
+                        
+                        <li><a href="/tags/python/">python</a></li>
+                        
+                        <li><a href="/tags/write/">write</a></li>
+                        
+                        <li><a href="/tags/project%20euler/">project euler</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <footer>Copyright &copy; 2022 sungsik819
+        <p style="text-align: center;">Powered by <a href="http://cryogenweb.org">Cryogen</a></p></footer>
+</div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="/js/highlight.pack.js" type="application/javascript"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Sungsik: 4clojure - Word Sorting (70)</title>
+    
+<meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,write,project euler">
+
+<meta name="description" content="Problem">
+
+<meta property="og:description" content="Problem">
+
+<meta property="og:url" content="https://sungsik819.github.io/posts/2019-12-17-4clojure-70/" />
+<meta property="og:title" content="4clojure - Word Sorting (70)" />
+<meta property="og:type" content="article" />
+
+    <link rel="canonical" href="https://sungsik819.github.io/posts/2019-12-17-4clojure-70/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700" rel="stylesheet"
+          type="text/css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
+    <link href="/css/screen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Sungsik</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li ><a href="/">Home</a></li>
+                <li
+                ><a href="/archives/">Archives</a></li>
+                
+                <li
+                >
+                <a href="/pages/vision/">Vision</a>
+                </li>
+                
+                <li
+                >
+                <a href="/pages/features/">Features</a>
+                </li>
+                
+                <li
+                >
+                <a href="/pages/about/">About</a>
+                </li>
+                
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+</nav>
+
+
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-lg-9">
+            <div id="content">
+                
+<div id="post">
+    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">2019년 12월 17일</div>
+        
+    </div>
+    <h2>4clojure - Word Sorting (70)</h2>
+</div>
+<div>
+    
+    <p><strong>Problem</strong></p><pre><code class="clj">(= (__  "Have a nice day.")
+   ["a" "day" "Have" "nice"])
+
+(= (__  "Clojure is a fun language!")
+   ["a" "Clojure" "fun" "is" "language"])
+
+(= (__  "Fools fall for foolish follies.")
+   ["fall" "follies" "foolish" "Fools" "for"])
+</code></pre><p><strong>Solved</strong></p><pre><code class="clj">(fn [st]
+  (sort-by clojure.string/lower-case (re-seq #"\w+" st)))
+</code></pre><p>나눠서 sort 하면 되겠거니 하고 시도를 했다.</p><pre><code class="clj">(clojure.string/split "Have a nice day." #" ")
+;; ["Have" "a" "nice" "day."]
+
+(sort (clojure.string/split "Have a nice day." #" "))
+;; ("Have" "a" "day." "nice")
+</code></pre><p>대문자가 생각대로 sort가 안되서 lowercase를 사용 하였다.</p><pre><code class="clj">(sort #(compare (clojure.string/lower-case %1) (clojure.string/lower-case %2)) (clojure.string/split "Have a nice day." #" "))
+;; ("a" "day." "Have" "nice")
+
+</code></pre><p>되겠거니 하고 답을 제출 했는데 unittest failed가 나오는 것이다. 라이브러리가 지원을 안하는 것인가? 하고 생각을 해보니..마지막 단어에 붙어 있는 마침표가 문제 였다.</p><p>그래서 정규식으로 다시 바꿔서 시도를 했다.</p><pre><code class="clj">(re-seq #"\w+" "Have a nice day.")
+;; ("Have" "a" "nice" "day")
+</code></pre><p>마침표는 버리고 단어만 분리가 되는 것을 알수 있다. 이것 때문에 잘 실행 되고 있는 사이트 탓을 하였다. 왜냐하면 repl에서는 잘 되어서 단순하게 생각 했던 것 같다.</p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags/4clojure/">4clojure</a>
+    
+    <a href="/tags/Today%20I%20Learn/">Today I Learn</a>
+    
+</div>
+
+
+    <div id="prev-next">
+        
+        <a href="/posts/2019-12-18-4clojure-71/">&laquo; 4clojure - Rearranging Code: -&gt; (71)</a>
+        
+        
+        <a class="right" href="/posts/2019-12-16-4clojure-69/">4clojure - Merge with a Function  (69) &raquo;</a>
+        
+    </div>
+
+    
+
+
+</div>
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div id="sidebar">
+                
+                <div id="recent">
+                    <h3>Recent Posts</h3>
+                    <ul>
+                        
+                        <li><a href="/posts/2022-10-04-restart-4clojure/">4clojure부터 시작</a></li>
+                        
+                        <li><a href="/posts/2022-06-05-write/">블로그 글을 다시 쓰면서</a></li>
+                        
+                        <li><a href="/posts/2021-10-22-write-project-euler/">프로젝트 오일러를 시작하면서</a></li>
+                        
+                    </ul>
+                </div>
+                
+                
+                <div id="tags">
+                    <h3>Tags</h3>
+                    <ul>
+                        
+                        <li><a href="/tags/essay/">essay</a></li>
+                        
+                        <li><a href="/tags/clojure/">clojure</a></li>
+                        
+                        <li><a href="/tags/retrospective/">retrospective</a></li>
+                        
+                        <li><a href="/tags/4clojure/">4clojure</a></li>
+                        
+                        <li><a href="/tags/why/">why</a></li>
+                        
+                        <li><a href="/tags/css/">css</a></li>
+                        
+                        <li><a href="/tags/math/">math</a></li>
+                        
+                        <li><a href="/tags/emacs/">emacs</a></li>
+                        
+                        <li><a href="/tags/Today%20I%20Learn/">Today I Learn</a></li>
+                        
+                        <li><a href="/tags/python/">python</a></li>
+                        
+                        <li><a href="/tags/write/">write</a></li>
+                        
+                        <li><a href="/tags/project%20euler/">project euler</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <footer>Copyright &copy; 2022 sungsik819
+        <p style="text-align: center;">Powered by <a href="http://cryogenweb.org">Cryogen</a></p></footer>
+</div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="/js/highlight.pack.js" type="application/javascript"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+</body>
+</html>

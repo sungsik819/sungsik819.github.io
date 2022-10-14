@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Sungsik: 4clojure - Compress a Sequence (30)</title>
+    
+<meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,write,project euler">
+
+<meta name="description" content="Problem">
+
+<meta property="og:description" content="Problem">
+
+<meta property="og:url" content="https://sungsik819.github.io/posts/2019-11-02-4clojure-30/" />
+<meta property="og:title" content="4clojure - Compress a Sequence (30)" />
+<meta property="og:type" content="article" />
+
+    <link rel="canonical" href="https://sungsik819.github.io/posts/2019-11-02-4clojure-30/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700" rel="stylesheet"
+          type="text/css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
+    <link href="/css/screen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Sungsik</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li ><a href="/">Home</a></li>
+                <li
+                ><a href="/archives/">Archives</a></li>
+                
+                <li
+                >
+                <a href="/pages/vision/">Vision</a>
+                </li>
+                
+                <li
+                >
+                <a href="/pages/features/">Features</a>
+                </li>
+                
+                <li
+                >
+                <a href="/pages/about/">About</a>
+                </li>
+                
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+</nav>
+
+
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-lg-9">
+            <div id="content">
+                
+<div id="post">
+    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">2019년 11월 2일</div>
+        
+    </div>
+    <h2>4clojure - Compress a Sequence (30)</h2>
+</div>
+<div>
+    
+    <p><strong>Problem</strong></p><pre><code class="clojure">(= (apply str (__ "Leeeeeerrroyyy")) "Leroy")
+
+(= (__ [1 1 2 3 3 2 2 3]) '(1 2 3 2 3))
+
+(= (__ [[1 2] [1 2] [3 4] [1 2]]) '([1 2] [3 4] [1 2]))
+</code></pre><p><strong>Solved</strong></p><pre><code class="clojure">
+(fn [l]
+  (loop [li [] li2 l]
+    (cond (empty? li2) li
+          (not= (last li) (first li2)) (recur (conj li (first li2)) (rest li2))
+          :else (recur li (rest li2)))))
+</code></pre><p>recur을 이용하여 li에 있는 마지막 값과 li2의 처음 값을 비교 하여 다르면 li에 추가하고 같으면 건너뛰는 방식으로 문제를 해결 하였다.</p><p>partition-by를 이용하는 방법도 있었는데 함수의 용도가 string 또는 collection을 순회 하면서 순서대로 같은 값 또는 같은 구조를 묶는 함수이다.</p><pre><code class="clj">(partition-by identity [1 1 2])
+;; ((1 1) (2))
+
+(partition-by identity [1 2 1])
+;; ((1) (2) (1))
+</code></pre><p>공식 document의 예제를 변형해서 좀 더 partition-by의 용도를 확인 해봤다.</p><pre><code class="clj">(partition-by #(&gt; 3 %) [1 2 3 4 5])
+;; ((1 2) (3 4 5))
+
+(partition-by #(&lt; 3 %) [1 2 3 4 5])
+;; ((1 2 3) (4 5))
+
+(partition-by #(&gt; 3 %) [1 2 3 4 5 6 7 8 9])
+;; ((1 2) (3 4 5 6 7 8 9))
+
+(partition-by #(= 3 %) [1 2 3 4 5 6 7 8 9])
+;; ((1 2) (3) (4 5 6 7 8 9))
+</code></pre><p>collection 값의 갯수에 따라서 묶이는 갯수가 다르다는 것을 확인 할 수 있어서 partition-all과는 동작이 다르다는 것을 알 수 있다.</p><p>partition-by의 원형이 되는 partition에 대해서도 테스트를 해봤다.</p><pre><code class="clj">(partition 4 (range 17))
+;; ((0 1 2 3) (4 5 6 7) (8 9 10 11) (12 13 14 15))
+</code></pre><p>언뜻 보기에는 partition-all과 다를바가 없어 보이는데 같은 방식으로 결과를 확인 해봤다.</p><pre><code class="clj">(partition-all 4 (range 17))
+;; ((0 1 2 3) (4 5 6 7) (8 9 10 11) (12 13 14 15) (16))
+</code></pre><p>마지막 값에 대해서 차이점이 있는 것을 확인 할 수 있었다. partion는 묶는 갯수에 따라서 마지막에 그 조건을 충족하지 않으면 버리지만, partition-all은 유지를 한다는 것이 차이점이다.</p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags/4clojure/">4clojure</a>
+    
+    <a href="/tags/Today%20I%20Learn/">Today I Learn</a>
+    
+</div>
+
+
+    <div id="prev-next">
+        
+        <a href="/posts/2019-11-03-4clojure-31/">&laquo; 4clojure - Pack a Sequence (31)</a>
+        
+        
+        <a class="right" href="/posts/2019-11-01-4clojure-29/">4clojure - Get the Caps (29) &raquo;</a>
+        
+    </div>
+
+    
+
+
+</div>
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div id="sidebar">
+                
+                <div id="recent">
+                    <h3>Recent Posts</h3>
+                    <ul>
+                        
+                        <li><a href="/posts/2022-10-04-restart-4clojure/">4clojure부터 시작</a></li>
+                        
+                        <li><a href="/posts/2022-06-05-write/">블로그 글을 다시 쓰면서</a></li>
+                        
+                        <li><a href="/posts/2021-10-22-write-project-euler/">프로젝트 오일러를 시작하면서</a></li>
+                        
+                    </ul>
+                </div>
+                
+                
+                <div id="tags">
+                    <h3>Tags</h3>
+                    <ul>
+                        
+                        <li><a href="/tags/essay/">essay</a></li>
+                        
+                        <li><a href="/tags/clojure/">clojure</a></li>
+                        
+                        <li><a href="/tags/retrospective/">retrospective</a></li>
+                        
+                        <li><a href="/tags/4clojure/">4clojure</a></li>
+                        
+                        <li><a href="/tags/why/">why</a></li>
+                        
+                        <li><a href="/tags/css/">css</a></li>
+                        
+                        <li><a href="/tags/math/">math</a></li>
+                        
+                        <li><a href="/tags/emacs/">emacs</a></li>
+                        
+                        <li><a href="/tags/Today%20I%20Learn/">Today I Learn</a></li>
+                        
+                        <li><a href="/tags/python/">python</a></li>
+                        
+                        <li><a href="/tags/write/">write</a></li>
+                        
+                        <li><a href="/tags/project%20euler/">project euler</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <footer>Copyright &copy; 2022 sungsik819
+        <p style="text-align: center;">Powered by <a href="http://cryogenweb.org">Cryogen</a></p></footer>
+</div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="/js/highlight.pack.js" type="application/javascript"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+</body>
+</html>

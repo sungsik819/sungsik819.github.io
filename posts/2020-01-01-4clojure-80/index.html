@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Sungsik: 4clojure - Perfect Numbers (80)</title>
+    
+<meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,write,project euler">
+
+<meta name="description" content="Problem">
+
+<meta property="og:description" content="Problem">
+
+<meta property="og:url" content="https://sungsik819.github.io/posts/2020-01-01-4clojure-80/" />
+<meta property="og:title" content="4clojure - Perfect Numbers (80)" />
+<meta property="og:type" content="article" />
+
+    <link rel="canonical" href="https://sungsik819.github.io/posts/2020-01-01-4clojure-80/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700" rel="stylesheet"
+          type="text/css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
+    <link href="/css/screen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Sungsik</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li ><a href="/">Home</a></li>
+                <li
+                ><a href="/archives/">Archives</a></li>
+                
+                <li
+                >
+                <a href="/pages/vision/">Vision</a>
+                </li>
+                
+                <li
+                >
+                <a href="/pages/features/">Features</a>
+                </li>
+                
+                <li
+                >
+                <a href="/pages/about/">About</a>
+                </li>
+                
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+</nav>
+
+
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-lg-9">
+            <div id="content">
+                
+<div id="post">
+    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">2020년 1월 1일</div>
+        
+    </div>
+    <h2>4clojure - Perfect Numbers (80)</h2>
+</div>
+<div>
+    
+    <p><strong>Problem</strong></p><pre><code class="clj">(= (__ 6) true)
+
+(= (__ 7) false)
+
+(= (__ 496) true)
+
+(= (__ 500) false)
+
+(= (__ 8128) true)
+</code></pre><p><strong>Solved</strong></p><pre><code class="clj">(fn [x]
+	(let [y (filter #(= (mod x %) 0) (range 1 (+ (int (Math/sqrt x)) 1)))]
+		(-&gt;&gt; (reduce #(conj % (quot x %2)) y y)
+			 (filter #(not= x %))
+			 (apply +)
+             (= x))))  
+</code></pre><p>완전수를 구하는 문제이다.
+제곱근의 약수를 구한 다음에 그 수와 나눠지는 수들을 저장 후 자신을 제외한 나머지 수의 합을 구하는 방법을 사용 했다.</p><p>제곱근 이상으로는 약수가 반복적이므로 제곱근에 대한 수를 구했다.</p><pre><code class="clj">(take (int (Math/sqrt 28)) (iterate inc 1))
+;; (1 2 3 4 5)
+</code></pre><p>여기에 나눠서 나머지가 0이되는 값을 구했다.</p><pre><code class="clj">(filter #(= (mod 28 %) 0) (take (int (Math/sqrt 28)) (iterate inc 1)))
+;; (1 2 4)
+</code></pre><p>그 후, 제곱근 이상의 약수를 구했다.</p><pre><code class="clj">(reduce #(conj % (quot 28 %2)) (filter #(= (mod 28 %) 0) (take (int (Math/sqrt 28)) (iterate inc 1))) [1 2 4])
+;; (7 14 28 1 2 4)
+</code></pre><p>자기 자신은 걸러내고</p><pre><code class="clj">(filter #(not= 28 %) (reduce #(conj % (quot 28 %2)) (filter #(= (mod 28 %) 0) (take (int (Math/sqrt 28)) (iterate inc 1))) [1 2 4]))
+;; (7 14 1 2 4)
+</code></pre><p>그 값들을 더해주면 된다.</p><pre><code class="clj">(apply + (filter #(not= 28 %) (reduce #(conj % (quot 28 %2)) (filter #(= (mod 28 %) 0) (take (int (Math/sqrt 28)) (iterate inc 1))) [1 2 4])))
+;; 28
+</code></pre><p>이것을 테스트 하기 위한 함수 이다.</p><pre><code class="clj">(fn [x]
+	(let [y (filter #(= (mod x %) 0) (take (int (Math/sqrt x)) (iterate inc 1)))]
+		(-&gt;&gt; (reduce #(conj % (quot x %2)) y y)
+			 (filter #(not= x %))
+			 (apply +)
+           	 (= x))))   
+</code></pre><p>좀 길게 쓴 감이 없지않아 있긴 하지만 약수를 구하는 방법과 그것을 활용하는 그리고, 전통적인 for를 활용하는 방법을 사용하지 않았다는 데에서 뿌듯함을 느끼고 있다.</p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags/4clojure/">4clojure</a>
+    
+    <a href="/tags/Today%20I%20Learn/">Today I Learn</a>
+    
+</div>
+
+
+    <div id="prev-next">
+        
+        <a href="/posts/2020-01-02-4clojure-81/">&laquo; 4clojure - Set Intersection (81)</a>
+        
+        
+        <a class="right" href="/posts/2019-12-31-what-i-want-4clojure/">4clojure로 얻고 싶은 것은 무엇일까? &raquo;</a>
+        
+    </div>
+
+    
+
+
+</div>
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div id="sidebar">
+                
+                <div id="recent">
+                    <h3>Recent Posts</h3>
+                    <ul>
+                        
+                        <li><a href="/posts/2022-10-04-restart-4clojure/">4clojure부터 시작</a></li>
+                        
+                        <li><a href="/posts/2022-06-05-write/">블로그 글을 다시 쓰면서</a></li>
+                        
+                        <li><a href="/posts/2021-10-22-write-project-euler/">프로젝트 오일러를 시작하면서</a></li>
+                        
+                    </ul>
+                </div>
+                
+                
+                <div id="tags">
+                    <h3>Tags</h3>
+                    <ul>
+                        
+                        <li><a href="/tags/essay/">essay</a></li>
+                        
+                        <li><a href="/tags/clojure/">clojure</a></li>
+                        
+                        <li><a href="/tags/retrospective/">retrospective</a></li>
+                        
+                        <li><a href="/tags/4clojure/">4clojure</a></li>
+                        
+                        <li><a href="/tags/why/">why</a></li>
+                        
+                        <li><a href="/tags/css/">css</a></li>
+                        
+                        <li><a href="/tags/math/">math</a></li>
+                        
+                        <li><a href="/tags/emacs/">emacs</a></li>
+                        
+                        <li><a href="/tags/Today%20I%20Learn/">Today I Learn</a></li>
+                        
+                        <li><a href="/tags/python/">python</a></li>
+                        
+                        <li><a href="/tags/write/">write</a></li>
+                        
+                        <li><a href="/tags/project%20euler/">project euler</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <footer>Copyright &copy; 2022 sungsik819
+        <p style="text-align: center;">Powered by <a href="http://cryogenweb.org">Cryogen</a></p></footer>
+</div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="/js/highlight.pack.js" type="application/javascript"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+</body>
+</html>

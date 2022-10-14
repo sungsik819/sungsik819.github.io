@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Sungsik: 4clojure - Count Occurrences (55)</title>
+    
+<meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,write,project euler">
+
+<meta name="description" content="Problem">
+
+<meta property="og:description" content="Problem">
+
+<meta property="og:url" content="https://sungsik819.github.io/posts/2019-11-28-4clojure-55/" />
+<meta property="og:title" content="4clojure - Count Occurrences (55)" />
+<meta property="og:type" content="article" />
+
+    <link rel="canonical" href="https://sungsik819.github.io/posts/2019-11-28-4clojure-55/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700" rel="stylesheet"
+          type="text/css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
+    <link href="/css/screen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Sungsik</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li ><a href="/">Home</a></li>
+                <li
+                ><a href="/archives/">Archives</a></li>
+                
+                <li
+                >
+                <a href="/pages/vision/">Vision</a>
+                </li>
+                
+                <li
+                >
+                <a href="/pages/features/">Features</a>
+                </li>
+                
+                <li
+                >
+                <a href="/pages/about/">About</a>
+                </li>
+                
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+</nav>
+
+
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-lg-9">
+            <div id="content">
+                
+<div id="post">
+    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">2019년 11월 28일</div>
+        
+    </div>
+    <h2>4clojure - Count Occurrences (55)</h2>
+</div>
+<div>
+    
+    <p><strong>Problem</strong></p><pre><code class="clj">(= (__ [1 1 2 3 2 1 1]) {1 4, 2 2, 3 1})
+
+(= (__ [:b :a :b :a :b]) {:a 2, :b 3})
+
+(= (__ '([1 2] [1 3] [1 3])) {[1 2] 1, [1 3] 2})
+</code></pre><p><strong>제한 : frequencies</strong></p><p><strong>Solved</strong></p><pre><code class="clj">(fn [x] 
+  (-&gt;&gt;
+   (partition-by identity (sort x))
+   (map #(list (first %) (count %)))
+   (apply concat)
+   (apply hash-map)))
+</code></pre><p>처음에는 group-by로 하면 될 것 이라고 생각을 했다.</p><pre><code class="clj">(group-by count [1 1 2 3 2 1 1])
+;;Execution error (UnsupportedOperationException) at user/eval296 (REPL:1). 
+;;count not supported on this type: Long
+</code></pre><p>근데 group-by는 string 값만 된다는 것을 알게 되었고, 다른 방법을 고민 했다.</p><p>갯수를 알아내기 위해 같은 값을 묶는 것이 필요하다고 생각하여
+partition-by를 생각 했다.</p><pre><code class="clj">(partition-by identity [1 1 2 3 2 1 1])
+;; ((1 1) (2) (3) (2) (1 1))
+</code></pre><p>근데 얖에서부터 같은 값만 찾다보니 뒤에 같은 값이 있을 경우에는 같이 묶어주지 못하는 현상이 있어서 sort를 적용 했다.
+key에 대한 sort도 되는지 테스트를 했다.</p><pre><code class="clj">(sort [:b :a :b :a :b])
+;; (:a :a :b :b :b)
+</code></pre><p>다행히 sort가 되어서 적용을 했다.</p><pre><code class="clj">(partition-by identity (sort [1 1 2 3 2 1 1]))
+;; ((1 1 1 1) (2 2) (3))
+</code></pre><p>이제 map으로 count를 적용하면 될거 같다. 슬슬 길어지므로 -&gt;&gt;를 사용 했다.</p><pre><code class="clj">(-&gt;&gt;
+	(partition-by identity (sort [1 1 2 3 2 1 1]))
+	(map #(count %)))
+;; (4 2 1)
+</code></pre><p>어떤 항목의 갯수가 같이 표시되지 않으므로 표시되도록 추가 했다.</p><pre><code class="clj">;; 오류 상황1
+(-&gt;&gt;
+	(partition-by identity (sort [1 1 2 3 2 1 1]))
+	(map #(% (count %))))
+;; Error printing return value (ClassCastException) at user/eval318$fn (NO_SOURCE_FILE:1).
+clojure.lang.Cons cannot be cast to clojure.lang.IFn
+
+;; 오류 상황2
+(-&gt;&gt;
+	(partition-by identity (sort [1 1 2 3 2 1 1]))
+	(map #([% (count %)]))
+;; Error printing return value (ArityException) at clojure.lang.AFn/throwArity (AFn.java:429).
+Wrong number of args (0) passed to: clojure.lang.PersistentVector
+</code></pre><p>마음처럼 잘 안된다...함수를 넣어야 하는데 엉뚱한 값을 넣고 있었다..</p><pre><code class="clj">(-&gt;&gt;
+	(partition-by identity (sort [1 1 2 3 2 1 1]))
+	(map #(list % (count %)))
+;; (((1 1 1 1) 4) ((2 2) 2) ((3) 1))
+</code></pre><p>전체 값이 필요한 것은 아니므로 first로 1개만 표시되도록 했다.</p><pre><code class="clj">(-&gt;&gt;
+	(partition-by identity (sort [1 1 2 3 2 1 1]))
+	(map #(list (first %) (count %)))
+;; ((1 4) (2 2) (3 1))
+</code></pre><p>이걸 이제 hash-map으로 바꾸면 끝이다.</p><pre><code class="clj">(-&gt;&gt;
+	(partition-by identity (sort [1 1 2 3 2 1 1]))
+	(map #(list (first %) (count %)))
+	(into {}))
+
+;; Execution error (ClassCastException) at user/eval342 (REPL:1). java.lang.Long cannot be cast to java.util.Map$Entry
+
+</code></pre><p>hash-map 형식이 아니라서 안된단다....</p><p>그러면 전체 값을 하나로 합친 후에 하면 되지 않을까?
+일단 합쳐보기로 했다.</p><pre><code class="clj">(-&gt;&gt;
+	(partition-by identity (sort [1 1 2 3 2 1 1]))
+	(map #(list (first %) (count %)))
+	(apply concat))
+;; (1 4 2 2 3 1)
+</code></pre><p>근데 일단 다른 문항에 잇는 값들이 제대로 합쳐지는지 궁금해서 테스트 해봤다.</p><pre><code class="clj">(-&gt;&gt;
+	(partition-by identity (sort '([1 2], [1 3], [1 3])))
+	(map #(list (first %) (count %)))
+	(apply concat))
+;; ([1 2] 1 [1 3] 2)
+</code></pre><p>원하는데로 합쳐지는 것 같다.</p><p>이제 hash-map을 적용 해보자</p><pre><code class="clj">(-&gt;&gt;
+	(partition-by identity (sort [1 1 2 3 2 1 1]))
+	(map #(list (first %) (count %)))
+	(apply hash-map concat))
+
+;; Execution error (IllegalArgumentException) at user/eval366 (REPL:1). No value supplied for key: ([1 3] 2)
+</code></pre><p>key가 필요하다고 안된단다...</p><p>그럼 이렇게는 어떨까?</p><pre><code class="clj">(-&gt;&gt;
+	(partition-by identity (sort [1 1 2 3 2 1 1]))
+	(map #(list (first %) (count %)))
+	(apply into hash-map concat))
+;; Execution error (ArityException) at user/eval372 (REPL:1).
+Wrong number of args (4) passed to: clojure.core/into
+</code></pre><p>into 의 파리미터 갯수가 아니라고 하니 이 방법도 아닌것 같다.</p><p>하나로 합친 값에 너무 이상한 함수의 나열이라고 생각이 들어 다시 재정돈 하였다 우선 값을 합친 부분에서 다시 시작해보기로 했다.</p><pre><code class="clj">(-&gt;&gt;
+	(partition-by identity (sort [1 1 2 3 2 1 1]))
+	(map #(list (first %) (count %)))
+	(apply concat))
+;; (1 4 2 2 3 1)
+</code></pre><p>hash-map의 사용법을 다시 테스트 해봤다. 위의 값을 가지고 다시 테스트 했다.</p><pre><code class="clj">;; 오류 상황
+(hash-map '(1 4 2 2 3 1))
+;; Execution error (IllegalArgumentException) at user/eval418 (REPL:1). No value supplied for key: (1 4 2 2 3 1)
+
+(hash-map 1 4 2 2 3 1)
+;; {1 4, 3 1, 2 2}
+</code></pre><p>사용법을 확실하게 알고 있지 않아서 발생한 오류라고 생각 한다...이제 apply로 합치면 문제가 해결 된다.</p><pre><code class="clj">(-&gt;&gt;
+	(partition-by identity (sort [1 1 2 3 2 1 1]))
+	(map #(list (first %) (count %)))
+	(apply concat)
+	(apply hash-map))
+</code></pre><p><strong>Solved 2</strong>
+문제를 풀고 나서 다른 방식도 있다는 것을 알게되어 분석 하고 싶어졌다.</p><pre><code class="clj">(comp (partial apply zipmap) 
+      (juxt keys (comp (partial map count) vals)) 
+      (partial group-by identity))
+</code></pre><p>위에 답에 대한 과정을 하나하나 뜯어 봤다.</p><pre><code class="clj">((partial group-by identity) [1 1 2 3 2 1 1])
+;; {1 [1 1 1 1], 2 [2 2], 3 [3]}
+
+(group-by identity [1 1 2 3 2 1 1])
+;; {1 [1 1 1 1], 2 [2 2], 3 [3]}
+</code></pre><p>group-by가 string에 대한 것인줄 알았는데 아니라는 것을 알게 되었다...
+identity가 이럴때도 사용 가능하다는 것을 다시한번 알게 되었다.
+근데 왜 partial을 사용한건지는 잘 모르겠다. group-by만 해도 될거 같은데..</p><pre><code class="clj">((comp (partial apply zipmap)
+      (juxt keys (comp (partial map count) vals))
+      (group-by identity)) [1 1 2 3 2 1 1])
+;; Execution error (ArityException) at user/eval474 (REPL:3).
+Wrong number of args (1) passed to: clojure.core/group-by
+</code></pre><p>안된다...partial이 있으면 무언가 준비된 상태로 둔다는 생각이 들었다.</p><pre><code class="clj">(apply #(conj [0 1] %) [2 3 4 5])
+;; Execution error (ArityException) at user/eval482 (REPL:1).
+Wrong number of args (4) passed to: user/eval482/fn--483
+
+(apply #(conj [0 1] %&amp;) [2 3 4 5])
+;; [0 1 (2 3 4 5)]
+
+(apply (partial conj [0 1]) [2 3 4 5])
+;; [0 1 2 3 4 5] 
+</code></pre><p>partial의 예제를 보니 실행을 할때 그때 조합을 만들어서 실행시키는 역할이 partial인 것 같다.</p><p>간단한 예제를 comp와 엮어서 만들어 봤을 때 아무래도 comp의 영향으로 partial이 없으면 안되는 것 같다.</p><pre><code class="clj">((comp (apply +)) [1 2 3 4 5 6])
+;; Execution error (ArityException) at user/eval492 (REPL:1).
+Wrong number of args (1) passed to: clojure.core/apply
+
+((comp (partial apply +)) [1 2 3 4 5 6])
+;; 21
+</code></pre><p>juxt는 원하는 항목을 vector로 엮어주는 함수이다. 즉, (list (first x) (count x))를 juxt로 얶어서 만들었다고 생각하면 될 것 같다.</p><pre><code class="clj">((comp (juxt keys (comp (partial map count) vals)) 
+      (partial group-by identity) [1 1 2 3 2 1 1]) 
+;; {1 [1 1 1 1], 2 [2 2], 3 [3]} -&gt; 1번 항목
+;; keys : (1 2 3), vals : [[1 1 1 1] [2 2] [3]]
+;; [(1 2 3) (4 2 1)] -&gt; 2번 항목
+</code></pre><p>결과로 나오는  (1, 2, 3)은 1번 항목의 hash-map keys로 엮은 값이고, (4 2 1)은 1번 항목의 hash-map vals로 가져온 (comp (partial map count)  vals)로 계산된 값의 list로 생각하면 된다.
+그래서 2번 항목이 계산 결과 값으로 나온다.</p><p>zipmap은 [(1 2 3) (4 2 1)]의 값을 합쳐서 하나의 hash-map으로 만들어준다.
+apply 없이 예제를 만든다면 아래와 같다.</p><pre><code class="clj">(zipmap '(1 2 3) '(4 2 1))
+;; {1 4, 2 2, 3 1}
+</code></pre><p>apply로 엮으면 아래와 같은 형식이 된다.</p><pre><code class="clj">(apply zipmap ['(1 2 3) '(4 2 1)])
+;; {1 4, 2 2, 3 1}
+</code></pre><p>comp와  엮이므로 partial이 있어야 계산이 완료가 된다.</p><p><strong>Solved 3</strong></p><pre><code class="clj">reduce #(assoc % %2 (+ 1 (% %2 0))) {}
+</code></pre><p>이건 위의 방법보다 좀 더 간단한 문제이다.</p><p>우선 안쪽부터 분석을 해보면</p><pre><code class="clj">({} 1 0)
+;; 0
+</code></pre><p>hash-map안에 1이라는 값이 있으면 그 값을 반환하고 없으면 0을 반환한다는 얘기이다.
+현재 상황에서는 {}안에 아무런 값이 없으므로 0이 된다.</p><pre><code class="clj">(+ 1 0)
+;; 1
+(assoc {} 1 1)
+;; {1 1}
+</code></pre><p>그 값이 위와 같은 과정을 거치면 {1 1}이 된다.</p><p>다음 반복시에는 아래와 같은 과정을 거친다</p><pre><code class="clj">({1 1} 1 0)
+;; 1
+(+ 1 1)
+;; 2
+(assoc {1 1} 1 2)
+;; {1 2}
+</code></pre><p>위 과정은 {1 1} -&gt; {1 2}로 바뀌는 과정을 보여주고 있다, reduce 연산을 마지막까지 거치면 정답은 같아진다.</p><p><strong>Solved 4</strong></p><pre><code class="clj">#(apply merge-with + (map (fn [a] {a 1}) %))
+</code></pre><p>apply에 대한 영향을 주는 함수는 (merge-with +) 에 대해서 영향을 주는 것이지 map에서 부터 영향을 주는 것은 아니다 그러므로 아래와 같은 동작이 되는 것은 아니다</p><pre><code class="clj">(map (fn [a] {a 1}) 1 1 2 3 2 1 1)
+;; Error printing return value (IllegalArgumentException) at clojure.lang.RT/seqFrom (RT.java:557). Don't know how to create ISeq from: java.lang.Long
+</code></pre><p>map 의 연산은 아래와 같은 결과를 준다.</p><pre><code class="clj">(map (fn [a] {a 1}) [1 1 2 3 2 1 1])
+;; ({1 1} {1 1} {2 1} {3 1} {2 1} {1 1} {1 1})
+</code></pre><p>apply의 영향으로 merge-with +의 연산은 아래와 같은 방식으로 된다.</p><pre><code class="clj">(merge-with + {1 1} {1 1} {2 1} {3 1} {2 1} {1 1} {1 1})
+;; {1 4, 2 2, 3 1}
+</code></pre><p>보통 merge는 아래와 같은 동작을 하는데 merge-with는 f를 받아서 추가적인 연산을 하게 된다는 것을 알았다.</p><pre><code class="clj">(merge {1 1} {1 1} {2 1} {3 1} {2 1} {1 1} {1 1})
+;; {1 1, 2 1, 3 1} -&gt; 덮어쓰는 동작을 함
+
+(merge-with + {1 1} {1 1} {2 1} {3 1} {2 1} {1 1} {1 1})
+;; {1 4, 2 2, 3 1} -&gt; + 함수의 영향으로 value에 + 를 한다.
+</code></pre><p>merge-with에 익명함수를 만들려면 가변 인자를 받아야 한다.</p><pre><code class="clj">(merge-with #(list %&amp;) {1 1} {1 1} {2 1} {3 1} {2 1} {1 1} {1 1})
+;; {1 ((((((1 1)) 1)) 1)), 2 ((1 1)), 3 1}
+</code></pre>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags/4clojure/">4clojure</a>
+    
+    <a href="/tags/Today%20I%20Learn/">Today I Learn</a>
+    
+</div>
+
+
+    <div id="prev-next">
+        
+        <a href="/posts/2019-11-29-4clojure-56/">&laquo; 4clojure - Find Distinct Items (56)</a>
+        
+        
+        <a class="right" href="/posts/2019-11-27-4clojure-54/">4clojure - Partition a Sequence (54) &raquo;</a>
+        
+    </div>
+
+    
+
+
+</div>
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div id="sidebar">
+                
+                <div id="recent">
+                    <h3>Recent Posts</h3>
+                    <ul>
+                        
+                        <li><a href="/posts/2022-10-04-restart-4clojure/">4clojure부터 시작</a></li>
+                        
+                        <li><a href="/posts/2022-06-05-write/">블로그 글을 다시 쓰면서</a></li>
+                        
+                        <li><a href="/posts/2021-10-22-write-project-euler/">프로젝트 오일러를 시작하면서</a></li>
+                        
+                    </ul>
+                </div>
+                
+                
+                <div id="tags">
+                    <h3>Tags</h3>
+                    <ul>
+                        
+                        <li><a href="/tags/essay/">essay</a></li>
+                        
+                        <li><a href="/tags/clojure/">clojure</a></li>
+                        
+                        <li><a href="/tags/retrospective/">retrospective</a></li>
+                        
+                        <li><a href="/tags/4clojure/">4clojure</a></li>
+                        
+                        <li><a href="/tags/why/">why</a></li>
+                        
+                        <li><a href="/tags/css/">css</a></li>
+                        
+                        <li><a href="/tags/math/">math</a></li>
+                        
+                        <li><a href="/tags/emacs/">emacs</a></li>
+                        
+                        <li><a href="/tags/Today%20I%20Learn/">Today I Learn</a></li>
+                        
+                        <li><a href="/tags/python/">python</a></li>
+                        
+                        <li><a href="/tags/write/">write</a></li>
+                        
+                        <li><a href="/tags/project%20euler/">project euler</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <footer>Copyright &copy; 2022 sungsik819
+        <p style="text-align: center;">Powered by <a href="http://cryogenweb.org">Cryogen</a></p></footer>
+</div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="/js/highlight.pack.js" type="application/javascript"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+</body>
+</html>
