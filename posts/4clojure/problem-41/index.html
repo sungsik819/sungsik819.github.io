@@ -74,7 +74,7 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 11월 13일</div>
+        <div class="col-lg-6 right">생성일: 2019년 11월 13일<br>수정일: 2022년 10월 12일</div>
         
     </div>
     <h2>4clojure - Drop Every Nth Item (41)</h2>
@@ -99,8 +99,7 @@
 </code></pre><p>solution에는 partition-all이라는 함수가 있는데 묶는 갯수, step을 값으로 받아서 출력하는 방식을 사용 하고 있다.</p><pre><code class="clj">(partition-all 2 3 [1 2 3 4 5 6 7 8])
 ;((1 2) (4 5) (7 8))
 </code></pre><p>2개씩 값을 묶고, 3step으로 이동하여 나오는 결과 이다.</p><p>나뉘어져 있는 결과를 apply + concat 을 사용하여 묶어주면 된다.
-partition 함수와 비슷한 역할을 하는데 partition은 3개씩 묶고 1개가 남으면 그것을 버리는데  partition-all은 3개씩 묶고 1개가 남으면 그것도 같이 출력을 한다.</p><p><strong>Solved 3</strong>
-추가: 2022-10-12</p><pre><code class="clj">(defn my-dropitem3 [coll x]
+partition 함수와 비슷한 역할을 하는데 partition은 3개씩 묶고 1개가 남으면 그것을 버리는데  partition-all은 3개씩 묶고 1개가 남으면 그것도 같이 출력을 한다.</p><p><strong>Solved 3</strong></p><pre><code class="clj">(defn my-dropitem3 [coll x]
   (-&gt;&gt; (take (count coll) (iterate inc 1))
        (map list coll)
        (remove (fn [[_ k]] (= 0 (mod k x))))

@@ -74,7 +74,7 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">2019년 11월 14일</div>
+        <div class="col-lg-6 right">생성일: 2019년 11월 14일<br>수정일: 2022년 10월 15일</div>
         
     </div>
     <h2>4clojure - Factorial Fun (42)</h2>
@@ -90,7 +90,11 @@
 (= (__ 8) 40320)
 </code></pre><p><strong>Solved</strong></p><pre><code class="clj">(fn [x]
   (apply * (range 1 (inc x))))
-</code></pre><p>팩토리얼 문제이다. x로 들어오는 값은 포함을 해야하기 때문에 내부에서 계산시 inc로 1 증가 시켜 x의 값을 증가 시켰다. 그에 결과 리스트를 * 하여 값을 도출해 내었다.</p>
+</code></pre><p>팩토리얼 문제이다. x로 들어오는 값은 포함을 해야하기 때문에 내부에서 계산시 inc로 1 증가 시켜 x의 값을 증가 시켰다. 그에 결과 리스트를 * 하여 값을 도출해 내었다.</p><p><strong>Solved 2</strong></p><pre><code class="clj">(defn my-factorial2 [x]
+  (-&gt;&gt; (iterate inc 1)
+       (take x)
+       (reduce *)))
+</code></pre><p>iterate와 take의 조합을 사용하면 inc를 따로 사용할 필요는 없다.</p>
 </div>
 
 <div id="post-tags">
