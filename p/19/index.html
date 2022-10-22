@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Sungsik</title>
+    
+    <meta name="description" content="개발 관련 경험 및 성찰들을 기록">
+    <meta name="keywords" content="">
+    
+    <link rel="canonical" href="https://sungsik819.github.io">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700" rel="stylesheet"
+          type="text/css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
+    <link href="/css/screen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Sungsik</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li ><a href="/">Home</a></li>
+                <li
+                ><a href="/archives/">Archives</a></li>
+                
+                <li
+                >
+                <a href="/pages/vision/">Vision</a>
+                </li>
+                
+                <li
+                >
+                <a href="/pages/update/">Update</a>
+                </li>
+                
+                <li
+                >
+                <a href="/pages/features/">Features</a>
+                </li>
+                
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+</nav>
+
+
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-lg-9">
+            <div id="content">
+                
+<div id="post">
+    
+    <div class="post-header">
+        <h2>4clojure 10</h2>
+        <div id="post-meta">
+            
+            <div class="date">수정일 : 2019년 10월 13일</div>
+        </div>
+    </div>
+    <pre><code class="clojure">(= __ ((hash-map :a 10, :b 20, :c 30) :b))
+
+(= __ (:b {:a 10, :b 20, :c 30}))
+</code></pre><pre><code class="clojure">20
+</code></pre>
+    <a href="/posts/4clojure/problem-10/">Continue reading &#8594;</a>
+    <hr>
+    
+    <div class="post-header">
+        <h2>4clojure 09</h2>
+        <div id="post-meta">
+            
+            <div class="date">수정일 : 2019년 10월 12일</div>
+        </div>
+    </div>
+    <pre><code class="clojure">(= #{1 2 3 4} (conj #{1 4 3} __))
+</code></pre><pre><code class="clojure">2
+</code></pre>
+    <a href="/posts/4clojure/problem-09/">Continue reading &#8594;</a>
+    <hr>
+    
+    <div class="post-header">
+        <h2>problem 08</h2>
+        <div id="post-meta">
+            
+            <div class="date">수정일 : 2019년 10월 11일</div>
+        </div>
+    </div>
+    <pre><code class="clojure">(= __ (set '(:a :a :b :c :c :c :c :d :d)))
+
+(= __ (clojure.set/union #{:a :b :c} #{:b :c :d}))
+</code></pre><pre><code class="clojure">#{:a :b :c :d}
+</code></pre>
+    <a href="/posts/4clojure/problem-08/">Continue reading &#8594;</a>
+    <hr>
+    
+    <div class="post-header">
+        <h2>problem 07</h2>
+        <div id="post-meta">
+            
+            <div class="date">수정일 : 2019년 10월 10일</div>
+        </div>
+    </div>
+    <pre><code class="clojure">(= __ (conj [1 2 3] 4))
+
+(= __ (conj [1 2] 3 4))
+</code></pre><pre><code class="clojure">[1 2 3 4]
+</code></pre>
+    <a href="/posts/4clojure/problem-07/">Continue reading &#8594;</a>
+    <hr>
+    
+    <div class="post-header">
+        <h2>problem 06</h2>
+        <div id="post-meta">
+            
+            <div class="date">수정일 : 2019년 10월 9일</div>
+        </div>
+    </div>
+    <pre><code class="clojure">(= [__] (list :a :b :c) (vec '(:a :b :c)) (vector :a :b :c))
+</code></pre><pre><code class="clojure">:a :b :c
+</code></pre>
+    <a href="/posts/4clojure/problem-06/">Continue reading &#8594;</a>
+    <hr>
+    
+
+    <div id="prev-next">
+        
+        <a class="left" href="/p/18/">&laquo; Prev</a>
+        
+        
+        <a class="right" href="/p/20/">Next &raquo;</a>
+        
+    </div>
+</div>
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div id="sidebar">
+                
+                <div id="recent">
+                    <h3>Recent Posts</h3>
+                    <ul>
+                        
+                        <li><a href="/posts/4clojure/problem-42/">4clojure - Factorial Fun (42)</a></li>
+                        
+                        <li><a href="/posts/4clojure/problem-41/">4clojure - Drop Every Nth Item (41)</a></li>
+                        
+                        <li><a href="/posts/4clojure/problem-35/">4clojure - Local bindings (35)</a></li>
+                        
+                    </ul>
+                </div>
+                
+                
+                <div id="tags">
+                    <h3>Tags</h3>
+                    <ul>
+                        
+                        <li><a href="/tags/essay/">essay</a></li>
+                        
+                        <li><a href="/tags/clojure/">clojure</a></li>
+                        
+                        <li><a href="/tags/retrospective/">retrospective</a></li>
+                        
+                        <li><a href="/tags/4clojure/">4clojure</a></li>
+                        
+                        <li><a href="/tags/why/">why</a></li>
+                        
+                        <li><a href="/tags/css/">css</a></li>
+                        
+                        <li><a href="/tags/math/">math</a></li>
+                        
+                        <li><a href="/tags/emacs/">emacs</a></li>
+                        
+                        <li><a href="/tags/Today%20I%20Learn/">Today I Learn</a></li>
+                        
+                        <li><a href="/tags/python/">python</a></li>
+                        
+                        <li><a href="/tags/project%20euler/">project euler</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <footer>Copyright &copy; 2022 sungsik819
+        <p style="text-align: center;">Powered by <a href="http://cryogenweb.org">Cryogen</a></p></footer>
+</div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="/js/highlight.pack.js" type="application/javascript"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+</body>
+</html>
