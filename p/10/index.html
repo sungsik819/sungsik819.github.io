@@ -65,85 +65,166 @@
             <div id="content">
                 
 <div id="post">
+    <h2>최근 변경된 문서</h2>
     
     <div class="post-header">
-        <h2>4clojure - Function Composition (58)</h2>
-        <div id="post-meta">
+        <div  style="font-size: 20px;">
+            <div class="date">19. 10. 13. - <a href="/posts/4clojure/problem-10/">4clojure 10</a></div>
             
-            <div class="date">수정일 : 2019년 12월 1일</div>
+            <div>
+                
+                <a href="/tags/4clojure/">#4clojure</a>
+                
+                <a href="/tags/Today%20I%20Learn/">#Today I Learn</a>
+                
+            </div>
+            
         </div>
     </div>
-    <p><strong>Problem</strong></p><pre><code class="clj">(= [3 2 1] ((__ rest reverse) [1 2 3 4]))
-
-(= 5 ((__ (partial + 3) second) [1 2 3 4]))
-
-(= true ((__ zero? #(mod % 8) +) 3 5 7 9))
-
-(= "HELLO" ((__ #(.toUpperCase %) #(apply str %) take) 5 "hello world"))
-</code></pre>
-    <a href="/posts/4clojure/problem-58/">Continue reading &#8594;</a>
     <hr>
     
     <div class="post-header">
-        <h2>4clojure - Simple Recursion (57)</h2>
-        <div id="post-meta">
+        <div  style="font-size: 20px;">
+            <div class="date">19. 10. 12. - <a href="/posts/4clojure/problem-09/">4clojure 09</a></div>
             
-            <div class="date">수정일 : 2019년 11월 30일</div>
+            <div>
+                
+                <a href="/tags/4clojure/">#4clojure</a>
+                
+                <a href="/tags/Today%20I%20Learn/">#Today I Learn</a>
+                
+            </div>
+            
         </div>
     </div>
-    <p><strong>Problem</strong></p><pre><code class="clj">(= __ ((fn foo [x] (when (&gt; x 0) (conj (foo (dec x)) x))) 5))
-</code></pre>
-    <a href="/posts/4clojure/problem-57/">Continue reading &#8594;</a>
     <hr>
     
     <div class="post-header">
-        <h2>4clojure - Find Distinct Items (56)</h2>
-        <div id="post-meta">
+        <div  style="font-size: 20px;">
+            <div class="date">19. 10. 11. - <a href="/posts/4clojure/problem-08/">problem 08</a></div>
             
-            <div class="date">수정일 : 2019년 11월 29일</div>
+            <div>
+                
+                <a href="/tags/4clojure/">#4clojure</a>
+                
+                <a href="/tags/Today%20I%20Learn/">#Today I Learn</a>
+                
+            </div>
+            
         </div>
     </div>
-    <p><strong>Problem</strong></p><pre><code class="clj">(= (__ [1 2 1 3 1 2 4]) [1 2 3 4])
-
-(= (__ [:a :a :b :b :c :c]) [:a :b :c])
-
-(= (__ '([2 4] [1 2] [1 3] [1 3])) '([2 4] [1 2] [1 3]))
-
-(= (__ (range 50)) (range 50))
-</code></pre>
-    <a href="/posts/4clojure/problem-56/">Continue reading &#8594;</a>
     <hr>
     
     <div class="post-header">
-        <h2>4clojure - Count Occurrences (55)</h2>
-        <div id="post-meta">
+        <div  style="font-size: 20px;">
+            <div class="date">19. 10. 10. - <a href="/posts/4clojure/problem-07/">problem 07</a></div>
             
-            <div class="date">수정일 : 2019년 11월 28일</div>
+            <div>
+                
+                <a href="/tags/4clojure/">#4clojure</a>
+                
+                <a href="/tags/Today%20I%20Learn/">#Today I Learn</a>
+                
+            </div>
+            
         </div>
     </div>
-    <p><strong>Problem</strong></p><pre><code class="clj">(= (__ [1 1 2 3 2 1 1]) {1 4, 2 2, 3 1})
-
-(= (__ [:b :a :b :a :b]) {:a 2, :b 3})
-
-(= (__ '([1 2] [1 3] [1 3])) {[1 2] 1, [1 3] 2})
-</code></pre>
-    <a href="/posts/4clojure/problem-55/">Continue reading &#8594;</a>
     <hr>
     
     <div class="post-header">
-        <h2>4clojure - Partition a Sequence (54)</h2>
-        <div id="post-meta">
+        <div  style="font-size: 20px;">
+            <div class="date">19. 10. 9. - <a href="/posts/4clojure/problem-06/">problem 06</a></div>
             
-            <div class="date">수정일 : 2019년 11월 27일</div>
+            <div>
+                
+                <a href="/tags/4clojure/">#4clojure</a>
+                
+                <a href="/tags/Today%20I%20Learn/">#Today I Learn</a>
+                
+            </div>
+            
         </div>
     </div>
-    <p><strong>Problem</strong></p><pre><code class="clj">(= (__ 3 (range 9)) '((0 1 2) (3 4 5) (6 7 8)))
-
-(= (__ 2 (range 8)) '((0 1) (2 3) (4 5) (6 7)))
-
-(= (__ 3 (range 8)) '((0 1 2) (3 4 5)))
-</code></pre>
-    <a href="/posts/4clojure/problem-54/">Continue reading &#8594;</a>
+    <hr>
+    
+    <div class="post-header">
+        <div  style="font-size: 20px;">
+            <div class="date">19. 10. 8. - <a href="/posts/4clojure/problem-05/">problem 05</a></div>
+            
+            <div>
+                
+                <a href="/tags/4clojure/">#4clojure</a>
+                
+                <a href="/tags/Today%20I%20Learn/">#Today I Learn</a>
+                
+            </div>
+            
+        </div>
+    </div>
+    <hr>
+    
+    <div class="post-header">
+        <div  style="font-size: 20px;">
+            <div class="date">19. 10. 7. - <a href="/posts/4clojure/problem-04/">problem 04</a></div>
+            
+            <div>
+                
+                <a href="/tags/4clojure/">#4clojure</a>
+                
+                <a href="/tags/Today%20I%20Learn/">#Today I Learn</a>
+                
+            </div>
+            
+        </div>
+    </div>
+    <hr>
+    
+    <div class="post-header">
+        <div  style="font-size: 20px;">
+            <div class="date">19. 10. 6. - <a href="/posts/4clojure/problem-03/">problem 03</a></div>
+            
+            <div>
+                
+                <a href="/tags/4clojure/">#4clojure</a>
+                
+                <a href="/tags/Today%20I%20Learn/">#Today I Learn</a>
+                
+            </div>
+            
+        </div>
+    </div>
+    <hr>
+    
+    <div class="post-header">
+        <div  style="font-size: 20px;">
+            <div class="date">19. 10. 5. - <a href="/posts/4clojure/problem-02/">problem 02</a></div>
+            
+            <div>
+                
+                <a href="/tags/4clojure/">#4clojure</a>
+                
+                <a href="/tags/Today%20I%20Learn/">#Today I Learn</a>
+                
+            </div>
+            
+        </div>
+    </div>
+    <hr>
+    
+    <div class="post-header">
+        <div  style="font-size: 20px;">
+            <div class="date">19. 10. 4. - <a href="/posts/4clojure/problem-01/">problem 01</a></div>
+            
+            <div>
+                
+                <a href="/tags/4clojure/">#4clojure</a>
+                
+                <a href="/tags/Today%20I%20Learn/">#Today I Learn</a>
+                
+            </div>
+            
+        </div>
+    </div>
     <hr>
     
 
@@ -164,7 +245,7 @@
             <div id="sidebar">
                 
                 <div id="recent">
-                    <h3>Recent Posts</h3>
+                    <h3>최근 변경된 문서</h3>
                     <ul>
                         
                         <li><a href="/posts/4clojure/problem-42/">4clojure - Factorial Fun (42)</a></li>
@@ -178,7 +259,7 @@
                 
                 
                 <div id="tags">
-                    <h3>Tags</h3>
+                    <h3>태그</h3>
                     <ul>
                         
                         <li><a href="/tags/essay/">essay</a></li>

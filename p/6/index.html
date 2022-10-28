@@ -65,101 +65,168 @@
             <div id="content">
                 
 <div id="post">
+    <h2>최근 변경된 문서</h2>
     
     <div class="post-header">
-        <h2>어떻게 데이터 구조를 만들어야 할까?</h2>
-        <div id="post-meta">
+        <div  style="font-size: 20px;">
+            <div class="date">19. 11. 26. - <a href="/posts/4clojure/problem-53/">4clojure - Longest Increasing Sub-Seq (53)</a></div>
             
-            <div class="date">수정일 : 2019년 12월 21일</div>
+            <div>
+                
+                <a href="/tags/4clojure/">#4clojure</a>
+                
+                <a href="/tags/Today%20I%20Learn/">#Today I Learn</a>
+                
+            </div>
+            
         </div>
     </div>
-    <p>문제를 풀다보니 자연스럽게 깨닫게 되는 것은 어떠한 구조로 만들어야 좀 더 쉬운 방법으로 해결이 가능한지를 깨닫게 된데 있다.</p><p>그냥 무작정 반복문을 사용해서 순회를 하고, if를 해서 분기를 하는 방법 보다는 그 문제를 해결하기 위한 좋은 데이터 구조가 반드시 존재 한다고 생각했고, 그 구조를 만들기 위해서 어떻게 함수들을 조합을 해야하는지가 가장 중요하다고 생각 했다.</p>
-    <a href="/posts/essay/how-data-structure/">Continue reading &#8594;</a>
     <hr>
     
     <div class="post-header">
-        <h2>4clojure - Analyze a Tic-Tac-Toe Board (73)</h2>
-        <div id="post-meta">
+        <div  style="font-size: 20px;">
+            <div class="date">19. 11. 25. - <a href="/posts/4clojure/problem-52/">4clojure - Intro to Destructuring (52)</a></div>
             
-            <div class="date">수정일 : 2019년 12월 20일</div>
+            <div>
+                
+                <a href="/tags/4clojure/">#4clojure</a>
+                
+                <a href="/tags/Today%20I%20Learn/">#Today I Learn</a>
+                
+            </div>
+            
         </div>
     </div>
-    <p><strong>Problem</strong></p><pre><code class="clj">(= nil (__ [[:e :e :e]
-            [:e :e :e]
-            [:e :e :e]]))
-
-(= :x (__ [[:x :e :o]
-           [:x :e :e]
-           [:x :e :o]]))
-
-(= :o (__ [[:e :x :e]
-           [:o :o :o]
-           [:x :e :x]]))
-
-(= nil (__ [[:x :e :o]
-            [:x :x :e]
-            [:o :x :o]]))
-
-(= :x (__ [[:x :e :e]
-           [:o :x :e]
-           [:o :e :x]]))
-
-(= :o (__ [[:x :e :o]
-           [:x :o :e]
-           [:o :e :x]]))
-
-(= nil (__ [[:x :o :x]
-            [:x :o :x]
-            [:o :x :o]]))
-</code></pre>
-    <a href="/posts/4clojure/problem-73/">Continue reading &#8594;</a>
     <hr>
     
     <div class="post-header">
-        <h2>4clojure - Rearranging Code: -&gt;&gt; (72)</h2>
-        <div id="post-meta">
+        <div  style="font-size: 20px;">
+            <div class="date">19. 11. 24. - <a href="/posts/4clojure/problem-51/">4clojure - Advanced Destructuring (51)</a></div>
             
-            <div class="date">수정일 : 2019년 12월 19일</div>
+            <div>
+                
+                <a href="/tags/4clojure/">#4clojure</a>
+                
+                <a href="/tags/Today%20I%20Learn/">#Today I Learn</a>
+                
+            </div>
+            
         </div>
     </div>
-    <p><strong>Problem</strong></p><pre><code class="clj">(= (__ (map inc (take 3 (drop 2 [2 5 4 1 3 6]))))
-   (-&gt;&gt; [2 5 4 1 3 6] (drop 2) (take 3) (map inc) (__))
-   11)
-</code></pre>
-    <a href="/posts/4clojure/problem-72/">Continue reading &#8594;</a>
     <hr>
     
     <div class="post-header">
-        <h2>4clojure - Rearranging Code: -&gt; (71)</h2>
-        <div id="post-meta">
+        <div  style="font-size: 20px;">
+            <div class="date">19. 11. 23. - <a href="/posts/4clojure/again-4clojure/">4clojure 를 다시 하면서..</a></div>
             
-            <div class="date">수정일 : 2019년 12월 18일</div>
+            <div>
+                
+                <a href="/tags/essay/">#essay</a>
+                
+                <a href="/tags/4clojure/">#4clojure</a>
+                
+                <a href="/tags/Today%20I%20Learn/">#Today I Learn</a>
+                
+            </div>
+            
         </div>
     </div>
-    <p><strong>Problem</strong></p><pre><code class="clj">(= (__ (sort (rest (reverse [2 5 4 1 3 6]))))
-   (-&gt; [2 5 4 1 3 6] (reverse) (rest) (sort) (__))
-   5)
-</code></pre>
-    <a href="/posts/4clojure/problem-71/">Continue reading &#8594;</a>
     <hr>
     
     <div class="post-header">
-        <h2>4clojure - Word Sorting (70)</h2>
-        <div id="post-meta">
+        <div  style="font-size: 20px;">
+            <div class="date">19. 11. 22. - <a href="/posts/4clojure/problem-50/">4clojure - Split by Type (50)</a></div>
             
-            <div class="date">수정일 : 2019년 12월 17일</div>
+            <div>
+                
+                <a href="/tags/4clojure/">#4clojure</a>
+                
+                <a href="/tags/Today%20I%20Learn/">#Today I Learn</a>
+                
+            </div>
+            
         </div>
     </div>
-    <p><strong>Problem</strong></p><pre><code class="clj">(= (__  "Have a nice day.")
-   ["a" "day" "Have" "nice"])
-
-(= (__  "Clojure is a fun language!")
-   ["a" "Clojure" "fun" "is" "language"])
-
-(= (__  "Fools fall for foolish follies.")
-   ["fall" "follies" "foolish" "Fools" "for"])
-</code></pre>
-    <a href="/posts/4clojure/problem-70/">Continue reading &#8594;</a>
+    <hr>
+    
+    <div class="post-header">
+        <div  style="font-size: 20px;">
+            <div class="date">19. 11. 21. - <a href="/posts/4clojure/problem-49/">4clojure - Split a sequence (49)</a></div>
+            
+            <div>
+                
+                <a href="/tags/4clojure/">#4clojure</a>
+                
+                <a href="/tags/Today%20I%20Learn/">#Today I Learn</a>
+                
+            </div>
+            
+        </div>
+    </div>
+    <hr>
+    
+    <div class="post-header">
+        <div  style="font-size: 20px;">
+            <div class="date">19. 11. 20. - <a href="/posts/4clojure/problem-48/">4clojure - Intro to some (48)</a></div>
+            
+            <div>
+                
+                <a href="/tags/4clojure/">#4clojure</a>
+                
+                <a href="/tags/Today%20I%20Learn/">#Today I Learn</a>
+                
+            </div>
+            
+        </div>
+    </div>
+    <hr>
+    
+    <div class="post-header">
+        <div  style="font-size: 20px;">
+            <div class="date">19. 11. 19. - <a href="/posts/4clojure/problem-47/">4clojure - Contain Yourself (47)</a></div>
+            
+            <div>
+                
+                <a href="/tags/4clojure/">#4clojure</a>
+                
+                <a href="/tags/Today%20I%20Learn/">#Today I Learn</a>
+                
+            </div>
+            
+        </div>
+    </div>
+    <hr>
+    
+    <div class="post-header">
+        <div  style="font-size: 20px;">
+            <div class="date">19. 11. 18. - <a href="/posts/4clojure/problem-46/">4clojure - Flipping out (46)</a></div>
+            
+            <div>
+                
+                <a href="/tags/4clojure/">#4clojure</a>
+                
+                <a href="/tags/Today%20I%20Learn/">#Today I Learn</a>
+                
+            </div>
+            
+        </div>
+    </div>
+    <hr>
+    
+    <div class="post-header">
+        <div  style="font-size: 20px;">
+            <div class="date">19. 11. 17. - <a href="/posts/4clojure/problem-45/">4clojure - Intro to Iterate (45)</a></div>
+            
+            <div>
+                
+                <a href="/tags/4clojure/">#4clojure</a>
+                
+                <a href="/tags/Today%20I%20Learn/">#Today I Learn</a>
+                
+            </div>
+            
+        </div>
+    </div>
     <hr>
     
 
@@ -180,7 +247,7 @@
             <div id="sidebar">
                 
                 <div id="recent">
-                    <h3>Recent Posts</h3>
+                    <h3>최근 변경된 문서</h3>
                     <ul>
                         
                         <li><a href="/posts/4clojure/problem-42/">4clojure - Factorial Fun (42)</a></li>
@@ -194,7 +261,7 @@
                 
                 
                 <div id="tags">
-                    <h3>Tags</h3>
+                    <h3>태그</h3>
                     <ul>
                         
                         <li><a href="/tags/essay/">essay</a></li>
