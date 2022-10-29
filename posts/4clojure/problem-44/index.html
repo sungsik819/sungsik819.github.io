@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="Problem">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="Problem">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-44/" />
 <meta property="og:title" content="4clojure - Rotate Sequence (44)" />
@@ -74,14 +74,14 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 11월 16일<br>수정일: 2019년 11월 16일</div>
+        <div class="col-lg-6 right">생성일: 2019년 11월 16일<br>수정일: 2022년 10월 29일</div>
         
     </div>
     <h2>4clojure - Rotate Sequence (44)</h2>
 </div>
 <div>
-    
-    <p><strong>Problem</strong></p><pre><code class="clj">(= (__ 2 [1 2 3 4 5]) '(3 4 5 1 2))
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li><ol><li><a href="#풀이-과정">풀이 과정</a></li></ol></ol>
+    <h2 id="문제">문제</h2><pre><code class="clj">(= (__ 2 [1 2 3 4 5]) '(3 4 5 1 2))
 
 (= (__ -2 [1 2 3 4 5]) '(4 5 1 2 3))
 
@@ -90,11 +90,11 @@
 (= (__ 1 '(:a :b :c)) '(:b :c :a))
 
 (= (__ -4 '(:a :b :c)) '(:c :a :b))
-</code></pre><p><strong>Solved</strong></p><pre><code class="clj">(fn [n coll]
+</code></pre><h2 id="풀이">풀이</h2><pre><code class="clj">(fn [n coll]
 	(let [cnt (count coll)
 			m (mod n cnt)]
 		(apply concat (list (drop m coll) (take m coll)))))
-</code></pre><p>partition-by를 사용하면 그룹으로 묶어주는 방법이 있다고 생각 했다.</p><pre><code class="clj">(partition-by #(&gt;= 1 %) [1 2 3 4 5])
+</code></pre><h3 id="풀이-과정">풀이 과정</h3><p>partition-by를 사용하면 그룹으로 묶어주는 방법이 있다고 생각 했다.</p><pre><code class="clj">(partition-by #(&gt;= 1 %) [1 2 3 4 5])
 ;; ((1) (2 3 4 5))
 </code></pre><p>위의 결과를 뒤집어서 합치면 되는데 into로 넣는 방법이 생각 났다.</p><pre><code class="clj">(into '() (partition-by #(&gt;= 1 %) [1 2 3 4 5]))
 ;; ((2 3 4 5) (1))
@@ -178,11 +178,11 @@ rem과의 차이점은 아래 결과이다.</p><pre><code class="clj">(mod 6 -5)
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-43/">4clojure - Reverse Interleave (43)</a></li>
+                        
+                        <li><a href="/posts/4clojure/problem-44/">4clojure - Rotate Sequence (44)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-42/">4clojure - Factorial Fun (42)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-41/">4clojure - Drop Every Nth Item (41)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-35/">4clojure - Local bindings (35)</a></li>
                         
                     </ul>
                 </div>
