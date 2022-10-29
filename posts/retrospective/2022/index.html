@@ -2,19 +2,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Sungsik: 4clojure - Count a Sequence (22)</title>
+    <title>Sungsik: 2022년 기록</title>
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="제한 : count 함수">
+<meta name="description" content="읽은 책">
 
-<meta property="og:description" content="제한 : count 함수">
+<meta property="og:description" content="읽은 책">
 
-<meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-22/" />
-<meta property="og:title" content="4clojure - Count a Sequence (22)" />
+<meta property="og:url" content="https://sungsik819.github.io/posts/retrospective/2022/" />
+<meta property="og:title" content="2022년 기록" />
 <meta property="og:type" content="article" />
 
-    <link rel="canonical" href="https://sungsik819.github.io/posts/4clojure/problem-22/">
+    <link rel="canonical" href="https://sungsik819.github.io/posts/retrospective/2022/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="//fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700" rel="stylesheet"
           type="text/css">
@@ -74,50 +74,28 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 10월 25일<br>수정일: 2019년 10월 25일</div>
+        <div class="col-lg-6 right">생성일: 2022년 10월 29일<br>수정일: 2022년 10월 29일</div>
         
     </div>
-    <h2>4clojure - Count a Sequence (22)</h2>
+    <h2>2022년 기록</h2>
 </div>
 <div>
     
-    <pre><code class="clj">(= (__ '(1 2 3 3 1)) 5)
-
-(= (__ "Hello World") 11)
-
-(= (__ [[1 2] [3 4] [5 6]]) 3)
-
-(= (__ '(13)) 1)
-
-(= (__ '(:a :b :c)) 3)
-</code></pre><p><strong>제한 : count 함수</strong></p><pre><code class="clj">(fn [x]
-  (reduce (fn [acc e] (inc acc)) 0 x))
-</code></pre><p>원소의 갯수를 파악하는 문제이다 나는  reduce를 사용하여 원소를 순회하며 acc를 한개씩 증가시키는 방법으로 문제를 해결 하였다.</p><p>solution을 보니 or 또는 do를 사용하여 문제를 해결한 사람들도 있었다.
-or은 false인 경우를 제외하고 무조건 첫번째 표현식의 결과 값을 반환 한다.</p><pre><code class="clj">(or (inc 0) :a)
-;; 1
-</code></pre><p>위 표현식을 보면 :a는 출력을 하지 않는다는 것이다.</p><p>do는 표현식을 순서대로 실행하는 함수이다.</p><pre><code class="clj">(do (print "Somthing")
-	  (print "this"))
-;; Somthing
-;; this
-</code></pre>
+    <h2 id="읽은-책">읽은 책</h2><ul><li>2022-10-29 - 이펙티브 엔지니어 - 적은 시간으로 큰 효율을 낼수 있는 방법을 찾고 싶어서 읽었다, 두번 이상 할것이라면 자동화는 시간을 절약한다.</li></ul>
 </div>
 
 <div id="post-tags">
     <b>Tags: </b>
     
-    <a href="/tags/4clojure/">4clojure</a>
-    
-    <a href="/tags/Today%20I%20Learn/">Today I Learn</a>
+    <a href="/tags/retrospective/">retrospective</a>
     
 </div>
 
 
     <div id="prev-next">
         
-        <a href="/posts/4clojure/problem-23/">&laquo; 4clojure - Reverse a Sequence (23)</a>
         
-        
-        <a class="right" href="/posts/4clojure/problem-21/">4clojure - Nth Element (21) &raquo;</a>
+        <a class="right" href="/posts/4clojure/restart-4clojure/">4clojure부터 시작 &raquo;</a>
         
     </div>
 
