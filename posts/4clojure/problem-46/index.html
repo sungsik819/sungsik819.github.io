@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="Problem">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="Problem">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-46/" />
 <meta property="og:title" content="4clojure - Flipping out (46)" />
@@ -74,21 +74,21 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 11월 18일<br>수정일: 2019년 11월 18일</div>
+        <div class="col-lg-6 right">생성일: 2019년 11월 18일<br>수정일: 2023년 7월 16일</div>
         
     </div>
     <h2>4clojure - Flipping out (46)</h2>
 </div>
 <div>
-    
-    <p><strong>Problem</strong></p><pre><code class="clj">(= 3 ((__ nth) 2 [1 2 3 4 5]))
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#문제풀이">문제풀이</a></li></ol>
+    <h2 id="문제">문제</h2><pre><code class="clj">(= 3 ((__ nth) 2 [1 2 3 4 5]))
 
 (= true ((__ &gt;) 7 8))
 
 (= 4 ((__ quot) 2 8))
 
 (= [1 2 3] ((__ take) [1 2 3 4 5] 3))
-</code></pre><p><strong>Solved</strong></p><pre><code class="clj">(fn [f]
+</code></pre><h2 id="문제풀이">문제풀이</h2><pre><code class="clj">(fn [f]
   (fn [x y]
     (f y x)))
 </code></pre><p>함수 내부의 함수 정의를 하는 방법으로 문제를 해결 했다. 과정을 설명한다면 처음에 (fn [f])의 실행으로 (fn [x y]가 리턴되고 그 후에 x y값에 해당하는 결과를 (f y x)를 실행하므로써 해결을 한다.즉 이런 모양이다.</p><pre><code class="clj">(((fn [f] (fn [x y] (f y x))) nth) 2 [1 2 3 4 5])
@@ -131,11 +131,11 @@
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-46/">4clojure - Flipping out (46)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-45/">4clojure - Intro to Iterate (45)</a></li>
                         
                         <li><a href="/posts/retrospective/2022/">2022년 기록</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-44/">4clojure - Rotate Sequence (44)</a></li>
                         
                     </ul>
                 </div>
