@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="Problem">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="Problem">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-49/" />
 <meta property="og:title" content="4clojure - Split a sequence (49)" />
@@ -74,19 +74,19 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 11월 21일<br>수정일: 2019년 11월 21일</div>
+        <div class="col-lg-6 right">생성일: 2019년 11월 21일<br>수정일: 2023년 07월 19일</div>
         
     </div>
     <h2>4clojure - Split a sequence (49)</h2>
 </div>
 <div>
-    
-    <p><strong>Problem</strong></p><pre><code class="clj">(= (__ 3 [1 2 3 4 5 6]) [[1 2 3] [4 5 6]])
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li></ol>
+    <h2 id="문제">문제</h2><pre><code class="clj">(= (__ 3 [1 2 3 4 5 6]) [[1 2 3] [4 5 6]])
 
 (= (__ 1 [:a :b :c :d]) [[:a] [:b :c :d]])
 
 (= (__ 2 [[1 2] [3 4] [5 6]]) [[[1 2] [3 4]] [[5 6]]])
-</code></pre><p><strong>제한 : split-at</strong></p><p><strong>Solved</strong></p><pre><code class="clj">(fn [n l]
+</code></pre><p><strong>제한 : split-at</strong></p><h2 id="풀이">풀이</h2><pre><code class="clj">(fn [n l]
   (list (take n l) (drop n l)))
 </code></pre><p>첫번째 매개변수의 숫자 만큼 첫번째 부분에 두어 2개로 나누는 문제이다. 즉 3일때 [1 2 3 4 5 6]이라면 [1 2 3] [4 5 6]이 되고 1이라면 [1] [2 3 4 5 6]이 되는 것이다. take로 앞의 갯수 만큼의 원소를 가져오고,  drop으로 뒤 갯수 만큼의 원소를 남긴다. 그것을 list로 조합하면 되는 문제 이다. 다시 보니까 알겠지만 처음에 이 문제를 봤다면 어떠한 과정으로 문제를 접근 해야하는지 고민이 될 것 같긴 하다.</p><p>다른 사람들은 juxt를 이용해서 문제를 풀었던데 이것에 대해서도 공부가 필요하다.</p>
 </div>
@@ -125,11 +125,11 @@
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-49/">4clojure - Split a sequence (49)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-48/">4clojure - Intro to some (48)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-47/">4clojure - Contain Yourself (47)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-46/">4clojure - Flipping out (46)</a></li>
                         
                     </ul>
                 </div>
