@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="Problem">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="Problem">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-50/" />
 <meta property="og:title" content="4clojure - Split by Type (50)" />
@@ -74,20 +74,20 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 11월 22일<br>수정일: 2019년 11월 22일</div>
+        <div class="col-lg-6 right">생성일: 2019년 11월 22일<br>수정일: 2023년 07월 20일</div>
         
     </div>
     <h2>4clojure - Split by Type (50)</h2>
 </div>
 <div>
-    
-    <p><strong>Problem</strong></p><pre><code class="clj">(= (set (__ [1 :a 2 :b 3 :c])) #{[1 2 3] [:a :b :c]})
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li><ol><li><a href="#풀이-과정">풀이 과정</a></li></ol></ol>
+    <h2 id="문제">문제</h2><pre><code class="clj">(= (set (__ [1 :a 2 :b 3 :c])) #{[1 2 3] [:a :b :c]})
 
 (= (set (__ [:a "foo"  "bar" :b])) #{[:a :b] ["foo" "bar"]})
 
 (= (set (__ [[1 2] :a [3 4] 5 6 :b])) #{[[1 2] [3 4]] [:a :b] [5 6]})
-</code></pre><p><strong>Solved</strong></p><pre><code class="clj">#(vals (group-by type %))
-</code></pre><p>같은 조건으로 묶어주는 함수가 group-by라는 것을 문서를 보다가 다시 되뇌었다.
+</code></pre><h2 id="풀이">풀이</h2><pre><code class="clj">#(vals (group-by type %))
+</code></pre><h3 id="풀이-과정">풀이 과정</h3><p>같은 조건으로 묶어주는 함수가 group-by라는 것을 문서를 보다가 다시 되뇌었다.
 분명히 group-by로 문제를 풀었던 것이 있었는데 생각이 안나는 것을 보면 지속적인 문제 풀이한 것을 봐야하지 않을까?하는 생각이 들었다.</p><p>아니면 너무 다른 방식이라서 쉽게 생각을 못했던 것일 수도 있고...
 익숙한 방법으로만 생각을 하려고 하다보니 더 쉬운 방법이 생각이 나지 않았다.</p><p>우선 group-by를 사용을 했다.
 같은 type으로 묶어주면 될 것 같아서 값을 확인 해봤다.</p><pre><code class="clj">(group-by type [1 :a 2 :b 3 :c])
@@ -135,11 +135,11 @@
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-50/">4clojure - Split by Type (50)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-49/">4clojure - Split a sequence (49)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-48/">4clojure - Intro to some (48)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-47/">4clojure - Contain Yourself (47)</a></li>
                         
                     </ul>
                 </div>
