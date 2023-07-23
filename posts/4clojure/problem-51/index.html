@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="Problem">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="Problem">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-51/" />
 <meta property="og:title" content="4clojure - Advanced Destructuring (51)" />
@@ -74,15 +74,15 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 11월 24일<br>수정일: 2019년 11월 24일</div>
+        <div class="col-lg-6 right">생성일: 2019년 11월 24일<br>수정일: 2023년 07월 23일</div>
         
     </div>
     <h2>4clojure - Advanced Destructuring (51)</h2>
 </div>
 <div>
-    
-    <p><strong>Problem</strong></p><pre><code class="clj">(= [1 2 [3 4 5] [1 2 3 4 5]] (let [[a b &amp; c :as d] __] [a b c d]))
-</code></pre><p><strong>Solved</strong></p><pre><code class="clj">[1 2 3 4 5]
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li></ol>
+    <h2 id="문제">문제</h2><pre><code class="clj">(= [1 2 [3 4 5] [1 2 3 4 5]] (let [[a b &amp; c :as d] __] [a b c d]))
+</code></pre><h2 id="풀이">풀이</h2><pre><code class="clj">[1 2 3 4 5]
 </code></pre><p>parameter 에 대한 인수 분해 문제 이다.[a b &amp; c :as d]의 의미를 알아야 하는데 결과적으로도 [1 2 [3 4 5] [1 2 3 4 5]]가 되어야 한다. 즉 a = 1, b = 2, c = [3 4 5], d = [1 2 3 4 5]일 때 답이 되고, 분해되는 방식도 그 방식과 동일 하다. 사실 :as d는 인수의 전체를 반환하는 것이라 d 값이 무엇인지 를 알 수 있으면 쉽게 풀 수 있다.</p>
 </div>
 
@@ -120,11 +120,11 @@
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-51/">4clojure - Advanced Destructuring (51)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-50/">4clojure - Split by Type (50)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-49/">4clojure - Split a sequence (49)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-48/">4clojure - Intro to some (48)</a></li>
                         
                     </ul>
                 </div>
