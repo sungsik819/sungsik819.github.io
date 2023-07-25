@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="Problem">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="Problem">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-54/" />
 <meta property="og:title" content="4clojure - Partition a Sequence (54)" />
@@ -74,19 +74,19 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 11월 27일<br>수정일: 2019년 11월 27일</div>
+        <div class="col-lg-6 right">생성일: 2019년 11월 27일<br>수정일: 2023년 07월 26일</div>
         
     </div>
     <h2>4clojure - Partition a Sequence (54)</h2>
 </div>
 <div>
-    
-    <p><strong>Problem</strong></p><pre><code class="clj">(= (__ 3 (range 9)) '((0 1 2) (3 4 5) (6 7 8)))
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li></ol>
+    <h2 id="문제">문제</h2><pre><code class="clj">(= (__ 3 (range 9)) '((0 1 2) (3 4 5) (6 7 8)))
 
 (= (__ 2 (range 8)) '((0 1) (2 3) (4 5) (6 7)))
 
 (= (__ 3 (range 8)) '((0 1 2) (3 4 5)))
-</code></pre><p><strong>제한 : partition, partition-all</strong></p><p><strong>Solved</strong></p><pre><code class="clj">(fn [x coll]
+</code></pre><p><strong>제한 : partition, partition-all</strong></p><h2 id="풀이">풀이</h2><pre><code class="clj">(fn [x coll]
   (loop [result [] coll2 coll]
     (if (or (empty? coll2) (&gt; x (count coll2))) result
         (recur (conj result (take x coll2)) (drop x coll2)))))
@@ -127,11 +127,11 @@
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-54/">4clojure - Partition a Sequence (54)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-53/">4clojure - Longest Increasing Sub-Seq (53)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-52/">4clojure - Intro to Destructuring (52)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-51/">4clojure - Advanced Destructuring (51)</a></li>
                         
                     </ul>
                 </div>
