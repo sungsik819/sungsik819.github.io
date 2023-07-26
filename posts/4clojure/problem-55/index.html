@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="Problem">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="Problem">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-55/" />
 <meta property="og:title" content="4clojure - Count Occurrences (55)" />
@@ -74,25 +74,25 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 11월 28일<br>수정일: 2019년 11월 28일</div>
+        <div class="col-lg-6 right">생성일: 2019년 11월 28일<br>수정일: 2023년 07월 27일</div>
         
     </div>
     <h2>4clojure - Count Occurrences (55)</h2>
 </div>
 <div>
-    
-    <p><strong>Problem</strong></p><pre><code class="clj">(= (__ [1 1 2 3 2 1 1]) {1 4, 2 2, 3 1})
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li><ol><li><a href="#풀이과정">풀이과정</a></li></ol></ol>
+    <h2 id="문제">문제</h2><pre><code class="clj">(= (__ [1 1 2 3 2 1 1]) {1 4, 2 2, 3 1})
 
 (= (__ [:b :a :b :a :b]) {:a 2, :b 3})
 
 (= (__ '([1 2] [1 3] [1 3])) {[1 2] 1, [1 3] 2})
-</code></pre><p><strong>제한 : frequencies</strong></p><p><strong>Solved</strong></p><pre><code class="clj">(fn [x] 
+</code></pre><p><strong>제한 : frequencies</strong></p><h2 id="풀이">풀이</h2><pre><code class="clj">(fn [x] 
   (-&gt;&gt;
    (partition-by identity (sort x))
    (map #(list (first %) (count %)))
    (apply concat)
    (apply hash-map)))
-</code></pre><p>처음에는 group-by로 하면 될 것 이라고 생각을 했다.</p><pre><code class="clj">(group-by count [1 1 2 3 2 1 1])
+</code></pre><h3 id="풀이과정">풀이과정</h3><p>처음에는 group-by로 하면 될 것 이라고 생각을 했다.</p><pre><code class="clj">(group-by count [1 1 2 3 2 1 1])
 ;;Execution error (UnsupportedOperationException) at user/eval296 (REPL:1). 
 ;;count not supported on this type: Long
 </code></pre><p>근데 group-by는 string 값만 된다는 것을 알게 되었고, 다른 방법을 고민 했다.</p><p>갯수를 알아내기 위해 같은 값을 묶는 것이 필요하다고 생각하여
@@ -281,11 +281,11 @@ apply 없이 예제를 만든다면 아래와 같다.</p><pre><code class="clj">
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-55/">4clojure - Count Occurrences (55)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-54/">4clojure - Partition a Sequence (54)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-53/">4clojure - Longest Increasing Sub-Seq (53)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-52/">4clojure - Intro to Destructuring (52)</a></li>
                         
                     </ul>
                 </div>
