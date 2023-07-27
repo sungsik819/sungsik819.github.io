@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="Problem">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="Problem">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-56/" />
 <meta property="og:title" content="4clojure - Find Distinct Items (56)" />
@@ -74,26 +74,26 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 11월 29일<br>수정일: 2019년 11월 29일</div>
+        <div class="col-lg-6 right">생성일: 2019년 11월 29일<br>수정일: 2023년 07월 28일</div>
         
     </div>
     <h2>4clojure - Find Distinct Items (56)</h2>
 </div>
 <div>
-    
-    <p><strong>Problem</strong></p><pre><code class="clj">(= (__ [1 2 1 3 1 2 4]) [1 2 3 4])
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li><li><a href="#풀이2">풀이2</a></li><ol><li><a href="#풀이-분석">풀이 분석</a></li></ol></ol>
+    <h2 id="문제">문제</h2><pre><code class="clj">(= (__ [1 2 1 3 1 2 4]) [1 2 3 4])
 
 (= (__ [:a :a :b :b :c :c]) [:a :b :c])
 
 (= (__ '([2 4] [1 2] [1 3] [1 3])) '([2 4] [1 2] [1 3]))
 
 (= (__ (range 50)) (range 50))
-</code></pre><p><strong>Solved</strong></p><pre><code class="clj">(fn [coll]
+</code></pre><h2 id="풀이">풀이</h2><pre><code class="clj">(fn [coll]
   (reduce (fn [acc num] 
             (if (some true? (map #(= % num) acc)) acc
               (conj acc num))) [] coll))
-</code></pre><p>순회하는 방식으로 [] 안에 값이 있으면 누적된 []를, 없으면 []안에 값을 추가하는 방식으로 문제를 해결 했다.</p><p>다른 사람이 푼 해결책을 보면</p><p><strong>Solved 2</strong></p><pre><code class="clj">reduce #({%2 %} ((set %) %2) (conj % %2)) []
-</code></pre><p>reduce 연산을 풀이하면 아래와 같다</p><pre><code class="clj">({1 []} ((set []) 1) (conj [] 1))
+</code></pre><p>순회하는 방식으로 [] 안에 값이 있으면 누적된 []를, 없으면 []안에 값을 추가하는 방식으로 문제를 해결 했다.</p><h2 id="풀이2">풀이2</h2><p>다른 사람이 푼 해결책을 보면</p><pre><code class="clj">reduce #({%2 %} ((set %) %2) (conj % %2)) []
+</code></pre><h3 id="풀이-분석">풀이 분석</h3><p>reduce 연산을 풀이하면 아래와 같다</p><pre><code class="clj">({1 []} ((set []) 1) (conj [] 1))
 ;; [1]
 
 ({2 [1]} ((set [1]) 2) (conj [1] 2))
@@ -152,11 +152,11 @@ set에 값이 있을때와 없을 때의 연산을 비교해서 본다면 아래
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-56/">4clojure - Find Distinct Items (56)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-55/">4clojure - Count Occurrences (55)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-54/">4clojure - Partition a Sequence (54)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-53/">4clojure - Longest Increasing Sub-Seq (53)</a></li>
                         
                     </ul>
                 </div>
