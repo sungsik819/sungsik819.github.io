@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="Problem">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="Problem">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-57/" />
 <meta property="og:title" content="4clojure - Simple Recursion (57)" />
@@ -74,15 +74,15 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 11월 30일<br>수정일: 2019년 11월 30일</div>
+        <div class="col-lg-6 right">생성일: 2019년 11월 30일<br>수정일: 2023년 07월 29일</div>
         
     </div>
     <h2>4clojure - Simple Recursion (57)</h2>
 </div>
 <div>
-    
-    <p><strong>Problem</strong></p><pre><code class="clj">(= __ ((fn foo [x] (when (&gt; x 0) (conj (foo (dec x)) x))) 5))
-</code></pre><p><strong>Solved</strong></p><pre><code class="clj">'(5 4 3 2 1)
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li></ol>
+    <h2 id="문제">문제</h2><pre><code class="clj">(= __ ((fn foo [x] (when (&gt; x 0) (conj (foo (dec x)) x))) 5))
+</code></pre><h2 id="풀이">풀이</h2><pre><code class="clj">'(5 4 3 2 1)
 </code></pre><p>recursive 문제이다 풀이를 한다면 아래와 같다</p><pre><code class="clj">(conj (conj (conj (conj (conj nil 1) 2) 3) 4) 5)
 ;; (conj (conj (conj (conj (1) 2) 3) 4) 5)
 ;; (conj (conj (conj (2 1) 3) 4) 5)
@@ -126,11 +126,11 @@
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-57/">4clojure - Simple Recursion (57)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-56/">4clojure - Find Distinct Items (56)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-55/">4clojure - Count Occurrences (55)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-54/">4clojure - Partition a Sequence (54)</a></li>
                         
                     </ul>
                 </div>
