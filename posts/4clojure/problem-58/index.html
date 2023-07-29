@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="Problem">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="Problem">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-58/" />
 <meta property="og:title" content="4clojure - Function Composition (58)" />
@@ -74,25 +74,25 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 12월 01일<br>수정일: 2019년 12월 01일</div>
+        <div class="col-lg-6 right">생성일: 2019년 12월 01일<br>수정일: 2023년 07월 30일</div>
         
     </div>
     <h2>4clojure - Function Composition (58)</h2>
 </div>
 <div>
-    
-    <p><strong>Problem</strong></p><pre><code class="clj">(= [3 2 1] ((__ rest reverse) [1 2 3 4]))
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li><ol><li><a href="#풀이-과정">풀이 과정</a></li></ol></ol>
+    <h2 id="문제">문제</h2><pre><code class="clj">(= [3 2 1] ((__ rest reverse) [1 2 3 4]))
 
 (= 5 ((__ (partial + 3) second) [1 2 3 4]))
 
 (= true ((__ zero? #(mod % 8) +) 3 5 7 9))
 
 (= "HELLO" ((__ #(.toUpperCase %) #(apply str %) take) 5 "hello world"))
-</code></pre><p><strong>제한 : comp</strong></p><p><strong>Solved</strong></p><pre><code class="clj">(fn [&amp; f]
+</code></pre><p><strong>제한 : comp</strong></p><h2 id="풀이">풀이</h2><pre><code class="clj">(fn [&amp; f]
 	(fn [&amp; args]
 		(let [rf (reverse f)]
 			(reduce (fn [acc x] (x acc)) (apply (first rf) args) (rest rf)))))
-</code></pre><p>high-order-function 에 대한 사용 방법이 필요 할 것 같다.
+</code></pre><h3 id="풀이-과정">풀이 과정</h3><p>high-order-function 에 대한 사용 방법이 필요 할 것 같다.
 함수를 넘겨주는 함수를 만드는데 시행착오이다.</p><pre><code class="clj">(defn rf [f]
 	(f))
 
@@ -216,11 +216,11 @@
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-58/">4clojure - Function Composition (58)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-57/">4clojure - Simple Recursion (57)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-56/">4clojure - Find Distinct Items (56)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-55/">4clojure - Count Occurrences (55)</a></li>
                         
                     </ul>
                 </div>
