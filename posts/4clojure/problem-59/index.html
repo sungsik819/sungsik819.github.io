@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="Problem">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="Problem">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-59/" />
 <meta property="og:title" content="4clojure - Juxtaposition (59)" />
@@ -74,19 +74,19 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 12월 02일<br>수정일: 2019년 12월 02일</div>
+        <div class="col-lg-6 right">생성일: 2019년 12월 02일<br>수정일: 2023년 07월 31일</div>
         
     </div>
     <h2>4clojure - Juxtaposition (59)</h2>
 </div>
 <div>
-    
-    <p><strong>Problem</strong></p><pre><code class="clj">(= [21 6 1] ((__ + max min) 2 3 5 1 6 4))
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li></ol>
+    <h2 id="문제">문제</h2><pre><code class="clj">(= [21 6 1] ((__ + max min) 2 3 5 1 6 4))
 
 (= ["HELLO" 5] ((__ #(.toUpperCase %) count) "hello"))
 
 (= [2 6 4] ((__ :a :c :b) {:a 2, :b 4, :c 6, :d 8 :e 10}))
-</code></pre><p><strong>제한 : juxt</strong></p><p><strong>Solved</strong></p><pre><code class="clj">(fn [a b &amp;[c]]
+</code></pre><p><strong>제한 : juxt</strong></p><h2 id="풀이">풀이</h2><pre><code class="clj">(fn [a b &amp;[c]]
   (fn [&amp; x]
     (if c
       (vector (apply a x) (apply b x) (apply c x))
@@ -130,11 +130,11 @@ juxt 함수의 내부가 저렇게 생기지 않았다고 생각이 들지만 �
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-59/">4clojure - Juxtaposition (59)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-58/">4clojure - Function Composition (58)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-57/">4clojure - Simple Recursion (57)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-56/">4clojure - Find Distinct Items (56)</a></li>
                         
                     </ul>
                 </div>
