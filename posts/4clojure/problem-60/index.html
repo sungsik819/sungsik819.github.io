@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="Problem">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="Problem">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-60/" />
 <meta property="og:title" content="4clojure - Sequence Reductions (60)" />
@@ -74,26 +74,26 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 12월 03일<br>수정일: 2019년 12월 03일</div>
+        <div class="col-lg-6 right">생성일: 2019년 12월 03일<br>수정일: 2023년 08월 01일</div>
         
     </div>
     <h2>4clojure - Sequence Reductions (60)</h2>
 </div>
 <div>
-    
-    <p><strong>Problem</strong></p><pre><code class="clj">(= (take 5 (__ + (range))) [0 1 3 6 10])
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li><ol><li><a href="#풀이-과정">풀이 과정</a></li></ol></ol>
+    <h2 id="문제">문제</h2><pre><code class="clj">(= (take 5 (__ + (range))) [0 1 3 6 10])
 
 (= (__ conj [1] [2 3 4]) [[1] [1 2] [1 2 3] [1 2 3 4]])
 
 (= (last (__ * 2 [3 4 5])) (reduce * 2 [3 4 5]) 120)
-</code></pre><p><strong>제한 : reductions</strong></p><p><strong>Solved</strong></p><pre><code class="clj">(fn rd 
+</code></pre><p><strong>제한 : reductions</strong></p><h2 id="풀이">풀이</h2><pre><code class="clj">(fn rd 
 	([f x]
 		(rd f (first x) (rest x)))
   
 	([f value col]
 		(if (empty? col) (list value)
 			(cons value (lazy-seq (rd f (f value (first col)) (rest col)))))))
-</code></pre><p>우선 reductions의 동작을 봤는데 아래와 같이 동작을 했다</p><pre><code class="clj">(reductions + [1 2 3])
+</code></pre><h3 id="풀이-과정">풀이 과정</h3><p>우선 reductions의 동작을 봤는데 아래와 같이 동작을 했다</p><pre><code class="clj">(reductions + [1 2 3])
 ;; (1 3 6)
 </code></pre><p>결과 값을 보니 아래의 함수를 사용해서 동작하는 값과 같았다.</p><pre><code class="clj">(map #(reduce + %) [[1] [1 2] [1 2 3]])
 ;; (1 3 6)
@@ -169,7 +169,18 @@ recursive 적용을 했을 때는 아래와 같다</p><pre><code class="clj">(fn
 
 ;; [1 2 3 4]
 </code></pre><p>생각했던 것과 다른 결과가 나왔다.<br />
-([1] [1 2] [1 2 3] [1 2 3 4]) 이렇게 될 줄 알았는데 무언가 계산식이 잘못 되었다는 생각이 들었다.</p><p>생각해보니 너무 처음부터 문제를 깊게 생각했던 것 같다. 문제를 인식하는 과정에서 한꺼번에 답을 도출하려고 했던 것이 문제를 푸는데 있어서 걸림돌이 되었던 것 같다.</p><p>처음부터 [1] [1 2] [1 2 3] [1 2 3 4]) 에서  +를 하는 것이 아니라 계산하는 과정에서 f와 파라미터의 조합으로 되어야 하는데 +를 염두해두고 계산식을 만들어가다보니 이런 문제가 생긴 것 같다. 너무 1번째의 풀이에만 매몰되어 있어서 2번째에 대한 풀이를 1번째와 엮어서 생각을 하다보니 문제 였다는 것을 깨달았다.</p>
+([1] [1 2] [1 2 3] [1 2 3 4]) 이렇게 될 줄 알았는데 무언가 계산식이 잘못 되었다는 생각이 들었다.</p><p>생각해보니 너무 처음부터 문제를 깊게 생각했던 것 같다. 문제를 인식하는 과정에서 한꺼번에 답을 도출하려고 했던 것이 문제를 푸는데 있어서 걸림돌이 되었던 것 같다.</p><p>처음부터 [1] [1 2] [1 2 3] [1 2 3 4]) 에서  +를 하는 것이 아니라 계산하는 과정에서 f와 파라미터의 조합으로 되어야 하는데 +를 염두해두고 계산식을 만들어가다보니 이런 문제가 생긴 것 같다. 너무 1번째의 풀이에만 매몰되어 있어서 2번째에 대한 풀이를 1번째와 엮어서 생각을 하다보니 문제 였다는 것을 깨달았다.</p><p>Thread last로 정리하면 아래와 같다</p><pre><code class="clj">(fn sequance-reductions
+  ([f x]
+   (-&gt;&gt; (rest x)
+        (sequance-reductions f (first x))))
+
+  ([f value col]
+   (if (empty? col) (list value)
+       (-&gt;&gt; (rest col)
+            (sequance-reductions f (f value (first col)))
+            (lazy-seq)
+            (cons value)))))
+</code></pre>
 </div>
 
 <div id="post-tags">
@@ -206,11 +217,11 @@ recursive 적용을 했을 때는 아래와 같다</p><pre><code class="clj">(fn
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-60/">4clojure - Sequence Reductions (60)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-59/">4clojure - Juxtaposition (59)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-58/">4clojure - Function Composition (58)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-57/">4clojure - Simple Recursion (57)</a></li>
                         
                     </ul>
                 </div>
