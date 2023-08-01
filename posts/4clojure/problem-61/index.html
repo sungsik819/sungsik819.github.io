@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="Problem">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="Problem">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-61/" />
 <meta property="og:title" content="4clojure - Map Construction (61)" />
@@ -74,21 +74,21 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 12월 04일<br>수정일: 2019년 12월 04일</div>
+        <div class="col-lg-6 right">생성일: 2019년 12월 04일<br>수정일: 2023년 08월 02일</div>
         
     </div>
     <h2>4clojure - Map Construction (61)</h2>
 </div>
 <div>
-    
-    <p><strong>Problem</strong></p><pre><code class="clj">(= (__ [:a :b :c] [1 2 3]) {:a 1, :b 2, :c 3})
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li><ol><li><a href="#풀이-과정">풀이 과정</a></li></ol></ol>
+    <h2 id="문제">문제</h2><pre><code class="clj">(= (__ [:a :b :c] [1 2 3]) {:a 1, :b 2, :c 3})
 
 (= (__ [1 2 3 4] ["one" "two" "three"]) {1 "one", 2 "two", 3 "three"})
 
 (= (__ [:foo :bar] ["foo" "bar" "baz"]) {:foo "foo", :bar "bar"})
-</code></pre><p><strong>제한 : zipmap</strong></p><p><strong>Solved</strong></p><pre><code class="clj">(fn [x y]
+</code></pre><p><strong>제한 : zipmap</strong></p><h2 id="풀이">풀이</h2><pre><code class="clj">(fn [x y]
   (apply array-map (vec (mapcat list x y))))
-</code></pre><p>vec를 빼고도 답이 가능 할 것 같다.</p><pre><code class="clj">(fn [x y]
+</code></pre><h3 id="풀이-과정">풀이 과정</h3><p>vec를 빼고도 답이 가능 할 것 같다.</p><pre><code class="clj">(fn [x y]
   (apply array-map (mapcat list x y)))
 
 ;; array-map 대신 hash-map
@@ -145,11 +145,11 @@
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-61/">4clojure - Map Construction (61)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-60/">4clojure - Sequence Reductions (60)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-59/">4clojure - Juxtaposition (59)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-58/">4clojure - Function Composition (58)</a></li>
                         
                     </ul>
                 </div>
