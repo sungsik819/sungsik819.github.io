@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="Problem">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="Problem">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-62/" />
 <meta property="og:title" content="4clojure - Re-implement Iterate (62)" />
@@ -74,21 +74,26 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 12월 05일<br>수정일: 2019년 12월 05일</div>
+        <div class="col-lg-6 right">생성일: 2019년 12월 05일<br>수정일: 2023년 08월 03일</div>
         
     </div>
     <h2>4clojure - Re-implement Iterate (62)</h2>
 </div>
 <div>
-    
-    <p><strong>Problem</strong></p><pre><code class="clj">(= (take 5 (__ #(* 2 %) 1)) [1 2 4 8 16])
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li></ol>
+    <h2 id="문제">문제</h2><pre><code class="clj">(= (take 5 (__ #(* 2 %) 1)) [1 2 4 8 16])
 
 (= (take 100 (__ inc 0)) (take 100 (range)))
 
 (= (take 9 (__ #(inc (mod % 3)) 1)) (take 9 (cycle [1 2 3])))
-</code></pre><p><strong>제한: iterate</strong></p><p><strong>Solved</strong></p><pre><code class="clj">(fn iter [f x]
+</code></pre><p><strong>제한: iterate</strong></p><h2 id="풀이">풀이</h2><pre><code class="clj">(fn iter [f x]
   (lazy-seq (cons x (iter f (f x)))))
-</code></pre><p>itearate의 동작을 확실하게 알기 때문에 풀기가 그렇게 어렵지는 않았다. 이전에 계산된 값을 사용하는 방식으로 reduce 비스무리하게 동작을 한다고 생각하면 될 것 같다.</p><p>눈여겨 볼 부분은 lazy-seq이다. 게으른 연산을 수행을 하는데 값을 원할때까지 계산을 미루는 방식으로 사용 된다.</p><p>즉, 필요없는 데이터를 미리 로드 하지 않는다고 생각을 하면 될 것 같다.</p>
+</code></pre><p>itearate의 동작을 확실하게 알기 때문에 풀기가 그렇게 어렵지는 않았다. 이전에 계산된 값을 사용하는 방식으로 reduce 비스무리하게 동작을 한다고 생각하면 될 것 같다.</p><p>눈여겨 볼 부분은 lazy-seq이다. 게으른 연산을 수행을 하는데 값을 원할때까지 계산을 미루는 방식으로 사용 된다.</p><p>즉, 필요없는 데이터를 미리 로드 하지 않는다고 생각을 하면 될 것 같다.</p><p>Thread last로 변경하면 아래와 같다</p><pre><code class="clj">(defn iter [f x]
+  (-&gt;&gt; (f x)
+       (iter f)
+       (cons x)
+       (lazy-seq)))
+</code></pre>
 </div>
 
 <div id="post-tags">
@@ -125,11 +130,11 @@
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-62/">4clojure - Re-implement Iterate (62)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-61/">4clojure - Map Construction (61)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-60/">4clojure - Sequence Reductions (60)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-59/">4clojure - Juxtaposition (59)</a></li>
                         
                     </ul>
                 </div>
