@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="Problem">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="Problem">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-64/" />
 <meta property="og:title" content="4clojure - Intro to Reduce (64)" />
@@ -74,19 +74,19 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 12월 09일<br>수정일: 2019년 12월 09일</div>
+        <div class="col-lg-6 right">생성일: 2019년 12월 09일<br>수정일: 2023년 08월 05일</div>
         
     </div>
     <h2>4clojure - Intro to Reduce (64)</h2>
 </div>
 <div>
-    
-    <p><strong>Problem</strong></p><pre><code class="clj">(= 15 (reduce __ [1 2 3 4 5]))
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li></ol>
+    <h2 id="문제">문제</h2><pre><code class="clj">(= 15 (reduce __ [1 2 3 4 5]))
 
 (=  0 (reduce __ []))
 
 (=  6 (reduce __ 1 [2 3]))
-</code></pre><p><strong>Solved</strong></p><pre><code class="clj">+
+</code></pre><h2 id="풀이">풀이</h2><pre><code class="clj">+
 </code></pre><p>reduce에 대한 입문 문제 이다. reduce는 사용하기에 따라서 recursive동작과 같은 형태로도 만들수 있는 만능 함수이다. 앞으로도 자주 사용을 하게 될 것이라 기초적인 것이 제일 중요하다고 생각한다.</p><p>내부의 동작은 아래와 같다</p><pre><code class="clj">(reduce + [1 2 3 4 5])
 ;; (+ (+ (+ (+ 1 2) 3) 4) 5)
 ;; (+ (+ (+ 3 3) 4) 5)
@@ -133,11 +133,11 @@
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-64/">4clojure - Intro to Reduce (64)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-63/">4clojure - Group a Sequence  (63)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-62/">4clojure - Re-implement Iterate (62)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-61/">4clojure - Map Construction (61)</a></li>
                         
                     </ul>
                 </div>
