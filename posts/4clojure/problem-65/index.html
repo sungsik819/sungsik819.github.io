@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="Problem">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="Problem">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-65/" />
 <meta property="og:title" content="4clojure - Black Box Testing (65)" />
@@ -74,14 +74,14 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 12월 10일<br>수정일: 2019년 12월 10일</div>
+        <div class="col-lg-6 right">생성일: 2019년 12월 10일<br>수정일: 2023년 08월 06일</div>
         
     </div>
     <h2>4clojure - Black Box Testing (65)</h2>
 </div>
 <div>
-    
-    <p><strong>Problem</strong></p><pre><code class="clj">(= :map (__ {:a 1, :b 2}))
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li><ol><li><a href="#풀이-과정">풀이 과정</a></li></ol></ol>
+    <h2 id="문제">문제</h2><pre><code class="clj">(= :map (__ {:a 1, :b 2}))
 
 (= :list (__ (range (rand-int 20))))
 
@@ -90,13 +90,13 @@
 (= :set (__ #{10 (rand-int 5)}))
 
 (= [:map :set :vector :list] (map __ [{} #{} [] ()]))
-</code></pre><p><strong>제한 : class, type, Class, vector?, sequential?, list?, seq?, map?, set?</strong><strong>instance?,  getClass</strong></p><p><strong>Solved</strong></p><pre><code class="clj">(fn [coll]
+</code></pre><p><strong>제한 : class, type, Class, vector?, sequential?, list?, seq?, map?, set?</strong><strong>instance?,  getClass</strong></p><h2 id="풀이">풀이</h2><pre><code class="clj">(fn [coll]
   (let [base (empty coll)]
     (cond
       (= base {})  :map
       (= base #{}) :set
       (= base '()) (if (reversible? coll) :vector :list))))
-</code></pre><p>검증하는 함수 없이 어떻게 자료형을 알 수가 있는거지? 라는 생각이 먼저 든다.
+</code></pre><h3 id="풀이-과정">풀이 과정</h3><p>검증하는 함수 없이 어떻게 자료형을 알 수가 있는거지? 라는 생각이 먼저 든다.
 어떻게 풀어야할지 감이 잡히지 않는다....</p><p>값이 들어있는 상태에서 empty로 만드는 함수가 있다는 것을 처음 알게 되었다.
 그리고 collection 자체를 검증 할 수 있다는 것도 알게 되었다.</p><p>보통의 언어 같으면 저런식으로 collection을 비교하지 못해서 저런 방법이 있는지 조차 모르고 산다.</p><p>reversible? 이라는 함수는 확실하게는 잘 모르겠지만 Reversible 을 구현한 collection을 검증하는 함수인데 이게 무엇을 뜻하는지는 아직 잘 모르겠다.</p><p>찾아보니 reverse 가능한 seq를 reversible이라고 한다. 그래서 vector, sorted-map, sorted-set 이 true 값이 되는 것 같다.</p><p>그래서 이번에는 정말로 감이 잡히질 않아서 인터넷에서 찾아보고 공부한다는 마음 가짐으로 기록으로 남긴다.</p><p>다른 사람이 남긴 해답을 분석을 하고 싶어 졌다.</p><pre><code class="clj">#(cond
    (= (conj % nil) %) :map 
@@ -141,11 +141,11 @@
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-65/">4clojure - Black Box Testing (65)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-64/">4clojure - Intro to Reduce (64)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-63/">4clojure - Group a Sequence  (63)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-62/">4clojure - Re-implement Iterate (62)</a></li>
                         
                     </ul>
                 </div>
