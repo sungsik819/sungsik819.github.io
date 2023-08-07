@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="Problem">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="Problem">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-67/" />
 <meta property="og:title" content="4clojure - Prime Numbers (67)" />
@@ -74,25 +74,25 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 12월 12일<br>수정일: 2019년 12월 12일</div>
+        <div class="col-lg-6 right">생성일: 2019년 12월 12일<br>수정일: 2023년 08월 08일</div>
         
     </div>
     <h2>4clojure - Prime Numbers (67)</h2>
 </div>
 <div>
-    
-    <p><strong>Problem</strong></p><pre><code class="clj">(= (__ 2) [2 3])
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li><ol><li><a href="#풀이과정">풀이과정</a></li></ol></ol>
+    <h2 id="문제">문제</h2><pre><code class="clj">(= (__ 2) [2 3])
 
 (= (__ 5) [2 3 5 7 11])
 
 (= (last (__ 100)) 541)
-</code></pre><p><strong>Solved</strong></p><pre><code class="clj">(fn [n]
+</code></pre><h2 id="풀이">풀이</h2><pre><code class="clj">(fn [n]
   (take n (filter 
            (fn [x] (= (count (filter #(= (mod x %) 0) 
                                      (conj (range 1 (inc (int (Math/sqrt x)))) x))) 
                       2)) 
            (range 2 600))))
-</code></pre><p>우선 소수를 구할 수에 대한 리스트가 필요하다. 수에 대한 리스트를 만들기 위해서 range를 사용 했다 단, 소수는 2부터 시작을 해야하므로 아래와 같다</p><pre><code class="clj">(range 2 10)
+</code></pre><h3 id="풀이과정">풀이과정</h3><p>우선 소수를 구할 수에 대한 리스트가 필요하다. 수에 대한 리스트를 만들기 위해서 range를 사용 했다 단, 소수는 2부터 시작을 해야하므로 아래와 같다</p><pre><code class="clj">(range 2 10)
 ;; (2 3 4 5 6 7 8 9)
 </code></pre><p>세번째 문제가 500번이 넘어가므로 안전하게 600번까지 리스트를 만들었다.</p><p>소수를 구하기 위해서는 자신을 제외한 약수가 1밖에 없어야 한다. 하지만 현재 주어진 숫자로 무식하게 자기 자신까지 나눈다는 것은 좀 아니라는 생각이 들어 제곱근을 구해서 최대한 검증의 갯수를 줄여주는 리스트를 만드는 것이 필요하다.</p><pre><code class="clj">(range 1 (inc (int (Math/sqrt 9))))
 ;; (1 2 3)
@@ -151,11 +151,11 @@ remove는 조건이 true이면 제거를 하는 함수이다.
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-67/">4clojure - Prime Numbers (67)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-66/">4clojure - Greatest Common Divisor (66)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-65/">4clojure - Black Box Testing (65)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-64/">4clojure - Intro to Reduce (64)</a></li>
                         
                     </ul>
                 </div>
