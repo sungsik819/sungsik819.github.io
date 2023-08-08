@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="Problem">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="Problem">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-68/" />
 <meta property="og:title" content="4clojure - Recurring Theme (68)" />
@@ -74,20 +74,20 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 12월 13일<br>수정일: 2019년 12월 13일</div>
+        <div class="col-lg-6 right">생성일: 2019년 12월 13일<br>수정일: 2023년 08월 09일</div>
         
     </div>
     <h2>4clojure - Recurring Theme (68)</h2>
 </div>
 <div>
-    
-    <p><strong>Problem</strong></p><pre><code class="clj">(= __
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li></ol>
+    <h2 id="문제">문제</h2><pre><code class="clj">(= __
   (loop [x 5
          result []]
     (if (&gt; x 0)
       (recur (dec x) (conj result (+ 2 x)))
       result)))
-</code></pre><p><strong>Solved</strong></p><pre><code class="clj">[7 6 5 4 3]
+</code></pre><h2 id="풀이">풀이</h2><pre><code class="clj">[7 6 5 4 3]
 </code></pre><p>recursive 문제 이다 다른 부분 보다는 recur 이 부분을 분석 할 수 있으면 문제는 쉽게 해결 가능 하다.</p><p>우선은 x = 5 값이고 result = []로 시작을 하게 되고, 반복을 하게 되면 아래와 같아진다.</p><pre><code class="clj">(conj [] 7)
 (conj (conj [] 7) 6)
 (conj (conj (conj [] 7) 6) 5)
@@ -135,11 +135,11 @@
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-68/">4clojure - Recurring Theme (68)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-67/">4clojure - Prime Numbers (67)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-66/">4clojure - Greatest Common Divisor (66)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-65/">4clojure - Black Box Testing (65)</a></li>
                         
                     </ul>
                 </div>
