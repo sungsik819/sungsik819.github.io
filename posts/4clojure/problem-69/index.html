@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="Problem">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="Problem">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-69/" />
 <meta property="og:title" content="4clojure - Merge with a Function  (69)" />
@@ -74,14 +74,14 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 12월 16일<br>수정일: 2019년 12월 16일</div>
+        <div class="col-lg-6 right">생성일: 2019년 12월 16일<br>수정일: 2023년 08월 10일</div>
         
     </div>
     <h2>4clojure - Merge with a Function  (69)</h2>
 </div>
 <div>
-    
-    <p><strong>Problem</strong></p><pre><code class="clj">(= (__ * {:a 2, :b 3, :c 4} {:a 2} {:b 2} {:c 5})
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li><ol><li><a href="#풀이-과정">풀이 과정</a></li></ol></ol>
+    <h2 id="문제">문제</h2><pre><code class="clj">(= (__ * {:a 2, :b 3, :c 4} {:a 2} {:b 2} {:c 5})
    {:a 4, :b 6, :c 20})
 
 (= (__ - {1 10, 2 20} {1 3, 2 10, 3 15})
@@ -89,10 +89,10 @@
 
 (= (__ concat {:a [3], :b [6]} {:a [4 5], :c [8 9]} {:b [7]})
    {:a [3 4 5], :b [6 7], :c [8 9]})
-</code></pre><p><strong>제한: merge-with</strong></p><p><strong>Solved</strong></p><pre><code class="clj">(fn a [f &amp; args]
+</code></pre><p><strong>제한: merge-with</strong></p><h2 id="풀이">풀이</h2><pre><code class="clj">(fn a [f &amp; args]
 	(let [k (keys (apply merge args))
 		  ca (fn [c coll] 
-				(let [v (filter #(not= % nil) (map #(% c) 									coll))]
+				(let [v (filter #(not= % nil) (map #(% c) coll))]
 					(if (&gt; (count v) 1) {c (apply f v)} 
 						{c (first v)})))] 
 		(loop [ke k
@@ -100,7 +100,7 @@
 			(if (empty? ke) result
 				(recur (rest ke) (into result (ca (first ke) args)))))))
 
-</code></pre><p>첫번째 식에 대한 풀이를 이렇게 하면 되지 않을까 해서 만들어 봤다.</p><pre><code class="clj">(assoc {:a 2 :b 3 :c 4} :a (* ({:a 2 :b 3 :c 4} :a) 2))
+</code></pre><h3 id="풀이-과정">풀이 과정</h3><p>첫번째 식에 대한 풀이를 이렇게 하면 되지 않을까 해서 만들어 봤다.</p><pre><code class="clj">(assoc {:a 2 :b 3 :c 4} :a (* ({:a 2 :b 3 :c 4} :a) 2))
 ;; {:a 4, :b 3, :c 4}
 </code></pre><p>근데 위의 식을 reduce로 엮어서 하려리 잘 되지 않는다..</p><p>우선 아래의 순서대로 알고리즘을 작성을 하는 것이 좋을 것 같다.</p><ol><li>모든 항목을 찾는다.</li><li>같은 항목을 가진 값에 연산을 적용 한다.</li><li>2를 반복 한다.</li></ol><p>없는 항목이 없도록 모든 항목을 찾는다.</p><pre><code class="clj">(keys (merge {:a 2, :b 3, :c 4} {:a 2} {:b 2} {:c 5}))
 ;; (:a :b :c)
@@ -161,11 +161,11 @@
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-69/">4clojure - Merge with a Function  (69)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-68/">4clojure - Recurring Theme (68)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-67/">4clojure - Prime Numbers (67)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-66/">4clojure - Greatest Common Divisor (66)</a></li>
                         
                     </ul>
                 </div>
