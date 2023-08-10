@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="Problem">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="Problem">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-70/" />
 <meta property="og:title" content="4clojure - Word Sorting (70)" />
@@ -74,14 +74,14 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 12월 17일<br>수정일: 2019년 12월 17일</div>
+        <div class="col-lg-6 right">생성일: 2019년 12월 17일<br>수정일: 2023년 08월 11일</div>
         
     </div>
     <h2>4clojure - Word Sorting (70)</h2>
 </div>
 <div>
-    
-    <p><strong>Problem</strong></p><pre><code class="clj">(= (__  "Have a nice day.")
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li></ol>
+    <h2 id="문제">문제</h2><pre><code class="clj">(= (__  "Have a nice day.")
    ["a" "day" "Have" "nice"])
 
 (= (__  "Clojure is a fun language!")
@@ -89,7 +89,7 @@
 
 (= (__  "Fools fall for foolish follies.")
    ["fall" "follies" "foolish" "Fools" "for"])
-</code></pre><p><strong>Solved</strong></p><pre><code class="clj">(fn [st]
+</code></pre><h2 id="풀이">풀이</h2><pre><code class="clj">(fn [st]
   (sort-by clojure.string/lower-case (re-seq #"\w+" st)))
 </code></pre><p>나눠서 sort 하면 되겠거니 하고 시도를 했다.</p><pre><code class="clj">(clojure.string/split "Have a nice day." #" ")
 ;; ["Have" "a" "nice" "day."]
@@ -138,11 +138,11 @@
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-70/">4clojure - Word Sorting (70)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-69/">4clojure - Merge with a Function  (69)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-68/">4clojure - Recurring Theme (68)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-67/">4clojure - Prime Numbers (67)</a></li>
                         
                     </ul>
                 </div>
