@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="Problem">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="Problem">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-71/" />
 <meta property="og:title" content="4clojure - Rearranging Code: -&gt; (71)" />
@@ -74,17 +74,17 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 12월 18일<br>수정일: 2019년 12월 18일</div>
+        <div class="col-lg-6 right">생성일: 2019년 12월 18일<br>수정일: 2023년 08월 12일</div>
         
     </div>
     <h2>4clojure - Rearranging Code: -&gt; (71)</h2>
 </div>
 <div>
-    
-    <p><strong>Problem</strong></p><pre><code class="clj">(= (__ (sort (rest (reverse [2 5 4 1 3 6]))))
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li></ol>
+    <h2 id="문제">문제</h2><pre><code class="clj">(= (__ (sort (rest (reverse [2 5 4 1 3 6]))))
    (-&gt; [2 5 4 1 3 6] (reverse) (rest) (sort) (__))
    5)
-</code></pre><p><strong>Solved</strong></p><pre><code class="clj">last
+</code></pre><h2 id="풀이">풀이</h2><pre><code class="clj">last
 </code></pre><p>thread first 문제 이다. clojure는 안쪽에서부터 계산이 되는데  - &gt; 를 사용하게 되면 순차적으로 읽을 수 있는 함수로 변하게 된다 비슷한 계산으로 -&gt;&gt;가 있는데 파라미터가 들어가는 위치만 다를 뿐 계산 방법은 같다.</p><p>아래의 흐름대로 collection이 변한다.</p><pre><code class="clj">(reverse [2 5 4 1 3 6])
 ;; [6 3 1 4 5 2]
 
@@ -133,11 +133,11 @@
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-71/">4clojure - Rearranging Code: -&gt; (71)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-70/">4clojure - Word Sorting (70)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-69/">4clojure - Merge with a Function  (69)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-68/">4clojure - Recurring Theme (68)</a></li>
                         
                     </ul>
                 </div>
