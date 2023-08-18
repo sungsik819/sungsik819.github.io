@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="Problem">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="Problem">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-77/" />
 <meta property="og:title" content="4clojure - Anagram Finder (77)" />
@@ -74,23 +74,23 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 12월 26일<br>수정일: 2019년 12월 26일</div>
+        <div class="col-lg-6 right">생성일: 2019년 12월 26일<br>수정일: 2023년 08월 19일</div>
         
     </div>
     <h2>4clojure - Anagram Finder (77)</h2>
 </div>
 <div>
-    
-    <p><strong>Problem</strong></p><pre><code class="clj">(= (__ ["meat" "mat" "team" "mate" "eat"])
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li><ol><li><a href="#풀이과정">풀이과정</a></li></ol></ol>
+    <h2 id="문제">문제</h2><pre><code class="clj">(= (__ ["meat" "mat" "team" "mate" "eat"])
    #{#{"meat" "team" "mate"}})
 
 (= (__ ["veer" "lake" "item" "kale" "mite" "ever"])
    #{#{"veer" "ever"} #{"lake" "kale"} #{"mite" "item"}})
-</code></pre><p><strong>Solved</strong></p><pre><code class="clj">(fn [coll] 
+</code></pre><h2 id="풀이">풀이</h2><pre><code class="clj">(fn [coll] 
 	(set (map #(set %) 
               (filter #(&gt; (count %) 1) 
                                (vals (group-by sort coll))))))
-</code></pre><p>비슷한 단어의 묶음을 만들어서 하면될 것이라고 생각을 했다. 그래서 어떻게 알 수 있을까? 생각을 하다가 sort를 해서 비교를 하면 될 것이라 생각을 했다 어차피 알파벳의 순서는 정해져 있으니까..</p><p>그리고 그것을 group-by로 묶어주면 같은 알파벳이 들어간 단어들을 묶어줄 수 있겠다고 생각했다.</p><pre><code class="clj">(group-by sort ["meat" "mat" "team" "mate" "eat"])
+</code></pre><h3 id="풀이과정">풀이과정</h3><p>비슷한 단어의 묶음을 만들어서 하면될 것이라고 생각을 했다. 그래서 어떻게 알 수 있을까? 생각을 하다가 sort를 해서 비교를 하면 될 것이라 생각을 했다 어차피 알파벳의 순서는 정해져 있으니까..</p><p>그리고 그것을 group-by로 묶어주면 같은 알파벳이 들어간 단어들을 묶어줄 수 있겠다고 생각했다.</p><pre><code class="clj">(group-by sort ["meat" "mat" "team" "mate" "eat"])
 ;; {(\a \e \m \t) ["meat" "team" "mate"], (\a \m \t) ["mat"], (\a \e \t) ["eat"]}
 
 (group-by sort ["veer" "lake" "item" "kale" "mite" "ever"])
@@ -147,11 +147,11 @@ into 조합으로 set으로 변경하는 함수를 만들었다. 우선 내부�
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-77/">4clojure - Anagram Finder (77)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-76/">4clojure - Intro to Trampoline (76)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-75/">4clojure - Euler&#39;s Totient Function (75)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-74/">4clojure - Filter Perfect Squares (74)</a></li>
                         
                     </ul>
                 </div>
