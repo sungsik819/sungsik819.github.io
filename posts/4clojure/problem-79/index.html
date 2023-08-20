@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="Problem">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="Problem">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-79/" />
 <meta property="og:title" content="4clojure - Triangle Minimal Path (79)" />
@@ -74,14 +74,14 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 12월 28일<br>수정일: 2019년 12월 28일</div>
+        <div class="col-lg-6 right">생성일: 2019년 12월 28일<br>수정일: 2023년 08월 21일</div>
         
     </div>
     <h2>4clojure - Triangle Minimal Path (79)</h2>
 </div>
 <div>
-    
-    <p><strong>Problem</strong></p><pre><code class="clj">(= 7 (__ '([1]
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li><ol><li><a href="#풀이과정">풀이과정</a></li></ol></ol>
+    <h2 id="문제">문제</h2><pre><code class="clj">(= 7 (__ '([1]
           [2 4]
          [5 1 4]
         [2 3 4 5]))) ; 1-&gt;2-&gt;1-&gt;3
@@ -92,13 +92,13 @@
          [9 9 2 4]
         [4 6 6 7 8]
        [5 7 3 5 1 4]))) ; 3-&gt;4-&gt;3-&gt;2-&gt;7-&gt;1
-</code></pre><p><strong>Solved</strong></p><pre><code class="clj">(fn [col]
+</code></pre><h2 id="풀이">풀이</h2><pre><code class="clj">(fn [col]
   (first 
      (reduce #(map + 
                    (map min (butlast %1) (rest %1 ))               %2)  
 
             (reverse col))))
-</code></pre><p>작은 숫자로만 이동하는 문제인거 같았는데 마지막에 최소 값으로 결과가 나오는 문제이다.</p><p>이건 따로 이동이라는 관점으로 볼 것이 아니라 각각 하나의 vector로 보고 한다면 그냥 sort 후 first 값을 가져오면 될것 같아 보인다.</p><pre><code class="clj">(reduce #(+ % (first (sort %2))) (first (first '([1] [2 4] [5 1 4] [2 3 4 5]))) (rest '([1] [2 4] [5 1 4] [2 3 4 5])))
+</code></pre><h3 id="풀이과정">풀이과정</h3><p>작은 숫자로만 이동하는 문제인거 같았는데 마지막에 최소 값으로 결과가 나오는 문제이다.</p><p>이건 따로 이동이라는 관점으로 볼 것이 아니라 각각 하나의 vector로 보고 한다면 그냥 sort 후 first 값을 가져오면 될것 같아 보인다.</p><pre><code class="clj">(reduce #(+ % (first (sort %2))) (first (first '([1] [2 4] [5 1 4] [2 3 4 5]))) (rest '([1] [2 4] [5 1 4] [2 3 4 5])))
 ;; 6
 </code></pre><p>답과 다르게 나온다..근데 생각을 해보니 이동하는 범위가 한정되어 있는데 sort를 해버리면 이동하는 값이 변하게 되므로  그건 안된다..</p><p>2번째 문제를 봤을 때도 3-&gt;2로 가야할 것 같은데 결과가 최소값이 되어야 하므로 3-&gt;4로 이동 한 것으로 볼 수 있을 것 같다.</p><p>어떻게 3이 2, 4로만 이동할 수 있다는 것을 보장 할 수 있고, 2가 1, 9로만 이동하는 것을 보장 할 수 있는 데이터를 만들 수 있을지 고민을 해야겠다.</p><p>모든 경로에 해당하는 숫자들을 나열하는 방법이 있다. 근데 그것을 하는 것이 최선인지는 잘 모르겠다 하지만 함수형 언어라면 그 방법을 쉽게 할 수 있다고 생각이 든다.</p><p>즉 아래와 같은 형식으로 바뀌어야 한다.</p><pre><code class="clj">[[1] [2 4] [5 1 4] [2 3 4 5]]
 ;; [[1 2 5 2] [1 2 5 3] [1 2 1 3] [1 2 1 4]...]
@@ -179,11 +179,11 @@
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-79/">4clojure - Triangle Minimal Path (79)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-78/">4clojure - Reimplement Trampoline (78)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-77/">4clojure - Anagram Finder (77)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-76/">4clojure - Intro to Trampoline (76)</a></li>
                         
                     </ul>
                 </div>
