@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="Problem">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="Problem">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-80/" />
 <meta property="og:title" content="4clojure - Perfect Numbers (80)" />
@@ -74,14 +74,14 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2020년 01월 01일<br>수정일: 2020년 01월 01일</div>
+        <div class="col-lg-6 right">생성일: 2020년 01월 01일<br>수정일: 2023년 08월 22일</div>
         
     </div>
     <h2>4clojure - Perfect Numbers (80)</h2>
 </div>
 <div>
-    
-    <p><strong>Problem</strong></p><pre><code class="clj">(= (__ 6) true)
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li><ol><li><a href="#풀이과정">풀이과정</a></li></ol></ol>
+    <h2 id="문제">문제</h2><pre><code class="clj">(= (__ 6) true)
 
 (= (__ 7) false)
 
@@ -90,13 +90,13 @@
 (= (__ 500) false)
 
 (= (__ 8128) true)
-</code></pre><p><strong>Solved</strong></p><pre><code class="clj">(fn [x]
+</code></pre><h2 id="풀이">풀이</h2><pre><code class="clj">(fn [x]
 	(let [y (filter #(= (mod x %) 0) (range 1 (+ (int (Math/sqrt x)) 1)))]
 		(-&gt;&gt; (reduce #(conj % (quot x %2)) y y)
 			 (filter #(not= x %))
 			 (apply +)
              (= x))))  
-</code></pre><p>완전수를 구하는 문제이다.
+</code></pre><h3 id="풀이과정">풀이과정</h3><p>완전수를 구하는 문제이다.
 제곱근의 약수를 구한 다음에 그 수와 나눠지는 수들을 저장 후 자신을 제외한 나머지 수의 합을 구하는 방법을 사용 했다.</p><p>제곱근 이상으로는 약수가 반복적이므로 제곱근에 대한 수를 구했다.</p><pre><code class="clj">(take (int (Math/sqrt 28)) (iterate inc 1))
 ;; (1 2 3 4 5)
 </code></pre><p>여기에 나눠서 나머지가 0이되는 값을 구했다.</p><pre><code class="clj">(filter #(= (mod 28 %) 0) (take (int (Math/sqrt 28)) (iterate inc 1)))
@@ -150,11 +150,11 @@
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-80/">4clojure - Perfect Numbers (80)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-79/">4clojure - Triangle Minimal Path (79)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-78/">4clojure - Reimplement Trampoline (78)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-77/">4clojure - Anagram Finder (77)</a></li>
                         
                     </ul>
                 </div>
