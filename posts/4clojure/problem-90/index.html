@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="Problem">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="Problem">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-90/" />
 <meta property="og:title" content="4clojure - Cartesian Product (90)" />
@@ -74,14 +74,14 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2020년 01월 05일<br>수정일: 2020년 01월 05일</div>
+        <div class="col-lg-6 right">생성일: 2020년 01월 05일<br>수정일: 2023년 08월 26일</div>
         
     </div>
     <h2>4clojure - Cartesian Product (90)</h2>
 </div>
 <div>
-    
-    <p><strong>Problem</strong></p><pre><code class="clj">(= (__ #{"ace" "king" "queen"} #{"♠" "♥" "♦" "♣"})
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li></ol>
+    <h2 id="문제">문제</h2><pre><code class="clj">(= (__ #{"ace" "king" "queen"} #{"♠" "♥" "♦" "♣"})
    #{["ace"   "♠"] ["ace"   "♥"] ["ace"   "♦"] ["ace"   "♣"]
      ["king"  "♠"] ["king"  "♥"] ["king"  "♦"] ["king"  "♣"]
      ["queen" "♠"] ["queen" "♥"] ["queen" "♦"] ["queen" "♣"]})
@@ -91,7 +91,7 @@
 
 (= 300 (count (__ (into #{} (range 10))
                   (into #{} (range 30)))))
-</code></pre><p><strong>Solved</strong></p><pre><code class="clj">(fn [a b]
+</code></pre><h2 id="풀이">풀이</h2><pre><code class="clj">(fn [a b]
   (into #{} (mapcat (fn [x] (map #(vector x %) b)) a)))
 </code></pre><p>이중 for문의 느낌으로 문제가 해결 되었다.  뭔가 깔끔하게 해결된 느낌은 아니긴 하지만 문제를 풀었다는데 의의를 둬야 할 것 같다.</p><p>다른 풀이 중 간단한 풀이가 있는데 아래와 같다</p><pre><code class="clj">#(set (for [x %1 y %2] [x y]))
 </code></pre><p>기본적으로 생각 할 때의 for는 단 하나의 자료에 대해서만 반복이 가능하다고 생각할 수 있는데 clojure에서는 이중으로 할 때도 단 하나의 for로만 가능하다는 사실에 적잖게 놀랐다.</p>
@@ -131,11 +131,11 @@
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-90/">4clojure - Cartesian Product (90)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-88/">4clojure - Symmetric Difference (88)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-83/">4clojure - A Half-Truth (83)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-81/">4clojure - Set Intersection (81)</a></li>
                         
                     </ul>
                 </div>
