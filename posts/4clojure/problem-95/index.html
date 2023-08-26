@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="Problem">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="Problem">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-95/" />
 <meta property="og:title" content="4clojure - To Tree, or not to Tree (95)" />
@@ -74,14 +74,14 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2020년 01월 06일<br>수정일: 2020년 01월 06일</div>
+        <div class="col-lg-6 right">생성일: 2020년 01월 06일<br>수정일: 2023년 08월 27일</div>
         
     </div>
     <h2>4clojure - To Tree, or not to Tree (95)</h2>
 </div>
 <div>
-    
-    <p><strong>Problem</strong></p><pre><code class="clj">(= (__ '(:a (:b nil nil) nil))
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li></ol>
+    <h2 id="문제">문제</h2><pre><code class="clj">(= (__ '(:a (:b nil nil) nil))
    true)
 
 (= (__ '(:a (:b nil nil)))
@@ -101,7 +101,7 @@
 
 (= (__ '(:a nil ()))
    false)
-</code></pre><p><strong>Solved</strong></p><pre><code class="clj">(fn tree? [col]
+</code></pre><h2 id="풀이">풀이</h2><pre><code class="clj">(fn tree? [col]
   (or (nil? col)
       (and (coll? col)
            (= 3 (count col))
@@ -144,11 +144,11 @@ every?는 collection의 모든 값들이 참이면 true를 반환하는 함수�
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-95/">4clojure - To Tree, or not to Tree (95)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-90/">4clojure - Cartesian Product (90)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-88/">4clojure - Symmetric Difference (88)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-83/">4clojure - A Half-Truth (83)</a></li>
                         
                     </ul>
                 </div>
