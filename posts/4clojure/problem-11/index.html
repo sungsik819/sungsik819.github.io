@@ -2,12 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>제 2의 두뇌를 위한 공부 기록: 4clojure 11</title>
+    <title>제 2의 두뇌를 위한 공부 기록: 4clojure - Maps: conj(11)</title>
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
+<meta name="description" content="문제">
+
+<meta property="og:description" content="문제">
+
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-11/" />
-<meta property="og:title" content="4clojure 11" />
+<meta property="og:title" content="4clojure - Maps: conj(11)" />
 <meta property="og:type" content="article" />
 
     <link rel="canonical" href="https://sungsik819.github.io/posts/4clojure/problem-11/">
@@ -70,16 +74,16 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 10월 14일<br>수정일: 2019년 10월 14일</div>
+        <div class="col-lg-6 right">생성일: 2019년 10월 14일<br>수정일: 2023년 09월 19일</div>
         
     </div>
-    <h2>4clojure 11</h2>
+    <h2>4clojure - Maps: conj(11)</h2>
 </div>
 <div>
-    
-    <pre><code class="clojure">(= {:a 1, :b 2, :c 3} (conj {:a 1} __ [:c 3]))
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li></ol>
+    <h2 id="문제">문제</h2><pre><code class="clojure">(= {:a 1, :b 2, :c 3} (conj {:a 1} __ [:c 3]))
 
-</code></pre><pre><code class="clojure">[:b 2]
+</code></pre><h2 id="풀이">풀이</h2><pre><code class="clojure">[:b 2]
 </code></pre><p>기본적으로 hash-map에서의 conj 사용은 하나의 hash-map으로 합치는 용도로 사용되는 것 같다. vector로 하는 것 뿐만 아니라 {}로도 가능하다 하지만 ‘()로는 되지 않는 것으로 확인 되었다.</p>
 </div>
 
@@ -117,11 +121,11 @@
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-11/">4clojure - Maps: conj(11)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-10/">4clojure - Intro to Maps(10)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-09/">4clojure - Sets: conj(09)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-08/">4clojure - Intro to Sets(08)</a></li>
                         
                     </ul>
                 </div>
