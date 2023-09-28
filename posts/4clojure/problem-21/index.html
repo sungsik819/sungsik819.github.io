@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="제한: nth">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="제한: nth">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-21/" />
 <meta property="og:title" content="4clojure - Nth Element (21)" />
@@ -74,21 +74,21 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 10월 24일<br>수정일: 2019년 10월 24일</div>
+        <div class="col-lg-6 right">생성일: 2019년 10월 24일<br>수정일: 2023년 09월 29일</div>
         
     </div>
     <h2>4clojure - Nth Element (21)</h2>
 </div>
 <div>
-    
-    <pre><code class="clojure">(= (__ '(4 5 6 7) 2) 6)
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li></ol>
+    <h2 id="문제">문제</h2><pre><code class="clojure">(= (__ '(4 5 6 7) 2) 6)
 
 (= (__ [:a :b :c] 0) :a)
 
 (= (__ [1 2 3 4] 1) 2)
 
 (= (__ '([1 2] [3 4] [5 6]) 2) [5 6])
-</code></pre><p>제한: nth</p><pre><code class="clojure">(fn mynth [x cnt] 
+</code></pre><p>제한: nth</p><h2 id="풀이">풀이</h2><pre><code class="clojure">(fn mynth [x cnt] 
 	(if (= cnt 0) (first x) 
 	(mynth (rest x) (- cnt 1))))
 </code></pre><p>풀었던 문제들을 다시 정리를 하면서 좀 더 짧은 방법을 정리를 하는 것이 맞는 것인가를 생각을 하게되었지만 지금 나의 현재 실력을 보는 것도 중요하다는 생각이 들었다. 문제를 풀고 나서 해답을 보는데 왜 나는 저런 방법을 생각하지 못했을까?를 생각하게 되는 계기가 되는 것 같다. recursive를 하면서 index를 조회하여 값을 가져오는 방법으로 문제를 풀었다.</p><p>solution에서는 drop을 사용하여 문제를 해결하는 방식이 있었다.
@@ -131,11 +131,11 @@ drop의 용도는 첫번째부터 갯수만큼 버리는 함수이다.</p><pre><
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-21/">4clojure - Nth Element (21)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-20/">4clojure - Penultimate Element (20)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-19/">4clojure - Last Element (19)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-18/">4clojure - Sequences: filter(18)</a></li>
                         
                     </ul>
                 </div>
