@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="제한 : count 함수">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="제한 : count 함수">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-22/" />
 <meta property="og:title" content="4clojure - Count a Sequence (22)" />
@@ -74,14 +74,14 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 10월 25일<br>수정일: 2019년 10월 25일</div>
+        <div class="col-lg-6 right">생성일: 2019년 10월 25일<br>수정일: 2023년 09월 30일</div>
         
     </div>
     <h2>4clojure - Count a Sequence (22)</h2>
 </div>
 <div>
-    
-    <pre><code class="clj">(= (__ '(1 2 3 3 1)) 5)
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li></ol>
+    <h2 id="문제">문제</h2><pre><code class="clj">(= (__ '(1 2 3 3 1)) 5)
 
 (= (__ "Hello World") 11)
 
@@ -90,7 +90,7 @@
 (= (__ '(13)) 1)
 
 (= (__ '(:a :b :c)) 3)
-</code></pre><p><strong>제한 : count 함수</strong></p><pre><code class="clj">(fn [x]
+</code></pre><p><strong>제한 : count 함수</strong></p><h2 id="풀이">풀이</h2><pre><code class="clj">(fn [x]
   (reduce (fn [acc e] (inc acc)) 0 x))
 </code></pre><p>원소의 갯수를 파악하는 문제이다 나는  reduce를 사용하여 원소를 순회하며 acc를 한개씩 증가시키는 방법으로 문제를 해결 하였다.</p><p>solution을 보니 or 또는 do를 사용하여 문제를 해결한 사람들도 있었다.
 or은 false인 경우를 제외하고 무조건 첫번째 표현식의 결과 값을 반환 한다.</p><pre><code class="clj">(or (inc 0) :a)
@@ -136,11 +136,11 @@ or은 false인 경우를 제외하고 무조건 첫번째 표현식의 결과 �
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-22/">4clojure - Count a Sequence (22)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-21/">4clojure - Nth Element (21)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-20/">4clojure - Penultimate Element (20)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-19/">4clojure - Last Element (19)</a></li>
                         
                     </ul>
                 </div>
