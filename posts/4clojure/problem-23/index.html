@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="제한: reverse, rseq">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="제한: reverse, rseq">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-23/" />
 <meta property="og:title" content="4clojure - Reverse a Sequence (23)" />
@@ -74,19 +74,19 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 10월 26일<br>수정일: 2019년 10월 26일</div>
+        <div class="col-lg-6 right">생성일: 2019년 10월 26일<br>수정일: 2023년 10월 01일</div>
         
     </div>
     <h2>4clojure - Reverse a Sequence (23)</h2>
 </div>
 <div>
-    
-    <pre><code class="clj">(= (__ [1 2 3 4 5]) [5 4 3 2 1])
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li></ol>
+    <h2 id="문제">문제</h2><pre><code class="clj">(= (__ [1 2 3 4 5]) [5 4 3 2 1])
 
 (= (__ (sorted-set 5 7 2 7)) '(7 5 2))
 
 (= (__ [[1 2][3 4][5 6]]) [[5 6][3 4][1 2]])
-</code></pre><p><strong>제한: reverse, rseq</strong></p><pre><code class="clj">(fn [x]
+</code></pre><p><strong>제한: reverse, rseq</strong></p><h2 id="풀이">풀이</h2><pre><code class="clj">(fn [x]
   (reduce (fn [acc e] (conj acc e)) '() x))
 </code></pre><p>reverse, rseq를 사용하지 않고 순서를 뒤집는 동작을 작성하는 문제 이다. 나는 reduce를 사용하여 list의 conj 동작이 들어오는 순서대로 첫번째로 추가되는 원리를 이용하여 문제를 해결 하였다
 into를 이용하여 문제를 푸는 방식도 있다.</p><p>into의 실행 방식은 결과 collection의 형태에 따라서 다르다.</p><pre><code class="clj">(into [] [1 2 3 4 5])
@@ -133,11 +133,11 @@ into를 이용하여 문제를 푸는 방식도 있다.</p><p>into의 실행 방
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-23/">4clojure - Reverse a Sequence (23)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-22/">4clojure - Count a Sequence (22)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-21/">4clojure - Nth Element (21)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-20/">4clojure - Penultimate Element (20)</a></li>
                         
                     </ul>
                 </div>
