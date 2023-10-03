@@ -6,6 +6,10 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
+<meta name="description" content="문제">
+
+<meta property="og:description" content="문제">
+
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-26/" />
 <meta property="og:title" content="4clojure - Fibonacci Sequence (26)" />
 <meta property="og:type" content="article" />
@@ -70,23 +74,23 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 10월 29일<br>수정일: 2019년 10월 29일</div>
+        <div class="col-lg-6 right">생성일: 2019년 10월 29일<br>수정일: 2023년 10월 04일</div>
         
     </div>
     <h2>4clojure - Fibonacci Sequence (26)</h2>
 </div>
 <div>
-    
-    <pre><code class="clj">(= (__ 3) '(1 1 2))
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li><ol><li><a href="#풀이-과정">풀이 과정</a></li></ol></ol>
+    <h2 id="문제">문제</h2><pre><code class="clj">(= (__ 3) '(1 1 2))
 
 (= (__ 6) '(1 1 2 3 5 8))
 
 (= (__ 8) '(1 1 2 3 5 8 13 21))
-</code></pre><pre><code class="clj">(fn [x]
+</code></pre><h2 id="풀이">풀이</h2><pre><code class="clj">(fn [x]
   (loop [li [1 1] cnt 2]
     (if (= cnt x) li
       (recur (conj li (+ (last li) (last (take (- (count li) 1) li)))) (+ cnt 1)))))
-</code></pre><p>피보나치 수열을 구하는 문제이다. 어떻게든 문제를 풀어보겠다고 길게 써놓은 프로그램을 보고 있자니 많은 생각이 든다. 좀 더 clojure 다운 프로그램을 만들고 싶다는 것과 좀 더 공부를 더 해야겠다는 느낌에 대해 만감이 교차 한다. 결과적으로는 문제는 해결을 했지만 여기에 만족하고 싶지는 않다.</p><p>iterate를 가지고 문제를 해결하는 방법이 있었는데 iterate라는 함수의 특성을 이용한 방식으로 해결을 하였다 그리고 단순한 값에 대한 결과값이 당연히 그렇게 되는 것이라고 생각을 했었는데 다른 차원의 해결 방식을 보고 iterate에 대한 사용법을 다시 한번 알게 되었다.</p><p>단순한 값에 대한 예제이다.</p><pre><code class="clj">(iterate inc 5)
+</code></pre><h3 id="풀이-과정">풀이 과정</h3><p>피보나치 수열을 구하는 문제이다. 어떻게든 문제를 풀어보겠다고 길게 써놓은 프로그램을 보고 있자니 많은 생각이 든다. 좀 더 clojure 다운 프로그램을 만들고 싶다는 것과 좀 더 공부를 더 해야겠다는 느낌에 대해 만감이 교차 한다. 결과적으로는 문제는 해결을 했지만 여기에 만족하고 싶지는 않다.</p><p>iterate를 가지고 문제를 해결하는 방법이 있었는데 iterate라는 함수의 특성을 이용한 방식으로 해결을 하였다 그리고 단순한 값에 대한 결과값이 당연히 그렇게 되는 것이라고 생각을 했었는데 다른 차원의 해결 방식을 보고 iterate에 대한 사용법을 다시 한번 알게 되었다.</p><p>단순한 값에 대한 예제이다.</p><pre><code class="clj">(iterate inc 5)
 ;; (5 6 7 8 9 10 11 12 13 14 15 ... n)
 </code></pre><p>위 예제만 봤을 때는 5부터 시작해서 하나씩 증가되는 것이구나 라고 생각을 했었고 별 의심을 하지 않았다 하지만 피보나치 수열에서의 사용법을 보고 경악을 하고 말았다.</p><pre><code class="clj">(take 3 (iterate (fn [[f s]] [s (+ f s)]) [1 1]))
 ;; ([1 1] [1 2] [2 3])
@@ -129,11 +133,11 @@
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-26/">4clojure - Fibonacci Sequence (26)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-25/">4clojure - Find the odd numbers (25)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-24/">4clojure - Sum It All Up (24)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-23/">4clojure - Reverse a Sequence (23)</a></li>
                         
                     </ul>
                 </div>
