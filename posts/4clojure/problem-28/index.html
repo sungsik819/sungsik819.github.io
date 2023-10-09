@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="제한: flatten">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="제한: flatten">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-28/" />
 <meta property="og:title" content="4clojure - Flatten a Sequence (28)" />
@@ -74,19 +74,19 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 10월 31일<br>수정일: 2019년 10월 31일</div>
+        <div class="col-lg-6 right">생성일: 2019년 10월 31일<br>수정일: 2023년 10월 10일</div>
         
     </div>
     <h2>4clojure - Flatten a Sequence (28)</h2>
 </div>
 <div>
-    
-    <pre><code class="clojure">(= (__ '((1 2) 3 [4 [5 6]])) '(1 2 3 4 5 6))
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li></ol>
+    <h2 id="문제">문제</h2><pre><code class="clojure">(= (__ '((1 2) 3 [4 [5 6]])) '(1 2 3 4 5 6))
 
 (= (__ ["a" ["b"] "c"]) '("a" "b" "c"))
 
 (= (__ '((((:a))))) '(:a))
-</code></pre><p>제한: flatten</p><pre><code class="clojure">(fn myflatten [x]
+</code></pre><p>제한: flatten</p><h2 id="풀이">풀이</h2><pre><code class="clojure">(fn myflatten [x]
   (cond (not (sequential? x)) (list x)
         (empty? x) nil
         :else (concat (myflatten (first x)) (myflatten (rest x)))))
@@ -127,11 +127,11 @@
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-28/">4clojure - Flatten a Sequence (28)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-27/">4clojure - Palindrome Detector (27)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-26/">4clojure - Fibonacci Sequence (26)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-25/">4clojure - Find the odd numbers (25)</a></li>
                         
                     </ul>
                 </div>
