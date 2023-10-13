@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="Problem">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="Problem">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-29/" />
 <meta property="og:title" content="4clojure - Get the Caps (29)" />
@@ -74,19 +74,19 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 11월 01일<br>수정일: 2019년 11월 01일</div>
+        <div class="col-lg-6 right">생성일: 2019년 11월 01일<br>수정일: 2023년 10월 14일</div>
         
     </div>
     <h2>4clojure - Get the Caps (29)</h2>
 </div>
 <div>
-    
-    <p><strong>Problem</strong></p><pre><code class="clojure">(= (__ "HeLlO, WoRlD!") "HLOWRD")
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li></ol>
+    <h2 id="문제">문제</h2><pre><code class="clojure">(= (__ "HeLlO, WoRlD!") "HLOWRD")
 
 (empty? (__ "nothing"))
 
 (= (__ "$#A(*&amp;987Zf") "AZ")
-</code></pre><p><strong>Solved</strong></p><pre><code class="clojure">(fn [s]
+</code></pre><h2 id="풀이">풀이</h2><pre><code class="clojure">(fn [s]
   (apply str (filter #(Character/isUpperCase %) s)))
 </code></pre><p>문자 중에서 대문자인 문자만 찾아서 문자열로 만드는 문제이다.  java lib를 이용하여 대문자를 필터링 하여 문제를 해결 하였다.</p><p>정규식을 이용하여 필터링 하는 방법도 있다.</p><pre><code class="clj">#(apply str (re-seq #"[A-Z]" %))
 </code></pre>
@@ -126,11 +126,11 @@
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-29/">4clojure - Get the Caps (29)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-28/">4clojure - Flatten a Sequence (28)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-27/">4clojure - Palindrome Detector (27)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-26/">4clojure - Fibonacci Sequence (26)</a></li>
                         
                     </ul>
                 </div>
