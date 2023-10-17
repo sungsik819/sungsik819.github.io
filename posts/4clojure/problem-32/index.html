@@ -6,9 +6,9 @@
     
 <meta name="keywords" content="essay,clojure,retrospective,4clojure,why,css,math,emacs,Today I Learn,python,project euler">
 
-<meta name="description" content="Problem">
+<meta name="description" content="문제">
 
-<meta property="og:description" content="Problem">
+<meta property="og:description" content="문제">
 
 <meta property="og:url" content="https://sungsik819.github.io/posts/4clojure/problem-32/" />
 <meta property="og:title" content="4clojure - Duplicate a Sequence (32)" />
@@ -74,21 +74,21 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6 right">생성일: 2019년 11월 04일<br>수정일: 2019년 11월 04일</div>
+        <div class="col-lg-6 right">생성일: 2019년 11월 04일<br>수정일: 2023년 10월 18일</div>
         
     </div>
     <h2>4clojure - Duplicate a Sequence (32)</h2>
 </div>
 <div>
-    
-    <p><strong>Problem</strong></p><pre><code class="clojure">(= (__ [1 2 3]) '(1 1 2 2 3 3))
+    <ol class="toc"><li><a href="#문제">문제</a></li><li><a href="#풀이">풀이</a></li></ol>
+    <h2 id="문제">문제</h2><pre><code class="clojure">(= (__ [1 2 3]) '(1 1 2 2 3 3))
 
 (= (__ [:a :a :b :b]) '(:a :a :a :a :b :b :b :b))
 
 (= (__ [[1 2] [3 4]]) '([1 2] [1 2] [3 4] [3 4]))
 
 (= (__ [[1 2] [3 4]]) '([1 2] [1 2] [3 4] [3 4]))
-</code></pre><p><strong>Solved</strong></p><pre><code class="clojure">mapcat (fn [x] (list x x))
+</code></pre><h2 id="풀이">풀이</h2><pre><code class="clojure">mapcat (fn [x] (list x x))
 
 mapcat #(repeat 2 %)
 
@@ -138,11 +138,11 @@ mapcat #(take 2 (iterate identity %))
                     <h3>최근 변경된 문서</h3>
                     <ul>
                         
+                        <li><a href="/posts/4clojure/problem-32/">4clojure - Duplicate a Sequence (32)</a></li>
+                        
                         <li><a href="/posts/4clojure/problem-31/">4clojure - Pack a Sequence (31)</a></li>
                         
                         <li><a href="/posts/4clojure/problem-30/">4clojure - Compress a Sequence (30)</a></li>
-                        
-                        <li><a href="/posts/4clojure/problem-29/">4clojure - Get the Caps (29)</a></li>
                         
                     </ul>
                 </div>
